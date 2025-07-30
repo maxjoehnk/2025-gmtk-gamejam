@@ -1,7 +1,47 @@
-[gd_scene load_steps=2 format=4 uid="uid://dgbfdu0fq73t0"]
+[gd_scene load_steps=6 format=4 uid="uid://dgbfdu0fq73t0"]
 
 [ext_resource type="TileSet" uid="uid://c85y30fiwn3lt" path="res://Scenes/Tiles/Style1.tres" id="1_32aui"]
+[ext_resource type="Script" uid="uid://4iy48t6sf73e" path="res://Scenes/Map.cs" id="2_vjepk"]
+[ext_resource type="PackedScene" uid="uid://v4lsnvlfun3a" path="res://Scenes/guard.tscn" id="3_4ov7l"]
+[ext_resource type="PackedScene" uid="uid://ccx6kqfyhjfw8" path="res://Scenes/Waypoint.tscn" id="4_2t7xj"]
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_4ov7l"]
+vertices = PackedVector2Array(643, 135.312, 643, 512.117, 11.2109, 519.938, -238.953, 259.023, -235.102, -113.008, 520.758, -113.992)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3, 4, 5)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-249, 263, 7, 530, 653, 522, 653, 133, 527, -124, -245, -123)])
 
 [node name="TileMapLayer" type="TileMapLayer"]
-tile_map_data = PackedByteArray("AAABAAEAAQAAAAAAAAACAAEAAQABAAAAADABAAIAAQAAAAAAAAABAAMAAQAAAAAAAAABAAAAAQABAAAAAGACAAAAAQABAAAAAAADAAEAAQAAAAAAAFA=")
+tile_map_data = PackedByteArray("AAABAAEAAQAAAAAAAAACAAEAAQABAAAAADABAAIAAQAAAAAAAAABAAMAAQAAAAAAAAABAAAAAQABAAAAAGACAAAAAQABAAAAAAADAAEAAQAAAAAAAFAEAAEAAQADAAAAAAAEAAAAAQAAAAAAAAAEAP//AQACAAAAAAADAP//AQAAAAAAAFACAP//AQAAAAAAAFABAP//AQAAAAAAAFAAAP//AQAAAAAAAFD/////AQABAAAAAGD//wAAAQAAAAAAAAD//wEAAQAAAAAAAAAEAAIAAQACAAAAAGAFAAIAAQACAAAAAFAFAAEAAQABAAAAAAAEAAMAAQABAAAAAFADAAMAAQAAAAAAAFACAAMAAQABAAAAAGAFAAMAAQABAAAAADA=")
 tile_set = ExtResource("1_32aui")
+script = ExtResource("2_vjepk")
+
+[node name="Spawn" type="Node2D" parent="."]
+position = Vector2(128, 384)
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+position = Vector2(117, -6)
+navigation_polygon = SubResource("NavigationPolygon_4ov7l")
+
+[node name="Guard" parent="." instance=ExtResource("3_4ov7l")]
+position = Vector2(117, -6)
+
+[node name="Waypoint" parent="Guard" instance=ExtResource("4_2t7xj")]
+position = Vector2(73, 70)
+
+[node name="Waypoint2" parent="Guard" instance=ExtResource("4_2t7xj")]
+position = Vector2(209, 68)
+
+[node name="Guard2" parent="." instance=ExtResource("3_4ov7l")]
+position = Vector2(642, 115)
+
+[node name="Waypoint" parent="Guard2" instance=ExtResource("4_2t7xj")]
+position = Vector2(66, 70)
+
+[node name="Waypoint2" parent="Guard2" instance=ExtResource("4_2t7xj")]
+position = Vector2(-69, 72)
+
+[node name="Waypoint3" parent="Guard2" instance=ExtResource("4_2t7xj")]
+position = Vector2(-76, 203)
+
+[node name="Waypoint4" parent="Guard2" instance=ExtResource("4_2t7xj")]
+position = Vector2(66, 203)

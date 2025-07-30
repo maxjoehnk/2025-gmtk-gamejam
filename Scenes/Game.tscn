@@ -20,7 +20,7 @@ offset_right = 100.0
 offset_bottom = 229.0
 size_flags_vertical = 3
 
-[node name="TileMapLayer" parent="." instance=ExtResource("5_b2bpf")]
+[node name="CurrentMap" parent="." instance=ExtResource("5_b2bpf")]
 
 [node name="PlaybackToolbar" type="HBoxContainer" parent="."]
 offset_left = 526.0

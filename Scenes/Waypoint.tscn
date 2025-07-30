@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://ccx6kqfyhjfw8"]
+
+[ext_resource type="Script" uid="uid://bo2lmwvij4d74" path="res://Scenes/Waypoint.cs" id="1_kghkr"]
+
+[node name="Waypoint" type="Node2D"]
+script = ExtResource("1_kghkr")

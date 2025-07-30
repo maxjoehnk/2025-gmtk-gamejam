@@ -1,10 +1,14 @@
+using System.Linq;
 using gmtkgamejam.Core;
 using Godot;
 using Godot.Collections;
 
 public partial class ActionPane : PanelContainer
 {
-    private PackedScene ActionTileScene => GD.Load<PackedScene>("res://Scenes/UI/ActionTile.tscn");
+    private PackedScene MovementActionScene => GD.Load<PackedScene>("res://Scenes/UI/Actions/MovementAction.tscn");
+    private PackedScene InteractActionScene => GD.Load<PackedScene>("res://Scenes/UI/Actions/InteractAction.tscn");
+    private PackedScene WaitActionScene => GD.Load<PackedScene>("res://Scenes/UI/Actions/WaitAction.tscn");
+    
     private BoxContainer ActionListContainer => GetNode<BoxContainer>("HBoxContainer/ActionList");
     
     private Button MoveLeftButton => GetNode<Button>("HBoxContainer/MoveLeftAction");
@@ -12,8 +16,6 @@ public partial class ActionPane : PanelContainer
     private Button MoveUpButton => GetNode<Button>("HBoxContainer/MoveUpAction");
     private Button MoveDownButton => GetNode<Button>("HBoxContainer/MoveDownAction");
     private Button InteractButton => GetNode<Button>("HBoxContainer/InteractAction");
-    
-    private Array<Action> Actions { get; set; } = new();
 
     [Signal]
     public delegate void ActionsUpdatedEventHandler(Array<Action> actions);
@@ -29,52 +31,42 @@ public partial class ActionPane : PanelContainer
 
     private void AddAction(Action action)
     {
-        this.Actions.Add(action);
-        EmitSignal(SignalName.ActionsUpdated, this.Actions);
-        var tile = ActionTileScene.Instantiate<ActionTile>();
-        tile.Title = action.Title;
-        ActionListContainer.AddChild(tile);
+        ActionListContainer.AddChild(action);
+        var actions = new Array<Action>(ActionListContainer.GetChildren().Cast<Action>());
+        EmitSignal(SignalName.ActionsUpdated, actions);
     }
     
     private void OnAddMoveUpAction()
     {
-        Action action = new MoveAction()
-        {
-            Direction = MoveDirection.Up,
-        };
+        var action = MovementActionScene.Instantiate<MoveAction>();
+        action.Direction = MoveDirection.Up;
         AddAction(action);
     }
 
     private void OnAddMoveDownAction()
     {
-        Action action = new MoveAction()
-        {
-            Direction = MoveDirection.Down,
-        };
+        var action = MovementActionScene.Instantiate<MoveAction>();
+        action.Direction = MoveDirection.Down;
         AddAction(action);
     }
 
     private void OnAddMoveLeftAction()
     {
-        Action action = new MoveAction()
-        {
-            Direction = MoveDirection.Left,
-        };
+        var action = MovementActionScene.Instantiate<MoveAction>();
+        action.Direction = MoveDirection.Left;
         AddAction(action);
     }
 
     private void OnAddMoveRightAction()
     {
-        Action action = new MoveAction()
-        {
-            Direction = MoveDirection.Right,
-        };
+        var action = MovementActionScene.Instantiate<MoveAction>();
+        action.Direction = MoveDirection.Right;
         AddAction(action);
     }
     
     private void OnAddInteractAction()
     {
-        Action action = new InteractAction();
+        var action = InteractActionScene.Instantiate<InteractAction>();
         AddAction(action);
     }
 }

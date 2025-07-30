@@ -24,3 +24,32 @@ Idee:
   * Altes Level wird also nach und nach überschrieben
   * Ziel ist einfach so viele Runden zu schaffen wie möglich
   * Wenn man runterfällt ist der Run vorbei
+
+---
+
+Name: WIP Stealth Game
+
+GameLoop: Spieler gibt die Aktonen des Loop vor um ans Ende der Karte zu navigieren, dabei muss er Hindernisse überwinden.
+
+UI: Links Loop, Rechts Karte, oben mitte Ticks (ähnlich Playbutton?)
+
+Ticks
+- Zeiteinheiten im Spiel quasi Züge
+
+Aktionen: Vom Spieler ausgewählte Aktionen die dem Loop hinzugefügt werden, eine Aktion dauert Ticks
+- Warten (Dauer)
+- Laufen (Richtung, Schrittzahl)
+- Objekt betätigen
+
+Loop:
+- Reihenfolge in der Aktionen ausgeführt werden
+
+Hindernisse:
+- Wachen, haben Sichtweite, Geschwindigkeiten, feste Bewegungsabläufe
+- Schalter -> öffnet Türen, deaktiviert Kameras, Licht etc.
+- Licht
+- Kameras
+
+Sonstiges:
+- Bronze, Silber, Gold je nachdem wie viele Ticks genutzt wurden
+- Collectable pro Level

@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://c7xciru5u2iif"]
+
+[ext_resource type="Script" uid="uid://x0enyh7rgler" path="res://Scenes/UI/ActionTile.cs" id="1_ecm75"]
+
+[node name="Action" type="PanelContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ecm75")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 2

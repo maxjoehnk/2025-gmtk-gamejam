@@ -8,5 +8,5 @@ public abstract partial class Action : Control
     
     public abstract string Title { get; }
     
-    public abstract void Act();
+    public abstract void Act(Player player);
 }

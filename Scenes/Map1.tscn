@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=4 uid="uid://dgbfdu0fq73t0"]
+
+[ext_resource type="TileSet" uid="uid://c85y30fiwn3lt" path="res://Scenes/Tiles/Style1.tres" id="1_32aui"]
+
+[node name="TileMapLayer" type="TileMapLayer"]
+tile_map_data = PackedByteArray("AAABAAEAAQAAAAAAAAACAAEAAQABAAAAADABAAIAAQAAAAAAAAABAAMAAQAAAAAAAAABAAAAAQABAAAAAGACAAAAAQABAAAAAAADAAEAAQAAAAAAAFA=")
+tile_set = ExtResource("1_32aui")

@@ -1,0 +1,73 @@
+using System.Linq;
+using gmtkgamejam.Core;
+using Godot;
+using Godot.Collections;
+
+namespace gmtkgamejam.Scenes;
+
+public partial class ActionPlayer : Node
+{
+	private Timer Timer => GetNode<Timer>("Timer");
+
+	private Array<Action> Actions { get; set; }
+
+	private int ActionIndex { get; set; }
+
+	private int CurrentTick { get; set; }
+	
+	private int ActionTicksRemaining { get; set; }
+	
+	private Action? CurrentAction => Actions.ElementAtOrDefault(ActionIndex);
+	
+	[Signal]
+	public delegate void FinishedEventHandler();
+	
+	[Signal]
+	public delegate void TickedEventHandler(int tick);
+
+	public void Play(Array<Action> actions)
+	{
+		Actions = actions;
+		ActionIndex = 0;
+		CurrentTick = 0;
+		ActionTicksRemaining = CurrentAction?.Ticks ?? 0;
+
+		Tick();
+	}
+
+	public void Tick()
+	{
+		CurrentAction?.Act(GetParent<Game>().Player);
+		ActionTicksRemaining -= 1;
+		if (ActionTicksRemaining <= 0)
+		{
+			NextAction();
+		}
+
+		if (CurrentAction == null)
+		{
+			return;
+		}
+
+		CurrentTick += 1;
+		EmitSignalTicked(CurrentTick);
+		this.Timer.Start();
+	}
+
+	private void NextAction()
+	{
+		this.ActionIndex += 1;
+		if (ActionIndex >= Actions.Count)
+		{
+			EmitSignalFinished();
+		}
+	}
+
+	public void Reset()
+	{
+		CurrentTick = 0;
+		ActionIndex = 0;
+		ActionTicksRemaining = 0;
+		EmitSignalTicked(CurrentTick);
+	}
+}

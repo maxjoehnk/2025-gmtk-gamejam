@@ -1,15 +1,14 @@
-[gd_scene load_steps=8 format=4 uid="uid://dgbfdu0fq73t0"]
+[gd_scene load_steps=7 format=4 uid="uid://dgbfdu0fq73t0"]
 
 [ext_resource type="TileSet" uid="uid://bxaff3felfhyq" path="res://Scenes/Tiles/TileSet1.tres" id="1_2t7xj"]
 [ext_resource type="Script" uid="uid://4iy48t6sf73e" path="res://Scenes/Map.cs" id="2_vjepk"]
-[ext_resource type="PackedScene" uid="uid://v4lsnvlfun3a" path="res://Scenes/guard.tscn" id="3_4ov7l"]
-[ext_resource type="Texture2D" uid="uid://cgk3p0flrdyt" path="res://Assets/Spawn.png" id="3_es4yc"]
-[ext_resource type="PackedScene" uid="uid://de2n83qnroben" path="res://Scenes/LevelGoal.tscn" id="5_es4yc"]
-[ext_resource type="Script" uid="uid://b4fimss2qqnf2" path="res://Scenes/GuardPath.cs" id="5_f6pk4"]
+[ext_resource type="PackedScene" uid="uid://v4lsnvlfun3a" path="res://Scenes/Enemies/Guard.tscn" id="3_4ov7l"]
+[ext_resource type="PackedScene" uid="uid://duv31n7g217aj" path="res://Scenes/Levels/Objects/Spawn.tscn" id="3_ne31t"]
+[ext_resource type="PackedScene" uid="uid://de2n83qnroben" path="res://Scenes/Levels/Objects/LevelGoal.tscn" id="5_es4yc"]
 
 [sub_resource type="Curve2D" id="Curve2D_f6pk4"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 66, 72, 0, 0, 0, 0, -70, 71, 0, 0, 0, 0, -77, 204, 0, 0, 0, 0, 64, 203, 0, 0, 0, 0, 66, 72)
+"points": PackedVector2Array(0, 0, 0, 0, 85.1392, 64.4364, 0, 0, 0, 0, -84.8685, 54.5682, 0, 0, 0, 0, -78.7484, 209.564, 0, 0, 0, 0, 87.2524, 210.435, 0, 0, 0, 0, 85.1392, 64.4364)
 }
 point_count = 5
 
@@ -19,23 +18,19 @@ tile_map_data = PackedByteArray("AAABAAMAAAADAAAAAAABAAIAAAADAAAAAAABAAEAAAADAAA
 tile_set = ExtResource("1_2t7xj")
 script = ExtResource("2_vjepk")
 
-[node name="Spawn" type="Node2D" parent="."]
+[node name="Spawn" parent="." instance=ExtResource("3_ne31t")]
 position = Vector2(192, 448)
-
-[node name="Spawn2" type="Sprite2D" parent="Spawn"]
-texture = ExtResource("3_es4yc")
 
 [node name="Path2D2" type="Path2D" parent="."]
 position = Vector2(642, 115)
 curve = SubResource("Curve2D_f6pk4")
 
-[node name="PathFollow2D" type="PathFollow2D" parent="Path2D2"]
-position = Vector2(66, 72)
-rotation = -3.13424
-script = ExtResource("5_f6pk4")
-
-[node name="Guard2" parent="Path2D2/PathFollow2D" instance=ExtResource("3_4ov7l")]
-rotation = 1.5708
+[node name="Guard2" parent="Path2D2" instance=ExtResource("3_4ov7l")]
+visible = false
+position = Vector2(85.1392, 64.4364)
+rotation = -3.08361
 
 [node name="LevelGoal" parent="." instance=ExtResource("5_es4yc")]
 position = Vector2(838.249, 321.35)
+
+[connection signal="PlayerReachedGoal" from="LevelGoal" to="." method="OnPlayerWon"]

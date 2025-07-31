@@ -16,6 +16,8 @@ public partial class ActionPlayer : Node
 	private int CurrentTick { get; set; }
 	
 	private int ActionTicksRemaining { get; set; }
+
+	public double TickDuration => this.Timer.WaitTime;
 	
 	private Action? CurrentAction => Actions.ElementAtOrDefault(ActionIndex);
 	
@@ -33,8 +35,17 @@ public partial class ActionPlayer : Node
 		Tick();
 	}
 
+	public void Stop()
+	{
+		this.Timer.Stop();
+	}
+
 	public void Tick()
 	{
+		if (CurrentAction == null)
+		{
+			return;
+		}
 		CurrentTick += 1;
 		EmitSignalTicked(CurrentTick);
 		CurrentAction?.Act(GetParent<Game>().Player);
@@ -42,11 +53,6 @@ public partial class ActionPlayer : Node
 		if (ActionTicksRemaining <= 0)
 		{
 			NextAction();
-		}
-
-		if (CurrentAction == null)
-		{
-			return;
 		}
 
 		this.Timer.Start();

@@ -17,12 +17,20 @@ public partial class Map : TileMapLayer
 		Array<Node> enemies = this.GetTree().GetNodesInGroup("Enemies");
 		foreach (Node enemy in enemies)
 		{
+			GD.Print("Connecting catched player signal from " + enemy);
 			enemy.Connect(nameof(Guard.CatchedPlayer), Callable.From(this.OnPlayerCaught));
 		}
 	}
 
 	private void OnPlayerCaught()
 	{
+		GD.Print("Player caught");
 		this.EmitSignalPlayerLost();
+	}
+
+	public void OnPlayerWon()
+	{
+		GD.Print("Player won");
+		this.EmitSignalPlayerWon();
 	}
 }

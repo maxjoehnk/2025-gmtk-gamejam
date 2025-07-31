@@ -29,16 +29,21 @@ public partial class Game : Node2D
 	{
 		GD.Print("Reset");
 		Player.Position = Map.SpawnPosition;
+		Player.RotationDegrees = 0;
 		ActionPlayer.Reset();
+		this.WinOverlay.Hide();
+		this.LoseOverlay.Hide();
 	}
 
 	public void OnPlayerWon()
 	{
 		this.WinOverlay.Show();
+		this.ActionPlayer.Stop();
 	}
 
 	public void OnPlayerLost()
 	{
 		this.LoseOverlay.Show();
+		this.ActionPlayer.Stop();
 	}
 }

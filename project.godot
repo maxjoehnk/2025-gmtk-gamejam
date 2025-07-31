@@ -26,4 +26,9 @@ project/assembly_name="2025-gmtk-gamejam"
 
 [global_group]
 
-Waypoints=""
+Enemies=""
+
+[layer_names]
+
+2d_physics/layer_1="Terrain"
+2d_physics/layer_2="Player"

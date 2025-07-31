@@ -3,27 +3,20 @@ using Godot;
 using System.Linq;
 using Godot.Collections;
 
-public partial class LoopPane : PanelContainer
+public partial class ActionPane : PanelContainer
 {
     private PackedScene MovementActionScene => GD.Load<PackedScene>("res://Scenes/UI/Actions/MovementAction.tscn");
     private PackedScene InteractActionScene => GD.Load<PackedScene>("res://Scenes/UI/Actions/InteractAction.tscn");
-    private PackedScene ActionEntryScene => GD.Load<PackedScene>("res://Scenes/UI/LoopMenu/ActionEntry.tscn");
+    private PackedScene ActionEntryScene => GD.Load<PackedScene>("res://Scenes/UI/ActionMenu/ActionEntry.tscn");
     
     private VBoxContainer ActionList => GetNode<VBoxContainer>("MainVBox/ScrollContainer/ActionList");
     private Button AddActionButton => GetNode<Button>("MainVBox/AddActionButton");
     private PopupMenu ActionPopupMenu => GetNode<PopupMenu>("MainVBox/ActionPopupMenu");
 
-    [Signal]
-    public delegate void ActionsUpdatedEventHandler(Godot.Collections.Array<Action> actions);
-
-    public Array<Action> Actions => new(ActionList.GetChildren().Cast<Action>());
-
-    public Array<ActionEntry> ActionEntries => new(ActionList.GetChildren().Cast<ActionEntry>());
+    public Array<Action> Actions => new(ActionList.GetChildren().Cast<ActionEntry>().Select(a => a.Action));
 
     public override void _Ready()
     {
-        GD.Print("LoopPane ready");
-
         SetupAddActionButton();
     }
 
@@ -74,7 +67,6 @@ public partial class LoopPane : PanelContainer
         GD.Print($"Added {entry.Action.Title}, with {entry.Action.Ticks} Ticks.");
 
         ActionList.AddChild(entry);
-        EmitSignal(SignalName.ActionsUpdated, ActionEntries);
     }
 
     private void AddMoveAction(MoveDirection dir)
@@ -82,26 +74,11 @@ public partial class LoopPane : PanelContainer
         var action = MovementActionScene.Instantiate<MoveAction>();
         action.Direction = dir;
         AddAction(action);
-
-        EmitActionListUpdated();
     }
 
     private void AddInteractAction()
     {
         var action = InteractActionScene.Instantiate<InteractAction>();
         AddAction(action);
-
-        EmitActionListUpdated();
-    }
-
-    private void EmitActionListUpdated()
-    {
-        var actions = new Godot.Collections.Array<Action>(
-            ActionEntries.Select(entry => entry.Action)
-        );
-
-        GD.Print(actions.Count);
-
-        EmitSignal(SignalName.ActionsUpdated, actions);
     }
 }

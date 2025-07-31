@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://btwydqx0wjbnl"]
 
-[ext_resource type="Script" uid="uid://ucmle6vpqe56" path="res://Scenes/UI/LoopMenu/LoopPane.cs" id="1_stia5"]
+[ext_resource type="Script" uid="uid://ucmle6vpqe56" path="res://Scenes/UI/ActionMenu/ActionPane.cs" id="1_stia5"]
 
 [node name="LoopPane" type="PanelContainer"]
 anchors_preset = -1

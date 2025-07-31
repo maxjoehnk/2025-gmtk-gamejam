@@ -1,11 +1,10 @@
-[gd_scene load_steps=11 format=3 uid="uid://dfenwo0b7hx7c"]
+[gd_scene load_steps=11 format=4 uid="uid://dfenwo0b7hx7c"]
 
 [ext_resource type="Script" uid="uid://bt83g2edvayok" path="res://Scenes/Game.cs" id="1_iukft"]
-[ext_resource type="PackedScene" uid="uid://b7gu5fnydimr2" path="res://Scenes/UI/ActionPane.tscn" id="2_gl6un"]
 [ext_resource type="Texture2D" uid="uid://d1ptu6wmmwd6y" path="res://Assets/Reset.png" id="3_b2bpf"]
 [ext_resource type="Script" uid="uid://5ph7310ke57h" path="res://Scenes/PlaybackToolbar.cs" id="4_2irst"]
 [ext_resource type="Texture2D" uid="uid://y60sgqd2agpy" path="res://Assets/Play.png" id="4_7lihs"]
-[ext_resource type="PackedScene" uid="uid://btwydqx0wjbnl" path="res://Scenes/UI/LoopMenu/LoopPane.tscn" id="4_bf53h"]
+[ext_resource type="PackedScene" uid="uid://btwydqx0wjbnl" path="res://Scenes/UI/ActionMenu/ActionPane.tscn" id="4_bf53h"]
 [ext_resource type="PackedScene" uid="uid://dgbfdu0fq73t0" path="res://Scenes/Map1.tscn" id="5_b2bpf"]
 [ext_resource type="PackedScene" uid="uid://le1oloc0doa3" path="res://Scenes/player.tscn" id="6_fgofq"]
 [ext_resource type="Script" uid="uid://c7awchqqbe8i4" path="res://Scenes/ActionPlayer.cs" id="7_2irst"]
@@ -13,15 +12,20 @@
 [sub_resource type="LabelSettings" id="LabelSettings_fgofq"]
 font_size = 48
 
+[sub_resource type="LabelSettings" id="LabelSettings_2irst"]
+font_size = 100
+shadow_size = 2
+
 [node name="Game" type="Node2D"]
 script = ExtResource("1_iukft")
 
 [node name="CurrentMap" parent="." instance=ExtResource("5_b2bpf")]
 position = Vector2(211, 314)
+tile_map_data = PackedByteArray("AAABAAMAAAADAAAAAAABAAIAAAADAAAAAAABAAEAAAADAAAAAAABAAAAAAADAAAAAAACAAAAAAADAAAAAAADAAAAAAADAAAAAAAEAAAAAAADAAAAAAAEAAEAAAADAAAAAAAEAAIAAAADAAAAAAAFAAIAAAADAAAAAAAFAAEAAAADAAAAAAAGAAIAAAADAAAAAAAAAP//AAABAAIAAAACAAEAAAACAAMAAAADAAEAAAAFAAMAAAADAAMAAAABAAcAAAADAAIAAAABAAMAAAABAP//AAAFAAIAAAACAP//AAAFAAIAAAADAP//AAAFAAIAAAAEAP//AAAFAAIAAAAFAP//AAAGAAIAAAAFAAAAAAACAAYAAAAGAAEAAAACAAYAAAAGAAAAAAAGAAIAAAAGAAMAAAACAAcAAAAFAAMAAAACAAcAAAAEAAMAAAACAAcAAAACAAIAAAAGAAMAAAACAAMAAAAGAAMAAAAAAAAAAAABAAMAAAAAAAEAAAABAAMAAAAAAAIAAAABAAMAAAAAAAMAAAABAAMAAAAEAAQAAAACAAgAAAAFAAQAAAACAAgAAAAGAAQAAAACAAgAAAACAAQAAAAAAAgAAAADAAQAAAABAAgAAAAHAAIAAAAGAAMAAAAHAAEAAAADAAAAAAAIAAEAAAADAAAAAAAJAAEAAAADAAAAAAAJAAAAAAADAAAAAAAKAAAAAAADAAAAAAAKAP//AAADAAAAAAALAAAAAAAGAAMAAAALAP//AAAGAAMAAAAKAAEAAAACAAMAAAALAAEAAAAGAAcAAAA=")
 
 [node name="Player" parent="." instance=ExtResource("6_fgofq")]
 
-[node name="LoopPane" parent="." instance=ExtResource("4_bf53h")]
+[node name="ActionPane" parent="." instance=ExtResource("4_bf53h")]
 custom_minimum_size = Vector2(200, 500)
 anchors_preset = 0
 anchor_right = 0.0
@@ -29,12 +33,6 @@ anchor_bottom = 0.0
 offset_right = 200.0
 offset_bottom = 500.0
 grow_vertical = 1
-
-[node name="ActionPane" parent="." instance=ExtResource("2_gl6un")]
-visible = false
-offset_right = 100.0
-offset_bottom = 229.0
-size_flags_vertical = 3
 
 [node name="PlaybackToolbar" type="HBoxContainer" parent="."]
 offset_left = 526.0
@@ -65,8 +63,26 @@ script = ExtResource("7_2irst")
 [node name="Timer" type="Timer" parent="ActionPlayer"]
 one_shot = true
 
-[connection signal="ActionsUpdated" from="LoopPane" to="." method="OnUpdateActions"]
-[connection signal="ActionsUpdated" from="ActionPane" to="." method="OnUpdateActions"]
+[node name="WinOverlay" type="Label" parent="."]
+visible = false
+offset_left = 649.0
+offset_top = 464.0
+offset_right = 1045.0
+offset_bottom = 601.0
+text = "You Win"
+label_settings = SubResource("LabelSettings_2irst")
+
+[node name="LoseOverlay" type="Label" parent="."]
+visible = false
+offset_left = 649.0
+offset_top = 464.0
+offset_right = 1045.0
+offset_bottom = 601.0
+text = "You Lose"
+label_settings = SubResource("LabelSettings_2irst")
+
+[connection signal="PlayerLost" from="CurrentMap" to="." method="OnPlayerLost"]
+[connection signal="PlayerWon" from="CurrentMap" to="." method="OnPlayerWon"]
 [connection signal="pressed" from="PlaybackToolbar/Reset" to="." method="OnResetPressed"]
 [connection signal="pressed" from="PlaybackToolbar/Play" to="." method="OnPlayPressed"]
 [connection signal="Ticked" from="ActionPlayer" to="PlaybackToolbar" method="OnTick"]

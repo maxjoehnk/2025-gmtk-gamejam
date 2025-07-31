@@ -5,4 +5,7 @@
     <RootNamespace>gmtkgamejam</RootNamespace>
     <Nullable>enable</Nullable>
   </PropertyGroup>
+  <ItemGroup>
+    <Content Include="Scenes\LevelGoal.tscn" />
+  </ItemGroup>
 </Project>

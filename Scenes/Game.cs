@@ -1,39 +1,45 @@
-using System.Linq;
-using Godot;
-using gmtkgamejam.Core;
 using gmtkgamejam.Scenes;
+using Godot;
 using Godot.Collections;
 
 public partial class Game : Node2D
 {
-    private LoopPane LoopPane => GetNode<LoopPane>("LoopPane");
-    public Map Map => GetNode<Map>("CurrentMap");
-    public Player Player => GetNode<Player>("Player");
+	private ActionPane ActionPane => GetNode<ActionPane>("ActionPane");
+	public Map Map => GetNode<Map>("CurrentMap");
+	public Player Player => GetNode<Player>("Player");
 
-    private ActionPlayer ActionPlayer => GetNode<ActionPlayer>("ActionPlayer");
+	public Control WinOverlay => GetNode<Control>("WinOverlay");
+	public Control LoseOverlay => GetNode<Control>("LoseOverlay");
 
-    public override void _Ready()
-    {
-        base._Ready();
-        Player.Position = Map.SpawnPosition;
-    }
+	private ActionPlayer ActionPlayer => GetNode<ActionPlayer>("ActionPlayer");
 
-    public void OnPlayPressed()
-    {
-        GD.Print("Play");
-        Player.Position = Map.SpawnPosition;
+	public override void _Ready()
+	{
+		base._Ready();
+		Player.Position = Map.SpawnPosition;
+	}
 
-        var actions = new Godot.Collections.Array<Action>(
-            LoopPane.ActionEntries.Select(entry => entry.Action)
-        );
+	public void OnPlayPressed()
+	{
+		GD.Print("Play");
+		Player.Position = Map.SpawnPosition;
+		ActionPlayer.Play(this.ActionPane.Actions);
+	}
 
-        ActionPlayer.Play(actions);
-    }
+	public void OnResetPressed()
+	{
+		GD.Print("Reset");
+		Player.Position = Map.SpawnPosition;
+		ActionPlayer.Reset();
+	}
 
-    public void OnResetPressed()
-    {
-        GD.Print("Reset");
-        Player.Position = Map.SpawnPosition;
-        ActionPlayer.Reset();
-    }
+	public void OnPlayerWon()
+	{
+		this.WinOverlay.Show();
+	}
+
+	public void OnPlayerLost()
+	{
+		this.LoseOverlay.Show();
+	}
 }

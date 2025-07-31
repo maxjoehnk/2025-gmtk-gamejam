@@ -28,8 +28,6 @@ public partial class ActionPlayer : Node
 	public void Play(Array<Action> actions)
 	{
 		Actions = actions;
-		ActionIndex = 0;
-		CurrentTick = 0;
 		ActionTicksRemaining = CurrentAction?.Ticks ?? 0;
 
 		Tick();

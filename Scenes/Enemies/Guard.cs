@@ -8,8 +8,6 @@ public partial class Guard : PathFollow2D
 
   [Export] public float Speed { get; set; } = 128;
 
-  [Export] public double InitialPoint { get; set; } = 4;
-
   [Signal]
   public delegate void CatchedPlayerEventHandler();
 
@@ -23,18 +21,18 @@ public partial class Guard : PathFollow2D
   {
     Playback.Ticked += OnTick;
 
-    this.targetPoint = (int)this.InitialPoint;
-    this.lastPoint = (int)this.InitialPoint;
+    this.targetPoint = 0;
+    this.lastPoint = 0;
     this.currentSubTime = 0;
   }
 
   private void OnTick(int tick)
   {
-    this.targetPoint = (int)this.InitialPoint + tick; // replace with waittime
+    this.targetPoint = tick; // replace with waittime
     if(tick == 0)
     {
-      this.targetPoint = (int)this.InitialPoint;
-      this.lastPoint = (int)this.InitialPoint;
+      this.targetPoint = 0;
+      this.lastPoint = 0;
       this.currentSubTime = 0;
       this.Progress = 0;
     }
@@ -56,7 +54,7 @@ public partial class Guard : PathFollow2D
     }
     if(this.lastPoint == this.targetPoint)
       this.currentSubTime = 0;
-    double ratio = Mathf.Sin(-Mathf.Pi * 0.5 + Mathf.Pi* this.currentSubTime / this.Playback.TickDuration) * 0.5 + 0.5;
+    double ratio = Mathf.Sin(-Mathf.Pi * 0.5 + Mathf.Pi* Mathf.Min(1, this.currentSubTime / this.Playback.TickDuration)) * 0.5 + 0.5;
     double interpolatedPoint = this.lastPoint * (1 - ratio) + Math.Min(this.lastPoint + 1, this.targetPoint) * ratio;
     this.Progress = this.Speed* (float)interpolatedPoint;
   }

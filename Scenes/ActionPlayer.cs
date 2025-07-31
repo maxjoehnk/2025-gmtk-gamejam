@@ -37,6 +37,8 @@ public partial class ActionPlayer : Node
 
 	public void Tick()
 	{
+		CurrentTick += 1;
+		EmitSignalTicked(CurrentTick);
 		CurrentAction?.Act(GetParent<Game>().Player);
 		ActionTicksRemaining -= 1;
 		if (ActionTicksRemaining <= 0)
@@ -49,8 +51,6 @@ public partial class ActionPlayer : Node
 			return;
 		}
 
-		CurrentTick += 1;
-		EmitSignalTicked(CurrentTick);
 		this.Timer.Start();
 	}
 

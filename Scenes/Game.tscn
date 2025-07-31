@@ -15,12 +15,14 @@ font_size = 48
 [node name="Game" type="Node2D"]
 script = ExtResource("1_iukft")
 
+[node name="CurrentMap" parent="." instance=ExtResource("5_b2bpf")]
+
+[node name="Player" parent="." instance=ExtResource("6_fgofq")]
+
 [node name="ActionPane" parent="." instance=ExtResource("2_gl6un")]
 offset_right = 100.0
 offset_bottom = 229.0
 size_flags_vertical = 3
-
-[node name="CurrentMap" parent="." instance=ExtResource("5_b2bpf")]
 
 [node name="PlaybackToolbar" type="HBoxContainer" parent="."]
 offset_left = 526.0
@@ -45,14 +47,13 @@ layout_mode = 2
 text = "Tick: 0"
 label_settings = SubResource("LabelSettings_fgofq")
 
-[node name="Player" parent="." instance=ExtResource("6_fgofq")]
-
 [node name="ActionPlayer" type="Node" parent="."]
 script = ExtResource("7_2irst")
 
 [node name="Timer" type="Timer" parent="ActionPlayer"]
 one_shot = true
 
+[connection signal="ActionsUpdated" from="ActionPane" to="." method="OnUpdateActions"]
 [connection signal="pressed" from="PlaybackToolbar/Reset" to="." method="OnResetPressed"]
 [connection signal="pressed" from="PlaybackToolbar/Play" to="." method="OnPlayPressed"]
 [connection signal="Ticked" from="ActionPlayer" to="PlaybackToolbar" method="OnTick"]

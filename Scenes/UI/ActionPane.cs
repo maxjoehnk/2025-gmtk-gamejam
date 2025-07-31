@@ -19,6 +19,8 @@ public partial class ActionPane : PanelContainer
 
     [Signal]
     public delegate void ActionsUpdatedEventHandler(Array<Action> actions);
+    
+    public Array<Action> Actions => new(ActionListContainer.GetChildren().Cast<Action>());
 
     public override void _Ready()
     {
@@ -32,8 +34,7 @@ public partial class ActionPane : PanelContainer
     private void AddAction(Action action)
     {
         ActionListContainer.AddChild(action);
-        var actions = new Array<Action>(ActionListContainer.GetChildren().Cast<Action>());
-        EmitSignal(SignalName.ActionsUpdated, actions);
+        EmitSignal(SignalName.ActionsUpdated, Actions);
     }
     
     private void OnAddMoveUpAction()

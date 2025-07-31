@@ -11,26 +11,18 @@ public partial class Game : Node2D
     public Player Player => GetNode<Player>("Player");
 
     private ActionPlayer ActionPlayer => GetNode<ActionPlayer>("ActionPlayer");
-    
-    public Array<Action> Actions { get; set; }
 
     public override void _Ready()
     {
         base._Ready();
         Player.Position = Map.SpawnPosition;
-        ActionPane.ActionsUpdated += OnUpdateActions;
-    }
-
-    private void OnUpdateActions(Array<Action> actions)
-    {
-        Actions = actions;
     }
 
     public void OnPlayPressed()
     {
         GD.Print("Play");
         Player.Position = Map.SpawnPosition;
-        ActionPlayer.Play(Actions);
+        ActionPlayer.Play(ActionPane.Actions);
     }
 
     public void OnResetPressed()

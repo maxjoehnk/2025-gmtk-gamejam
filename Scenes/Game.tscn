@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://dfenwo0b7hx7c"]
+[gd_scene load_steps=13 format=3 uid="uid://dfenwo0b7hx7c"]
 
 [ext_resource type="Script" uid="uid://bt83g2edvayok" path="res://Scenes/Game.cs" id="1_iukft"]
 [ext_resource type="Texture2D" uid="uid://d1ptu6wmmwd6y" path="res://Assets/Reset.png" id="3_b2bpf"]
@@ -7,10 +7,14 @@
 [ext_resource type="PackedScene" uid="uid://btwydqx0wjbnl" path="res://Scenes/UI/ActionMenu/ActionPane.tscn" id="4_bf53h"]
 [ext_resource type="PackedScene" uid="uid://le1oloc0doa3" path="res://Scenes/player.tscn" id="6_fgofq"]
 [ext_resource type="Script" uid="uid://c7awchqqbe8i4" path="res://Core/ActionPlayer.cs" id="7_2irst"]
+[ext_resource type="Script" uid="uid://517q0xvo800u" path="res://Scenes/SpeedSliderToolbar.cs" id="7_bf53h"]
 [ext_resource type="Texture2D" uid="uid://wx4ubrojmbbp" path="res://Assets/PreviewIndicator.png" id="8_2irst"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_fgofq"]
 font_size = 48
+
+[sub_resource type="LabelSettings" id="LabelSettings_bf53h"]
+font_size = 32
 
 [sub_resource type="LabelSettings" id="LabelSettings_2irst"]
 font_size = 100
@@ -31,32 +35,57 @@ offset_right = 200.0
 offset_bottom = 500.0
 grow_vertical = 1
 
-[node name="PlaybackToolbar" type="HBoxContainer" parent="."]
-z_index = 1
-offset_left = 526.0
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+offset_left = 600.0
 offset_top = 2.0
-offset_right = 788.0
+offset_right = 1009.0
 offset_bottom = 130.0
-scale = Vector2(0.440426, 0.440426)
+scale = Vector2(0.5, 0.5)
+
+[node name="PlaybackToolbar" type="HBoxContainer" parent="VBoxContainer"]
+z_index = 1
+layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 0
 script = ExtResource("4_2irst")
 
-[node name="Reset" type="TextureButton" parent="PlaybackToolbar"]
+[node name="Reset" type="TextureButton" parent="VBoxContainer/PlaybackToolbar"]
 layout_mode = 2
 texture_normal = ExtResource("3_b2bpf")
 
-[node name="Play" type="TextureButton" parent="PlaybackToolbar"]
+[node name="Play" type="TextureButton" parent="VBoxContainer/PlaybackToolbar"]
 layout_mode = 2
 texture_normal = ExtResource("4_7lihs")
 
-[node name="Label" type="Label" parent="PlaybackToolbar"]
+[node name="Label" type="Label" parent="VBoxContainer/PlaybackToolbar"]
 layout_mode = 2
 text = "Tick: 0"
 label_settings = SubResource("LabelSettings_fgofq")
 
+[node name="SpeedSliderToolbar" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+script = ExtResource("7_bf53h")
+
+[node name="HSlider" type="HSlider" parent="VBoxContainer/SpeedSliderToolbar"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+size_flags_horizontal = 3
+min_value = 1.0
+max_value = 15.0
+step = 3.0
+value = 1.0
+
+[node name="Label" type="Label" parent="VBoxContainer/SpeedSliderToolbar"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+text = "8x"
+label_settings = SubResource("LabelSettings_bf53h")
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="ActionPlayer" type="Node" parent="." groups=["ActionPlayer"]]
 script = ExtResource("7_2irst")
+SpeedSliderPath = NodePath("../VBoxContainer/SpeedSliderToolbar/HSlider")
 
 [node name="Timer" type="Timer" parent="ActionPlayer"]
 one_shot = true
@@ -83,8 +112,9 @@ label_settings = SubResource("LabelSettings_2irst")
 position = Vector2(449, 321)
 texture = ExtResource("8_2irst")
 
-[connection signal="pressed" from="PlaybackToolbar/Reset" to="." method="OnResetPressed"]
-[connection signal="pressed" from="PlaybackToolbar/Play" to="." method="OnPlayPressed"]
+[connection signal="pressed" from="VBoxContainer/PlaybackToolbar/Reset" to="." method="OnResetPressed"]
+[connection signal="pressed" from="VBoxContainer/PlaybackToolbar/Play" to="." method="OnPlayPressed"]
+[connection signal="value_changed" from="VBoxContainer/SpeedSliderToolbar/HSlider" to="VBoxContainer/SpeedSliderToolbar" method="OnSpeedSliderChanged"]
 [connection signal="Finished" from="ActionPlayer" to="." method="OnActionsFinished"]
-[connection signal="Ticked" from="ActionPlayer" to="PlaybackToolbar" method="OnTick"]
+[connection signal="Ticked" from="ActionPlayer" to="VBoxContainer/PlaybackToolbar" method="OnTick"]
 [connection signal="timeout" from="ActionPlayer/Timer" to="ActionPlayer" method="Tick"]

@@ -7,7 +7,7 @@ namespace gmtkgamejam.Scenes;
 
 public partial class ActionPlayer : Node
 {
-	public static ActionPlayer Get(Node node)
+    public static ActionPlayer Get(Node node)
 	{
 		return (ActionPlayer)node.GetTree().GetFirstNodeInGroup("ActionPlayer");
 	}
@@ -20,6 +20,11 @@ public partial class ActionPlayer : Node
 
 	private Timer Timer => GetNode<Timer>("Timer");
 
+	[Export]
+	public NodePath SpeedSliderPath;
+
+	private HSlider _multiplier;
+
 	private Array<Action> Actions { get; set; }
 
 	private int ActionIndex { get; set; }
@@ -28,12 +33,17 @@ public partial class ActionPlayer : Node
 
 	private int ActionTicksRemaining { get; set; }
 
-	public double TickDuration => this.Timer.WaitTime;
+	public double TickDuration => this.Timer.WaitTime / _multiplier.Value;
 
 
 	private Action? CurrentAction => Actions.ElementAtOrDefault(ActionIndex);
 
-	public void Play(Array<Action> actions)
+    public override void _Ready()
+    {
+		_multiplier = GetNode<HSlider>(SpeedSliderPath);
+    }
+
+    public void Play(Array<Action> actions)
 	{
 		Actions = actions;
 		ActionTicksRemaining = CurrentAction?.Ticks ?? 0;
@@ -48,6 +58,7 @@ public partial class ActionPlayer : Node
 
 	public void Tick()
 	{
+
 		if (CurrentAction == null)
 		{
 			return;

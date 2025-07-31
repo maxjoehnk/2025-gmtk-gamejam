@@ -12,8 +12,10 @@ public partial class Game : Node2D
 	public Control LoseOverlay => this.GetNode<Control>("LoseOverlay");
 
 	public ActionPlayer ActionPlayer => this.GetNode<ActionPlayer>("ActionPlayer");
-	
-	private Node2D PreviewIndicator => this.GetNode<Node2D>("PreviewIndicator");
+
+    private HSlider SpeedSlider => this.GetNode<HSlider>("VBoxContainer/SpeedSliderToolbar/HSlider");
+
+    private Node2D PreviewIndicator => this.GetNode<Node2D>("PreviewIndicator");
 	
 	[Export]
 	public Vector2 SpawnPosition { get; set; }
@@ -56,6 +58,7 @@ public partial class Game : Node2D
 		this.ActionPlayer.Reset();
 		this.WinOverlay.Hide();
 		this.LoseOverlay.Hide();
+		this.SpeedSlider.Value = 1;
 	}
 
 	public void OnActionsUpdated()

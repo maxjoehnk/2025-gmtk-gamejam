@@ -1,6 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://btwydqx0wjbnl"]
+[gd_scene load_steps=9 format=3 uid="uid://btwydqx0wjbnl"]
 
 [ext_resource type="Script" uid="uid://ucmle6vpqe56" path="res://Scenes/UI/ActionMenu/ActionPane.cs" id="1_stia5"]
+[ext_resource type="Script" uid="uid://doneu0shnocex" path="res://Scenes/UI/ActionMenu/ActionList.cs" id="2_bpui6"]
 [ext_resource type="Texture2D" uid="uid://c8bqv61cqkos6" path="res://Assets/MoveLeft.png" id="2_mc8op"]
 [ext_resource type="Texture2D" uid="uid://cwl8h58jgnto1" path="res://Assets/MoveUp.png" id="3_bpui6"]
 [ext_resource type="Texture2D" uid="uid://cp6xwcx5ukfc0" path="res://Assets/MoveDown.png" id="4_vdasp"]
@@ -49,6 +50,7 @@ size_flags_vertical = 3
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 0
+script = ExtResource("2_bpui6")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MainVBox"]
 layout_mode = 2

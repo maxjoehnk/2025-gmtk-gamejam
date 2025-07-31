@@ -7,6 +7,7 @@ public partial class ActionPane : PanelContainer
 {
     private PackedScene MovementActionScene => GD.Load<PackedScene>("res://Scenes/UI/Actions/MovementAction.tscn");
     private PackedScene InteractActionScene => GD.Load<PackedScene>("res://Scenes/UI/Actions/InteractAction.tscn");
+    private PackedScene WaitActionScene => GD.Load<PackedScene>("res://Scenes/UI/Actions/WaitAction.tscn");
     private PackedScene ActionEntryScene => GD.Load<PackedScene>("res://Scenes/UI/ActionMenu/ActionEntry.tscn");
     
     private VBoxContainer ActionList => GetNode<VBoxContainer>("MainVBox/ScrollContainer/ActionList");
@@ -60,7 +61,7 @@ public partial class ActionPane : PanelContainer
             OnInteractButton_Click();
 
         if (Input.IsActionJustPressed("Add_Wait"))
-            OnRightButton_Click();
+            OnWaitButton_Click();
     }
 
     public void OnLeftButton_Click()
@@ -90,7 +91,7 @@ public partial class ActionPane : PanelContainer
 
     public void OnWaitButton_Click()
     {
-        AddInteractAction();
+        AddWaitAction();
     }
 
     private void AddAction(Action action)
@@ -113,6 +114,12 @@ public partial class ActionPane : PanelContainer
     private void AddInteractAction()
     {
         var action = InteractActionScene.Instantiate<InteractAction>();
+        AddAction(action);
+    }
+
+    private void AddWaitAction()
+    {
+        var action = WaitActionScene.Instantiate<WaitAction>();
         AddAction(action);
     }
 }

@@ -26,7 +26,7 @@ tile_set = ExtResource("1_2t7xj")
 position = Vector2(192, 448)
 
 [node name="Path2D2" type="Path2D" parent="TileMapLayer"]
-position = Vector2(642, 115)
+position = Vector2(640, 128)
 curve = SubResource("Curve2D_f6pk4")
 
 [node name="Guard2" parent="TileMapLayer/Path2D2" instance=ExtResource("3_4ov7l")]

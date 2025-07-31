@@ -4,7 +4,7 @@ using Godot;
 
 public partial class Guard : PathFollow2D
 {
-	private ActionPlayer Playback => GetNode<ActionPlayer>("/root/Game/ActionPlayer");
+	private ActionPlayer Playback => ActionPlayer.Get(this);
 
 	[Export] public float Speed { get; set; } = 128;
 

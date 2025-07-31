@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="2025-gmtk-gamejam"
-run/main_scene="uid://dfenwo0b7hx7c"
+run/main_scene="uid://dgbfdu0fq73t0"
 config/features=PackedStringArray("4.4", "C#", "Forward Plus")
 config/icon="res://icon.svg"
 
@@ -27,6 +27,7 @@ project/assembly_name="2025-gmtk-gamejam"
 [global_group]
 
 Enemies=""
+ActionPlayer=""
 
 [layer_names]
 

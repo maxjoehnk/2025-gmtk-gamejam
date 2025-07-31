@@ -2,9 +2,10 @@ using Godot;
 using System;
 using Godot.Collections;
 
-public partial class Map : TileMapLayer
+public partial class Map : Node
 {
-	public Vector2 SpawnPosition => GetNode<Node2D>("Spawn").GlobalPosition;
+	public Vector2 SpawnPosition => this.GetNode<Node2D>("TileMapLayer/Spawn").GlobalPosition;
+	public Game Game => this.GetNode<Game>("Game");
 	
 	[Signal]
 	public delegate void PlayerLostEventHandler();
@@ -20,17 +21,20 @@ public partial class Map : TileMapLayer
 			GD.Print("Connecting catched player signal from " + enemy);
 			enemy.Connect(nameof(Guard.CatchedPlayer), Callable.From(this.OnPlayerCaught));
 		}
+
+		this.Game.SpawnPosition = this.SpawnPosition;
+		this.Game.Respawn();
 	}
 
 	private void OnPlayerCaught()
 	{
 		GD.Print("Player caught");
-		this.EmitSignalPlayerLost();
+		this.Game.OnPlayerLost();
 	}
 
 	public void OnPlayerWon()
 	{
 		GD.Print("Player won");
-		this.EmitSignalPlayerWon();
+		this.Game.OnPlayerWon();
 	}
 }

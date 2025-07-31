@@ -7,6 +7,11 @@ namespace gmtkgamejam.Scenes;
 
 public partial class ActionPlayer : Node
 {
+	public static ActionPlayer Get(Node node)
+	{
+		return (ActionPlayer)node.GetTree().GetFirstNodeInGroup("ActionPlayer");
+	}
+	
 	private Timer Timer => GetNode<Timer>("Timer");
 
 	private Array<Action> Actions { get; set; }
@@ -70,6 +75,7 @@ public partial class ActionPlayer : Node
 
 	public void Reset()
 	{
+		this.Stop();
 		CurrentTick = 0;
 		ActionIndex = 0;
 		ActionTicksRemaining = 0;

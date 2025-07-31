@@ -1,29 +1,41 @@
-[gd_scene load_steps=6 format=4 uid="uid://6p3sj1djsf5q"]
+[gd_scene load_steps=8 format=4 uid="uid://6p3sj1djsf5q"]
 
 [ext_resource type="TileSet" uid="uid://bxaff3felfhyq" path="res://Scenes/Tiles/TileSet1.tres" id="1_7e5cw"]
+[ext_resource type="Script" uid="uid://4iy48t6sf73e" path="res://Scenes/Map.cs" id="2_dqpvo"]
 [ext_resource type="PackedScene" uid="uid://duv31n7g217aj" path="res://Scenes/Levels/Objects/Spawn.tscn" id="2_iuug4"]
+[ext_resource type="PackedScene" uid="uid://dfenwo0b7hx7c" path="res://Scenes/Game.tscn" id="2_o0omn"]
 [ext_resource type="PackedScene" uid="uid://de2n83qnroben" path="res://Scenes/Levels/Objects/LevelGoal.tscn" id="3_o0omn"]
 [ext_resource type="PackedScene" uid="uid://v4lsnvlfun3a" path="res://Scenes/Enemies/Guard.tscn" id="4_iuug4"]
 
 [sub_resource type="Curve2D" id="Curve2D_o0omn"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 63, 326, 0, 0, 0, 0, 60, 180, 0, 0, 0, 0, 451, 180, 0, 0, 0, 0, 451, 325, 0, 0, 0, 0, 63, 326)
+"points": PackedVector2Array(0, 0, 0, 0, 64, 320, 0, 0, 0, 0, 64, 192, 0, 0, 0, 0, 448, 192, 0, 0, 0, 0, 448, 320, 0, 0, 0, 0, 64, 320)
 }
 point_count = 5
 
-[node name="TestLevel" type="TileMapLayer"]
+[node name="TestLevel" type="Node2D"]
+script = ExtResource("2_dqpvo")
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+position = Vector2(201, 0)
 tile_map_data = PackedByteArray("AAAAAAAAAAACAAAAAAABAAAAAAACAAAAAAACAAAAAAACAAAAAAADAAAAAAACAAAAAAAEAAAAAAACAAAAAAAEAAEAAAACAAAAAAAEAAIAAAACAAAAAAADAAIAAAACAAAAAAADAAEAAAACAAAAAAACAAIAAAACAAAAAAACAAEAAAACAAAAAAABAAEAAAACAAAAAAAAAAEAAAACAAAAAAAAAAIAAAACAAAAAAABAAIAAAACAAAAAAA=")
 tile_set = ExtResource("1_7e5cw")
 
-[node name="Spawn" parent="." instance=ExtResource("2_iuug4")]
+[node name="Spawn" parent="TileMapLayer" instance=ExtResource("2_iuug4")]
 position = Vector2(64, 64)
 
-[node name="LevelGoal" parent="." instance=ExtResource("3_o0omn")]
+[node name="LevelGoal" parent="TileMapLayer" instance=ExtResource("3_o0omn")]
 position = Vector2(448, 64)
 
-[node name="Path2D" type="Path2D" parent="."]
+[node name="Path2D" type="Path2D" parent="TileMapLayer"]
 curve = SubResource("Curve2D_o0omn")
 
-[node name="Guard" parent="Path2D" instance=ExtResource("4_iuug4")]
-position = Vector2(381.618, 255.44)
-rotation = -1.59134
+[node name="Guard" parent="TileMapLayer/Path2D" instance=ExtResource("4_iuug4")]
+position = Vector2(64, 320)
+rotation = -1.5708
+
+[node name="@Timer@146795" type="Timer" parent="TileMapLayer/Path2D/Guard"]
+wait_time = 0.2
+one_shot = true
+
+[node name="Game" parent="." instance=ExtResource("2_o0omn")]

@@ -11,7 +11,7 @@ public partial class Game : Node2D
 	public Control WinOverlay => this.GetNode<Control>("WinOverlay");
 	public Control LoseOverlay => this.GetNode<Control>("LoseOverlay");
 
-	private ActionPlayer ActionPlayer => this.GetNode<ActionPlayer>("ActionPlayer");
+	public ActionPlayer ActionPlayer => this.GetNode<ActionPlayer>("ActionPlayer");
 	
 	private Node2D PreviewIndicator => this.GetNode<Node2D>("PreviewIndicator");
 	

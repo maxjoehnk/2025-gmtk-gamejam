@@ -3,7 +3,7 @@ using gmtkgamejam.Core;
 using gmtkgamejam.Scenes;
 using Vector2 = Godot.Vector2;
 
-public partial class Player : StaticBody2D
+public partial class Player : CharacterBody2D
 {
   private const int GridSize = 128;
 
@@ -27,8 +27,6 @@ public partial class Player : StaticBody2D
       nextDirection = new Vector2(0, 0);
       return;
     }
-
-    // MoveAndCollide(moveVector);
   }
 
   public override void _Process(double delta)

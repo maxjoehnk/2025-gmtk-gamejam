@@ -1,7 +1,7 @@
 [gd_scene load_steps=10 format=3 uid="uid://dfenwo0b7hx7c"]
 
 [ext_resource type="Script" uid="uid://bt83g2edvayok" path="res://Scenes/Game.cs" id="1_iukft"]
-[ext_resource type="PackedScene" uid="uid://b7gu5fnydimr2" path="res://Scenes/UI/ActionPane.tscn" id="2_gl6un"]
+[ext_resource type="PackedScene" uid="uid://vro78045eqb" path="res://Scenes/UI/LoopMenu/LoopPane.tscn" id="2_bf53h"]
 [ext_resource type="Texture2D" uid="uid://d1ptu6wmmwd6y" path="res://Assets/Reset.png" id="3_b2bpf"]
 [ext_resource type="Script" uid="uid://5ph7310ke57h" path="res://Scenes/PlaybackToolbar.cs" id="4_2irst"]
 [ext_resource type="Texture2D" uid="uid://y60sgqd2agpy" path="res://Assets/Play.png" id="4_7lihs"]
@@ -15,19 +15,19 @@ font_size = 48
 [node name="Game" type="Node2D"]
 script = ExtResource("1_iukft")
 
-[node name="ActionPane" parent="." instance=ExtResource("2_gl6un")]
-offset_right = 100.0
-offset_bottom = 229.0
+[node name="LoopPane" parent="." instance=ExtResource("2_bf53h")]
+custom_minimum_size = Vector2(500, 800)
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_right = 500.0
+offset_bottom = 800.0
+grow_vertical = 1
 size_flags_vertical = 3
 
-[node name="CurrentMap" parent="." instance=ExtResource("5_b2bpf")]
-
 [node name="PlaybackToolbar" type="HBoxContainer" parent="."]
-offset_left = 526.0
-offset_top = 2.0
-offset_right = 788.0
-offset_bottom = 130.0
-scale = Vector2(0.440426, 0.440426)
+offset_right = 409.0
+offset_bottom = 128.0
 size_flags_horizontal = 4
 size_flags_vertical = 0
 script = ExtResource("4_2irst")
@@ -45,15 +45,16 @@ layout_mode = 2
 text = "Tick: 0"
 label_settings = SubResource("LabelSettings_fgofq")
 
-[node name="Player" parent="." instance=ExtResource("6_fgofq")]
-
 [node name="ActionPlayer" type="Node" parent="."]
 script = ExtResource("7_2irst")
 
 [node name="Timer" type="Timer" parent="ActionPlayer"]
 one_shot = true
 
+[node name="CurrentMap" parent="." instance=ExtResource("5_b2bpf")]
+
+[node name="Player" parent="." instance=ExtResource("6_fgofq")]
+
 [connection signal="pressed" from="PlaybackToolbar/Reset" to="." method="OnResetPressed"]
 [connection signal="pressed" from="PlaybackToolbar/Play" to="." method="OnPlayPressed"]
-[connection signal="Ticked" from="ActionPlayer" to="PlaybackToolbar" method="OnTick"]
 [connection signal="timeout" from="ActionPlayer/Timer" to="ActionPlayer" method="Tick"]

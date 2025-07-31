@@ -12,6 +12,7 @@ editor_description = "Enemy Guard
 script = ExtResource("1_smm0d")
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+position = Vector2(-64, -64)
 motion_mode = 1
 
 [node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D"]
@@ -23,9 +24,5 @@ position = Vector2(66, 70)
 shape = SubResource("CircleShape2D_mk1iy")
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="CharacterBody2D"]
-
-[node name="NextTarget" type="Polygon2D" parent="CharacterBody2D"]
-color = Color(0.188235, 1, 0, 1)
-polygon = PackedVector2Array(-32, 32, -32, -32, 32, -32, 32, 32)
 
 [connection signal="target_reached" from="CharacterBody2D/NavigationAgent2D" to="." method="ReachedWaypoint"]

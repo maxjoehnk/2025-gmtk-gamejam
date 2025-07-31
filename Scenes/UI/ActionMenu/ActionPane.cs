@@ -56,10 +56,10 @@ public partial class ActionPane : PanelContainer
         if (Input.IsActionJustPressed("Add_MoveRight"))
             OnRightButton_Click();
 
-        if (Input.IsActionJustPressed("Interact"))
+        if (Input.IsActionJustPressed("Add_Interact"))
             OnInteractButton_Click();
 
-        if (Input.IsActionJustPressed("Wait"))
+        if (Input.IsActionJustPressed("Add_Wait"))
             OnRightButton_Click();
     }
 

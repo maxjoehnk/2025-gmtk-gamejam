@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=4 uid="uid://dgbfdu0fq73t0"]
 
-[ext_resource type="TileSet" uid="uid://lst06j716l6t" path="res://Scenes/Tiles/TileSet1.tres" id="1_2t7xj"]
+[ext_resource type="TileSet" uid="uid://bxaff3felfhyq" path="res://Scenes/Tiles/TileSet1.tres" id="1_2t7xj"]
 [ext_resource type="Script" uid="uid://4iy48t6sf73e" path="res://Scenes/Map.cs" id="2_vjepk"]
 [ext_resource type="PackedScene" uid="uid://v4lsnvlfun3a" path="res://Scenes/Enemies/Guard.tscn" id="3_4ov7l"]
 [ext_resource type="PackedScene" uid="uid://dfenwo0b7hx7c" path="res://Scenes/Game.tscn" id="3_4ts55"]

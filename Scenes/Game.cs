@@ -30,7 +30,17 @@ public partial class Game : Node2D
 		{
 			LevelLoader.Instance.OpenLevelSelector();
 		}
-	}
+
+        if (Input.IsActionJustPressed("Play"))
+        {
+            OnPlayPressed();
+        }
+
+        if (Input.IsActionJustPressed("Reset"))
+        {
+            OnResetPressed();
+        }
+    }
 
 	public void OnPlayPressed()
 	{

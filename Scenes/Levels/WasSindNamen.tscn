@@ -1,0 +1,89 @@
+[gd_scene load_steps=12 format=4 uid="uid://ce1252b1u1oko"]
+
+[ext_resource type="Script" uid="uid://4iy48t6sf73e" path="res://Scenes/Map.cs" id="1_m7c25"]
+[ext_resource type="TileSet" uid="uid://dqkv2g4dcdkd6" path="res://Assets/LevelTiles/LevelTiles.tres" id="2_12frw"]
+[ext_resource type="PackedScene" uid="uid://duv31n7g217aj" path="res://Scenes/Levels/Objects/Spawn.tscn" id="3_7wpmw"]
+[ext_resource type="PackedScene" uid="uid://de2n83qnroben" path="res://Scenes/Levels/Objects/LevelGoal.tscn" id="4_50li6"]
+[ext_resource type="PackedScene" uid="uid://bshkala5h1lhk" path="res://Scenes/Enemies/CameraSwitcher.tscn" id="5_xsbrw"]
+[ext_resource type="PackedScene" uid="uid://brugcfum7eimj" path="res://Scenes/Enemies/StaticCamera.tscn" id="6_1nkbs"]
+[ext_resource type="PackedScene" uid="uid://v4lsnvlfun3a" path="res://Scenes/Enemies/Guard.tscn" id="7_12frw"]
+[ext_resource type="PackedScene" uid="uid://dfenwo0b7hx7c" path="res://Scenes/Game.tscn" id="7_j574u"]
+
+[sub_resource type="Curve2D" id="Curve2D_7wpmw"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 144, 203, 0, 0, 0, 0, 14, 158, 0, 0, 0, 0, 16, -131, 0, 0, 0, 0, 9, 159, 0, 0, 0, 0, -104, 194, 0, 0, 0, 0, -103, 321, 0, 0, 0, 0, 144, 329, 0, 0, 0, 0, 145, 203)
+}
+point_count = 8
+
+[sub_resource type="Curve2D" id="Curve2D_12frw"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 196, 150, 0, 0, 0, 0, 195, -243, 0, 0, 0, 0, -316, -242, 0, 0, 0, 0, -327, 160, 0, 0, 0, 0, 196, 149)
+}
+point_count = 5
+
+[sub_resource type="Curve2D" id="Curve2D_50li6"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 4, -8, 0, 0, 0, 0, -906, -1, 0, 0, 0, 0, -774, -2, 0, 0, 0, 0, -774, -374, 0, 0, 0, 0, -904, -373, 0, 0, 0, 0, -774, -372, 0, 0, 0, 0, -769, -2, 0, 0, 0, 0, 3, -8)
+}
+point_count = 8
+
+[node name="WasSindNamen" type="Node2D"]
+script = ExtResource("1_m7c25")
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+position = Vector2(407, 257)
+tile_map_data = PackedByteArray("AAAAAAAAAAAAAAIAAAABAAAAAAAAAAIAAAABAAUAAAAAAAIAAAAAAAUAAAAAAAIAAAAAAAQAAAAAAAIAAAAAAAMAAAAAAAIAAAAAAAIAAAAAAAIAAAAAAAEAAAAAAAIAAAACAAAAAAAAAAIAAAADAAAAAAAAAAIAAAAEAAAAAAAAAAIAAAAEAAEAAAAAAAIAAAAFAAEAAAAAAAIAAAAEAAIAAAAAAAIAAAADAAQAAAAAAAIAAAADAAUAAAAAAAIAAAAEAAUAAAAAAAIAAAAFAAUAAAAAAAIAAAAFAAQAAAAAAAIAAAAEAAMAAAAAAAIAAAAEAAQAAAAAAAIAAAACAAUAAAAAAAIAAAAGAAEAAAAAAAIAAAAHAAEAAAAAAAIAAAAIAAEAAAAAAAIAAAAIAAAAAAAAAAIAAAAIAP//AAAAAAIAAAAIAP7/AAAAAAIAAAAHAP7/AAAAAAIAAAAGAP7/AAAAAAIAAAAFAP7/AAAAAAIAAAAEAP7/AAAAAAIAAAAEAP//AAAAAAIAAAADAAEAAAAAAAIAAAAGAAQAAAAAAAIAAAAHAAQAAAAAAAIAAAAIAAQAAAAAAAIAAAAJAAQAAAAAAAIAAAAKAAQAAAAAAAIAAAAKAAMAAAAAAAIAAAAKAAIAAAAAAAIAAAA=")
+tile_set = ExtResource("2_12frw")
+
+[node name="Spawn" parent="TileMapLayer" instance=ExtResource("3_7wpmw")]
+position = Vector2(64, 64)
+
+[node name="LevelGoal" parent="TileMapLayer" instance=ExtResource("4_50li6")]
+position = Vector2(1346, 324)
+
+[node name="CameraSwitcher" parent="TileMapLayer" instance=ExtResource("5_xsbrw")]
+Ticks = 2
+
+[node name="StaticCamera" parent="TileMapLayer/CameraSwitcher" instance=ExtResource("6_1nkbs")]
+position = Vector2(192, 406)
+rotation = -2.77348
+
+[node name="StaticCamera2" parent="TileMapLayer/CameraSwitcher" instance=ExtResource("6_1nkbs")]
+position = Vector2(290, 173)
+rotation = -2.02063
+
+[node name="StaticCamera3" parent="TileMapLayer/CameraSwitcher" instance=ExtResource("6_1nkbs")]
+position = Vector2(1352, 218)
+rotation = 1.60113
+
+[node name="StaticCamera4" parent="TileMapLayer/CameraSwitcher" instance=ExtResource("6_1nkbs")]
+position = Vector2(466, -34)
+rotation = 0.538263
+
+[node name="Path2D" type="Path2D" parent="."]
+position = Vector2(960, 640)
+curve = SubResource("Curve2D_7wpmw")
+
+[node name="Guard" parent="Path2D" instance=ExtResource("7_12frw")]
+position = Vector2(144, 203)
+rotation = -2.80835
+
+[node name="Path2D2" type="Path2D" parent="."]
+position = Vector2(1300, 300)
+curve = SubResource("Curve2D_12frw")
+
+[node name="Guard" parent="Path2D2" instance=ExtResource("7_12frw")]
+position = Vector2(196, 150)
+rotation = -1.57334
+
+[node name="Game" parent="." instance=ExtResource("7_j574u")]
+
+[node name="Path2D3" type="Path2D" parent="."]
+position = Vector2(1750, 829)
+curve = SubResource("Curve2D_50li6")
+
+[node name="Guard" parent="Path2D3" instance=ExtResource("7_12frw")]
+position = Vector2(4, -8)
+rotation = 3.1339
+
+[connection signal="PlayerReachedGoal" from="TileMapLayer/LevelGoal" to="." method="OnPlayerWon"]

@@ -104,6 +104,32 @@ public partial class ActionPane : PanelContainer
         ActionList.AddChild(entry);
     }
 
+    //private void AddAction(Action action)
+    //{
+    //    int childCount = ActionList.GetChildCount();
+
+    //    if (childCount > 0)
+    //    {
+    //        Node lastChild = ActionList.GetChild(childCount - 1);
+
+    //        if (lastChild is ActionEntry lastEntry && lastEntry.Action.Title == action.Title)
+    //        {
+    //            lastEntry.Action.Ticks += action.Ticks; // z. B. +1
+    //            lastEntry.UpdateTickDisplay();
+    //            GD.Print($"Updated {lastEntry.Action.Title}, now {lastEntry.Action.Ticks} Ticks.");
+    //            return;
+    //        }
+    //    }
+
+    //    // Kein gleiches letztes Element → neues hinzufügen
+    //    ActionEntry newEntry = ActionEntryScene.Instantiate<ActionEntry>();
+    //    newEntry.Action = action;
+    //    newEntry.UpdateTickDisplay();
+    //    ActionList.AddChild(newEntry);
+
+    //    GD.Print($"Added {newEntry.Action.Title}, with {newEntry.Action.Ticks} Ticks.");
+    //}
+
     private void AddMoveAction(MoveDirection dir)
     {
         var action = MovementActionScene.Instantiate<MoveAction>();

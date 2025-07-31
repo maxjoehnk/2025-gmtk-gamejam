@@ -39,6 +39,11 @@ public partial class ActionEntry : HBoxContainer
         deleteButton.Pressed += this.QueueFree;
     }
 
+    public void UpdateTickDisplay()
+    {
+        GetNode<Button>("TicksButton").Text = Action.Ticks.ToString();
+    }
+
     public override Variant _GetDragData(Vector2 position)
     {
         var preview = Duplicate() as Control;

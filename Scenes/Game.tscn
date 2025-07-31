@@ -16,6 +16,7 @@ font_size = 48
 script = ExtResource("1_iukft")
 
 [node name="CurrentMap" parent="." instance=ExtResource("5_b2bpf")]
+position = Vector2(211, 314)
 
 [node name="Player" parent="." instance=ExtResource("6_fgofq")]
 

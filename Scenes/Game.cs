@@ -22,7 +22,6 @@ public partial class Game : Node2D
 	public void OnPlayPressed()
 	{
 		GD.Print("Play");
-		Player.Position = Map.SpawnPosition;
 		ActionPlayer.Play(this.ActionPane.Actions);
 	}
 

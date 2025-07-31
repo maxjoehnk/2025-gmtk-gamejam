@@ -55,6 +55,7 @@ public partial class ActionPlayer : Node
 	private void NextAction()
 	{
 		this.ActionIndex += 1;
+		this.ActionTicksRemaining = CurrentAction?.Ticks ?? 0;
 		if (ActionIndex >= Actions.Count)
 		{
 			EmitSignalFinished();

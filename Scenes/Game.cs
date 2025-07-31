@@ -6,7 +6,7 @@ using Godot.Collections;
 
 public partial class Game : Node2D
 {
-    private ActionPane ActionPane => GetNode<ActionPane>("ActionPane");
+    private LoopPane LoopPane => GetNode<LoopPane>("LoopPane");
     public Map Map => GetNode<Map>("CurrentMap");
     public Player Player => GetNode<Player>("Player");
 
@@ -22,7 +22,12 @@ public partial class Game : Node2D
     {
         GD.Print("Play");
         Player.Position = Map.SpawnPosition;
-        ActionPlayer.Play(ActionPane.Actions);
+
+        var actions = new Godot.Collections.Array<Action>(
+            LoopPane.ActionEntries.Select(entry => entry.Action)
+        );
+
+        ActionPlayer.Play(actions);
     }
 
     public void OnResetPressed()

@@ -1,0 +1,52 @@
+[gd_scene load_steps=2 format=3 uid="uid://btwydqx0wjbnl"]
+
+[ext_resource type="Script" uid="uid://ucmle6vpqe56" path="res://Scenes/UI/LoopMenu/LoopPane.cs" id="1_stia5"]
+
+[node name="LoopPane" type="PanelContainer"]
+anchors_preset = -1
+anchor_right = 0.2
+anchor_bottom = 0.5
+offset_right = 92.0
+grow_vertical = 2
+script = ExtResource("1_stia5")
+
+[node name="CollapseButton" type="Button" parent="."]
+layout_mode = 2
+
+[node name="MainVBox" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="Headline" type="HBoxContainer" parent="MainVBox"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MainVBox/Headline"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Ticks"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="MainVBox/Headline"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Action"
+horizontal_alignment = 1
+
+[node name="Label3" type="Label" parent="MainVBox/Headline"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ScrollContainer" type="ScrollContainer" parent="MainVBox"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="ActionList" type="VBoxContainer" parent="MainVBox/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+
+[node name="AddActionButton" type="Button" parent="MainVBox"]
+layout_mode = 2
+size_flags_vertical = 0
+text = "Add Action"
+
+[node name="ActionPopupMenu" type="PopupMenu" parent="MainVBox"]

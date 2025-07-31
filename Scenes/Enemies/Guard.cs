@@ -17,7 +17,7 @@ public partial class Guard : PathFollow2D
 
   private int targetPoint = 0;
   private int lastPoint = 0;
-  private double currentSubPoint;
+  private double currentSubTime = 0;
 
   public override void _Ready()
   {
@@ -25,7 +25,7 @@ public partial class Guard : PathFollow2D
 
     this.targetPoint = (int)this.InitialPoint;
     this.lastPoint = (int)this.InitialPoint;
-    this.currentSubPoint = this.InitialPoint;
+    this.currentSubTime = 0;
   }
 
   private void OnTick(int tick)
@@ -35,7 +35,7 @@ public partial class Guard : PathFollow2D
     {
       this.targetPoint = (int)this.InitialPoint;
       this.lastPoint = (int)this.InitialPoint;
-      this.currentSubPoint = this.InitialPoint;
+      this.currentSubTime = 0;
       this.Progress = 0;
     }
   }
@@ -48,15 +48,15 @@ public partial class Guard : PathFollow2D
 
   public override void _Process(double delta)
   {
-    this.currentSubPoint += delta;
-    if(currentSubPoint > 1)
+    this.currentSubTime += delta;
+    if(currentSubTime > this.Playback.TickDuration)
     {
       this.lastPoint = Math.Min(this.lastPoint + 1, this.targetPoint);
-      this.currentSubPoint = this.currentSubPoint % 1;
+      this.currentSubTime -= this.Playback.TickDuration;
     }
     if(this.lastPoint == this.targetPoint)
-      this.currentSubPoint = 0;
-    double ratio = Mathf.Sin(-Mathf.Pi * 0.5 + Mathf.Pi* this.currentSubPoint) * 0.5 + 0.5;
+      this.currentSubTime = 0;
+    double ratio = Mathf.Sin(-Mathf.Pi * 0.5 + Mathf.Pi* this.currentSubTime / this.Playback.TickDuration) * 0.5 + 0.5;
     double interpolatedPoint = this.lastPoint * (1 - ratio) + Math.Min(this.lastPoint + 1, this.targetPoint) * ratio;
     this.Progress = this.Speed* (float)interpolatedPoint;
   }

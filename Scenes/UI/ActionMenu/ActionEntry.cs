@@ -4,30 +4,31 @@ using gmtkgamejam.Core;
 public partial class ActionEntry : HBoxContainer
 {
     [Export]
-    public gmtkgamejam.Core.Action Action { get; set; }
+    public Action Action { get; set; }
 
+    [Signal]
+    public delegate void ActionChangedEventHandler();
+    
     public override void _Ready()
     {
-        var tickButton = GetNode<Button>("TicksButton");
-        var titleLabel = GetNode<Label>("ActionName");
-        var deleteButton = GetNode<Button>("RemoveButton");
+        Button? tickButton = this.GetNode<Button>("TicksButton");
+        Label? titleLabel = this.GetNode<Label>("ActionName");
+        Button? deleteButton = this.GetNode<Button>("RemoveButton");
 
-        titleLabel.Text = Action.Title;
+        titleLabel.Text = this.Action.Title;
         tickButton.Pressed += () =>
         {
-            if (Action.Ticks >= 5 || Action.Ticks < 1)
+            if (this.Action.Ticks is >= 5 or < 1)
             {
-                Action.Ticks = 0;
+                this.Action.Ticks = 0;
             }
 
-            Action.Ticks++;
+            this.Action.Ticks++;
 
-            tickButton.Text = Action.Ticks.ToString();
-            GD.Print("Ticks: " + Action.Ticks);
+            tickButton.Text = this.Action.Ticks.ToString();
+            this.EmitSignalActionChanged();
         };
 
-        deleteButton.Pressed += () => {
-            QueueFree();
-        };
+        deleteButton.Pressed += this.QueueFree;
     }
 }

@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://dfenwo0b7hx7c"]
+[gd_scene load_steps=11 format=3 uid="uid://dfenwo0b7hx7c"]
 
 [ext_resource type="Script" uid="uid://bt83g2edvayok" path="res://Scenes/Game.cs" id="1_iukft"]
 [ext_resource type="Texture2D" uid="uid://d1ptu6wmmwd6y" path="res://Assets/Reset.png" id="3_b2bpf"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://btwydqx0wjbnl" path="res://Scenes/UI/ActionMenu/ActionPane.tscn" id="4_bf53h"]
 [ext_resource type="PackedScene" uid="uid://le1oloc0doa3" path="res://Scenes/player.tscn" id="6_fgofq"]
 [ext_resource type="Script" uid="uid://c7awchqqbe8i4" path="res://Core/ActionPlayer.cs" id="7_2irst"]
+[ext_resource type="Texture2D" uid="uid://wx4ubrojmbbp" path="res://Assets/PreviewIndicator.png" id="8_2irst"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_fgofq"]
 font_size = 48
@@ -78,7 +79,12 @@ offset_bottom = 601.0
 text = "You Loose"
 label_settings = SubResource("LabelSettings_2irst")
 
+[node name="PreviewIndicator" type="Sprite2D" parent="."]
+position = Vector2(449, 321)
+texture = ExtResource("8_2irst")
+
 [connection signal="pressed" from="PlaybackToolbar/Reset" to="." method="OnResetPressed"]
 [connection signal="pressed" from="PlaybackToolbar/Play" to="." method="OnPlayPressed"]
+[connection signal="Finished" from="ActionPlayer" to="." method="OnActionsFinished"]
 [connection signal="Ticked" from="ActionPlayer" to="PlaybackToolbar" method="OnTick"]
 [connection signal="timeout" from="ActionPlayer/Timer" to="ActionPlayer" method="Tick"]

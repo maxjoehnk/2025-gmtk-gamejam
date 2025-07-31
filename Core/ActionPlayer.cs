@@ -11,7 +11,13 @@ public partial class ActionPlayer : Node
 	{
 		return (ActionPlayer)node.GetTree().GetFirstNodeInGroup("ActionPlayer");
 	}
+
+	[Signal]
+	public delegate void FinishedEventHandler();
 	
+	[Signal]
+	public delegate void TickedEventHandler(int tick);
+
 	private Timer Timer => GetNode<Timer>("Timer");
 
 	private Array<Action> Actions { get; set; }
@@ -19,18 +25,13 @@ public partial class ActionPlayer : Node
 	private int ActionIndex { get; set; }
 
 	private int CurrentTick { get; set; }
-	
+
 	private int ActionTicksRemaining { get; set; }
 
 	public double TickDuration => this.Timer.WaitTime;
-	
+
+
 	private Action? CurrentAction => Actions.ElementAtOrDefault(ActionIndex);
-	
-	[Signal]
-	public delegate void FinishedEventHandler();
-	
-	[Signal]
-	public delegate void TickedEventHandler(int tick);
 
 	public void Play(Array<Action> actions)
 	{

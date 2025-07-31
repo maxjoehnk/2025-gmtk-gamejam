@@ -9,4 +9,9 @@ public abstract partial class Action : Control
     public abstract string Title { get; }
     
     public abstract void Act(Player player);
+
+    public virtual Vector2 Preview(Vector2 position)
+    {
+        return position;
+    }
 }

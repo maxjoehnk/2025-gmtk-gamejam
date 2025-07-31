@@ -12,4 +12,9 @@ public partial class MoveAction : Action
         GD.Print("Move");
         player.Move(Direction);
     }
+
+    public override Vector2 Preview(Vector2 position)
+    {
+        return position + this.Direction.ToMovementVector() * this.Ticks;
+    }
 }

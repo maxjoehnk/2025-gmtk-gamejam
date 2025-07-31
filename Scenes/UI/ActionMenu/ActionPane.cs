@@ -22,6 +22,25 @@ public partial class ActionPane : PanelContainer
     private TextureButton AddWaitButton => GetNode<TextureButton>("MainVBox/HBoxContainer/Wait");
 
     public Array<Action> Actions => new(ActionList.GetChildren().Cast<ActionEntry>().Select(a => a.Action));
+    
+    [Signal]
+    public delegate void ActionsChangedEventHandler();
+
+    public override void _Ready()
+    {
+        this.ActionList.ChildExitingTree += child =>
+        {
+            child.TreeExited += this.EmitSignalActionsChanged;
+        };
+        this.ActionList.ChildEnteredTree += child =>
+        {
+            if (child is ActionEntry entry)
+            {
+                entry.ActionChanged += this.EmitSignalActionsChanged;
+            }
+            this.EmitSignalActionsChanged();
+        };
+    }
 
     public override void _UnhandledInput(InputEvent @event)
     {
@@ -42,11 +61,6 @@ public partial class ActionPane : PanelContainer
 
         if (Input.IsActionJustPressed("Wait"))
             OnRightButton_Click();
-    }
-
-    public override void _Ready()
-    {
-        
     }
 
     public void OnLeftButton_Click()

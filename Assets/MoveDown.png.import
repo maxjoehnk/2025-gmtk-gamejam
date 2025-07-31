@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cwflg561lgbg5"
-path="res://.godot/imported/Goal.png-83009f46eef7acc6d0849e2291623f42.ctex"
+uid="uid://cp6xwcx5ukfc0"
+path="res://.godot/imported/MoveDown.png-f3b384de227804673ca02dbfb0d87dc0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Goal.png"
-dest_files=["res://.godot/imported/Goal.png-83009f46eef7acc6d0849e2291623f42.ctex"]
+source_file="res://Assets/MoveDown.png"
+dest_files=["res://.godot/imported/MoveDown.png-f3b384de227804673ca02dbfb0d87dc0.ctex"]
 
 [params]
 

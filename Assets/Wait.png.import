@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cwflg561lgbg5"
-path="res://.godot/imported/Goal.png-83009f46eef7acc6d0849e2291623f42.ctex"
+uid="uid://dvli1dfdxo4i4"
+path="res://.godot/imported/Wait.png-2d189e8cab4ec516c9606d02d0be62e3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Goal.png"
-dest_files=["res://.godot/imported/Goal.png-83009f46eef7acc6d0849e2291623f42.ctex"]
+source_file="res://Assets/Wait.png"
+dest_files=["res://.godot/imported/Wait.png-2d189e8cab4ec516c9606d02d0be62e3.ctex"]
 
 [params]
 

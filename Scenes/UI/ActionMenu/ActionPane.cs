@@ -13,50 +13,70 @@ public partial class ActionPane : PanelContainer
     private Button AddActionButton => GetNode<Button>("MainVBox/AddActionButton");
     private PopupMenu ActionPopupMenu => GetNode<PopupMenu>("MainVBox/ActionPopupMenu");
 
+    // ActionPaneUI Buttons
+    private TextureButton AddLeftButton => GetNode<TextureButton>("MainVBox/HBoxContainer/Left");
+    private TextureButton AddUpButton => GetNode<TextureButton>("MainVBox/HBoxContainer/Up");
+    private TextureButton AddDownButton => GetNode<TextureButton>("MainVBox/HBoxContainer/Down");
+    private TextureButton AddRightButton => GetNode<TextureButton>("MainVBox/HBoxContainer/Right");
+    private TextureButton AddInteractButton => GetNode<TextureButton>("MainVBox/HBoxContainer/Interact");
+    private TextureButton AddWaitButton => GetNode<TextureButton>("MainVBox/HBoxContainer/Wait");
+
     public Array<Action> Actions => new(ActionList.GetChildren().Cast<ActionEntry>().Select(a => a.Action));
+
+    public override void _UnhandledInput(InputEvent @event)
+    {
+        if (Input.IsActionJustPressed("Add_MoveLeft"))
+            OnLeftButton_Click();
+
+        if (Input.IsActionJustPressed("Add_MoveUp"))
+            OnUpButton_Click();
+
+        if (Input.IsActionJustPressed("Add_MoveDown"))
+            OnDownButton_Click();
+
+        if (Input.IsActionJustPressed("Add_MoveRight"))
+            OnRightButton_Click();
+
+        if (Input.IsActionJustPressed("Interact"))
+            OnInteractButton_Click();
+
+        if (Input.IsActionJustPressed("Wait"))
+            OnRightButton_Click();
+    }
 
     public override void _Ready()
     {
-        SetupAddActionButton();
+        
     }
 
-    private void SetupAddActionButton()
+    public void OnLeftButton_Click()
     {
-        AddActionButton.Pressed += ShowActionPopupMenu;
-        ActionPopupMenu.IdPressed += OnActionSelected;
-
-        AddPopupMenuItems();
+        AddMoveAction(MoveDirection.Left);
     }
 
-    private void AddPopupMenuItems()
+    public void OnUpButton_Click()
     {
-        ActionPopupMenu.AddItem("Bewegen ↑", 0);
-        ActionPopupMenu.AddItem("Bewegen ↓", 1);
-        ActionPopupMenu.AddItem("Bewegen ←", 2);
-        ActionPopupMenu.AddItem("Bewegen →", 3);
-        ActionPopupMenu.AddItem("Interagieren", 4);
+        AddMoveAction(MoveDirection.Up);
     }
 
-    private void ShowActionPopupMenu()
+    public void OnDownButton_Click()
     {
-        var menuHeight = ActionPopupMenu.GetContentsMinimumSize().Y;
-        var buttonPos = AddActionButton.GlobalPosition;
-
-        ActionPopupMenu.Size = (Vector2I)(new Vector2(AddActionButton.Size.X, ActionPopupMenu.Size.Y));
-        ActionPopupMenu.Position = (Vector2I)(buttonPos - new Vector2(0, menuHeight));
-        ActionPopupMenu.Popup();
+        AddMoveAction(MoveDirection.Down);
     }
 
-    private void OnActionSelected(long id)
+    public void OnRightButton_Click()
     {
-        switch (id)
-        {
-            case 0: AddMoveAction(MoveDirection.Up); break;
-            case 1: AddMoveAction(MoveDirection.Down); break;
-            case 2: AddMoveAction(MoveDirection.Left); break;
-            case 3: AddMoveAction(MoveDirection.Right); break;
-            case 4: AddInteractAction(); break;
-        }
+        AddMoveAction(MoveDirection.Right);
+    }
+
+    public void OnInteractButton_Click()
+    {
+        AddInteractAction();
+    }
+
+    public void OnWaitButton_Click()
+    {
+        AddInteractAction();
     }
 
     private void AddAction(Action action)

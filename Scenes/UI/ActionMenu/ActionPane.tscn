@@ -1,6 +1,12 @@
-[gd_scene load_steps=2 format=3 uid="uid://btwydqx0wjbnl"]
+[gd_scene load_steps=8 format=3 uid="uid://btwydqx0wjbnl"]
 
 [ext_resource type="Script" uid="uid://ucmle6vpqe56" path="res://Scenes/UI/ActionMenu/ActionPane.cs" id="1_stia5"]
+[ext_resource type="Texture2D" uid="uid://c8bqv61cqkos6" path="res://Assets/MoveLeft.png" id="2_mc8op"]
+[ext_resource type="Texture2D" uid="uid://cwl8h58jgnto1" path="res://Assets/MoveUp.png" id="3_bpui6"]
+[ext_resource type="Texture2D" uid="uid://cp6xwcx5ukfc0" path="res://Assets/MoveDown.png" id="4_vdasp"]
+[ext_resource type="Texture2D" uid="uid://6uvhjjmfxyba" path="res://Assets/MoveRight.png" id="5_1gjh4"]
+[ext_resource type="Texture2D" uid="uid://dvli1dfdxo4i4" path="res://Assets/Wait.png" id="6_mfvu1"]
+[ext_resource type="Texture2D" uid="uid://cd76p71eyq157" path="res://Assets/Interact.png" id="7_e5q7p"]
 
 [node name="LoopPane" type="PanelContainer"]
 anchors_preset = -1
@@ -44,9 +50,45 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 0
 
+[node name="HBoxContainer" type="HBoxContainer" parent="MainVBox"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="Interact" type="TextureButton" parent="MainVBox/HBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("7_e5q7p")
+
+[node name="Left" type="TextureButton" parent="MainVBox/HBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("2_mc8op")
+
+[node name="Up" type="TextureButton" parent="MainVBox/HBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("3_bpui6")
+
+[node name="Down" type="TextureButton" parent="MainVBox/HBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("4_vdasp")
+
+[node name="Right" type="TextureButton" parent="MainVBox/HBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("5_1gjh4")
+
+[node name="Wait" type="TextureButton" parent="MainVBox/HBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("6_mfvu1")
+
 [node name="AddActionButton" type="Button" parent="MainVBox"]
+visible = false
 layout_mode = 2
 size_flags_vertical = 0
 text = "Add Action"
 
 [node name="ActionPopupMenu" type="PopupMenu" parent="MainVBox"]
+
+[connection signal="pressed" from="MainVBox/HBoxContainer/Interact" to="." method="OnInteractButton_Click"]
+[connection signal="pressed" from="MainVBox/HBoxContainer/Left" to="." method="OnLeftButton_Click"]
+[connection signal="pressed" from="MainVBox/HBoxContainer/Up" to="." method="OnUpButton_Click"]
+[connection signal="pressed" from="MainVBox/HBoxContainer/Down" to="." method="OnDownButton_Click"]
+[connection signal="pressed" from="MainVBox/HBoxContainer/Right" to="." method="OnRightButton_Click"]
+[connection signal="pressed" from="MainVBox/HBoxContainer/Wait" to="." method="OnWaitButton_Click"]

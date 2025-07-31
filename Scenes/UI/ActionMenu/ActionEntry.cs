@@ -16,18 +16,24 @@ public partial class ActionEntry : HBoxContainer
         Button? tickButton = this.GetNode<Button>("TicksButton");
 
         titleLabel.Text = this.Action.Title;
-        tickButton.Pressed += () =>
+
+        tickButton.GuiInput += (InputEvent @event) =>
         {
-            GD.Print(tickButton.Name);
-            if (this.Action.Ticks is >= 5 or < 1)
+            if (@event is InputEventMouseButton mouseEvent && mouseEvent.Pressed)
             {
-                this.Action.Ticks = 0;
+                if (mouseEvent.ButtonIndex == MouseButton.Left)
+                    this.Action.Ticks++;
+                else if (mouseEvent.ButtonIndex == MouseButton.Right)
+                    this.Action.Ticks = System.Math.Max(0, this.Action.Ticks - 1);
+
+                if (this.Action.Ticks is > 5 or < 1)
+                {
+                    this.Action.Ticks = 1;
+                }
+
+                tickButton.Text = this.Action.Ticks.ToString();
+                this.EmitSignalActionChanged();
             }
-
-            this.Action.Ticks++;
-
-            tickButton.Text = this.Action.Ticks.ToString();
-            this.EmitSignalActionChanged();
         };
 
         deleteButton.Pressed += this.QueueFree;

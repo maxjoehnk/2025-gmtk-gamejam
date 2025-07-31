@@ -8,6 +8,7 @@ public partial class Guard : Node2D
 
 	private CharacterBody2D Character => GetNode<CharacterBody2D>("CharacterBody2D");
 	private NavigationAgent2D NavigationAgent => GetNode<NavigationAgent2D>("CharacterBody2D/NavigationAgent2D");
+	private Node2D NavigationIndicator => GetNode<Node2D>("CharacterBody2D/NextTarget");
 
 	private Array<Waypoint> Path => new(GetChildren().OfType<Waypoint>());
 
@@ -37,6 +38,7 @@ public partial class Guard : Node2D
 		
 		_movementDelta = Speed * (float)delta;
 		Vector2 nextPathPosition = NavigationAgent.GetNextPathPosition();
+		NavigationIndicator.GlobalPosition = nextPathPosition;
 		Vector2 newVelocity = Character.GlobalPosition.DirectionTo(nextPathPosition) * _movementDelta;
 		if (NavigationAgent.AvoidanceEnabled)
 		{

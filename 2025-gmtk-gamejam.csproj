@@ -7,5 +7,8 @@
   </PropertyGroup>
   <ItemGroup>
     <Content Include="Scenes\LevelGoal.tscn" />
+    <Content Include="Scenes\Levels\Outbreak.tscn" />
+    <Content Include="Scenes\UI\LevelSelect\LevelButton.tscn" />
+    <Content Include="Scenes\UI\LevelSelect\LevelSelector.tscn" />
   </ItemGroup>
 </Project>

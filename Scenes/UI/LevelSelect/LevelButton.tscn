@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://cm76nd4ljii60"]
+
+[ext_resource type="Script" uid="uid://ddxyvmb6g08ce" path="res://Scenes/UI/LevelSelect/LevelButton.cs" id="1_e27gx"]
+
+[node name="LevelButton" type="Button"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_e27gx")

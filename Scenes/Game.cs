@@ -24,6 +24,14 @@ public partial class Game : Node2D
 		this.PreviewIndicator.Hide();
 	}
 
+	public override void _UnhandledInput(InputEvent @event)
+	{
+		if (Input.IsActionJustPressed("OpenMenu"))
+		{
+			LevelLoader.Instance.OpenLevelSelector();
+		}
+	}
+
 	public void OnPlayPressed()
 	{
 		GD.Print("Play");

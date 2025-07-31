@@ -11,14 +11,20 @@ config_version=5
 [application]
 
 config/name="2025-gmtk-gamejam"
-run/main_scene="uid://dgbfdu0fq73t0"
+run/main_scene="uid://0e6k36reyf0v"
 config/features=PackedStringArray("4.4", "C#", "Forward Plus")
+boot_splash/bg_color=Color(0, 0, 0, 1)
 config/icon="res://icon.svg"
+
+[autoload]
+
+LevelLoader="*res://Core/LevelLoader.cs"
 
 [display]
 
 window/size/viewport_width=1920
 window/size/viewport_height=1080
+window/size/mode=2
 
 [dotnet]
 
@@ -26,9 +32,9 @@ project/assembly_name="2025-gmtk-gamejam"
 
 [global_group]
 
-Waypoints=""
 Enemies=""
 ActionPlayer=""
+Waypoints=""
 
 [input]
 
@@ -62,9 +68,18 @@ Add_Wait={
 "events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":69,"key_label":0,"unicode":101,"location":0,"echo":false,"script":null)
 ]
 }
+OpenMenu={
+"deadzone": 0.2,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":4194305,"key_label":0,"unicode":0,"location":0,"echo":false,"script":null)
+]
+}
 
 [layer_names]
 
 2d_physics/layer_1="Terrain"
 2d_physics/layer_2="Enemies"
 2d_physics/layer_3="Goal"
+
+[rendering]
+
+environment/defaults/default_clear_color=Color(0, 0, 0, 1)

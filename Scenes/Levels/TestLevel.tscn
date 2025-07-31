@@ -35,10 +35,6 @@ curve = SubResource("Curve2D_o0omn")
 position = Vector2(64, 320)
 rotation = -1.5708
 
-[node name="@Timer@146795" type="Timer" parent="TileMapLayer/Path2D/Guard"]
-wait_time = 0.2
-one_shot = true
-
 [node name="Game" parent="." instance=ExtResource("2_o0omn")]
 
 [connection signal="PlayerReachedGoal" from="TileMapLayer/LevelGoal" to="." method="OnPlayerWon"]

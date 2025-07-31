@@ -17,7 +17,7 @@ public partial class Player : StaticBody2D
 
   public void Move(MoveDirection direction)
   {
-    nextDirection = GetMovementVector(direction);
+    nextDirection = direction.ToMovementVector();
     executedTime = 0;
     nextRotation = GetRotation(direction);
 
@@ -61,31 +61,6 @@ public partial class Player : StaticBody2D
   private static float limit(float val, float max)
   {
     return val < -max ? -max : val > max ? max : val;
-  }
-
-  private static Vector2 GetMovementVector(MoveDirection direction)
-  {
-    if(direction == MoveDirection.Up)
-    {
-      return new Vector2(0, -GridSize);
-    }
-
-    if(direction == MoveDirection.Left)
-    {
-      return new Vector2(-GridSize, 0);
-    }
-
-    if(direction == MoveDirection.Right)
-    {
-      return new Vector2(GridSize, 0);
-    }
-
-    if(direction == MoveDirection.Down)
-    {
-      return new Vector2(0, GridSize);
-    }
-
-    return Vector2.Zero;
   }
 
   private static float GetRotation(MoveDirection direction)

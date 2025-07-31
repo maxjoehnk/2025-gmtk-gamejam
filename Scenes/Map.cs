@@ -1,5 +1,6 @@
 using Godot;
 using System;
+using gmtkgamejam.Scenes.Enemies;
 using Godot.Collections;
 
 public partial class Map : Node
@@ -18,8 +19,8 @@ public partial class Map : Node
 		Array<Node> enemies = this.GetTree().GetNodesInGroup("Enemies");
 		foreach (Node enemy in enemies)
 		{
-			GD.Print("Connecting catched player signal from " + enemy);
-			enemy.Connect(nameof(Guard.CatchedPlayer), Callable.From(this.OnPlayerCaught));
+			GD.Print($"Connecting catched player signal from {enemy} ({enemy.Name})");
+			enemy.Connect(nameof(Enemy.CatchedPlayer), Callable.From(this.OnPlayerCaught));
 		}
 
 		this.Game.SpawnPosition = this.SpawnPosition;

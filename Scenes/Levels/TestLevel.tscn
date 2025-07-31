@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=4 uid="uid://6p3sj1djsf5q"]
+[gd_scene load_steps=9 format=4 uid="uid://6p3sj1djsf5q"]
 
 [ext_resource type="TileSet" uid="uid://bxaff3felfhyq" path="res://Scenes/Tiles/TileSet1.tres" id="1_7e5cw"]
 [ext_resource type="Script" uid="uid://4iy48t6sf73e" path="res://Scenes/Map.cs" id="2_dqpvo"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://dfenwo0b7hx7c" path="res://Scenes/Game.tscn" id="2_o0omn"]
 [ext_resource type="PackedScene" uid="uid://de2n83qnroben" path="res://Scenes/Levels/Objects/LevelGoal.tscn" id="3_o0omn"]
 [ext_resource type="PackedScene" uid="uid://v4lsnvlfun3a" path="res://Scenes/Enemies/Guard.tscn" id="4_iuug4"]
+[ext_resource type="PackedScene" uid="uid://brugcfum7eimj" path="res://Scenes/Enemies/StaticCamera.tscn" id="6_gyeg4"]
 
 [sub_resource type="Curve2D" id="Curve2D_o0omn"]
 _data = {
@@ -17,7 +18,7 @@ point_count = 5
 script = ExtResource("2_dqpvo")
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
-position = Vector2(406, 0)
+position = Vector2(406, 128)
 tile_map_data = PackedByteArray("AAAAAAAAAAACAAAAAAABAAAAAAACAAAAAAACAAAAAAACAAAAAAADAAAAAAACAAAAAAAEAAAAAAACAAAAAAAEAAEAAAACAAAAAAAEAAIAAAACAAAAAAADAAIAAAACAAAAAAADAAEAAAACAAAAAAACAAIAAAACAAAAAAACAAEAAAACAAAAAAABAAEAAAACAAAAAAAAAAEAAAACAAAAAAAAAAIAAAACAAAAAAABAAIAAAACAAAAAAAAAAMAAAACAAAAAAABAAMAAAACAAAAAAACAAMAAAACAAAAAAADAAMAAAACAAAAAAAEAAMAAAACAAAAAAA=")
 tile_set = ExtResource("1_7e5cw")
 
@@ -34,6 +35,10 @@ curve = SubResource("Curve2D_o0omn")
 [node name="Guard" parent="TileMapLayer/Path2D" instance=ExtResource("4_iuug4")]
 position = Vector2(64, 320)
 rotation = -1.5708
+
+[node name="StaticCamera" parent="TileMapLayer" instance=ExtResource("6_gyeg4")]
+position = Vector2(111, -51)
+rotation = 0.715604
 
 [node name="Game" parent="." instance=ExtResource("2_o0omn")]
 

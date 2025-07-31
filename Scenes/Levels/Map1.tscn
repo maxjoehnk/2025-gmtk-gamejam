@@ -8,7 +8,7 @@
 
 [sub_resource type="Curve2D" id="Curve2D_f6pk4"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 85.1392, 64.4364, 0, 0, 0, 0, -84.8685, 54.5682, 0, 0, 0, 0, -78.7484, 209.564, 0, 0, 0, 0, 87.2524, 210.435, 0, 0, 0, 0, 85.1392, 64.4364)
+"points": PackedVector2Array(0, 0, 0, 0, 64, 64, 0, 0, 0, 0, -64, 64, 0, 0, 0, 0, -64, 192, 0, 0, 0, 0, 64, 192, 0, 0, 0, 0, 64, 64)
 }
 point_count = 5
 
@@ -26,9 +26,8 @@ position = Vector2(642, 115)
 curve = SubResource("Curve2D_f6pk4")
 
 [node name="Guard2" parent="Path2D2" instance=ExtResource("3_4ov7l")]
-visible = false
-position = Vector2(85.1392, 64.4364)
-rotation = -3.08361
+position = Vector2(64, 64)
+rotation = 3.14159
 
 [node name="LevelGoal" parent="." instance=ExtResource("5_es4yc")]
 position = Vector2(838.249, 321.35)

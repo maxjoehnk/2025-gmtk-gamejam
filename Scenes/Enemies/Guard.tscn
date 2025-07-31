@@ -8,7 +8,7 @@
 radius = 16.0312
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cnet1"]
-size = Vector2(128, 256)
+size = Vector2(120, 240)
 
 [node name="Guard" type="PathFollow2D" groups=["Enemies"]]
 editor_description = "Enemy Guard

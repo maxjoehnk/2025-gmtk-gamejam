@@ -25,7 +25,7 @@ public partial class Guard : PathFollow2D
 
 	public void OnHitPlayer(Node2D player)
 	{
-		GD.Print("Hit player" + player);
+		GD.Print($"Hit player {player} ({player.Name})");
 		this.EmitSignalCatchedPlayer();
 	}
 }

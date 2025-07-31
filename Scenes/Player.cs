@@ -40,10 +40,6 @@ public partial class Player : StaticBody2D
     executedTime += delta;
 
     float maxRotationPerUpdate = this.RotationSpeed* (float)delta;
-    GD.Print(maxRotationPerUpdate);
-    GD.Print(currentRotation - nextRotation);
-    GD.Print(limit(currentRotation - nextRotation, maxRotationPerUpdate));
-    GD.Print("---");
     currentRotation += limit(nextRotation - currentRotation, maxRotationPerUpdate);
 
     double lastBaseRatio = Mathf.Min(1, lastExecutedTime / this.Playback.TickDuration);

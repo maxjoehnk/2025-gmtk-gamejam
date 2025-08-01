@@ -100,20 +100,17 @@ jobs:
       - export-windows
     steps:
       - uses: actions/download-artifact@v4
-      - run: ls
-      - run: ls -l *
-      - run: tree
-      - run: butler push ./build/linux $ITCHIO_USERNAME/$ITCHIO_GAME:linux
+      - run: butler push ./linux $ITCHIO_USERNAME/$ITCHIO_GAME:linux
         env:
           ITCHIO_USERNAME: ${{ vars.ITCHIO_USERNAME }}
           ITCHIO_GAME: ${{ vars.ITCHIO_GAME }}
           BUTLER_API_KEY: ${{ secrets.BUTLER_API_KEY }}
-      - run: butler push ./build/windows $ITCHIO_USERNAME/$ITCHIO_GAME:windows
+      - run: butler push ./windows $ITCHIO_USERNAME/$ITCHIO_GAME:windows
         env:
           ITCHIO_USERNAME: ${{ vars.ITCHIO_USERNAME }}
           ITCHIO_GAME: ${{ vars.ITCHIO_GAME }}
           BUTLER_API_KEY: ${{ secrets.BUTLER_API_KEY }}
-      - run: butler push ./build/mac $ITCHIO_USERNAME/$ITCHIO_GAME:mac
+      - run: butler push ./mac $ITCHIO_USERNAME/$ITCHIO_GAME:mac
         env:
           ITCHIO_USERNAME: ${{ vars.ITCHIO_USERNAME }}
           ITCHIO_GAME: ${{ vars.ITCHIO_GAME }}

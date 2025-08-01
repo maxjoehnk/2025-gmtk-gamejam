@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://byoae28watimk"]
+[gd_scene load_steps=11 format=3 uid="uid://byoae28watimk"]
 
 [ext_resource type="Script" uid="uid://6bm8yhc4o2o7" path="res://Scenes/UI/WinOverlay.cs" id="1_6thne"]
 [ext_resource type="Texture2D" uid="uid://csj85vwn1kwsd" path="res://Assets/Medals/BronzeMedal.png" id="2_u0igv"]
@@ -14,9 +14,17 @@ corner_radius_top_right = 4
 corner_radius_bottom_right = 4
 corner_radius_bottom_left = 4
 
-[sub_resource type="LabelSettings" id="LabelSettings_2irst"]
+[sub_resource type="LabelSettings" id="LabelSettings_u0igv"]
+line_spacing = 0.0
 font_size = 80
 shadow_size = 2
+
+[sub_resource type="LabelSettings" id="LabelSettings_2irst"]
+font_size = 40
+font_color = Color(1, 1, 1, 0.784314)
+
+[sub_resource type="LabelSettings" id="LabelSettings_hymtd"]
+font_size = 36
 
 [node name="WinOverlay" type="Control"]
 layout_mode = 3
@@ -31,8 +39,9 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_top = 1.0
 offset_right = 1880.0
-offset_bottom = 1040.0
+offset_bottom = 1041.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 0.501961)
@@ -70,61 +79,84 @@ theme_override_constants/margin_bottom = 4
 [node name="VBoxContainer" type="VBoxContainer" parent="Dialog/MarginContainer"]
 layout_mode = 2
 
-[node name="Title" type="Label" parent="Dialog/MarginContainer/VBoxContainer"]
+[node name="Title Container" type="Control" parent="Dialog/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 120)
 layout_mode = 2
-text = "You Win"
+
+[node name="Title2" type="Label" parent="Dialog/MarginContainer/VBoxContainer/Title Container"]
+layout_mode = 2
+offset_left = 13.0
+offset_top = -5.0
+offset_right = 705.0
+offset_bottom = 105.0
+text = "Level Cleared"
+label_settings = SubResource("LabelSettings_u0igv")
+
+[node name="Title" type="Label" parent="Dialog/MarginContainer/VBoxContainer/Title Container"]
+layout_mode = 2
+offset_left = 17.0
+offset_top = 54.0
+offset_right = 709.0
+offset_bottom = 164.0
+text = "Level Name"
 label_settings = SubResource("LabelSettings_2irst")
-horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="TickCounter" type="Label" parent="Dialog/MarginContainer/VBoxContainer"]
+[node name="Control2" type="Control" parent="Dialog/MarginContainer/VBoxContainer"]
 layout_mode = 2
-text = "5 Ticks"
-horizontal_alignment = 1
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.5
 
-[node name="Medals" type="HBoxContainer" parent="Dialog/MarginContainer/VBoxContainer"]
+[node name="HBoxContainer2" type="HBoxContainer" parent="Dialog/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Medals" type="HBoxContainer" parent="Dialog/MarginContainer/VBoxContainer/HBoxContainer2"]
 layout_mode = 2
 alignment = 1
 
-[node name="Bronze Medal" type="HBoxContainer" parent="Dialog/MarginContainer/VBoxContainer/Medals"]
+[node name="Bronze Medal" type="HBoxContainer" parent="Dialog/MarginContainer/VBoxContainer/HBoxContainer2/Medals"]
 layout_mode = 2
 
-[node name="Bronze Medal" type="Label" parent="Dialog/MarginContainer/VBoxContainer/Medals/Bronze Medal"]
-visible = false
-layout_mode = 2
-text = "Bronze Medal"
-horizontal_alignment = 1
-
-[node name="TextureRect" type="TextureRect" parent="Dialog/MarginContainer/VBoxContainer/Medals/Bronze Medal"]
+[node name="TextureRect" type="TextureRect" parent="Dialog/MarginContainer/VBoxContainer/HBoxContainer2/Medals/Bronze Medal"]
 layout_mode = 2
 texture = ExtResource("2_u0igv")
 
-[node name="Silver Medal" type="HBoxContainer" parent="Dialog/MarginContainer/VBoxContainer/Medals"]
+[node name="Silver Medal" type="HBoxContainer" parent="Dialog/MarginContainer/VBoxContainer/HBoxContainer2/Medals"]
 layout_mode = 2
 
-[node name="Silver Medal" type="Label" parent="Dialog/MarginContainer/VBoxContainer/Medals/Silver Medal"]
-visible = false
-layout_mode = 2
-text = "Silver Medal"
-horizontal_alignment = 1
-
-[node name="TextureRect" type="TextureRect" parent="Dialog/MarginContainer/VBoxContainer/Medals/Silver Medal"]
+[node name="TextureRect" type="TextureRect" parent="Dialog/MarginContainer/VBoxContainer/HBoxContainer2/Medals/Silver Medal"]
 layout_mode = 2
 texture = ExtResource("3_hymtd")
 
-[node name="Gold Medal" type="HBoxContainer" parent="Dialog/MarginContainer/VBoxContainer/Medals"]
+[node name="Gold Medal" type="HBoxContainer" parent="Dialog/MarginContainer/VBoxContainer/HBoxContainer2/Medals"]
 layout_mode = 2
 size_flags_vertical = 3
 alignment = 1
 
-[node name="TextureRect" type="TextureRect" parent="Dialog/MarginContainer/VBoxContainer/Medals/Gold Medal"]
+[node name="TextureRect" type="TextureRect" parent="Dialog/MarginContainer/VBoxContainer/HBoxContainer2/Medals/Gold Medal"]
 layout_mode = 2
 texture = ExtResource("4_ela2v")
 
-[node name="Gold Medal" type="Label" parent="Dialog/MarginContainer/VBoxContainer/Medals/Gold Medal"]
-visible = false
+[node name="Control" type="Control" parent="Dialog/MarginContainer/VBoxContainer/HBoxContainer2"]
 layout_mode = 2
-text = "Gold Medal"
-horizontal_alignment = 1
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Dialog/MarginContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+alignment = 1
+
+[node name="TickCounter" type="Label" parent="Dialog/MarginContainer/VBoxContainer/HBoxContainer2/VBoxContainer"]
+layout_mode = 2
+text = "5 Ticks"
+label_settings = SubResource("LabelSettings_hymtd")
+horizontal_alignment = 2
+
+[node name="Control3" type="Control" parent="Dialog/MarginContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.1
 
 [node name="Control" type="Control" parent="Dialog/MarginContainer/VBoxContainer"]
 layout_mode = 2
@@ -159,5 +191,5 @@ icon_alignment = 2
 expand_icon = true
 
 [connection signal="pressed" from="Dialog/MarginContainer/VBoxContainer/Restart" to="." method="OnRestartPressed"]
-[connection signal="pressed" from="Dialog/MarginContainer/VBoxContainer/HBoxContainer/Exit" to="." method="OnNextPressed"]
+[connection signal="pressed" from="Dialog/MarginContainer/VBoxContainer/HBoxContainer/Exit" to="." method="OnExitPressed"]
 [connection signal="pressed" from="Dialog/MarginContainer/VBoxContainer/HBoxContainer/Next Level" to="." method="OnNextPressed"]

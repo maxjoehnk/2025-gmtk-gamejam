@@ -87,12 +87,12 @@ public partial class Game : Node2D
 		this.Player.RotationDegrees = 0;
 	}
 
-	public void OnPlayerWon(int goldMedalTicks, int silverMedalTicks, int bronzeMedalTicks)
+	public void OnPlayerWon(string name, int goldMedalTicks, int silverMedalTicks, int bronzeMedalTicks)
 	{
 		bool hasGoldMedal = goldMedalTicks >= this.ActionPlayer.CurrentTick;
 		bool hasSilverMedal = silverMedalTicks >= this.ActionPlayer.CurrentTick;
 		bool hasBronzeMedal = bronzeMedalTicks >= this.ActionPlayer.CurrentTick;
-		this.WinOverlay.Open(this.ActionPlayer.CurrentTick, hasGoldMedal, hasSilverMedal, hasBronzeMedal);
+		this.WinOverlay.Open(name, this.ActionPlayer.CurrentTick, hasGoldMedal, hasSilverMedal, hasBronzeMedal);
 		this.WinOverlay.Show();
 		this.ActionPlayer.Stop();
 	}

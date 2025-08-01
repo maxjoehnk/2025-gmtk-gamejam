@@ -42,6 +42,6 @@ public partial class Map : Node
 	public void OnPlayerWon()
 	{
 		GD.Print("Player won");
-		this.Game.OnPlayerWon(this.GoldMedalTicks, this.SilverMedalTicks, this.BronzeMedalTicks);
+		this.Game.OnPlayerWon(this.Name, this.GoldMedalTicks, this.SilverMedalTicks, this.BronzeMedalTicks);
 	}
 }

@@ -1,6 +1,11 @@
-[gd_scene load_steps=4 format=3 uid="uid://byoae28watimk"]
+[gd_scene load_steps=9 format=3 uid="uid://byoae28watimk"]
 
 [ext_resource type="Script" uid="uid://6bm8yhc4o2o7" path="res://Scenes/UI/WinOverlay.cs" id="1_6thne"]
+[ext_resource type="Texture2D" uid="uid://8tobsh6ha4e8" path="res://Assets/Medals/GoldMedal.jpg" id="2_4rmm0"]
+[ext_resource type="Texture2D" uid="uid://bq04x5acsdpwq" path="res://Assets/Medals/SilverMedal.jpg" id="3_ostfc"]
+[ext_resource type="Texture2D" uid="uid://7vxvsg0clma1" path="res://Assets/Medals/BronzeMedal.jpg" id="4_u0igv"]
+[ext_resource type="Texture2D" uid="uid://ckf8qye1ofhx5" path="res://Assets/chevron-left.png" id="5_u0igv"]
+[ext_resource type="Texture2D" uid="uid://n2ebmi70amox" path="res://Assets/chevron-right.png" id="6_hymtd"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6thne"]
 bg_color = Color(0, 0.38, 0.57, 1)
@@ -10,7 +15,7 @@ corner_radius_bottom_right = 8
 corner_radius_bottom_left = 8
 
 [sub_resource type="LabelSettings" id="LabelSettings_2irst"]
-font_size = 100
+font_size = 80
 shadow_size = 2
 
 [node name="WinOverlay" type="Control"]
@@ -76,36 +81,83 @@ layout_mode = 2
 text = "5 Ticks"
 horizontal_alignment = 1
 
-[node name="Gold Medal" type="Label" parent="Dialog/MarginContainer/VBoxContainer"]
+[node name="Medals" type="HBoxContainer" parent="Dialog/MarginContainer/VBoxContainer"]
 layout_mode = 2
-text = "Gold Medal"
+alignment = 1
+
+[node name="Bronze Medal" type="HBoxContainer" parent="Dialog/MarginContainer/VBoxContainer/Medals"]
+layout_mode = 2
+
+[node name="Bronze Medal" type="Label" parent="Dialog/MarginContainer/VBoxContainer/Medals/Bronze Medal"]
+visible = false
+layout_mode = 2
+text = "Bronze Medal"
 horizontal_alignment = 1
 
-[node name="Silver Medal" type="Label" parent="Dialog/MarginContainer/VBoxContainer"]
+[node name="TextureRect" type="TextureRect" parent="Dialog/MarginContainer/VBoxContainer/Medals/Bronze Medal"]
+layout_mode = 2
+texture = ExtResource("4_u0igv")
+
+[node name="Silver Medal" type="HBoxContainer" parent="Dialog/MarginContainer/VBoxContainer/Medals"]
+layout_mode = 2
+
+[node name="Silver Medal" type="Label" parent="Dialog/MarginContainer/VBoxContainer/Medals/Silver Medal"]
+visible = false
 layout_mode = 2
 text = "Silver Medal"
 horizontal_alignment = 1
 
-[node name="Bronze Medal" type="Label" parent="Dialog/MarginContainer/VBoxContainer"]
+[node name="TextureRect" type="TextureRect" parent="Dialog/MarginContainer/VBoxContainer/Medals/Silver Medal"]
 layout_mode = 2
-text = "Bronze Medal"
+texture = ExtResource("3_ostfc")
+
+[node name="Gold Medal" type="HBoxContainer" parent="Dialog/MarginContainer/VBoxContainer/Medals"]
+layout_mode = 2
+size_flags_vertical = 3
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="Dialog/MarginContainer/VBoxContainer/Medals/Gold Medal"]
+layout_mode = 2
+texture = ExtResource("2_4rmm0")
+
+[node name="Gold Medal" type="Label" parent="Dialog/MarginContainer/VBoxContainer/Medals/Gold Medal"]
+visible = false
+layout_mode = 2
+text = "Gold Medal"
 horizontal_alignment = 1
 
 [node name="Control" type="Control" parent="Dialog/MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 
+[node name="Restart" type="Button" parent="Dialog/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Restart"
+
 [node name="HBoxContainer" type="HBoxContainer" parent="Dialog/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 48)
 layout_mode = 2
 alignment = 1
 
-[node name="Restart" type="Button" parent="Dialog/MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="Exit" type="Button" parent="Dialog/MarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
-text = "Restart"
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 20
+text = "Exit"
+icon = ExtResource("5_u0igv")
+expand_icon = true
 
 [node name="Next Level" type="Button" parent="Dialog/MarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 20
 text = "Next Level"
+icon = ExtResource("6_hymtd")
+icon_alignment = 2
+expand_icon = true
 
-[connection signal="pressed" from="Dialog/MarginContainer/VBoxContainer/HBoxContainer/Restart" to="." method="OnRestartPressed"]
+[connection signal="pressed" from="Dialog/MarginContainer/VBoxContainer/Restart" to="." method="OnRestartPressed"]
+[connection signal="pressed" from="Dialog/MarginContainer/VBoxContainer/HBoxContainer/Exit" to="." method="OnNextPressed"]
 [connection signal="pressed" from="Dialog/MarginContainer/VBoxContainer/HBoxContainer/Next Level" to="." method="OnNextPressed"]

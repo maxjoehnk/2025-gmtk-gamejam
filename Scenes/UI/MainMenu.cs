@@ -16,6 +16,6 @@ public partial class MainMenu : Panel
 
 	public void OnStart()
 	{
-		GD.Print("WIP: Track Progress");
+		LevelLoader.Instance.LoadNextLevel();
 	}
 }

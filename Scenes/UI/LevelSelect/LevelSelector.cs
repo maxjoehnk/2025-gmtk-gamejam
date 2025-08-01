@@ -1,5 +1,6 @@
 using Godot;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using gmtkgamejam.Core;
 using gmtkgamejam.Scenes;
@@ -11,7 +12,7 @@ public partial class LevelSelector : Control
 	
 	public override void _Ready()
 	{
-		AvailableLevel[] levels = LevelLoader.Instance.GetAvailableLevels();
+		List<AvailableLevel> levels = LevelLoader.GetAvailableLevels();
 		
 		foreach (AvailableLevel level in levels)
 		{

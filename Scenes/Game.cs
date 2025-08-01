@@ -8,7 +8,7 @@ public partial class Game : Node2D
 	private ActionPane ActionPane => this.GetNode<ActionPane>("ActionPane");
 	public Player Player => this.GetNode<Player>("Player");
 
-	public Control WinOverlay => this.GetNode<Control>("WinOverlay");
+	public WinOverlay WinOverlay => this.GetNode<WinOverlay>("WinOverlay");
 	public Control LoseOverlay => this.GetNode<Control>("LoseOverlay");
 
 	public ActionPlayer ActionPlayer => this.GetNode<ActionPlayer>("ActionPlayer");
@@ -87,8 +87,12 @@ public partial class Game : Node2D
 		this.Player.RotationDegrees = 0;
 	}
 
-	public void OnPlayerWon()
+	public void OnPlayerWon(int goldMedalTicks, int silverMedalTicks, int bronceMedalTicsk)
 	{
+		bool hasGoldMedal = goldMedalTicks >= this.ActionPlayer.CurrentTick;
+		bool hasSilverMedal = silverMedalTicks >= this.ActionPlayer.CurrentTick;
+		bool hasBronceMedal = bronceMedalTicsk >= this.ActionPlayer.CurrentTick;
+		this.WinOverlay.Open(this.ActionPlayer.CurrentTick, hasGoldMedal, hasSilverMedal, hasBronceMedal);
 		this.WinOverlay.Show();
 		this.ActionPlayer.Stop();
 	}

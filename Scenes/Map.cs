@@ -7,6 +7,12 @@ public partial class Map : Node
 {
 	public Vector2 SpawnPosition => this.GetNode<Node2D>("TileMapLayer/Spawn").GlobalPosition;
 	public Game Game => this.GetNode<Game>("Game");
+
+	[Export] public int GoldMedalTicks { get; set; }
+
+	[Export] public int SilverMedalTicks { get; set; }
+
+	[Export] public int BronceMedalTicsk { get; set; }
 	
 	[Signal]
 	public delegate void PlayerLostEventHandler();
@@ -36,6 +42,6 @@ public partial class Map : Node
 	public void OnPlayerWon()
 	{
 		GD.Print("Player won");
-		this.Game.OnPlayerWon();
+		this.Game.OnPlayerWon(this.GoldMedalTicks, this.SilverMedalTicks, this.BronceMedalTicsk);
 	}
 }

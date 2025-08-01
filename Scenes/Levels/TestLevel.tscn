@@ -16,6 +16,9 @@ point_count = 5
 
 [node name="TestLevel2" type="Node2D"]
 script = ExtResource("2_dqpvo")
+GoldMedalTicks = 6
+SilverMedalTicks = 10
+BronceMedalTicsk = 15
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
 position = Vector2(384, 128)

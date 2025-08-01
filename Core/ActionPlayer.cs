@@ -40,7 +40,7 @@ public partial class ActionPlayer : Node
 
 	private int ActionIndex { get; set; }
 
-	private int CurrentTick { get; set; }
+	public int CurrentTick { get; private set; }
 
 	private int ActionTicksRemaining { get; set; }
 

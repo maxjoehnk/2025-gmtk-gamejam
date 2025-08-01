@@ -17,7 +17,7 @@ point_count = 5
 script = ExtResource("1_jx8cn")
 GoldMedalTicks = 15
 SilverMedalTicks = 20
-BronceMedalTicsk = 25
+BronzeMedalTicks = 25
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
 position = Vector2(512, 128)

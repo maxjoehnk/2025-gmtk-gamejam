@@ -12,7 +12,7 @@
 script = ExtResource("1_1euak")
 GoldMedalTicks = 12
 SilverMedalTicks = 16
-BronceMedalTicsk = 20
+BronzeMedalTicks = 20
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
 position = Vector2(512, 128)

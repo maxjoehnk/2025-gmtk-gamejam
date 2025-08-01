@@ -1,0 +1,173 @@
+[gd_scene load_steps=8 format=4 uid="uid://bvm8mi7tx2cpt"]
+
+[ext_resource type="Script" uid="uid://4iy48t6sf73e" path="res://Scripts/Core/Map.cs" id="1_e6tsf"]
+[ext_resource type="TileSet" uid="uid://pafbad4mjfhn" path="res://Assets/LevelTiles/LevelTiles.tres" id="2_jimt5"]
+[ext_resource type="PackedScene" uid="uid://duv31n7g217aj" path="res://Scenes/Objects/Spawn.tscn" id="3_t4yaj"]
+[ext_resource type="PackedScene" uid="uid://de2n83qnroben" path="res://Scenes/Objects/LevelGoal.tscn" id="4_imd2g"]
+[ext_resource type="PackedScene" uid="uid://bshkala5h1lhk" path="res://Scenes/Enemies/CameraSwitcher.tscn" id="5_e6tsf"]
+[ext_resource type="PackedScene" uid="uid://brugcfum7eimj" path="res://Scenes/Enemies/StaticCamera.tscn" id="6_jimt5"]
+[ext_resource type="PackedScene" uid="uid://dfenwo0b7hx7c" path="res://Scenes/Game.tscn" id="7_heo75"]
+
+[node name="Level 7" type="Node2D"]
+script = ExtResource("1_e6tsf")
+metadata/_edit_lock_ = true
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+position = Vector2(384, 257)
+tile_map_data = PackedByteArray("AAALAAYAAAAEAAQAAGAKAAYAAAAFAAQAADAJAAYAAAAFAAQAADAIAAYAAAAFAAQAADAHAAYAAAAFAAQAADD+/wYAAAAFAAQAADD9/wYAAAAEAAQAAAALAAIAAAAFAAQAAFALAAMAAAAFAAQAAFALAAQAAAAFAAQAAFAGAAYAAAAFAAQAADAFAAYAAAAFAAQAADAEAAYAAAAFAAQAADADAAYAAAAFAAQAADACAAYAAAAFAAQAADABAAYAAAAFAAQAADAAAAYAAAAFAAQAADD//wYAAAAFAAQAADD9/wUAAAAFAAQAAGD9/wMAAAAFAAQAAGD9/wAAAAAFAAQAAGD9////AAAFAAQAAGD9//7/AAAEAAQAAFD+//7/AAAFAAQAAAD///7/AAAFAAQAAAAAAP7/AAAFAAQAAAABAP7/AAAFAAQAAAACAP7/AAAFAAQAAAADAP7/AAAFAAQAAAAEAP7/AAAFAAQAAAAFAP7/AAAFAAQAAAAGAP7/AAAFAAQAAAAHAP7/AAAFAAQAAAAIAP7/AAAFAAQAAAAJAP7/AAAFAAQAAAAKAP7/AAAFAAQAAAALAP7/AAAEAAQAADALAAAAAAAFAAQAAFALAAEAAAAFAAQAAFD9/wQAAAAFAAQAAGALAAUAAAAFAAQAAFALAP//AAAFAAQAAFD9/wIAAAAFAAQAAGD9/wEAAAAFAAQAAGD+/wUAAAADAAQAAAD+/wQAAAADAAQAAAD+/wMAAAADAAQAAAD+/wIAAAADAAQAAAD+/wEAAAADAAQAAAD+/wAAAAADAAQAAAD+////AAADAAQAAAD/////AAADAAQAAAAAAP//AAADAAQAAAABAP//AAADAAQAAAACAP//AAADAAQAAAADAP//AAADAAQAAAAEAP//AAADAAQAAAAFAP//AAADAAQAAAAGAP//AAADAAQAAAAHAP//AAADAAQAAAAIAP//AAADAAQAAAAJAP//AAADAAQAAAAKAP//AAADAAQAAAAKAAAAAAADAAQAAAAKAAEAAAADAAQAAAAKAAIAAAADAAQAAAAKAAMAAAADAAQAAAAKAAQAAAADAAQAAAAKAAUAAAADAAQAAAAJAAUAAAADAAQAAAAIAAUAAAADAAQAAAAHAAUAAAADAAQAAAAGAAUAAAADAAQAAAAFAAUAAAADAAQAAAAEAAUAAAADAAQAAAADAAUAAAADAAQAAAACAAUAAAADAAQAAAABAAUAAAADAAQAAAAAAAUAAAADAAQAAAD//wUAAAADAAQAAAD//wQAAAAFAAEAAAD//wIAAAAFAAEAAAD//wEAAAADAAQAAAD//wAAAAAFAAEAAAAEAAAAAAADAAQAAAAFAAAAAAAFAAEAAAAGAAAAAAADAAQAAAAHAAAAAAAFAAEAAAAIAAAAAAADAAQAAAAJAAAAAAAFAAEAAAAJAAEAAAADAAQAAAADAAAAAAAFAAEAAAACAAAAAAADAAQAAAABAAAAAAAFAAEAAAAAAAAAAAADAAQAAAAAAAEAAAADAAQAAAAAAAIAAAADAAQAAAAAAAQAAAADAAQAAAABAAQAAAAFAAEAAAABAAMAAAADAAQAAAABAAIAAAAFAAEAAAACAAIAAAADAAQAAAACAAEAAAADAAQAAAADAAEAAAADAAQAAAADAAIAAAAFAAEAAAABAAEAAAADAAQAAAAEAAEAAAADAAQAAAAFAAEAAAADAAQAAAAGAAIAAAADAAQAAAAHAAIAAAAFAAEAAAAIAAIAAAADAAQAAAAJAAIAAAAFAAEAAAAIAAEAAAADAAQAAAAHAAEAAAADAAQAAAAGAAEAAAADAAQAAAAFAAIAAAAFAAEAAAAEAAIAAAADAAQAAAADAAMAAAADAAQAAAAEAAMAAAADAAQAAAAFAAMAAAADAAQAAAAGAAMAAAADAAQAAAAHAAMAAAADAAQAAAACAAQAAAADAAQAAAADAAQAAAAFAAEAAAACAAMAAAADAAQAAAAEAAQAAAADAAQAAAAFAAQAAAAFAAEAAAAGAAQAAAADAAQAAAAHAAQAAAAFAAEAAAAIAAQAAAADAAQAAAAIAAMAAAADAAQAAAAJAAMAAAADAAQAAAAJAAQAAAAFAAEAAAAAAAMAAAADAAQAAAD//wMAAAADAAQAAAA=")
+tile_set = ExtResource("2_jimt5")
+metadata/_edit_lock_ = true
+
+[node name="Spawn" parent="TileMapLayer" instance=ExtResource("3_t4yaj")]
+position = Vector2(1344, -65)
+
+[node name="LevelGoal" parent="TileMapLayer" instance=ExtResource("4_imd2g")]
+position = Vector2(64, 575)
+ExitStyle = 2
+
+[node name="1 tick CameraSwitcher" parent="TileMapLayer" instance=ExtResource("5_e6tsf")]
+
+[node name="StaticCamera" parent="TileMapLayer/1 tick CameraSwitcher" instance=ExtResource("6_jimt5")]
+position = Vector2(0, 127)
+rotation = 0.794579
+
+[node name="StaticCamera2" parent="TileMapLayer/1 tick CameraSwitcher" instance=ExtResource("6_jimt5")]
+position = Vector2(1152, 255)
+rotation = -0.768866
+
+[node name="StaticCamera3" parent="TileMapLayer/1 tick CameraSwitcher" instance=ExtResource("6_jimt5")]
+position = Vector2(384, 511)
+rotation = -2.1879
+
+[node name="StaticCamera4" parent="TileMapLayer/1 tick CameraSwitcher" instance=ExtResource("6_jimt5")]
+position = Vector2(128, -1)
+rotation = -2.28914
+
+[node name="StaticCamera5" parent="TileMapLayer/1 tick CameraSwitcher" instance=ExtResource("6_jimt5")]
+position = Vector2(768, 127)
+rotation = -5.45599
+
+[node name="StaticCamera6" parent="TileMapLayer/1 tick CameraSwitcher" instance=ExtResource("6_jimt5")]
+position = Vector2(896, 639)
+rotation = 0.62271
+
+[node name="StaticCamera7" parent="TileMapLayer/1 tick CameraSwitcher" instance=ExtResource("6_jimt5")]
+position = Vector2(1024, 383)
+rotation = 2.35602
+
+[node name="StaticCamera8" parent="TileMapLayer/1 tick CameraSwitcher" instance=ExtResource("6_jimt5")]
+position = Vector2(-128, 255)
+
+[node name="StaticCamera9" parent="TileMapLayer/1 tick CameraSwitcher" instance=ExtResource("6_jimt5")]
+position = Vector2(384, -1)
+rotation = -0.65907
+
+[node name="StaticCamera10" parent="TileMapLayer/1 tick CameraSwitcher" instance=ExtResource("6_jimt5")]
+position = Vector2(640, -1)
+rotation = -0.553641
+
+[node name="StaticCamera11" parent="TileMapLayer/1 tick CameraSwitcher" instance=ExtResource("6_jimt5")]
+position = Vector2(896, 255)
+
+[node name="StaticCamera12" parent="TileMapLayer/1 tick CameraSwitcher" instance=ExtResource("6_jimt5")]
+position = Vector2(384, 255)
+rotation = -0.547334
+
+[node name="StaticCamera13" parent="TileMapLayer/1 tick CameraSwitcher" instance=ExtResource("6_jimt5")]
+position = Vector2(256, 383)
+rotation = 0.920543
+
+[node name="StaticCamera14" parent="TileMapLayer/1 tick CameraSwitcher" instance=ExtResource("6_jimt5")]
+position = Vector2(512, 639)
+
+[node name="2 tick CameraSwitcher" parent="TileMapLayer" instance=ExtResource("5_e6tsf")]
+position = Vector2(-384, -257)
+
+[node name="StaticCamera" parent="TileMapLayer/2 tick CameraSwitcher" instance=ExtResource("6_jimt5")]
+position = Vector2(1408, 384)
+rotation = 0.766896
+
+[node name="StaticCamera2" parent="TileMapLayer/2 tick CameraSwitcher" instance=ExtResource("6_jimt5")]
+position = Vector2(896, 384)
+rotation = 0.752969
+
+[node name="StaticCamera3" parent="TileMapLayer/2 tick CameraSwitcher" instance=ExtResource("6_jimt5")]
+position = Vector2(256, 768)
+rotation = 3.23158
+
+[node name="StaticCamera4" parent="TileMapLayer/2 tick CameraSwitcher" instance=ExtResource("6_jimt5")]
+position = Vector2(640, 896)
+rotation = -5.52161
+
+[node name="StaticCamera5" parent="TileMapLayer/2 tick CameraSwitcher" instance=ExtResource("6_jimt5")]
+position = Vector2(1024, 512)
+rotation = -0.809722
+
+[node name="StaticCamera6" parent="TileMapLayer/2 tick CameraSwitcher" instance=ExtResource("6_jimt5")]
+position = Vector2(1536, 768)
+rotation = -2.15831
+
+[node name="StaticCamera7" parent="TileMapLayer/2 tick CameraSwitcher" instance=ExtResource("6_jimt5")]
+position = Vector2(1664, 896)
+rotation = -0.354109
+
+[node name="StaticCamera8" parent="TileMapLayer/2 tick CameraSwitcher" instance=ExtResource("6_jimt5")]
+position = Vector2(1664, 640)
+
+[node name="StaticCamera9" parent="TileMapLayer/2 tick CameraSwitcher" instance=ExtResource("6_jimt5")]
+position = Vector2(640, 384)
+
+[node name="StaticCamera10" parent="TileMapLayer/2 tick CameraSwitcher" instance=ExtResource("6_jimt5")]
+position = Vector2(1152, 896)
+rotation = 1.05299
+
+[node name="StaticCamera11" parent="TileMapLayer/2 tick CameraSwitcher" instance=ExtResource("6_jimt5")]
+position = Vector2(512, 768)
+
+[node name="3 tick CameraSwitcher" parent="TileMapLayer" instance=ExtResource("5_e6tsf")]
+position = Vector2(-384, -257)
+
+[node name="StaticCamera" parent="TileMapLayer/3 tick CameraSwitcher" instance=ExtResource("6_jimt5")]
+position = Vector2(1536, 256)
+rotation = -2.35514
+
+[node name="StaticCamera2" parent="TileMapLayer/3 tick CameraSwitcher" instance=ExtResource("6_jimt5")]
+position = Vector2(384, 640)
+rotation = 1.13032
+
+[node name="StaticCamera3" parent="TileMapLayer/3 tick CameraSwitcher" instance=ExtResource("6_jimt5")]
+position = Vector2(896, 640)
+rotation = -0.736841
+
+[node name="StaticCamera4" parent="TileMapLayer/3 tick CameraSwitcher" instance=ExtResource("6_jimt5")]
+position = Vector2(512, 512)
+rotation = -0.825975
+
+[node name="StaticCamera5" parent="TileMapLayer/3 tick CameraSwitcher" instance=ExtResource("6_jimt5")]
+position = Vector2(1024, 768)
+rotation = -2.37179
+
+[node name="StaticCamera6" parent="TileMapLayer/3 tick CameraSwitcher" instance=ExtResource("6_jimt5")]
+position = Vector2(1408, 768)
+rotation = 0.903627
+
+[node name="StaticCamera7" parent="TileMapLayer/3 tick CameraSwitcher" instance=ExtResource("6_jimt5")]
+position = Vector2(384, 896)
+rotation = 0.442073
+
+[node name="StaticCamera8" parent="TileMapLayer/3 tick CameraSwitcher" instance=ExtResource("6_jimt5")]
+position = Vector2(1152, 640)
+rotation = 0.922167
+
+[node name="StaticCamera9" parent="TileMapLayer/3 tick CameraSwitcher" instance=ExtResource("6_jimt5")]
+position = Vector2(256, 256)
+rotation = 2.26707
+
+[node name="StaticCamera10" parent="TileMapLayer/3 tick CameraSwitcher" instance=ExtResource("6_jimt5")]
+position = Vector2(1280, 256)
+
+[node name="StaticCamera11" parent="TileMapLayer/3 tick CameraSwitcher" instance=ExtResource("6_jimt5")]
+position = Vector2(1664, 384)
+
+[node name="Game" parent="." instance=ExtResource("7_heo75")]
+metadata/_edit_lock_ = true

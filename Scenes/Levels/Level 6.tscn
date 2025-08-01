@@ -93,5 +93,3 @@ rotation = 3.14159
 
 [node name="Game" parent="." instance=ExtResource("8_i0vf8")]
 visible = false
-
-[connection signal="PlayerReachedGoal" from="TileMapLayer/LevelGoal" to="." method="OnPlayerWon"]

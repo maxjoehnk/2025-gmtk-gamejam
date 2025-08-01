@@ -1,7 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://de2n83qnroben"]
+[gd_scene load_steps=6 format=3 uid="uid://de2n83qnroben"]
 
-[ext_resource type="Texture2D" uid="uid://cwflg561lgbg5" path="res://Assets/Objects/Goal.png" id="1_ovskw"]
 [ext_resource type="Script" uid="uid://3b4l5b0w0mtb" path="res://Scripts/Objects/LevelGoal.cs" id="1_pgp0a"]
+[ext_resource type="Texture2D" uid="uid://xgjwiqxj28up" path="res://Assets/Objects/LevelExitTunnel.png" id="2_175fv"]
+[ext_resource type="Texture2D" uid="uid://cerjyx8xyd52d" path="res://Assets/Objects/LevelExitPond.png" id="3_g3fa1"]
+[ext_resource type="Texture2D" uid="uid://mmlfvjyll3cg" path="res://Assets/Objects/LevelExitManhole.png" id="4_0l1e3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pgp0a"]
 size = Vector2(128, 128)
@@ -16,7 +18,13 @@ collision_mask = 4
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("RectangleShape2D_pgp0a")
 
-[node name="Goal" type="Sprite2D" parent="."]
-texture = ExtResource("1_ovskw")
+[node name="LevelExitLadder" type="Sprite2D" parent="."]
+texture = ExtResource("2_175fv")
+
+[node name="LevelExitPond" type="Sprite2D" parent="."]
+texture = ExtResource("3_g3fa1")
+
+[node name="LevelExitManhole" type="Sprite2D" parent="."]
+texture = ExtResource("4_0l1e3")
 
 [connection signal="body_entered" from="Area2D" to="." method="OnPlayerEntered"]

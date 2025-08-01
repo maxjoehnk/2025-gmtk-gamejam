@@ -20,6 +20,8 @@ public partial class Game : Node2D
 
   private CharacterBody2D PreviewIndicator => this.GetNode<CharacterBody2D>("PreviewIndicator");
 
+  private double prePreviewSpeed = 1;
+
   [Export] public Vector2 SpawnPosition { get; set; }
 
   public override void _Ready()
@@ -67,6 +69,23 @@ public partial class Game : Node2D
     this.LoseOverlay.Hide();
     ResetGameElements();
 	}
+
+  public void OnLoopPressed()
+  {
+    GD.Print("Preview started");
+    this.prePreviewSpeed = ActionPlayer.PlaybackSpeed;
+    ActionPlayer.PlaybackSpeed = Constants.PreviewPlaybackSpeed;
+    ActionPlayer.Preview = true;
+    this.OnPlayPressed();
+  }
+
+  public void OnLoopReleased()
+  {
+    GD.Print("Preview stopped");
+    this.OnResetPressed();
+    ActionPlayer.Preview = false;
+    ActionPlayer.PlaybackSpeed = this.prePreviewSpeed;
+  }
 
 	private void ResetGameElements()
 	{

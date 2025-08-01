@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://dfenwo0b7hx7c"]
+[gd_scene load_steps=16 format=3 uid="uid://dfenwo0b7hx7c"]
 
 [ext_resource type="Script" uid="uid://bt83g2edvayok" path="res://Scripts/Core/Game.cs" id="1_iukft"]
 [ext_resource type="Texture2D" uid="uid://d1ptu6wmmwd6y" path="res://Assets/UI/Reset.png" id="3_b2bpf"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://em2i5qm0uo2f" path="res://Scenes/player.tscn" id="6_fgofq"]
 [ext_resource type="Script" uid="uid://c7awchqqbe8i4" path="res://Scripts/Core/ActionPlayer.cs" id="7_2irst"]
 [ext_resource type="Script" uid="uid://517q0xvo800u" path="res://Scripts/UI/SpeedSliderToolbar.cs" id="7_bf53h"]
+[ext_resource type="Texture2D" uid="uid://dnvbd84sbx1mi" path="res://Assets/UI/Loop.png" id="7_dahhg"]
 [ext_resource type="Texture2D" uid="uid://7se5awuc20ed" path="res://Assets/PreviewIndicator_Purple.png" id="8_2irst"]
 [ext_resource type="PackedScene" uid="uid://byoae28watimk" path="res://Scenes/UI/WinOverlay.tscn" id="9_71axn"]
 
@@ -59,6 +60,10 @@ texture_normal = ExtResource("3_b2bpf")
 [node name="Play" type="TextureButton" parent="VBoxContainer/PlaybackToolbar"]
 layout_mode = 2
 texture_normal = ExtResource("4_7lihs")
+
+[node name="LoopPreview" type="TextureButton" parent="VBoxContainer/PlaybackToolbar"]
+layout_mode = 2
+texture_normal = ExtResource("7_dahhg")
 
 [node name="Label" type="Label" parent="VBoxContainer/PlaybackToolbar"]
 layout_mode = 2
@@ -116,6 +121,8 @@ shape = SubResource("CircleShape2D_71axn")
 
 [connection signal="pressed" from="VBoxContainer/PlaybackToolbar/Reset" to="." method="OnResetPressed"]
 [connection signal="pressed" from="VBoxContainer/PlaybackToolbar/Play" to="." method="OnPlayPressed"]
+[connection signal="button_down" from="VBoxContainer/PlaybackToolbar/LoopPreview" to="." method="OnLoopPressed"]
+[connection signal="button_up" from="VBoxContainer/PlaybackToolbar/LoopPreview" to="." method="OnLoopReleased"]
 [connection signal="value_changed" from="VBoxContainer/SpeedSliderToolbar/HSlider" to="VBoxContainer/SpeedSliderToolbar" method="OnSpeedSliderChanged"]
 [connection signal="Finished" from="ActionPlayer" to="." method="OnActionsFinished"]
 [connection signal="Ticked" from="ActionPlayer" to="VBoxContainer/PlaybackToolbar" method="OnTick"]

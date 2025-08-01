@@ -35,6 +35,8 @@ public partial class ActionPlayer : Node
       GD.Print($"Set TickDuration to {this.Timer.WaitTime}s");
     }
   }
+  
+  public bool Preview { get; set; }
 
   private Array<Action> Actions { get; set; }
 
@@ -65,6 +67,14 @@ public partial class ActionPlayer : Node
 
   public void Tick()
   {
+    if (Preview)
+    {
+      CurrentTick += 1;
+      EmitSignalTicked(CurrentTick);
+      this.Timer?.Start();
+      return;
+    }
+    
     if(executedWaitTime < TickDuration)
     {
       this.Timer?.Start();
@@ -79,7 +89,7 @@ public partial class ActionPlayer : Node
     EmitSignalTicked(CurrentTick);
     CurrentAction?.Act(GetParent<Game>().Player);
     ActionTicksRemaining -= 1;
-    if(ActionTicksRemaining <= 0)
+    if (ActionTicksRemaining <= 0)
     {
       NextAction();
     }

@@ -14,7 +14,6 @@ public partial class Spikes : Node2D, ISwitchable, IResettable
 
 	public override void _Process(double delta)
 	{
-		GD.Print("Spikes _Process called while state is " + this.state);
 		this.Collapsed.Visible = !this.state;
 		this.Expanded.Visible = this.state;
 		this.Collider.ProcessMode = this.state ? ProcessModeEnum.Inherit : ProcessModeEnum.Disabled;

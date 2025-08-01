@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://btwydqx0wjbnl"]
+[gd_scene load_steps=10 format=3 uid="uid://btwydqx0wjbnl"]
 
 [ext_resource type="Script" uid="uid://ucmle6vpqe56" path="res://Scripts/UI/ActionPane.cs" id="1_stia5"]
 [ext_resource type="Script" uid="uid://doneu0shnocex" path="res://Scripts/UI/ActionList.cs" id="2_bpui6"]
@@ -8,8 +8,11 @@
 [ext_resource type="Texture2D" uid="uid://6uvhjjmfxyba" path="res://Assets/MoveRight.png" id="5_1gjh4"]
 [ext_resource type="Texture2D" uid="uid://dvli1dfdxo4i4" path="res://Assets/Wait.png" id="6_mfvu1"]
 [ext_resource type="Texture2D" uid="uid://cd76p71eyq157" path="res://Assets/Interact.png" id="7_e5q7p"]
+[ext_resource type="Texture2D" uid="uid://ckf8qye1ofhx5" path="res://Assets/chevron-left.png" id="9_vdasp"]
 
 [node name="LoopPane" type="PanelContainer"]
+top_level = true
+light_mask = 0
 anchors_preset = -1
 anchor_right = 0.2
 anchor_bottom = 0.5
@@ -17,80 +20,88 @@ offset_right = 92.0
 grow_vertical = 2
 script = ExtResource("1_stia5")
 
-[node name="CollapseButton" type="Button" parent="."]
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 2
 
-[node name="MainVBox" type="VBoxContainer" parent="."]
+[node name="MainVBox" type="VBoxContainer" parent="HBoxContainer"]
 layout_mode = 2
 
-[node name="Headline" type="HBoxContainer" parent="MainVBox"]
+[node name="Headline" type="HBoxContainer" parent="HBoxContainer/MainVBox"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="MainVBox/Headline"]
+[node name="Label" type="Label" parent="HBoxContainer/MainVBox/Headline"]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Ticks"
 horizontal_alignment = 1
 
-[node name="Label2" type="Label" parent="MainVBox/Headline"]
+[node name="Label2" type="Label" parent="HBoxContainer/MainVBox/Headline"]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Action"
 horizontal_alignment = 1
 
-[node name="Label3" type="Label" parent="MainVBox/Headline"]
+[node name="Label3" type="Label" parent="HBoxContainer/MainVBox/Headline"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="ScrollContainer" type="ScrollContainer" parent="MainVBox"]
+[node name="ScrollContainer" type="ScrollContainer" parent="HBoxContainer/MainVBox"]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="ActionList" type="VBoxContainer" parent="MainVBox/ScrollContainer"]
+[node name="ActionList" type="VBoxContainer" parent="HBoxContainer/MainVBox/ScrollContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 0
 script = ExtResource("2_bpui6")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MainVBox"]
+[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/MainVBox"]
 layout_mode = 2
 size_flags_horizontal = 4
 
-[node name="Interact" type="TextureButton" parent="MainVBox/HBoxContainer"]
+[node name="Interact" type="TextureButton" parent="HBoxContainer/MainVBox/HBoxContainer"]
 layout_mode = 2
 texture_normal = ExtResource("7_e5q7p")
 
-[node name="Left" type="TextureButton" parent="MainVBox/HBoxContainer"]
+[node name="Left" type="TextureButton" parent="HBoxContainer/MainVBox/HBoxContainer"]
 layout_mode = 2
 texture_normal = ExtResource("2_mc8op")
 
-[node name="Up" type="TextureButton" parent="MainVBox/HBoxContainer"]
+[node name="Up" type="TextureButton" parent="HBoxContainer/MainVBox/HBoxContainer"]
 layout_mode = 2
 texture_normal = ExtResource("3_bpui6")
 
-[node name="Down" type="TextureButton" parent="MainVBox/HBoxContainer"]
+[node name="Down" type="TextureButton" parent="HBoxContainer/MainVBox/HBoxContainer"]
 layout_mode = 2
 texture_normal = ExtResource("4_vdasp")
 
-[node name="Right" type="TextureButton" parent="MainVBox/HBoxContainer"]
+[node name="Right" type="TextureButton" parent="HBoxContainer/MainVBox/HBoxContainer"]
 layout_mode = 2
 texture_normal = ExtResource("5_1gjh4")
 
-[node name="Wait" type="TextureButton" parent="MainVBox/HBoxContainer"]
+[node name="Wait" type="TextureButton" parent="HBoxContainer/MainVBox/HBoxContainer"]
 layout_mode = 2
 texture_normal = ExtResource("6_mfvu1")
 
-[node name="AddActionButton" type="Button" parent="MainVBox"]
+[node name="AddActionButton" type="Button" parent="HBoxContainer/MainVBox"]
 visible = false
 layout_mode = 2
 size_flags_vertical = 0
 text = "Add Action"
 
-[node name="ActionPopupMenu" type="PopupMenu" parent="MainVBox"]
+[node name="ActionPopupMenu" type="PopupMenu" parent="HBoxContainer/MainVBox"]
 
-[connection signal="pressed" from="MainVBox/HBoxContainer/Interact" to="." method="OnInteractButton_Click"]
-[connection signal="pressed" from="MainVBox/HBoxContainer/Left" to="." method="OnLeftButton_Click"]
-[connection signal="pressed" from="MainVBox/HBoxContainer/Up" to="." method="OnUpButton_Click"]
-[connection signal="pressed" from="MainVBox/HBoxContainer/Down" to="." method="OnDownButton_Click"]
-[connection signal="pressed" from="MainVBox/HBoxContainer/Right" to="." method="OnRightButton_Click"]
-[connection signal="pressed" from="MainVBox/HBoxContainer/Wait" to="." method="OnWaitButton_Click"]
+[node name="CollapseButton" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+toggle_mode = true
+icon = ExtResource("9_vdasp")
+
+[connection signal="pressed" from="HBoxContainer/MainVBox/HBoxContainer/Interact" to="." method="OnInteractButton_Click"]
+[connection signal="pressed" from="HBoxContainer/MainVBox/HBoxContainer/Left" to="." method="OnLeftButton_Click"]
+[connection signal="pressed" from="HBoxContainer/MainVBox/HBoxContainer/Up" to="." method="OnUpButton_Click"]
+[connection signal="pressed" from="HBoxContainer/MainVBox/HBoxContainer/Down" to="." method="OnDownButton_Click"]
+[connection signal="pressed" from="HBoxContainer/MainVBox/HBoxContainer/Right" to="." method="OnRightButton_Click"]
+[connection signal="pressed" from="HBoxContainer/MainVBox/HBoxContainer/Wait" to="." method="OnWaitButton_Click"]
+[connection signal="toggled" from="HBoxContainer/CollapseButton" to="." method="OnCollapseButton_Click"]

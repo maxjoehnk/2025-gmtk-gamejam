@@ -72,7 +72,6 @@ layout_mode = 2
 size_flags_horizontal = 3
 min_value = 1.0
 max_value = 15.0
-step = 3.0
 value = 1.0
 
 [node name="Label" type="Label" parent="VBoxContainer/SpeedSliderToolbar"]
@@ -85,7 +84,7 @@ vertical_alignment = 1
 
 [node name="ActionPlayer" type="Node" parent="." groups=["ActionPlayer"]]
 script = ExtResource("7_2irst")
-SpeedSliderPath = NodePath("../VBoxContainer/SpeedSliderToolbar/HSlider")
+PlaybackSpeed = 1.0
 
 [node name="Timer" type="Timer" parent="ActionPlayer"]
 one_shot = true

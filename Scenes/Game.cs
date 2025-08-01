@@ -13,16 +13,19 @@ public partial class Game : Node2D
 
 	public ActionPlayer ActionPlayer => this.GetNode<ActionPlayer>("ActionPlayer");
 
-    private HSlider SpeedSlider => this.GetNode<HSlider>("VBoxContainer/SpeedSliderToolbar/HSlider");
+	private HSlider SpeedSlider => this.GetNode<HSlider>("VBoxContainer/SpeedSliderToolbar/HSlider");
 
-    private Node2D PreviewIndicator => this.GetNode<Node2D>("PreviewIndicator");
-	
-	[Export]
-	public Vector2 SpawnPosition { get; set; }
+	private Node2D PreviewIndicator => this.GetNode<Node2D>("PreviewIndicator");
+
+	[Export] public Vector2 SpawnPosition { get; set; }
 
 	public override void _Ready()
 	{
 		this.ActionPane.ActionsChanged += OnActionsUpdated;
+		this.SpeedSlider.ValueChanged += value =>
+		{
+			this.ActionPlayer.PlaybackSpeed = value;
+		};
 		this.PreviewIndicator.Hide();
 	}
 
@@ -33,16 +36,16 @@ public partial class Game : Node2D
 			LevelLoader.Instance.OpenLevelSelector();
 		}
 
-        if (Input.IsActionJustPressed("Play"))
-        {
-            OnPlayPressed();
-        }
+		if (Input.IsActionJustPressed("Play"))
+		{
+			OnPlayPressed();
+		}
 
-        if (Input.IsActionJustPressed("Reset"))
-        {
-            OnResetPressed();
-        }
-    }
+		if (Input.IsActionJustPressed("Reset"))
+		{
+			OnResetPressed();
+		}
+	}
 
 	public void OnPlayPressed()
 	{
@@ -68,7 +71,7 @@ public partial class Game : Node2D
 		{
 			position = action.Preview(position);
 		}
-		
+
 		this.PreviewIndicator.GlobalPosition = position;
 		this.PreviewIndicator.Show();
 	}

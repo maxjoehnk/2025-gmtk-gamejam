@@ -7,23 +7,34 @@ namespace gmtkgamejam.Scenes;
 
 public partial class ActionPlayer : Node
 {
-    public static ActionPlayer Get(Node node)
+	public static ActionPlayer Get(Node node)
 	{
 		return (ActionPlayer)node.GetTree().GetFirstNodeInGroup("ActionPlayer");
 	}
 
 	[Signal]
 	public delegate void FinishedEventHandler();
-	
+
 	[Signal]
 	public delegate void TickedEventHandler(int tick);
 
-	private Timer Timer => GetNode<Timer>("Timer");
+	private Timer? Timer => this.GetNodeOrNull<Timer>("Timer");
 
 	[Export]
-	public NodePath SpeedSliderPath;
+	public double PlaybackSpeed
+	{
+		get => 1 / (this.Timer?.WaitTime ?? 1);
+		set
+		{
+			if (this.Timer == null)
+			{
+				return;
+			}
 
-	private HSlider _multiplier;
+			this.Timer.WaitTime = 1 / value;
+			GD.Print($"Set TickDuration to {this.Timer.WaitTime}s");
+		}
+	}
 
 	private Array<Action> Actions { get; set; }
 
@@ -33,17 +44,12 @@ public partial class ActionPlayer : Node
 
 	private int ActionTicksRemaining { get; set; }
 
-	public double TickDuration => this.Timer.WaitTime / _multiplier.Value;
-
+	public double TickDuration => this.Timer?.WaitTime ?? 1;
 
 	private Action? CurrentAction => Actions.ElementAtOrDefault(ActionIndex);
 
-    public override void _Ready()
-    {
-		_multiplier = GetNode<HSlider>(SpeedSliderPath);
-    }
 
-    public void Play(Array<Action> actions)
+	public void Play(Array<Action> actions)
 	{
 		Actions = actions;
 		ActionTicksRemaining = CurrentAction?.Ticks ?? 0;
@@ -53,16 +59,16 @@ public partial class ActionPlayer : Node
 
 	public void Stop()
 	{
-		this.Timer.Stop();
+		this.Timer?.Stop();
 	}
 
 	public void Tick()
 	{
-
 		if (CurrentAction == null)
 		{
 			return;
 		}
+
 		CurrentTick += 1;
 		EmitSignalTicked(CurrentTick);
 		CurrentAction?.Act(GetParent<Game>().Player);
@@ -72,7 +78,7 @@ public partial class ActionPlayer : Node
 			NextAction();
 		}
 
-		this.Timer.Start();
+		this.Timer?.Start();
 	}
 
 	private void NextAction()

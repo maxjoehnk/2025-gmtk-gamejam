@@ -2,17 +2,21 @@ using Godot;
 
 public partial class SpeedSliderToolbar : HBoxContainer
 {
-    private Label SpeedLabel => GetNode<Label>("Label");
-    private HSlider SpeedSlider => GetNode<HSlider>("HSlider");
+	private Label SpeedLabel => GetNode<Label>("Label");
+	private HSlider SpeedSlider => GetNode<HSlider>("HSlider");
 
+	public override void _Ready()
+	{
+		this.UpdateLabel();
+	}
 
-    public override void _Ready()
-    {
-        SpeedLabel.Text = SpeedSlider.Value.ToString() + "x";
-    }
+	private void UpdateLabel()
+	{
+		this.SpeedLabel.Text = $"{this.SpeedSlider.Value}x";
+	}
 
-    public void OnSpeedSliderChanged(float value)
-    {
-        SpeedLabel.Text = SpeedSlider.Value.ToString() + "x";
-    }
+	public void OnSpeedSliderChanged(float value)
+	{
+		this.UpdateLabel();
+	}
 }

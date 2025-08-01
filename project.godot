@@ -32,9 +32,9 @@ project/assembly_name="2025-gmtk-gamejam"
 
 [global_group]
 
-Waypoints=""
 Enemies=""
 ActionPlayer=""
+Waypoints=""
 
 [input]
 

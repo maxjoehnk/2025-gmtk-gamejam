@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://cm76nd4ljii60"]
 
-[ext_resource type="Script" uid="uid://ddxyvmb6g08ce" path="res://Scenes/UI/LevelSelect/LevelButton.cs" id="1_e27gx"]
+[ext_resource type="Script" uid="uid://ddxyvmb6g08ce" path="res://Scripts/UI/LevelButton.cs" id="1_e27gx"]
 
 [node name="LevelButton" type="Button"]
 custom_minimum_size = Vector2(150, 50)

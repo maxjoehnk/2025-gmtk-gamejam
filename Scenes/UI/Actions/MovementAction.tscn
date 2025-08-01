@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://c6h5hx0ebgqrd"]
 
-[ext_resource type="Script" uid="uid://25y0kcw5cvtr" path="res://Core/MoveAction.cs" id="1_x5tqx"]
+[ext_resource type="Script" uid="uid://25y0kcw5cvtr" path="res://Scripts/Core/MoveAction.cs" id="1_x5tqx"]
 
 [node name="MovementAction" type="Control"]
 layout_mode = 3

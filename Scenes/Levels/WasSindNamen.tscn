@@ -1,9 +1,9 @@
 [gd_scene load_steps=12 format=4 uid="uid://ce1252b1u1oko"]
 
-[ext_resource type="Script" uid="uid://4iy48t6sf73e" path="res://Scenes/Map.cs" id="1_m7c25"]
+[ext_resource type="Script" uid="uid://4iy48t6sf73e" path="res://Scripts/Core/Map.cs" id="1_m7c25"]
 [ext_resource type="TileSet" uid="uid://pafbad4mjfhn" path="res://Assets/LevelTiles/LevelTiles.tres" id="2_12frw"]
-[ext_resource type="PackedScene" uid="uid://duv31n7g217aj" path="res://Scenes/Levels/Objects/Spawn.tscn" id="3_7wpmw"]
-[ext_resource type="PackedScene" uid="uid://de2n83qnroben" path="res://Scenes/Levels/Objects/LevelGoal.tscn" id="4_50li6"]
+[ext_resource type="PackedScene" uid="uid://duv31n7g217aj" path="res://Scenes/Objects/Spawn.tscn" id="3_7wpmw"]
+[ext_resource type="PackedScene" uid="uid://de2n83qnroben" path="res://Scenes/Objects/LevelGoal.tscn" id="4_50li6"]
 [ext_resource type="PackedScene" uid="uid://bshkala5h1lhk" path="res://Scenes/Enemies/CameraSwitcher.tscn" id="5_xsbrw"]
 [ext_resource type="PackedScene" uid="uid://brugcfum7eimj" path="res://Scenes/Enemies/StaticCamera.tscn" id="6_1nkbs"]
 [ext_resource type="PackedScene" uid="uid://v4lsnvlfun3a" path="res://Scenes/Enemies/Guard.tscn" id="7_12frw"]

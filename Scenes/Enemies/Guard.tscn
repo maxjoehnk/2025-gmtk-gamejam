@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://v4lsnvlfun3a"]
 
-[ext_resource type="Script" uid="uid://q1fhldysmwgy" path="res://Scenes/Enemies/Guard.cs" id="1_yy6wf"]
+[ext_resource type="Script" uid="uid://q1fhldysmwgy" path="res://Scripts/Enemies/Guard.cs" id="1_yy6wf"]
 [ext_resource type="Texture2D" uid="uid://dp2uft6ae50tt" path="res://Assets/LightArea.png" id="2_p2jj0"]
 [ext_resource type="Texture2D" uid="uid://bys7o0onx366l" path="res://Assets/Guard.png" id="3_yxhhp"]
 

@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://bfjvl6key07mc" path="res://Assets/Camera.png" id="1_cucrf"]
 [ext_resource type="Texture2D" uid="uid://ccexk0bfh74bl" path="res://Assets/CameraArea.png" id="1_oploe"]
-[ext_resource type="Script" uid="uid://1t5tn1c01i62" path="res://Scenes/Enemies/StaticCamera.cs" id="1_uw5n7"]
+[ext_resource type="Script" uid="uid://1t5tn1c01i62" path="res://Scripts/Enemies/StaticCamera.cs" id="1_uw5n7"]
 
 [node name="StaticCamera" type="Node2D" groups=["Enemies"]]
 script = ExtResource("1_uw5n7")

@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://djji4kxi0bt15"]
 
-[ext_resource type="Script" uid="uid://dbxiayad6njfo" path="res://Scenes/UI/ActionMenu/ActionEntry.cs" id="1_ghiat"]
+[ext_resource type="Script" uid="uid://dbxiayad6njfo" path="res://Scripts/UI/ActionEntry.cs" id="1_ghiat"]
 
 [node name="ActionEntryContainer" type="HBoxContainer"]
 offset_right = 40.0

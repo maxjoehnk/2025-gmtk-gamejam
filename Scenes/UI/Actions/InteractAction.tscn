@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://bc8m5sjhfqsgt"]
 
-[ext_resource type="Script" uid="uid://ixrgjfybjcyy" path="res://Core/InteractAction.cs" id="1_t3unt"]
+[ext_resource type="Script" uid="uid://ixrgjfybjcyy" path="res://Scripts/Core/InteractAction.cs" id="1_t3unt"]
 
 [node name="Interact" type="Control"]
 layout_mode = 3

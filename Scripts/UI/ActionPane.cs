@@ -147,45 +147,6 @@ public partial class ActionPane : PanelContainer
 		ActionList.AddChild(entry);
 	}
 
-	//private void AddAction(Action action)
-	//{
-	//	ActionEntry entry = ActionEntryScene.Instantiate<ActionEntry>();
-	//	entry.Action = action;
-
-	//	GD.Print($"Added {entry.Action.Title}, with {entry.Action.Ticks} Ticks.");
-
-	//	ActionList.AddChild(entry);
-	//}
-
-	//private void AddAction(Action action)
-	//{
-	//	int childCount = ActionList.GetChildCount();
-
-	//	ActionEntry newEntry = ActionEntryScene.Instantiate<ActionEntry>();
-	//	newEntry.Action = action;
-
-	//	if (childCount > 0)
-	//	{
-	//		Node lastChild = ActionList.GetChild(childCount - 1);
-
-	//		if (lastChild is ActionEntry lastEntry && lastEntry.Action.Title == action.Title)
-	//		{
-	//			lastChild.QueueFree();
-
-	//			newEntry.Action.Ticks = lastEntry.Action.Ticks + 1;
-	//			lastEntry.Action.Ticks += action.Ticks;
-	//			lastEntry.UpdateTickDisplay();
-	//			GD.Print($"Updated {lastEntry.Action.Title}, now {lastEntry.Action.Ticks} Ticks.");
-	//			return;
-	//		}
-	//	}
-
-	//	newEntry.UpdateTickDisplay();
-	//	ActionList.AddChild(newEntry);
-
-	//	GD.Print($"Added {newEntry.Action.Title}, with {newEntry.Action.Ticks} Ticks.");
-	//}
-
 	private void AddMoveAction(MoveDirection dir)
 	{
 		var action = MovementActionScene.Instantiate<MoveAction>();

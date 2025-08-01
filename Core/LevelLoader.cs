@@ -34,6 +34,11 @@ public partial class LevelLoader : Node
 		this.CallDeferred(nameof(this.LoadScene), "res://Scenes/UI/LevelSelect/LevelSelector.tscn");
 	}
 
+	public void OpenMainMenu()
+	{
+		this.CallDeferred(nameof(this.LoadScene), "res://Scenes/UI/MainMenu.tscn");
+	}
+
 	public void LoadScene(string path)
 	{
 		this.CurrentScene.QueueFree();

@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://le1oloc0doa3" path="res://Scenes/player.tscn" id="6_fgofq"]
 [ext_resource type="Script" uid="uid://c7awchqqbe8i4" path="res://Core/ActionPlayer.cs" id="7_2irst"]
 [ext_resource type="Script" uid="uid://517q0xvo800u" path="res://Scenes/SpeedSliderToolbar.cs" id="7_bf53h"]
-[ext_resource type="Texture2D" uid="uid://wx4ubrojmbbp" path="res://Assets/PreviewIndicator.png" id="8_2irst"]
+[ext_resource type="Texture2D" uid="uid://7se5awuc20ed" path="res://Assets/PreviewIndicator_Purple.png" id="8_2irst"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_fgofq"]
 font_size = 48

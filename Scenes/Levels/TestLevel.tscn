@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=4 uid="uid://6p3sj1djsf5q"]
 
-[ext_resource type="TileSet" uid="uid://bxaff3felfhyq" path="res://Assets/Tiles/TileSet1.tres" id="1_7e5cw"]
 [ext_resource type="Script" uid="uid://4iy48t6sf73e" path="res://Scripts/Core/Map.cs" id="2_dqpvo"]
+[ext_resource type="TileSet" uid="uid://pafbad4mjfhn" path="res://Assets/LevelTiles/LevelTiles.tres" id="2_gyeg4"]
 [ext_resource type="PackedScene" uid="uid://duv31n7g217aj" path="res://Scenes/Objects/Spawn.tscn" id="2_iuug4"]
 [ext_resource type="PackedScene" uid="uid://dfenwo0b7hx7c" path="res://Scenes/Game.tscn" id="2_o0omn"]
 [ext_resource type="PackedScene" uid="uid://de2n83qnroben" path="res://Scenes/Objects/LevelGoal.tscn" id="3_o0omn"]
@@ -22,8 +22,8 @@ BronzeMedalTicks = 15
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
 position = Vector2(384, 128)
-tile_map_data = PackedByteArray("AAAAAAAAAAACAAAAAAABAAAAAAACAAAAAAACAAAAAAACAAAAAAADAAAAAAACAAAAAAAEAAAAAAACAAAAAAAEAAEAAAACAAAAAAAEAAIAAAACAAAAAAADAAIAAAACAAAAAAADAAEAAAACAAAAAAACAAIAAAACAAAAAAACAAEAAAACAAAAAAABAAEAAAACAAAAAAAAAAEAAAACAAAAAAAAAAIAAAACAAAAAAABAAIAAAACAAAAAAAAAAMAAAACAAAAAAABAAMAAAACAAAAAAACAAMAAAACAAAAAAADAAMAAAACAAAAAAAEAAMAAAACAAAAAAA=")
-tile_set = ExtResource("1_7e5cw")
+tile_map_data = PackedByteArray("AAACAAAAAAAAAAIAAAADAAAAAAAAAAIAAAABAAAAAAAAAAIAAAAAAAAAAAAAAAIAAAAAAAEAAAAAAAIAAAABAAEAAAAAAAIAAAACAAEAAAAAAAIAAAADAAEAAAAAAAIAAAADAAIAAAAAAAIAAAACAAIAAAAAAAIAAAABAAIAAAAAAAIAAAAAAAIAAAAAAAIAAAACAAMAAAAAAAIAAAADAAMAAAAAAAIAAAABAAMAAAAAAAIAAAAAAAMAAAAAAAIAAAD/////AAAFAAIAAAAEAP//AAAFAAIAAFAEAAQAAAAFAAIAADD//wQAAAAFAAIAAGD//wAAAAABAAIAAAD//wEAAAABAAIAAAD//wIAAAABAAIAAAD//wMAAAABAAIAAAAAAP//AAABAAIAAFABAP//AAABAAIAAFACAP//AAABAAIAAFADAP//AAABAAIAAFAEAAAAAAABAAIAADAEAAEAAAABAAIAADAEAAIAAAABAAIAADAEAAMAAAABAAIAADAAAAQAAAABAAIAAGABAAQAAAABAAIAAGACAAQAAAABAAIAAGADAAQAAAABAAIAAGA=")
+tile_set = ExtResource("2_gyeg4")
 
 [node name="Spawn" parent="TileMapLayer" instance=ExtResource("2_iuug4")]
 position = Vector2(64, 64)

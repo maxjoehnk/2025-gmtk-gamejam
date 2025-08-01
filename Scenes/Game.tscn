@@ -19,11 +19,11 @@ font_size = 48
 [sub_resource type="LabelSettings" id="LabelSettings_bf53h"]
 font_size = 32
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_71axn"]
+
 [sub_resource type="LabelSettings" id="LabelSettings_2irst"]
 font_size = 100
 shadow_size = 2
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_71axn"]
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_iukft")
@@ -99,18 +99,6 @@ label_settings = SubResource("LabelSettings_bf53h")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="WinOverlay" parent="Player/View" instance=ExtResource("9_71axn")]
-visible = false
-
-[node name="LoseOverlay" type="Label" parent="Player/View"]
-visible = false
-offset_left = 649.0
-offset_top = 464.0
-offset_right = 1142.0
-offset_bottom = 601.0
-text = "You Loose"
-label_settings = SubResource("LabelSettings_2irst")
-
 [node name="ActionPlayer" type="Node" parent="." groups=["ActionPlayer"]]
 script = ExtResource("7_2irst")
 PlaybackSpeed = 1.0
@@ -127,6 +115,18 @@ texture = ExtResource("8_2irst")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PreviewIndicator"]
 shape = SubResource("CircleShape2D_71axn")
+
+[node name="WinOverlay" parent="." instance=ExtResource("9_71axn")]
+visible = false
+
+[node name="LoseOverlay" type="Label" parent="."]
+visible = false
+offset_left = 649.0
+offset_top = 464.0
+offset_right = 1142.0
+offset_bottom = 601.0
+text = "You Loose"
+label_settings = SubResource("LabelSettings_2irst")
 
 [connection signal="pressed" from="Player/View/VBoxContainer/PlaybackToolbar/Reset" to="." method="OnResetPressed"]
 [connection signal="pressed" from="Player/View/VBoxContainer/PlaybackToolbar/Play" to="." method="OnPlayPressed"]

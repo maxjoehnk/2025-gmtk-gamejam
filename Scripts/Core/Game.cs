@@ -11,8 +11,8 @@ public partial class Game : Node2D
   private ActionPane ActionPane => this.GetNode<ActionPane>("Player/View/ActionPane");
   public Player Player => this.GetNode<Player>("Player");
 
-  public WinOverlay WinOverlay => this.GetNode<WinOverlay>("Player/View/WinOverlay");
-  public Control LoseOverlay => this.GetNode<Control>("Player/View/LoseOverlay");
+  public WinOverlay WinOverlay => this.GetNode<WinOverlay>("WinOverlay");
+  public Control LoseOverlay => this.GetNode<Control>("LoseOverlay");
 
   public ActionPlayer ActionPlayer => this.GetNode<ActionPlayer>("ActionPlayer");
 

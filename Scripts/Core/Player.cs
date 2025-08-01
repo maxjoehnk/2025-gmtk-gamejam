@@ -1,21 +1,22 @@
 using Godot;
 using gmtkgamejam.Core;
 using gmtkgamejam.Scenes;
+using gmtkgamejam.Scripts.Core;
 using Vector2 = Godot.Vector2;
 using static Godot.TextServer;
 
 public partial class Player : CharacterBody2D
 {
-  private const int GridSize = 128;
-
   [Export] public float RotationSpeed { get; set; } = 360;
 
+  private RayCast2D RayCast => GetNode<RayCast2D>("RayCast2D");
+  
   private ActionPlayer Playback => ActionPlayer.Get(this);
-  private Vector2 nextDirection = new Vector2(0, 0);
-  private float nextRotation = 0;
-  private float currentRotation = 0;
-  private double executedTime = 0;
-  private double lastExecutedRatio = 0;
+  private Vector2 nextDirection = new(0, 0);
+  private float nextRotation;
+  private float currentRotation;
+  private double executedTime;
+  private double lastExecutedRatio;
 
   public void Move(MoveDirection direction)
   {
@@ -31,6 +32,17 @@ public partial class Player : CharacterBody2D
     }
 
     lastExecutedRatio = 0;
+  }
+
+  public IInteractable? GetInteractableElement()
+  {
+    GodotObject collision = this.RayCast.GetCollider();
+    if (collision is IInteractable interactable)
+    {
+      return interactable;
+    }
+
+    return null;
   }
 
   public override void _Process(double delta)

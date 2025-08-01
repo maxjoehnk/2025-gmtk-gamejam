@@ -1,0 +1,46 @@
+[gd_scene load_steps=6 format=3 uid="uid://bv8nrd0ol5hov"]
+
+[ext_resource type="Script" uid="uid://ctcxr8jidl2ah" path="res://Scripts/Objects/CountdownSwitch.cs" id="1_sbce4"]
+[ext_resource type="Texture2D" uid="uid://2a7v2ft8e7vf" path="res://Assets/Button.png" id="2_nj5vh"]
+[ext_resource type="Texture2D" uid="uid://3islg0630pql" path="res://Assets/Button_Pressed.png" id="3_nj5vh"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6mlv8"]
+size = Vector2(128, 128)
+
+[sub_resource type="LabelSettings" id="LabelSettings_nj5vh"]
+font_size = 50
+font_color = Color(0, 0, 0, 1)
+outline_color = Color(0, 0, 0, 1)
+
+[node name="CountdownSwitch" type="StaticBody2D" groups=["Resettable"]]
+collision_layer = 16
+collision_mask = 16
+script = ExtResource("1_sbce4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_6mlv8")
+
+[node name="Button" type="Sprite2D" parent="."]
+texture = ExtResource("2_nj5vh")
+
+[node name="ButtonPressed" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("3_nj5vh")
+
+[node name="Countdown" type="Label" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -34.5
+offset_right = 20.0
+offset_bottom = 34.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+text = "3"
+label_settings = SubResource("LabelSettings_nj5vh")
+horizontal_alignment = 1
+vertical_alignment = 1

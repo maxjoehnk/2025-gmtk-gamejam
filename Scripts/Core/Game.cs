@@ -1,5 +1,7 @@
+using System.Text.RegularExpressions;
 using gmtkgamejam.Core;
 using gmtkgamejam.Scenes;
+using gmtkgamejam.Scripts.Core;
 using Godot;
 using Godot.Collections;
 using static Godot.Control;
@@ -51,9 +53,10 @@ public partial class Game : Node2D
   public void OnPlayPressed()
   {
     GD.Print("Play");
-    this.PreviewIndicator.Hide();
-    this.ActionPlayer.Play(this.ActionPane.Actions);
-  }
+    this.OnResetPressed();
+		this.PreviewIndicator.Hide();
+		this.ActionPlayer.Play(this.ActionPane.Actions);
+	}
 
   public void OnResetPressed()
   {
@@ -62,7 +65,18 @@ public partial class Game : Node2D
     this.ActionPlayer.Reset();
     this.WinOverlay.Hide();
     this.LoseOverlay.Hide();
-    this.SpeedSlider.Value = 1;
+    ResetGameElements();
+	}
+
+	private void ResetGameElements()
+	{
+		foreach (Node node in GetTree().GetNodesInGroup(Groups.Resettable))
+		{
+			if (node is IResettable resettable)
+			{
+				resettable.Reset();
+			}
+		}
   }
 
   public void OnActionsUpdated()

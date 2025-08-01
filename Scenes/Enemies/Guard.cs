@@ -8,6 +8,8 @@ public partial class Guard : PathFollow2D
 
   [Export] public float Speed { get; set; } = 128;
 
+  [Export] public int StartPosition { get; set; } = 0;
+
   [Signal]
   public delegate void CatchedPlayerEventHandler();
 
@@ -21,20 +23,21 @@ public partial class Guard : PathFollow2D
   {
     Playback.Ticked += OnTick;
 
-    this.targetPoint = 0;
-    this.lastPoint = 0;
+    this.targetPoint = this.StartPosition;
+    this.lastPoint = this.StartPosition;
     this.currentSubTime = 0;
+    this.Progress = this.StartPosition;
   }
 
   private void OnTick(int tick)
   {
-    this.targetPoint = tick; // replace with waittime
+    this.targetPoint = this.StartPosition + tick; // replace with waittime
     if(tick == 0)
     {
-      this.targetPoint = 0;
-      this.lastPoint = 0;
-      this.currentSubTime = 0;
-      this.Progress = 0;
+      this.targetPoint = this.StartPosition;
+      this.lastPoint = this.StartPosition;
+      this.currentSubTime = this.StartPosition;
+      this.Progress = this.StartPosition;
     }
   }
 

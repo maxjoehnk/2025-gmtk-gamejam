@@ -1,18 +1,18 @@
 [gd_scene load_steps=9 format=3 uid="uid://byoae28watimk"]
 
 [ext_resource type="Script" uid="uid://6bm8yhc4o2o7" path="res://Scenes/UI/WinOverlay.cs" id="1_6thne"]
-[ext_resource type="Texture2D" uid="uid://8tobsh6ha4e8" path="res://Assets/Medals/GoldMedal.jpg" id="2_4rmm0"]
-[ext_resource type="Texture2D" uid="uid://bq04x5acsdpwq" path="res://Assets/Medals/SilverMedal.jpg" id="3_ostfc"]
-[ext_resource type="Texture2D" uid="uid://7vxvsg0clma1" path="res://Assets/Medals/BronzeMedal.jpg" id="4_u0igv"]
+[ext_resource type="Texture2D" uid="uid://csj85vwn1kwsd" path="res://Assets/Medals/BronzeMedal.png" id="2_u0igv"]
+[ext_resource type="Texture2D" uid="uid://bggsqcq2m1x4o" path="res://Assets/Medals/SilverMedal.png" id="3_hymtd"]
+[ext_resource type="Texture2D" uid="uid://byct4oj38lq84" path="res://Assets/Medals/GoldMedal.png" id="4_ela2v"]
 [ext_resource type="Texture2D" uid="uid://ckf8qye1ofhx5" path="res://Assets/chevron-left.png" id="5_u0igv"]
 [ext_resource type="Texture2D" uid="uid://n2ebmi70amox" path="res://Assets/chevron-right.png" id="6_hymtd"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6thne"]
 bg_color = Color(0, 0.38, 0.57, 1)
-corner_radius_top_left = 8
-corner_radius_top_right = 8
-corner_radius_bottom_right = 8
-corner_radius_bottom_left = 8
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
 
 [sub_resource type="LabelSettings" id="LabelSettings_2irst"]
 font_size = 80
@@ -45,10 +45,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 509.0
-offset_top = 261.0
-offset_right = 1469.0
-offset_bottom = 801.0
+offset_left = 590.0
+offset_top = 250.0
+offset_right = 1290.0
+offset_bottom = 790.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
@@ -62,10 +62,10 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/margin_left = 8
-theme_override_constants/margin_top = 8
-theme_override_constants/margin_right = 8
-theme_override_constants/margin_bottom = 8
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 4
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Dialog/MarginContainer"]
 layout_mode = 2
@@ -96,7 +96,7 @@ horizontal_alignment = 1
 
 [node name="TextureRect" type="TextureRect" parent="Dialog/MarginContainer/VBoxContainer/Medals/Bronze Medal"]
 layout_mode = 2
-texture = ExtResource("4_u0igv")
+texture = ExtResource("2_u0igv")
 
 [node name="Silver Medal" type="HBoxContainer" parent="Dialog/MarginContainer/VBoxContainer/Medals"]
 layout_mode = 2
@@ -109,7 +109,7 @@ horizontal_alignment = 1
 
 [node name="TextureRect" type="TextureRect" parent="Dialog/MarginContainer/VBoxContainer/Medals/Silver Medal"]
 layout_mode = 2
-texture = ExtResource("3_ostfc")
+texture = ExtResource("3_hymtd")
 
 [node name="Gold Medal" type="HBoxContainer" parent="Dialog/MarginContainer/VBoxContainer/Medals"]
 layout_mode = 2
@@ -118,7 +118,7 @@ alignment = 1
 
 [node name="TextureRect" type="TextureRect" parent="Dialog/MarginContainer/VBoxContainer/Medals/Gold Medal"]
 layout_mode = 2
-texture = ExtResource("2_4rmm0")
+texture = ExtResource("4_ela2v")
 
 [node name="Gold Medal" type="Label" parent="Dialog/MarginContainer/VBoxContainer/Medals/Gold Medal"]
 visible = false

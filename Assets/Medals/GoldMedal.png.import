@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://8tobsh6ha4e8"
-path="res://.godot/imported/GoldMedal.jpg-9592886fe2f3a68e14274a3fd7d67669.ctex"
+uid="uid://byct4oj38lq84"
+path="res://.godot/imported/GoldMedal.png-29c26775ac35aac59f9d2a6c57e67a05.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Medals/GoldMedal.jpg"
-dest_files=["res://.godot/imported/GoldMedal.jpg-9592886fe2f3a68e14274a3fd7d67669.ctex"]
+source_file="res://Assets/Medals/GoldMedal.png"
+dest_files=["res://.godot/imported/GoldMedal.png-29c26775ac35aac59f9d2a6c57e67a05.ctex"]
 
 [params]
 

@@ -1,7 +1,10 @@
 # Based on https://github.com/abarichello/godot-ci
 
 name: "Godot Export"
-on: push
+on:
+  push:
+    branches:
+      - main
 
 env:
   GODOT_VERSION: 4.4

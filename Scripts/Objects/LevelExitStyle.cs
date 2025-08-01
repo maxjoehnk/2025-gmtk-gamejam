@@ -5,4 +5,5 @@ public enum LevelExitStyle
 	Mannhole,
 	Ladder,
 	Pond,
+	WoodenDoor,
 }

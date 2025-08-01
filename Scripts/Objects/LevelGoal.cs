@@ -7,6 +7,7 @@ public partial class LevelGoal : Node2D
 	private Node2D Mannhole => this.GetNode<Node2D>("LevelExitManhole");
 	private Node2D Ladder => this.GetNode<Node2D>("LevelExitLadder");
 	private Node2D Pond => this.GetNode<Node2D>("LevelExitPond");
+	private Node2D WoodenDoor => this.GetNode<Node2D>("LevelExitWoodenDoor");
 	
 	[Export]
 	public LevelExitStyle ExitStyle { get; set; } = LevelExitStyle.Mannhole;
@@ -35,5 +36,6 @@ public partial class LevelGoal : Node2D
 		this.Mannhole.Visible = this.ExitStyle == LevelExitStyle.Mannhole;
 		this.Ladder.Visible = this.ExitStyle == LevelExitStyle.Ladder;
 		this.Pond.Visible = this.ExitStyle == LevelExitStyle.Pond;
+		this.WoodenDoor.Visible = this.ExitStyle == LevelExitStyle.WoodenDoor;
 	}
 }

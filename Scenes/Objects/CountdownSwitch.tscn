@@ -1,8 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://bv8nrd0ol5hov"]
+[gd_scene load_steps=16 format=3 uid="uid://bv8nrd0ol5hov"]
 
 [ext_resource type="Script" uid="uid://ctcxr8jidl2ah" path="res://Scripts/Objects/CountdownSwitch.cs" id="1_sbce4"]
-[ext_resource type="Texture2D" uid="uid://2a7v2ft8e7vf" path="res://Assets/Objects/Button.png" id="2_nj5vh"]
-[ext_resource type="Texture2D" uid="uid://3islg0630pql" path="res://Assets/Objects/Button_Pressed.png" id="3_nj5vh"]
+[ext_resource type="Texture2D" uid="uid://d3lkpa1b4ou35" path="res://Assets/Objects/Switch.png" id="4_q5jyx"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6mlv8"]
 size = Vector2(128, 128)
@@ -12,6 +11,84 @@ font_size = 50
 font_color = Color(0, 0, 0, 1)
 outline_color = Color(0, 0, 0, 1)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_1kfu6"]
+atlas = ExtResource("4_q5jyx")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qohfs"]
+atlas = ExtResource("4_q5jyx")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sbfd8"]
+atlas = ExtResource("4_q5jyx")
+region = Rect2(256, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4f83p"]
+atlas = ExtResource("4_q5jyx")
+region = Rect2(384, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qsu2s"]
+atlas = ExtResource("4_q5jyx")
+region = Rect2(512, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xdg5m"]
+atlas = ExtResource("4_q5jyx")
+region = Rect2(640, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_reyfv"]
+atlas = ExtResource("4_q5jyx")
+region = Rect2(768, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8svhk"]
+atlas = ExtResource("4_q5jyx")
+region = Rect2(896, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ilyq1"]
+atlas = ExtResource("4_q5jyx")
+region = Rect2(1024, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2enc5"]
+atlas = ExtResource("4_q5jyx")
+region = Rect2(1152, 0, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_dscf3"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1kfu6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qohfs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sbfd8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4f83p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qsu2s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xdg5m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_reyfv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8svhk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ilyq1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2enc5")
+}],
+"loop": false,
+"name": &"default",
+"speed": 30.0
+}]
+
 [node name="CountdownSwitch" type="StaticBody2D" groups=["Resettable"]]
 collision_layer = 16
 collision_mask = 16
@@ -19,13 +96,6 @@ script = ExtResource("1_sbce4")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_6mlv8")
-
-[node name="Button" type="Sprite2D" parent="."]
-texture = ExtResource("2_nj5vh")
-
-[node name="ButtonPressed" type="Sprite2D" parent="."]
-visible = false
-texture = ExtResource("3_nj5vh")
 
 [node name="Countdown" type="Label" parent="."]
 anchors_preset = 8
@@ -44,3 +114,6 @@ text = "3"
 label_settings = SubResource("LabelSettings_nj5vh")
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="Switch" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_dscf3")

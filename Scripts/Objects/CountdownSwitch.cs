@@ -7,8 +7,7 @@ using Godot.Collections;
 public partial class CountdownSwitch : Node2D, IInteractable, IResettable
 {
 	private Label CountdownLabel => this.GetNode<Label>("Countdown");
-	private Node2D Button => this.GetNode<Node2D>("Button");
-	private Node2D ButtonPressed => this.GetNode<Node2D>("ButtonPressed");
+	private AnimatedSprite2D Switch => this.GetNode<AnimatedSprite2D>("Switch");
 	
 	[Export] public Array<NodePath> Targets { get; set; } = new();
 
@@ -27,13 +26,12 @@ public partial class CountdownSwitch : Node2D, IInteractable, IResettable
 	{
 		this.CountdownLabel.Text = this.ticksRemaining.ToString();
 		this.CountdownLabel.Visible = this.active;
-		this.Button.Visible = !this.active;
-		this.ButtonPressed.Visible = this.active;
 	}
 
 	public void Interact()
 	{
 		ToggleSwitches();
+		this.Switch.Play();
 		this.active = true;
 		this.ticksRemaining = this.Countdown;
 	}
@@ -58,6 +56,7 @@ public partial class CountdownSwitch : Node2D, IInteractable, IResettable
 		if (this.ticksRemaining <= 0)
 		{
 			this.Reset();
+			this.Switch.PlayBackwards();
 			ToggleSwitches();
 		}
 	}

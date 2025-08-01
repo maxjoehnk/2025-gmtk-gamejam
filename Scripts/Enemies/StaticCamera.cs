@@ -16,6 +16,7 @@ public partial class StaticCamera : Enemy, ISwitchable, IResettable
 		set
 		{
 			this.isActive = value;
+			this.state = value;
 			this.Update();
 		}
 	}

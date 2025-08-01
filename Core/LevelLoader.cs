@@ -1,3 +1,4 @@
+using System.Linq;
 using gmtkgamejam.Scenes;
 using Godot;
 
@@ -15,7 +16,15 @@ public partial class LevelLoader : Node
 		this.CurrentScene = root.GetChild(-1);
 	}
 
-	public void LoadLevel(Level level)
+	public AvailableLevel[] GetAvailableLevels()
+	{
+		AvailableLevel[] levels = ResourceLoader.ListDirectory("res://Scenes/Levels")
+			.Where(name => name.EndsWith(".tscn")).Select(file => new AvailableLevel(file)).ToArray();
+
+		return levels;
+	}
+
+	public void LoadLevel(AvailableLevel level)
 	{
 		this.CallDeferred(nameof(this.LoadScene), $"res://Scenes/Levels/{level.Path}");
 	}

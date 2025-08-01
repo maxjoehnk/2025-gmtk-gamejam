@@ -11,20 +11,26 @@ public partial class LevelSelector : Control
 	
 	public override void _Ready()
 	{
-		Level[] levels = ResourceLoader.ListDirectory("res://Scenes/Levels")
-			.Where(name => name.EndsWith(".tscn")).Select(file => new Level(file)).ToArray();
-		foreach (Level level in levels)
+		AvailableLevel[] levels = LevelLoader.Instance.GetAvailableLevels();
+		
+		foreach (AvailableLevel level in levels)
 		{
-			GD.Print("Adding level " + level.Name);
-			LevelButton levelButton = this.LevelButton.Instantiate<LevelButton>();
-			levelButton.LevelName = level.Name;
-			levelButton.Pressed += () =>
-			{
-				LevelLoader.Instance.LoadLevel(level);
-			};
-			
+			LevelButton levelButton = this.CreateLevelButton(level);
+
 			this.AddChild(levelButton);
 		}
+	}
+
+	private LevelButton CreateLevelButton(AvailableLevel level)
+	{
+		LevelButton levelButton = this.LevelButton.Instantiate<LevelButton>();
+		levelButton.LevelName = level.Name;
+		levelButton.Pressed += () =>
+		{
+			LevelLoader.Instance.LoadLevel(level);
+		};
+		
+		return levelButton;
 	}
 }
 

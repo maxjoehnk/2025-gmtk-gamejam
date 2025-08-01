@@ -59,5 +59,3 @@ Targets = Array[NodePath]([NodePath("../StaticCamera"), NodePath("../Spikes")])
 position = Vector2(448, 192)
 
 [node name="Game" parent="." instance=ExtResource("2_o0omn")]
-
-[connection signal="PlayerReachedGoal" from="TileMapLayer/LevelGoal" to="." method="OnPlayerWon"]

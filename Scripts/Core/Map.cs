@@ -1,6 +1,7 @@
 using Godot;
 using System;
 using gmtkgamejam.Scenes.Enemies;
+using gmtkgamejam.Scripts.Core;
 using Godot.Collections;
 
 public partial class Map : Node
@@ -22,11 +23,17 @@ public partial class Map : Node
 
 	public override void _Ready()
 	{
-		Array<Node> enemies = this.GetTree().GetNodesInGroup("Enemies");
+		Array<Node> enemies = this.GetTree().GetNodesInGroup(Groups.Enemies);
 		foreach (Node enemy in enemies)
 		{
 			GD.Print($"Connecting catched player signal from {enemy} ({enemy.Name})");
 			enemy.Connect(nameof(Enemy.CatchedPlayer), Callable.From(this.OnPlayerCaught));
+		}
+		
+		Array<Node> exits = this.GetTree().GetNodesInGroup(Groups.LevelExits);
+		foreach (Node exit in exits)
+		{
+			exit.Connect(nameof(LevelGoal.PlayerReachedGoal), Callable.From(this.OnPlayerWon));
 		}
 
 		this.Game.SpawnPosition = this.SpawnPosition;

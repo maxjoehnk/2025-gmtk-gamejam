@@ -85,5 +85,3 @@ curve = SubResource("Curve2D_50li6")
 [node name="Guard" parent="Path2D3" instance=ExtResource("7_12frw")]
 position = Vector2(-22, 3)
 rotation = 3.14159
-
-[connection signal="PlayerReachedGoal" from="TileMapLayer/LevelGoal" to="." method="OnPlayerWon"]

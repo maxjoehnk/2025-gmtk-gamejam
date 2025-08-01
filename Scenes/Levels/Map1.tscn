@@ -42,5 +42,3 @@ rotation = 3.14159
 [node name="Game" parent="." instance=ExtResource("3_4ts55")]
 position = Vector2(0, 2)
 rotation = 0.000775114
-
-[connection signal="PlayerReachedGoal" from="TileMapLayer/LevelGoal" to="." method="OnPlayerWon"]

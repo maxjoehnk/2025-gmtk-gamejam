@@ -37,6 +37,7 @@ Enemies=""
 ActionPlayer=""
 Waypoints=""
 Resettable=""
+LevelExit=""
 
 [input]
 

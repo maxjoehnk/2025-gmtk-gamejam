@@ -8,15 +8,15 @@ using static Godot.Control;
 
 public partial class Game : Node2D
 {
-  private ActionPane ActionPane => this.GetNode<ActionPane>("ActionPane");
+  private ActionPane ActionPane => this.GetNode<ActionPane>("Player/View/ActionPane");
   public Player Player => this.GetNode<Player>("Player");
 
-  public WinOverlay WinOverlay => this.GetNode<WinOverlay>("WinOverlay");
-  public Control LoseOverlay => this.GetNode<Control>("LoseOverlay");
+  public WinOverlay WinOverlay => this.GetNode<WinOverlay>("Player/View/WinOverlay");
+  public Control LoseOverlay => this.GetNode<Control>("Player/View/LoseOverlay");
 
   public ActionPlayer ActionPlayer => this.GetNode<ActionPlayer>("ActionPlayer");
 
-  private HSlider SpeedSlider => this.GetNode<HSlider>("VBoxContainer/SpeedSliderToolbar/HSlider");
+  private HSlider SpeedSlider => this.GetNode<HSlider>("Player/View/VBoxContainer/SpeedSliderToolbar/HSlider");
 
   private CharacterBody2D PreviewIndicator => this.GetNode<CharacterBody2D>("PreviewIndicator");
 
@@ -56,9 +56,9 @@ public partial class Game : Node2D
   {
     GD.Print("Play");
     this.OnResetPressed();
-		this.PreviewIndicator.Hide();
-		this.ActionPlayer.Play(this.ActionPane.Actions);
-	}
+    this.PreviewIndicator.Hide();
+    this.ActionPlayer.Play(this.ActionPane.Actions);
+  }
 
   public void OnResetPressed()
   {
@@ -68,7 +68,7 @@ public partial class Game : Node2D
     this.WinOverlay.Hide();
     this.LoseOverlay.Hide();
     ResetGameElements();
-	}
+  }
 
   public void OnLoopPressed()
   {

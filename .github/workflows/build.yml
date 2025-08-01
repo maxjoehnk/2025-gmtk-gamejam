@@ -100,6 +100,9 @@ jobs:
       - export-windows
     steps:
       - uses: actions/download-artifact@v4
+      - run: ls
+      - run: ls -l *
+      - run: tree
       - run: butler push ./build/linux $ITCHIO_USERNAME/$ITCHIO_GAME:linux
         env:
           ITCHIO_USERNAME: ${{ vars.ITCHIO_USERNAME }}

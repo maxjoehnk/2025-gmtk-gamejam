@@ -2,13 +2,13 @@
 
 [ext_resource type="Script" uid="uid://ucmle6vpqe56" path="res://Scripts/UI/ActionPane.cs" id="1_stia5"]
 [ext_resource type="Script" uid="uid://doneu0shnocex" path="res://Scripts/UI/ActionList.cs" id="2_bpui6"]
-[ext_resource type="Texture2D" uid="uid://c8bqv61cqkos6" path="res://Assets/MoveLeft.png" id="2_mc8op"]
-[ext_resource type="Texture2D" uid="uid://cwl8h58jgnto1" path="res://Assets/MoveUp.png" id="3_bpui6"]
-[ext_resource type="Texture2D" uid="uid://cp6xwcx5ukfc0" path="res://Assets/MoveDown.png" id="4_vdasp"]
-[ext_resource type="Texture2D" uid="uid://6uvhjjmfxyba" path="res://Assets/MoveRight.png" id="5_1gjh4"]
-[ext_resource type="Texture2D" uid="uid://dvli1dfdxo4i4" path="res://Assets/Wait.png" id="6_mfvu1"]
-[ext_resource type="Texture2D" uid="uid://cd76p71eyq157" path="res://Assets/Interact.png" id="7_e5q7p"]
-[ext_resource type="Texture2D" uid="uid://ckf8qye1ofhx5" path="res://Assets/chevron-left.png" id="9_vdasp"]
+[ext_resource type="Texture2D" uid="uid://c8bqv61cqkos6" path="res://Assets/UI/MoveLeft.png" id="2_mc8op"]
+[ext_resource type="Texture2D" uid="uid://cwl8h58jgnto1" path="res://Assets/UI/MoveUp.png" id="3_bpui6"]
+[ext_resource type="Texture2D" uid="uid://cp6xwcx5ukfc0" path="res://Assets/UI/MoveDown.png" id="4_vdasp"]
+[ext_resource type="Texture2D" uid="uid://6uvhjjmfxyba" path="res://Assets/UI/MoveRight.png" id="5_1gjh4"]
+[ext_resource type="Texture2D" uid="uid://dvli1dfdxo4i4" path="res://Assets/UI/Wait.png" id="6_mfvu1"]
+[ext_resource type="Texture2D" uid="uid://cd76p71eyq157" path="res://Assets/UI/Interact.png" id="7_e5q7p"]
+[ext_resource type="Texture2D" uid="uid://ckf8qye1ofhx5" path="res://Assets/UI/chevron-left.png" id="9_vdasp"]
 
 [node name="LoopPane" type="PanelContainer"]
 top_level = true

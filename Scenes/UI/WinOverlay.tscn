@@ -4,8 +4,8 @@
 [ext_resource type="Texture2D" uid="uid://csj85vwn1kwsd" path="res://Assets/Medals/BronzeMedal.png" id="2_u0igv"]
 [ext_resource type="Texture2D" uid="uid://bggsqcq2m1x4o" path="res://Assets/Medals/SilverMedal.png" id="3_hymtd"]
 [ext_resource type="Texture2D" uid="uid://byct4oj38lq84" path="res://Assets/Medals/GoldMedal.png" id="4_ela2v"]
-[ext_resource type="Texture2D" uid="uid://ckf8qye1ofhx5" path="res://Assets/chevron-left.png" id="5_u0igv"]
-[ext_resource type="Texture2D" uid="uid://n2ebmi70amox" path="res://Assets/chevron-right.png" id="6_hymtd"]
+[ext_resource type="Texture2D" uid="uid://ckf8qye1ofhx5" path="res://Assets/UI/chevron-left.png" id="5_u0igv"]
+[ext_resource type="Texture2D" uid="uid://n2ebmi70amox" path="res://Assets/UI/chevron-right.png" id="6_hymtd"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6thne"]
 bg_color = Color(0, 0.38, 0.57, 1)

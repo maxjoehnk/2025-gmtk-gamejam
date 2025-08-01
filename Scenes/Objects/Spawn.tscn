@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://duv31n7g217aj"]
 
-[ext_resource type="Texture2D" uid="uid://cgk3p0flrdyt" path="res://Assets/Spawn.png" id="1_ia7qx"]
+[ext_resource type="Texture2D" uid="uid://bvuoq5vn7nps4" path="res://Assets/Objects/Spawn.png" id="1_ia7qx"]
 
 [node name="Spawn" type="Node2D"]
 

@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://bn2at2q8vviht"]
+
+[ext_resource type="Script" uid="uid://b02630d2phpfu" path="res://Scripts/Objects/Spikes.cs" id="1_6ld86"]
+[ext_resource type="Texture2D" uid="uid://cadkva17wnh0j" path="res://Assets/Objects/Spikes.png" id="1_lepka"]
+[ext_resource type="Texture2D" uid="uid://b7skt37mnhoxt" path="res://Assets/Objects/SpikesExpanded.png" id="2_6ld86"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lepka"]
+size = Vector2(128, 128)
+
+[node name="Spikes" type="Node2D"]
+script = ExtResource("1_6ld86")
+
+[node name="Spikes" type="StaticBody2D" parent="."]
+collision_layer = 3
+collision_mask = 3
+
+[node name="Spikes" type="Sprite2D" parent="Spikes"]
+texture = ExtResource("1_lepka")
+
+[node name="SpikesExpanded" type="Sprite2D" parent="Spikes"]
+texture = ExtResource("2_6ld86")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Spikes"]
+shape = SubResource("RectangleShape2D_lepka")

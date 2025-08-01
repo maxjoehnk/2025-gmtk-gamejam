@@ -88,3 +88,18 @@ jobs:
         with:
           name: mac
           path: build/mac
+  
+  itchio:
+    name: Deploy to itch.io
+    runs-on: ubuntu-22.04
+    container:
+      image: barichello/godot-ci:mono-4.4
+    needs:
+      - export-linux
+      - export-mac
+      - export-windows
+    steps:
+      - uses: actions/download-artifact@v4
+      - run: butler push ./build/linux $ITCHIO_USERNAME/$ITCHIO_GAME:linux
+      - run: butler push ./build/windows $ITCHIO_USERNAME/$ITCHIO_GAME:windows
+      - run: butler push ./build/mac $ITCHIO_USERNAME/$ITCHIO_GAME:mac

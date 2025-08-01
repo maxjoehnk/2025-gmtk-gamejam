@@ -115,6 +115,14 @@ public partial class ActionPane : PanelContainer
 	{
 		AddWaitAction();
 	}
+	
+	public void OnDeleteButton_Click() 
+	{
+		foreach (Node child in ActionList.GetChildren())
+		{
+			child.QueueFree();
+		}
+	}
 
 	private void AddAction(Action action)
 	{

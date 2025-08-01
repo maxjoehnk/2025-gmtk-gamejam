@@ -1,7 +1,7 @@
 [gd_scene load_steps=12 format=4 uid="uid://ce1252b1u1oko"]
 
 [ext_resource type="Script" uid="uid://4iy48t6sf73e" path="res://Scenes/Map.cs" id="1_m7c25"]
-[ext_resource type="TileSet" uid="uid://dqkv2g4dcdkd6" path="res://Assets/LevelTiles/LevelTiles.tres" id="2_12frw"]
+[ext_resource type="TileSet" uid="uid://pafbad4mjfhn" path="res://Assets/LevelTiles/LevelTiles.tres" id="2_12frw"]
 [ext_resource type="PackedScene" uid="uid://duv31n7g217aj" path="res://Scenes/Levels/Objects/Spawn.tscn" id="3_7wpmw"]
 [ext_resource type="PackedScene" uid="uid://de2n83qnroben" path="res://Scenes/Levels/Objects/LevelGoal.tscn" id="4_50li6"]
 [ext_resource type="PackedScene" uid="uid://bshkala5h1lhk" path="res://Scenes/Enemies/CameraSwitcher.tscn" id="5_xsbrw"]
@@ -11,19 +11,19 @@
 
 [sub_resource type="Curve2D" id="Curve2D_7wpmw"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 144, 203, 0, 0, 0, 0, 14, 158, 0, 0, 0, 0, 16, -131, 0, 0, 0, 0, 9, 159, 0, 0, 0, 0, -104, 194, 0, 0, 0, 0, -103, 321, 0, 0, 0, 0, 144, 329, 0, 0, 0, 0, 145, 203)
+"points": PackedVector2Array(0, 0, 0, 0, 128, 192, 0, 0, 0, 0, 0, 192, 0, 0, 0, 0, 0, -192, 0, 0, 0, 0, 0, 192, 0, 0, 0, 0, -128, 192, 0, 0, 0, 0, -128, 320, 0, 0, 0, 0, 128, 320, 0, 0, 0, 0, 128, 192)
 }
 point_count = 8
 
 [sub_resource type="Curve2D" id="Curve2D_12frw"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 196, 150, 0, 0, 0, 0, 195, -243, 0, 0, 0, 0, -316, -242, 0, 0, 0, 0, -327, 160, 0, 0, 0, 0, 196, 149)
+"points": PackedVector2Array(0, 0, 0, 0, 172, 148, 0, 0, 0, 0, 172, -236, 0, 0, 0, 0, -340, -236, 0, 0, 0, 0, -340, 148, 0, 0, 0, 0, 172, 148)
 }
 point_count = 5
 
 [sub_resource type="Curve2D" id="Curve2D_50li6"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 4, -8, 0, 0, 0, 0, -906, -1, 0, 0, 0, 0, -774, -2, 0, 0, 0, 0, -774, -374, 0, 0, 0, 0, -904, -373, 0, 0, 0, 0, -774, -372, 0, 0, 0, 0, -769, -2, 0, 0, 0, 0, 3, -8)
+"points": PackedVector2Array(0, 0, 0, 0, -22, 3, 0, 0, 0, 0, -918, 3, 0, 0, 0, 0, -790, 3, 0, 0, 0, 0, -790, -381, 0, 0, 0, 0, -918, -381, 0, 0, 0, 0, -790, -381, 0, 0, 0, 0, -790, 3, 0, 0, 0, 0, -22, 3)
 }
 point_count = 8
 
@@ -31,7 +31,7 @@ point_count = 8
 script = ExtResource("1_m7c25")
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
-position = Vector2(407, 257)
+position = Vector2(384, 257)
 tile_map_data = PackedByteArray("AAAAAAAAAAAAAAIAAAABAAAAAAAAAAIAAAABAAUAAAAAAAIAAAAAAAUAAAAAAAIAAAAAAAQAAAAAAAIAAAAAAAMAAAAAAAIAAAAAAAIAAAAAAAIAAAAAAAEAAAAAAAIAAAACAAAAAAAAAAIAAAADAAAAAAAAAAIAAAAEAAAAAAAAAAIAAAAEAAEAAAAAAAIAAAAFAAEAAAAAAAIAAAAEAAIAAAAAAAIAAAADAAQAAAAAAAIAAAADAAUAAAAAAAIAAAAEAAUAAAAAAAIAAAAFAAUAAAAAAAIAAAAFAAQAAAAAAAIAAAAEAAMAAAAAAAIAAAAEAAQAAAAAAAIAAAACAAUAAAAAAAIAAAAGAAEAAAAAAAIAAAAHAAEAAAAAAAIAAAAIAAEAAAAAAAIAAAAIAAAAAAAAAAIAAAAIAP//AAAAAAIAAAAIAP7/AAAAAAIAAAAHAP7/AAAAAAIAAAAGAP7/AAAAAAIAAAAFAP7/AAAAAAIAAAAEAP7/AAAAAAIAAAAEAP//AAAAAAIAAAADAAEAAAAAAAIAAAAGAAQAAAAAAAIAAAAHAAQAAAAAAAIAAAAIAAQAAAAAAAIAAAAJAAQAAAAAAAIAAAAKAAQAAAAAAAIAAAAKAAMAAAAAAAIAAAAKAAIAAAAAAAIAAAA=")
 tile_set = ExtResource("2_12frw")
 
@@ -65,16 +65,16 @@ position = Vector2(960, 640)
 curve = SubResource("Curve2D_7wpmw")
 
 [node name="Guard" parent="Path2D" instance=ExtResource("7_12frw")]
-position = Vector2(144, 203)
-rotation = -2.80835
+position = Vector2(128, 192)
+rotation = 3.14159
 
 [node name="Path2D2" type="Path2D" parent="."]
 position = Vector2(1300, 300)
 curve = SubResource("Curve2D_12frw")
 
 [node name="Guard" parent="Path2D2" instance=ExtResource("7_12frw")]
-position = Vector2(196, 150)
-rotation = -1.57334
+position = Vector2(172, 148)
+rotation = -1.5708
 
 [node name="Game" parent="." instance=ExtResource("7_j574u")]
 
@@ -83,7 +83,7 @@ position = Vector2(1750, 829)
 curve = SubResource("Curve2D_50li6")
 
 [node name="Guard" parent="Path2D3" instance=ExtResource("7_12frw")]
-position = Vector2(4, -8)
-rotation = 3.1339
+position = Vector2(-22, 3)
+rotation = 3.14159
 
 [connection signal="PlayerReachedGoal" from="TileMapLayer/LevelGoal" to="." method="OnPlayerWon"]

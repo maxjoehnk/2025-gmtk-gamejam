@@ -38,12 +38,13 @@ public partial class Map : Node
 
 		this.Game.SpawnPosition = this.SpawnPosition;
 		this.Game.Respawn();
+		this.Game.Show();
 	}
 
 	private void OnPlayerCaught()
 	{
 		GD.Print("Player caught");
-		this.Game.OnPlayerLost();
+		this.Game.OnPlayerLost(this.Name);
 	}
 
 	public void OnPlayerWon()

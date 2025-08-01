@@ -1,0 +1,126 @@
+[gd_scene load_steps=7 format=3 uid="uid://d0s6lvw4rkhrx"]
+
+[ext_resource type="Script" uid="uid://taf77w6uir2e" path="res://Scripts/UI/CaughtOverlay.cs" id="1_xlb82"]
+[ext_resource type="Texture2D" uid="uid://ckf8qye1ofhx5" path="res://Assets/UI/chevron-left.png" id="5_0g1os"]
+[ext_resource type="Texture2D" uid="uid://n2ebmi70amox" path="res://Assets/UI/chevron-right.png" id="6_cm3h6"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6thne"]
+bg_color = Color(0, 0.38, 0.57, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="LabelSettings" id="LabelSettings_u0igv"]
+line_spacing = 0.0
+font_size = 80
+shadow_size = 2
+
+[sub_resource type="LabelSettings" id="LabelSettings_2irst"]
+font_size = 40
+font_color = Color(1, 1, 1, 0.784314)
+
+[node name="CaughtOverlay" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_xlb82")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+z_index = 2
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 1.0
+offset_right = 1880.0
+offset_bottom = 1041.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.501961)
+
+[node name="Dialog" type="Panel" parent="."]
+z_index = 10
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 590.0
+offset_top = 350.0
+offset_right = 1290.0
+offset_bottom = 690.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_6thne")
+
+[node name="MarginContainer" type="MarginContainer" parent="Dialog"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Dialog/MarginContainer"]
+layout_mode = 2
+
+[node name="Title Container" type="Control" parent="Dialog/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 120)
+layout_mode = 2
+
+[node name="Title2" type="Label" parent="Dialog/MarginContainer/VBoxContainer/Title Container"]
+layout_mode = 2
+offset_left = 13.0
+offset_top = -5.0
+offset_right = 705.0
+offset_bottom = 105.0
+text = "Caught!"
+label_settings = SubResource("LabelSettings_u0igv")
+
+[node name="Title" type="Label" parent="Dialog/MarginContainer/VBoxContainer/Title Container"]
+layout_mode = 2
+offset_left = 17.0
+offset_top = 54.0
+offset_right = 709.0
+offset_bottom = 164.0
+text = "Level Name"
+label_settings = SubResource("LabelSettings_2irst")
+vertical_alignment = 1
+
+[node name="Control" type="Control" parent="Dialog/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Dialog/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 48)
+layout_mode = 2
+alignment = 1
+
+[node name="Exit" type="Button" parent="Dialog/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 20
+text = "Exit"
+icon = ExtResource("5_0g1os")
+expand_icon = true
+
+[node name="Restart" type="Button" parent="Dialog/MarginContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 20
+text = "Restart"
+icon = ExtResource("6_cm3h6")
+icon_alignment = 2
+
+[connection signal="pressed" from="Dialog/MarginContainer/VBoxContainer/HBoxContainer/Exit" to="." method="OnExitPressed"]
+[connection signal="pressed" from="Dialog/MarginContainer/VBoxContainer/HBoxContainer/Restart" to="." method="OnRestartPressed"]

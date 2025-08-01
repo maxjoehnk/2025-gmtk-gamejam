@@ -27,7 +27,6 @@ position = Vector2(579, 448)
 ExitStyle = 1
 
 [node name="CameraSwitcher" parent="TileMapLayer" instance=ExtResource("5_klx7b")]
-visible = false
 Ticks = 2
 
 [node name="StaticCamera" parent="TileMapLayer/CameraSwitcher" instance=ExtResource("5_1k8oi")]

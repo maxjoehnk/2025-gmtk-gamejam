@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://dfenwo0b7hx7c"]
+[gd_scene load_steps=17 format=3 uid="uid://dfenwo0b7hx7c"]
 
 [ext_resource type="Script" uid="uid://bt83g2edvayok" path="res://Scripts/Core/Game.cs" id="1_iukft"]
 [ext_resource type="Texture2D" uid="uid://d1ptu6wmmwd6y" path="res://Assets/UI/Reset.png" id="3_b2bpf"]
@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://dnvbd84sbx1mi" path="res://Assets/UI/Loop.png" id="7_dahhg"]
 [ext_resource type="Texture2D" uid="uid://7se5awuc20ed" path="res://Assets/PreviewIndicator_Purple.png" id="8_2irst"]
 [ext_resource type="PackedScene" uid="uid://byoae28watimk" path="res://Scenes/UI/WinOverlay.tscn" id="9_71axn"]
+[ext_resource type="PackedScene" uid="uid://d0s6lvw4rkhrx" path="res://Scenes/UI/CaughtOverlay.tscn" id="11_3so38"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_fgofq"]
 font_size = 48
@@ -103,6 +104,9 @@ one_shot = true
 [node name="WinOverlay" parent="." instance=ExtResource("9_71axn")]
 visible = false
 
+[node name="CaughtOverlay" parent="." instance=ExtResource("11_3so38")]
+visible = false
+
 [node name="LoseOverlay" type="Label" parent="."]
 visible = false
 offset_left = 649.0
@@ -131,3 +135,4 @@ shape = SubResource("CircleShape2D_71axn")
 [connection signal="Ticked" from="ActionPlayer" to="VBoxContainer/PlaybackToolbar" method="OnTick"]
 [connection signal="timeout" from="ActionPlayer/Timer" to="ActionPlayer" method="Tick"]
 [connection signal="RestartLevel" from="WinOverlay" to="." method="OnResetPressed"]
+[connection signal="RestartLevel" from="CaughtOverlay" to="." method="OnResetPressed"]

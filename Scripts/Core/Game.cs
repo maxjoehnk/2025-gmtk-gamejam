@@ -12,7 +12,7 @@ public partial class Game : Node2D
   public Player Player => this.GetNode<Player>("Player");
 
   public WinOverlay WinOverlay => this.GetNode<WinOverlay>("WinOverlay");
-  public Control LoseOverlay => this.GetNode<Control>("LoseOverlay");
+  public CaughtOverlay CaughtOverlay => this.GetNode<CaughtOverlay>("CaughtOverlay");
 
   public ActionPlayer ActionPlayer => this.GetNode<ActionPlayer>("ActionPlayer");
 
@@ -32,6 +32,8 @@ public partial class Game : Node2D
       this.ActionPlayer.PlaybackSpeed = value;
     };
     this.PreviewIndicator.Hide();
+    this.WinOverlay.Hide();
+    this.CaughtOverlay.Hide();
   }
 
   public override void _UnhandledInput(InputEvent @event)
@@ -65,8 +67,6 @@ public partial class Game : Node2D
     GD.Print("Reset");
     this.Respawn();
     this.ActionPlayer.Reset();
-    this.WinOverlay.Hide();
-    this.LoseOverlay.Hide();
     ResetGameElements();
 	}
 
@@ -139,9 +139,9 @@ public partial class Game : Node2D
     this.ActionPlayer.Stop();
   }
 
-  public void OnPlayerLost()
+  public void OnPlayerLost(string name)
   {
-    this.LoseOverlay.Show();
+    this.CaughtOverlay.Open(name);
     this.ActionPlayer.Stop();
   }
 }

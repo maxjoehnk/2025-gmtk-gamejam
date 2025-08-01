@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://cppjmt12jrrsg"]
 
-[ext_resource type="Script" uid="uid://uv1huf01oej0" path="res://Scripts/Core/WaitAction.cs" id="1_gfr8i"]
+[ext_resource type="Script" uid="uid://uv1huf01oej0" path="res://Scripts/Core/Actions/WaitAction.cs" id="1_gfr8i"]
 
 [node name="WaitAction" type="Control"]
 layout_mode = 3

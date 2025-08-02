@@ -89,9 +89,9 @@ label_settings = SubResource("LabelSettings_u0igv")
 [node name="Title" type="Label" parent="Dialog/MarginContainer/VBoxContainer/Title Container"]
 layout_mode = 2
 offset_left = 17.0
-offset_top = 54.0
+offset_top = 63.0
 offset_right = 709.0
-offset_bottom = 164.0
+offset_bottom = 173.0
 text = "Level Name"
 label_settings = SubResource("LabelSettings_2irst")
 vertical_alignment = 1

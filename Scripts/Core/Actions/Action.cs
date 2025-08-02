@@ -10,8 +10,8 @@ public abstract partial class Action : Control
     
     public abstract void Act(Player player);
 
-    public virtual Vector2 Preview(Vector2 position)
+    public virtual Vector2 Preview(Vector2 position, PreviewIndicator indicatorNode)
     {
-        return position;
+	    return position;
     }
 }

@@ -14,7 +14,7 @@ public partial class Game : Node2D
 
 	private HSlider SpeedSlider => this.GetNode<HSlider>("View/VBoxContainer/SpeedSliderToolbar/HSlider");
 
-	private CharacterBody2D PreviewIndicator => this.GetNode<CharacterBody2D>("PreviewIndicator");
+	private PreviewIndicator PreviewIndicator => this.GetNode<PreviewIndicator>("PreviewIndicator");
 
 	private double prePreviewSpeed = 1;
 
@@ -25,7 +25,7 @@ public partial class Game : Node2D
 	public override void _Ready()
 	{
 		this.SpeedSlider.ValueChanged += value => { ActionPlayer.Instance.PlaybackSpeed = value; };
-		this.ActionPane.ActionsChanged += () => { this.PreviewIndicator.Show(); };
+		this.ActionPane.ActionsChanged += this.OnActionsChanged;
 		ActionPlayer.Instance.Finished += this.OnActionsFinished;
 		ActionPlayer.Instance.PlaybackSpeed = this.SpeedSlider.Value;
 		this.PreviewIndicator.Hide();
@@ -55,6 +55,11 @@ public partial class Game : Node2D
 	public override void _Process(double delta)
 	{
 		this.UpdateIndicatorPosition();
+	}
+
+	private void OnActionsChanged()
+	{
+		this.PreviewIndicator.Show();
 	}
 
 	public void OnPausePressed()
@@ -119,14 +124,7 @@ public partial class Game : Node2D
 			for (int i = 0; i < action.Ticks; i++)
 			{
 				this.PreviewIndicator.GlobalPosition = position;
-				Vector2 nextPosition = action.Preview(position);
-				Vector2 positionDiff = nextPosition - position;
-
-				KinematicCollision2D? collision2D = this.PreviewIndicator.MoveAndCollide(positionDiff, testOnly: true);
-				if (collision2D == null)
-				{
-					position += positionDiff;
-				}
+				position = action.Preview(position, this.PreviewIndicator);
 			}
 		}
 

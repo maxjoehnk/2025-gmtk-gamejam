@@ -9,6 +9,8 @@ public partial class TeleporterEntry : Node2D, ISwitchable, IInteractable, IRese
 
 	[Export] public NodePath Target { get; set; }
 	
+	public TeleporterExit? Exit => this.GetNode<TeleporterExit>(this.Target);
+	
 	private AnimatedSprite2D Sprite => this.GetNode<AnimatedSprite2D>("Sprite");
 	
 	private bool CurrentAnimationState => this.Sprite.Animation != "Inactive";
@@ -45,14 +47,13 @@ public partial class TeleporterEntry : Node2D, ISwitchable, IInteractable, IRese
 		{
 			return;
 		}
-		TeleporterExit exit = this.GetNode<TeleporterExit>(this.Target);
-		if (exit == null)
+		if (this.Exit == null)
 		{
 			GD.PrintErr($"TeleporterExit not found at path: {this.Target}");
 			return;
 		}
 
-		player.GlobalPosition = exit.GlobalPosition;
+		player.GlobalPosition = this.Exit.GlobalPosition;
 	}
 
 	public void Toggle()

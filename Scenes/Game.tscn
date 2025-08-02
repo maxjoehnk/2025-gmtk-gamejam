@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://dfenwo0b7hx7c"]
+[gd_scene load_steps=18 format=3 uid="uid://dfenwo0b7hx7c"]
 
 [ext_resource type="Script" uid="uid://bt83g2edvayok" path="res://Scripts/Core/Game.cs" id="1_iukft"]
 [ext_resource type="Script" uid="uid://bwnt1gtf5se81" path="res://Scenes/View.cs" id="3_3so38"]
@@ -9,10 +9,11 @@
 [ext_resource type="PackedScene" uid="uid://em2i5qm0uo2f" path="res://Scenes/player.tscn" id="6_fgofq"]
 [ext_resource type="Script" uid="uid://517q0xvo800u" path="res://Scripts/UI/SpeedSliderToolbar.cs" id="7_bf53h"]
 [ext_resource type="Texture2D" uid="uid://dnvbd84sbx1mi" path="res://Assets/UI/Loop.png" id="7_dahhg"]
-[ext_resource type="Texture2D" uid="uid://7se5awuc20ed" path="res://Assets/PreviewIndicator_Purple.png" id="8_2irst"]
 [ext_resource type="PackedScene" uid="uid://byoae28watimk" path="res://Scenes/UI/WinOverlay.tscn" id="9_71axn"]
 [ext_resource type="PackedScene" uid="uid://mmvbe8ep3rft" path="res://Scenes/UI/PauseMenuOverlay.tscn" id="11_3cx6b"]
 [ext_resource type="PackedScene" uid="uid://d0s6lvw4rkhrx" path="res://Scenes/UI/CaughtOverlay.tscn" id="11_3so38"]
+[ext_resource type="Texture2D" uid="uid://b0rnh7cjht5dy" path="res://Assets/PreviewIndicator.png" id="13_3cx6b"]
+[ext_resource type="Script" uid="uid://dgea26pil7thm" path="res://Scripts/Core/PreviewIndicator.cs" id="13_wxwew"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_fgofq"]
 font_size = 48
@@ -119,12 +120,19 @@ grow_vertical = 1
 [node name="PreviewIndicator" type="CharacterBody2D" parent="."]
 collision_layer = 8
 collision_mask = 8
+script = ExtResource("13_wxwew")
 
 [node name="PreviewIndicator" type="Sprite2D" parent="PreviewIndicator"]
-texture = ExtResource("8_2irst")
+texture = ExtResource("13_3cx6b")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PreviewIndicator"]
 shape = SubResource("CircleShape2D_71axn")
+
+[node name="RayCast2D" type="RayCast2D" parent="PreviewIndicator"]
+target_position = Vector2(0, 0)
+collision_mask = 16
+hit_from_inside = true
+collide_with_areas = true
 
 [connection signal="pressed" from="View/VBoxContainer/PlaybackToolbar/Reset" to="." method="OnResetPressed"]
 [connection signal="pressed" from="View/VBoxContainer/PlaybackToolbar/Play" to="." method="OnPlayPressed"]

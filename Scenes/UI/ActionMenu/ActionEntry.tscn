@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://djji4kxi0bt15"]
+[gd_scene load_steps=3 format=3 uid="uid://djji4kxi0bt15"]
 
 [ext_resource type="Script" uid="uid://dbxiayad6njfo" path="res://Scripts/UI/ActionEntry.cs" id="1_ghiat"]
+[ext_resource type="Texture2D" uid="uid://cn2hcrgykcktb" path="res://Assets/UI/trash-can-outline.png" id="2_j5f3m"]
 
 [node name="ActionEntryContainer" type="HBoxContainer"]
 offset_right = 40.0
@@ -11,14 +12,15 @@ script = ExtResource("1_ghiat")
 [node name="TicksButton" type="Button" parent="."]
 layout_mode = 2
 size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.5
 text = "1"
 
 [node name="ActionName" type="Label" parent="."]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Move left"
+horizontal_alignment = 1
 
 [node name="RemoveButton" type="Button" parent="."]
 layout_mode = 2
-size_flags_horizontal = 3
-text = "🗑"
+icon = ExtResource("2_j5f3m")

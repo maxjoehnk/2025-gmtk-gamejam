@@ -1,15 +1,15 @@
 [gd_scene load_steps=8 format=4 uid="uid://bn85lh2ese3wu"]
 
-[ext_resource type="Script" uid="uid://4iy48t6sf73e" path="res://Scripts/Core/Map.cs" id="1_ps6jo"]
-[ext_resource type="TileSet" uid="uid://pafbad4mjfhn" path="res://Assets/LevelTiles/LevelTiles.tres" id="2_mrvml"]
-[ext_resource type="PackedScene" uid="uid://duv31n7g217aj" path="res://Scenes/Objects/Spawn.tscn" id="3_cx8ws"]
-[ext_resource type="PackedScene" uid="uid://de2n83qnroben" path="res://Scenes/Objects/LevelGoal.tscn" id="4_gglp4"]
-[ext_resource type="PackedScene" uid="uid://b3or5ap3niioe" path="res://Scenes/Objects/Switch.tscn" id="5_etya4"]
-[ext_resource type="PackedScene" uid="uid://bn2at2q8vviht" path="res://Scenes/Objects/Spikes.tscn" id="6_1oyub"]
-[ext_resource type="PackedScene" uid="uid://dfenwo0b7hx7c" path="res://Scenes/Game.tscn" id="7_qmrpf"]
+[ext_resource type="Script" uid="uid://4iy48t6sf73e" path="res://Scripts/Core/Map.cs" id="1_enmda"]
+[ext_resource type="TileSet" uid="uid://pafbad4mjfhn" path="res://Assets/LevelTiles/LevelTiles.tres" id="2_2uskr"]
+[ext_resource type="PackedScene" uid="uid://duv31n7g217aj" path="res://Scenes/Objects/Spawn.tscn" id="3_6ukv0"]
+[ext_resource type="PackedScene" uid="uid://de2n83qnroben" path="res://Scenes/Objects/LevelGoal.tscn" id="4_jljf7"]
+[ext_resource type="PackedScene" uid="uid://b3or5ap3niioe" path="res://Scenes/Objects/Switch.tscn" id="5_j61kf"]
+[ext_resource type="PackedScene" uid="uid://bn2at2q8vviht" path="res://Scenes/Objects/Spikes.tscn" id="6_pxf1f"]
+[ext_resource type="PackedScene" uid="uid://dfenwo0b7hx7c" path="res://Scenes/Game.tscn" id="7_i1kot"]
 
 [node name="Switch Maze" type="Node2D"]
-script = ExtResource("1_ps6jo")
+script = ExtResource("1_enmda")
 GoldMedalTicks = 42
 SilverMedalTicks = 45
 BronzeMedalTicks = 50
@@ -18,36 +18,36 @@ metadata/_edit_lock_ = true
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
 position = Vector2(384, 257)
 tile_map_data = PackedByteArray("AAALAAYAAQAAAAYAAGAKAAYAAQABAAYAADAJAAYAAQABAAYAADAIAAYAAQABAAYAADAHAAYAAQABAAYAADD+/wYAAQABAAEAAAD9/wYAAQACAAEAADALAAIAAQABAAYAAFALAAMAAQABAAYAAFALAAQAAQABAAYAAFAGAAYAAQABAAYAADAFAAYAAQABAAYAADAEAAYAAQABAAYAADADAAYAAQABAAYAADACAAYAAAAGAAAAAAABAAYAAgABAAIAAAAAAAYAAQABAAEAAAD//wYAAQABAAEAAAD9/wUAAQABAAEAAFD9/wMAAQABAAEAAFD9/wIAAQABAAEAAFD9/wEAAQABAAEAAFD9/wAAAQABAAEAAFD9////AQABAAEAAFD9//7/AQACAAEAAGD+//7/AQABAAEAADD///7/AQABAAEAADAAAP7/AQABAAEAADABAP7/AgABAAIAAAACAP7/AAAGAAAAAAADAP7/AQABAAYAAAAEAP7/AQABAAYAAAAFAP7/AQABAAYAAAAGAP7/AQABAAYAAAAHAP7/AQABAAYAAAAIAP7/AQABAAYAAAAJAP7/AQABAAYAAAAKAP7/AQABAAYAAAALAP7/AQAAAAYAADALAAAAAQABAAYAAFALAAEAAQABAAYAAFD9/wQAAQABAAEAAFALAAUAAQABAAYAAFABAP//AgABAAEAAAAAAP//AAACAAUAAAD/////AQAAAAMAAAD+////AAACAAUAAAD+/wAAAAACAAUAAAD+/wEAAAACAAUAAAD//wEAAQAAAAMAAAD//wAAAQAAAAMAAAAAAAAAAAACAAUAAAABAAAAAgABAAEAAAABAAEAAgABAAEAAAAAAAEAAAACAAUAAAD//wIAAQAAAAMAAAD+/wIAAQAAAAMAAAAAAAIAAQAAAAMAAAABAAIAAQAAAAMAAAABAAMAAgABAAEAAAAAAAMAAAACAAUAAAD//wMAAQAAAAMAAAABAAQAAgABAAEAAAABAAUAAgABAAEAAAAAAAUAAAACAAUAAAD//wUAAQAAAAMAAAD+/wUAAAACAAUAAAD+/wQAAAACAAUAAAD+/wMAAAACAAUAAAD//wQAAQAAAAMAAAAAAAQAAAACAAUAAAACAP//AAAGAAAAAAACAAAAAAAGAAAAAAACAAEAAAAGAAAAAAACAAIAAgAJAAsAAAACAAMAAAAGAAAAAAACAAQAAAAGAAAAAAACAAUAAAAGAAAAAAADAP//AQAJAAAAABAEAAAAAAAGAAAAAAAFAAEAAQADAAMAABAGAAEAAQABAAMAAFAHAAIAAQADAAMAACAHAAMAAQAEAAMAAAAJAAQAAQADAAMAABAKAAQAAQADAAMAAAAKAAUAAQAEAAMAAAAKAAMAAQAJAAAAAAAKAAIAAAAGAAAAAAAKAP//AQAJAAAAAAAJAP//AQAGAAMAAAAIAP//AQAGAAMAAAAHAP//AQAGAAMAAAAGAP//AQAGAAMAAAAFAP//AQAJAAMAACADAAAAAQAIAAMAAAADAAEAAAAGAAAAAAADAAIAAQAJAAMAACADAAMAAQADAAMAADADAAQAAQAGAAMAAFADAAUAAQAEAAMAABAEAAUAAQAGAAMAADAJAAUAAgATAAsAABAJAAMAAQAEAAMAADAJAAIAAAAGAAAAAAAJAAEAAQAGAAMAAAAJAAAAAAAGAAAAAAAIAAAAAAAGAAAAAAAHAAAAAAAGAAAAAAAGAAAAAAAGAAAAAAAFAAAAAQAHAAMAAAAEAAEAAAAGAAAAAAAEAAIAAQAJAAMAACAEAAMAAQAJAAMAAAAEAAQAAAAGAAAAAAAFAAMAAQAJAAMAAAAFAAQAAAAGAAAAAAAGAAQAAAAGAAAAAAAGAAMAAQAJAAMAAAAIAAIAAAAGAAAAAAAIAAEAAQAGAAMAAAAHAAEAAgATAAsAACAFAAIAAgASAAsAABALAP//AQABAAYAAFAEAP//AQAGAAMAAAAGAAIAAQABAAMAAFAHAAQAAAAGAAAAAAAIAAMAAAAGAAAAAAAIAAQAAAAGAAAAAAAKAAAAAQAHAAMAAAAKAAEAAQAEAAMAAAAIAAUAAQAGAAMAADAHAAUAAQAGAAMAADAGAAUAAQAGAAMAADAFAAUAAQAGAAMAADA=")
-tile_set = ExtResource("2_mrvml")
+tile_set = ExtResource("2_2uskr")
 metadata/_edit_lock_ = true
 
-[node name="Spawn" parent="TileMapLayer" instance=ExtResource("3_cx8ws")]
+[node name="Spawn" parent="TileMapLayer" instance=ExtResource("3_6ukv0")]
 position = Vector2(64, 191)
 
-[node name="LevelGoal" parent="TileMapLayer" instance=ExtResource("4_gglp4")]
+[node name="LevelGoal" parent="TileMapLayer" instance=ExtResource("4_jljf7")]
 position = Vector2(1344, 703)
 ExitStyle = 2
 
-[node name="Switch 1" parent="TileMapLayer" instance=ExtResource("5_etya4")]
+[node name="Switch 1" parent="TileMapLayer" instance=ExtResource("5_j61kf")]
 position = Vector2(448, 63)
 Targets = Array[NodePath]([NodePath("../Spikes 1"), NodePath("../Spikes 2"), NodePath("../Spikes 3")])
 
-[node name="Spikes 1" parent="TileMapLayer" instance=ExtResource("6_1oyub")]
+[node name="Spikes 1" parent="TileMapLayer" instance=ExtResource("6_pxf1f")]
 position = Vector2(704, 63)
 IsActive = false
 
-[node name="Spikes 2" parent="TileMapLayer" instance=ExtResource("6_1oyub")]
+[node name="Spikes 2" parent="TileMapLayer" instance=ExtResource("6_pxf1f")]
 position = Vector2(832, 447)
 
-[node name="Spikes 3" parent="TileMapLayer" instance=ExtResource("6_1oyub")]
+[node name="Spikes 3" parent="TileMapLayer" instance=ExtResource("6_pxf1f")]
 position = Vector2(832, 703)
 
-[node name="Switch 2" parent="TileMapLayer" instance=ExtResource("5_etya4")]
+[node name="Switch 2" parent="TileMapLayer" instance=ExtResource("5_j61kf")]
 position = Vector2(320, 319)
 Targets = Array[NodePath]([NodePath("../Spikes 4")])
 
-[node name="Spikes 4" parent="TileMapLayer" instance=ExtResource("6_1oyub")]
+[node name="Spikes 4" parent="TileMapLayer" instance=ExtResource("6_pxf1f")]
 position = Vector2(448, 575)
 
-[node name="Game" parent="." instance=ExtResource("7_qmrpf")]
+[node name="Game" parent="." instance=ExtResource("7_i1kot")]
 metadata/_edit_lock_ = true

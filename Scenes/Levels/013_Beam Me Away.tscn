@@ -1,0 +1,38 @@
+[gd_scene load_steps=8 format=4 uid="uid://cqw4r6f4ricrx"]
+
+[ext_resource type="Script" uid="uid://4iy48t6sf73e" path="res://Scripts/Core/Map.cs" id="1_l1dpi"]
+[ext_resource type="TileSet" uid="uid://pafbad4mjfhn" path="res://Assets/LevelTiles/LevelTiles.tres" id="2_k3hmx"]
+[ext_resource type="PackedScene" uid="uid://duv31n7g217aj" path="res://Scenes/Objects/Spawn.tscn" id="3_yco5b"]
+[ext_resource type="PackedScene" uid="uid://de2n83qnroben" path="res://Scenes/Objects/LevelGoal.tscn" id="4_cg1ku"]
+[ext_resource type="PackedScene" uid="uid://chqid36enis25" path="res://Scenes/Objects/TeleporterEntry.tscn" id="5_bgqw5"]
+[ext_resource type="PackedScene" uid="uid://buwr0s3xt504s" path="res://Scenes/Objects/TeleporterExit.tscn" id="6_nccic"]
+[ext_resource type="PackedScene" uid="uid://dfenwo0b7hx7c" path="res://Scenes/Game.tscn" id="7_01yg3"]
+
+[node name="Beam Me Away" type="Node2D"]
+script = ExtResource("1_l1dpi")
+GoldMedalTicks = 3
+SilverMedalTicks = 4
+BronzeMedalTicks = 5
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+position = Vector2(384, 128)
+rotation = 0.000775114
+tile_map_data = PackedByteArray("AAABAAIAAgAAAAYAAAACAAIAAgAAAAYAAAAFAAIAAgAAAAYAAAAGAAIAAgAAAAYAAAAAAAIAAgAAABMAAAAEAAIAAgAAABMAAAAHAAIAAgAAABMAADADAAIAAgAAABMAADABAAMAAgAAABMAAGACAAMAAgAAABMAAGAFAAMAAgAAABMAAGAGAAMAAgAAABMAAGAFAAEAAgAAABMAAFAGAAEAAgAAABMAAFACAAEAAgAAABMAAFABAAEAAgAAABMAAFAAAAMAAgACABMAAAAEAAMAAgACABMAAAAAAAEAAgACABMAAFAEAAEAAgACABMAAFADAAEAAgACABMAADAHAAEAAgACABMAADADAAMAAgACABMAAGAHAAMAAgACABMAAGA=")
+tile_set = ExtResource("2_k3hmx")
+
+[node name="Spawn" parent="TileMapLayer" instance=ExtResource("3_yco5b")]
+position = Vector2(192.248, 319.851)
+
+[node name="LevelGoal" parent="TileMapLayer" instance=ExtResource("4_cg1ku")]
+position = Vector2(833.249, 321.354)
+
+[node name="TeleporterEntry" parent="TileMapLayer" instance=ExtResource("5_bgqw5")]
+position = Vector2(320.248, 319.752)
+Target = NodePath("../TeleporterExit")
+
+[node name="TeleporterExit" parent="TileMapLayer" instance=ExtResource("6_nccic")]
+position = Vector2(704.248, 319.454)
+
+[node name="Game" parent="." instance=ExtResource("7_01yg3")]
+position = Vector2(0, -3.05176e-05)
+rotation = 0.000775114

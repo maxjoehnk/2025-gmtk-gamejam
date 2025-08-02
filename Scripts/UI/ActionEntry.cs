@@ -1,3 +1,4 @@
+using System.Security.Cryptography.X509Certificates;
 using Godot;
 using gmtkgamejam.Core;
 
@@ -39,9 +40,25 @@ public partial class ActionEntry : HBoxContainer
 		deleteButton.Pressed += this.QueueFree;
 	}
 
+	public float Progress = 0.0f;
+
+	public override void _Draw()
+	{
+		var fillColor = new Color(255, 255, 255, 1f);
+		var fillWidth = Size.X * Progress;
+
+		DrawRect(new Rect2(Vector2.Zero, new Vector2(fillWidth, Size.Y)), fillColor);
+	}
+
+	public void SetProgress(float progress)
+	{
+		Progress = Mathf.Clamp(progress, 0f, 1f);
+		QueueRedraw();
+	}
+
 	public void UpdateTickDisplay()
 	{
-		GetNode<Button>("TicksButton").Text = Action.Ticks.ToString();
+        GetNode<Button>("TicksButton").Text = Action.Ticks.ToString();
 	}
 
 	public override Variant _GetDragData(Vector2 position)

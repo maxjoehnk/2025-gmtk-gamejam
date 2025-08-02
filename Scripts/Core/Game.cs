@@ -10,9 +10,9 @@ public partial class Game : Node2D
 
 	public WinOverlay WinOverlay => this.GetNode<WinOverlay>("WinOverlay");
 	public CaughtOverlay CaughtOverlay => this.GetNode<CaughtOverlay>("CaughtOverlay");
-    public PauseMenuOverlay PauseMenuOverlay => this.GetNode<PauseMenuOverlay>("PauseMenuOverlay");
+	public PauseMenuOverlay PauseMenuOverlay => this.GetNode<PauseMenuOverlay>("PauseMenuOverlay");
 
-    private HSlider SpeedSlider => this.GetNode<HSlider>("VBoxContainer/SpeedSliderToolbar/HSlider");
+	private HSlider SpeedSlider => this.GetNode<HSlider>("VBoxContainer/SpeedSliderToolbar/HSlider");
 
 	private CharacterBody2D PreviewIndicator => this.GetNode<CharacterBody2D>("PreviewIndicator");
 
@@ -33,12 +33,12 @@ public partial class Game : Node2D
 
 	public override void _UnhandledInput(InputEvent @event)
 	{
-        if (Input.IsActionJustPressed("OpenMenu"))
-        {
-            OnPausePressed();
-        }
+		if (Input.IsActionJustPressed("OpenMenu"))
+		{
+			OnPausePressed();
+		}
 
-        if (Input.IsActionJustPressed("Play"))
+		if (Input.IsActionJustPressed("Play"))
 		{
 			OnPlayPressed();
 		}
@@ -53,12 +53,12 @@ public partial class Game : Node2D
 	{
 		this.UpdateIndicatorPosition();
 	}
-    public void OnPausePressed()
-    {
-        this.PauseMenuOverlay.Open();
-    }
+	public void OnPausePressed()
+	{
+		this.PauseMenuOverlay.Open();
+	}
 
-    public void OnPlayPressed()
+	public void OnPlayPressed()
 	{
 		GD.Print("Play");
 		this.OnResetPressed();

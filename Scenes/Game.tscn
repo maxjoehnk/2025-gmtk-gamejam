@@ -5,13 +5,13 @@
 [ext_resource type="Script" uid="uid://5ph7310ke57h" path="res://Scripts/Core/PlaybackToolbar.cs" id="4_2irst"]
 [ext_resource type="Texture2D" uid="uid://y60sgqd2agpy" path="res://Assets/UI/Play.png" id="4_7lihs"]
 [ext_resource type="PackedScene" uid="uid://btwydqx0wjbnl" path="res://Scenes/UI/ActionMenu/ActionPane.tscn" id="4_bf53h"]
-[ext_resource type="PackedScene" uid="uid://em2i5qm0uo2f" path="res://Scenes/player.tscn" id="6_fgofq"]
+[ext_resource type="PackedScene" uid="uid://le1oloc0doa3" path="res://Scenes/player.tscn" id="6_fgofq"]
 [ext_resource type="Script" uid="uid://517q0xvo800u" path="res://Scripts/UI/SpeedSliderToolbar.cs" id="7_bf53h"]
 [ext_resource type="Texture2D" uid="uid://dnvbd84sbx1mi" path="res://Assets/UI/Loop.png" id="7_dahhg"]
 [ext_resource type="Texture2D" uid="uid://7se5awuc20ed" path="res://Assets/PreviewIndicator_Purple.png" id="8_2irst"]
 [ext_resource type="PackedScene" uid="uid://byoae28watimk" path="res://Scenes/UI/WinOverlay.tscn" id="9_71axn"]
-[ext_resource type="PackedScene" uid="uid://mmvbe8ep3rft" path="res://Scenes/UI/PauseMenuOverlay.tscn" id="11_3cx6b"]
-[ext_resource type="PackedScene" uid="uid://d0s6lvw4rkhrx" path="res://Scenes/UI/CaughtOverlay.tscn" id="11_3so38"]
+[ext_resource type="PackedScene" path="res://Scenes/UI/PauseMenuOverlay.tscn" id="11_3cx6b"]
+[ext_resource type="PackedScene" path="res://Scenes/UI/CaughtOverlay.tscn" id="11_3so38"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_fgofq"]
 font_size = 48

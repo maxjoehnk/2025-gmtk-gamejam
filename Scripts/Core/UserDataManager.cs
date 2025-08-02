@@ -15,6 +15,10 @@ public partial class UserDataManager : GodotObject
 	
 	public static int? LoadFinishedLevel()
 	{
+		if (!FileAccess.FileExists("user://user_data.tres"))
+		{
+			return null;
+		}
 		PlayState? playState = ResourceLoader.Load<PlayState>("user://user_data.tres");
 		if (playState == null)
 		{

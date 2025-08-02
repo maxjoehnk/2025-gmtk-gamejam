@@ -22,6 +22,8 @@ public partial class LevelManager : Node
 	public override void _Ready()
 	{
 		Instance = this;
+		GD.Print(OS.GetDataDir());
+		GD.Print(OS.GetUserDataDir());
 		Viewport root = this.GetTree().Root;
 		this.CurrentScene = root.GetChild(-1);
 		this.Levels = GetAvailableLevels();

@@ -7,14 +7,15 @@
 [node name="StaticCamera" type="Node2D" groups=["Enemies", "Resettable"]]
 script = ExtResource("1_uw5n7")
 
+[node name="Camera" type="Sprite2D" parent="."]
+position = Vector2(12, 1)
+rotation = 1.92041
+texture = ExtResource("1_cucrf")
+
 [node name="CameraArea" type="Sprite2D" parent="."]
 position = Vector2(93, 3)
 rotation = 1.5708
 texture = ExtResource("1_oploe")
-
-[node name="Camera" type="Sprite2D" parent="."]
-rotation = 1.5708
-texture = ExtResource("1_cucrf")
 
 [node name="Area2D" type="Area2D" parent="."]
 collision_layer = 0

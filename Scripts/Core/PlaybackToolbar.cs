@@ -12,7 +12,7 @@ public partial class PlaybackToolbar : HBoxContainer, IClocked
 
 	public void OnTick(int tick)
 	{
-		this.TickLabel.Text = "Tick: " + tick;
+		this.TickLabel.Text = tick.ToString();
 	}
 
 	public void SetSpeed(float speed)

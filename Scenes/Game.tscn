@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=3 uid="uid://dfenwo0b7hx7c"]
+[gd_scene load_steps=43 format=3 uid="uid://dfenwo0b7hx7c"]
 
 [ext_resource type="Script" uid="uid://bt83g2edvayok" path="res://Scripts/Core/Game.cs" id="1_iukft"]
 [ext_resource type="Script" uid="uid://bwnt1gtf5se81" path="res://Scripts/Core/View.cs" id="3_3so38"]
@@ -8,10 +8,11 @@
 [ext_resource type="PackedScene" uid="uid://em2i5qm0uo2f" path="res://Scenes/player.tscn" id="6_fgofq"]
 [ext_resource type="Texture2D" uid="uid://c1av2ffcbykko" path="res://Assets/UI/LoopBtn.png" id="7_4q8tf"]
 [ext_resource type="Texture2D" uid="uid://cn6pabyw0cwl4" path="res://Assets/UI/LoopBtnAtlas.tres" id="7_alh3a"]
+[ext_resource type="FontFile" uid="uid://33kgkoivemgd" path="res://Assets/Fonts/SevenSegment.ttf" id="9_4q8tf"]
 [ext_resource type="Texture2D" uid="uid://hkyt58j73xtr" path="res://Assets/UI/PlayBtn.png" id="9_8r6kd"]
 [ext_resource type="PackedScene" uid="uid://byoae28watimk" path="res://Scenes/UI/WinOverlay.tscn" id="9_71axn"]
 [ext_resource type="Texture2D" uid="uid://un4vs8yc3j8l" path="res://Assets/UI/ForwardBtn.png" id="10_x3xnh"]
-[ext_resource type="PackedScene" uid="uid://mmvbe8ep3rft" path="res://Scenes/UI/PauseMenuOverlay.tscn" id="11_3cx6b"]
+[ext_resource type="PackedScene" path="res://Scenes/UI/PauseMenuOverlay.tscn" id="11_3cx6b"]
 [ext_resource type="PackedScene" uid="uid://d0s6lvw4rkhrx" path="res://Scenes/UI/CaughtOverlay.tscn" id="11_3so38"]
 [ext_resource type="Texture2D" uid="uid://cwn0m31suw2kd" path="res://Assets/UI/FastForwardBtn.png" id="11_x3xnh"]
 [ext_resource type="Texture2D" uid="uid://b0rnh7cjht5dy" path="res://Assets/PreviewIndicator.png" id="13_3cx6b"]
@@ -62,7 +63,9 @@ atlas = ExtResource("7_4q8tf")
 region = Rect2(256, 0, 128, 128)
 
 [sub_resource type="LabelSettings" id="LabelSettings_fgofq"]
+font = ExtResource("9_4q8tf")
 font_size = 48
+font_color = Color(0, 1, 0.18913, 1)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_rajel"]
 atlas = ExtResource("9_8r6kd")
@@ -167,7 +170,7 @@ texture_disabled = ExtResource("7_alh3a")
 
 [node name="Label" type="Label" parent="View/VBoxContainer/PlaybackToolbar"]
 layout_mode = 2
-text = "Tick: 0"
+text = "0"
 label_settings = SubResource("LabelSettings_fgofq")
 
 [node name="Speed" type="HBoxContainer" parent="View/VBoxContainer/PlaybackToolbar"]
@@ -245,13 +248,9 @@ collision_mask = 16
 hit_from_inside = true
 collide_with_areas = true
 
-[connection signal="PlayerLost" from="Player" to="." method="OnPlayerLost"]
 [connection signal="pressed" from="View/VBoxContainer/PlaybackToolbar/Reset" to="." method="OnResetPressed"]
 [connection signal="pressed" from="View/VBoxContainer/PlaybackToolbar/Play" to="." method="OnPlayPressed"]
 [connection signal="button_down" from="View/VBoxContainer/PlaybackToolbar/LoopPreview" to="." method="OnLoopPressed"]
 [connection signal="button_up" from="View/VBoxContainer/PlaybackToolbar/LoopPreview" to="." method="OnLoopReleased"]
-[connection signal="pressed" from="View/VBoxContainer/PlaybackToolbar/Speed/SpeedNormal" to="." method="OnSetSpeed" binds= [1.0]]
-[connection signal="pressed" from="View/VBoxContainer/PlaybackToolbar/Speed/SpeedFast" to="." method="OnSetSpeed" binds= [4.0]]
-[connection signal="pressed" from="View/VBoxContainer/PlaybackToolbar/Speed/SpeedFastest" to="." method="OnSetSpeed" binds= [8.0]]
 [connection signal="RestartLevel" from="View/WinOverlay" to="." method="OnResetPressed"]
 [connection signal="RestartLevel" from="View/CaughtOverlay" to="." method="OnResetPressed"]

@@ -38,6 +38,15 @@ public partial class Guard : PathFollow2D, IClocked
 		}
 	}
 
+	public void OnHitPlayer(Node2D player)
+	{
+		GD.Print($"Hit object {player} ({player.Name})");
+		if (player is Player)
+		{
+			this.EmitSignalCatchedPlayer();
+		}
+	}
+
 	public override void _Process(double delta)
 	{
 		this.currentSubTime += delta;

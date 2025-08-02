@@ -29,7 +29,10 @@ public partial class LevelManager : Node
 	private static List<AvailableLevel> GetAvailableLevels()
 	{
 		List<AvailableLevel> levels = ResourceLoader.ListDirectory("res://Scenes/Levels")
-			.Where(name => name.EndsWith(".tscn")).Select(file => new AvailableLevel(file)).ToList();
+			.Where(name => name.EndsWith(".tscn"))
+			.Select((file, index) => new AvailableLevel(file, index))
+			.OrderBy(level => level.LevelIndex)
+			.ToList();
 
 		return levels;
 	}

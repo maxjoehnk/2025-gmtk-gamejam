@@ -51,7 +51,7 @@ public partial class Game : Node2D
 
 	public override void _Process(double delta)
 	{
-		this.OnActionsUpdated();
+		this.UpdateIndicatorPosition();
 	}
     public void OnPausePressed()
     {
@@ -104,25 +104,25 @@ public partial class Game : Node2D
 		}
 	}
 
-	public void OnActionsUpdated()
+	private void UpdateIndicatorPosition()
 	{
 		Vector2 position = this.SpawnPosition;
-		this.PreviewIndicator.GlobalPosition = position;
 		foreach (Action action in this.ActionPane.Actions)
 		{
 			for (int i = 0; i < action.Ticks; i++)
 			{
+				this.PreviewIndicator.GlobalPosition = position;
 				Vector2 nextPosition = action.Preview(position);
 				Vector2 positionDiff = nextPosition - position;
 
 				KinematicCollision2D? collision2D = this.PreviewIndicator.MoveAndCollide(positionDiff, testOnly: true);
 				if (collision2D == null)
 				{
-					this.PreviewIndicator.MoveAndCollide(positionDiff);
-					position = this.PreviewIndicator.GlobalPosition;
+					position += positionDiff;
 				}
 			}
 		}
+		this.PreviewIndicator.GlobalPosition = position;
 	}
 
 	public void OnActionsFinished()

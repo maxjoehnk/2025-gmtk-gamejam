@@ -9,7 +9,10 @@ public partial class Enemy : Node2D
 	
 	public void OnHitPlayer(Node2D player)
 	{
-		GD.Print($"Camera Hit player {player} ({player.Name})");
-		this.EmitSignalCatchedPlayer();
+		GD.Print($"Hit object {player} ({player.Name})");
+		if (player is Player)
+		{
+			this.EmitSignalCatchedPlayer();
+		}
 	}
 }

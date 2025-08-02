@@ -67,7 +67,6 @@ position = Vector2(128, 448)
 [node name="StaticCamera2" parent="TileMapLayer/TickSwitcher2" instance=ExtResource("5_e5vy3")]
 position = Vector2(293, 742)
 rotation = 2.3845
-scale = Vector2(1, 1)
 
 [node name="StaticCamera3" parent="TileMapLayer/TickSwitcher2" instance=ExtResource("5_e5vy3")]
 position = Vector2(576, 704)

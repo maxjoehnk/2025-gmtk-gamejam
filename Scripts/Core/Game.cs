@@ -145,7 +145,7 @@ public partial class Game : Node2D
 		this.Player.RotationDegrees = 0;
 	}
 
-	public void OnPlayerWon(string name, int goldMedalTicks, int silverMedalTicks, int bronzeMedalTicks)
+	public void OnPlayerWon(int goldMedalTicks, int silverMedalTicks, int bronzeMedalTicks)
 	{
 		// We've lost in the same move were we've reached the goal so we actually lost
 		if (this.CaughtOverlay.IsVisible())
@@ -157,16 +157,16 @@ public partial class Game : Node2D
 		bool hasGoldMedal = goldMedalTicks >= currentTick;
 		bool hasSilverMedal = silverMedalTicks >= currentTick;
 		bool hasBronzeMedal = bronzeMedalTicks >= currentTick;
-		this.WinOverlay.Open(name, currentTick, hasGoldMedal, hasSilverMedal, hasBronzeMedal);
+		this.WinOverlay.Open(currentTick, hasGoldMedal, hasSilverMedal, hasBronzeMedal);
 		this.WinOverlay.Show();
 		ActionPlayer.Instance.Stop();
 		this.CurrentGameState = GameState.Stop;
 		LevelManager.Instance.LevelFinished(currentTick, hasGoldMedal, hasSilverMedal, hasBronzeMedal);
 	}
 
-	public void OnPlayerLost(string name)
+	public void OnPlayerLost()
 	{
-		this.CaughtOverlay.Open(name);
+		this.CaughtOverlay.Open();
 		ActionPlayer.Instance.Stop();
 		this.CurrentGameState = GameState.Stop;
 	}

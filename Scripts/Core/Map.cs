@@ -49,7 +49,7 @@ public partial class Map : Node
 		}
 
 		GD.Print("Player caught");
-		this.Game.OnPlayerLost(this.Name);
+		this.Game.OnPlayerLost();
 	}
 
 	public void OnPlayerWon()
@@ -60,6 +60,6 @@ public partial class Map : Node
 			return;
 		}
 
-		this.Game.OnPlayerWon(this.Name, this.GoldMedalTicks, this.SilverMedalTicks, this.BronzeMedalTicks);
+		this.Game.OnPlayerWon(this.GoldMedalTicks, this.SilverMedalTicks, this.BronzeMedalTicks);
 	}
 }

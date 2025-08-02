@@ -16,9 +16,9 @@ public partial class WinOverlay : Control
 	[Signal]
 	public delegate void RestartLevelEventHandler();
 
-	public void Open(string name, int tickCount, bool hasGoldMedal, bool hasSilverMedal, bool hasBronzeMedal)
+	public void Open(int tickCount, bool hasGoldMedal, bool hasSilverMedal, bool hasBronzeMedal)
 	{
-		this.Title.Text = name;
+		this.Title.Text = LevelManager.Instance.CurrentLevel?.Name;
 		this.Ticks.Text = $"{tickCount} Ticks";
 		this.GoldMedalIndicator.Visible = hasGoldMedal;
 		this.SilverMedalIndicator.Visible = hasSilverMedal;

@@ -9,9 +9,9 @@ public partial class CaughtOverlay : Control
 	[Signal]
 	public delegate void RestartLevelEventHandler();
 
-	public void Open(string name)
+	public void Open()
 	{
-		this.Title.Text = name;
+		this.Title.Text = LevelManager.Instance.CurrentLevel?.Name;
 		this.Show();
 	}
 

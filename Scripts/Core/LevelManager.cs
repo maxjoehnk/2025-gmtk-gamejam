@@ -13,6 +13,9 @@ public partial class LevelManager : Node
 
 	private int? lastFinishedLevelIndex;
 	private int? currentLevelIndex;
+	
+	public AvailableLevel? CurrentLevel => 
+		this.currentLevelIndex == null ? null : this.Levels[this.currentLevelIndex.Value];
 
 	public List<AvailableLevel> Levels { get; private set; } = [];
 

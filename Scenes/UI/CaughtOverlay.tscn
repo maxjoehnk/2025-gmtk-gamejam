@@ -1,8 +1,6 @@
-[gd_scene load_steps=7 format=3 uid="uid://d0s6lvw4rkhrx"]
+[gd_scene load_steps=5 format=3 uid="uid://d0s6lvw4rkhrx"]
 
 [ext_resource type="Script" uid="uid://taf77w6uir2e" path="res://Scripts/UI/CaughtOverlay.cs" id="1_xlb82"]
-[ext_resource type="Texture2D" uid="uid://ckf8qye1ofhx5" path="res://Assets/UI/chevron-left.png" id="5_0g1os"]
-[ext_resource type="Texture2D" uid="uid://n2ebmi70amox" path="res://Assets/UI/chevron-right.png" id="6_cm3h6"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6thne"]
 bg_color = Color(0, 0.38, 0.57, 1)
@@ -100,6 +98,14 @@ vertical_alignment = 1
 layout_mode = 2
 size_flags_vertical = 3
 
+[node name="Restart" type="Button" parent="Dialog/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 20
+text = "Restart"
+icon_alignment = 2
+
 [node name="HBoxContainer" type="HBoxContainer" parent="Dialog/MarginContainer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 48)
 layout_mode = 2
@@ -110,17 +116,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 20
 text = "Exit"
-icon = ExtResource("5_0g1os")
 expand_icon = true
 
-[node name="Restart" type="Button" parent="Dialog/MarginContainer/VBoxContainer/HBoxContainer"]
-custom_minimum_size = Vector2(0, 40)
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_font_sizes/font_size = 20
-text = "Restart"
-icon = ExtResource("6_cm3h6")
-icon_alignment = 2
-
+[connection signal="pressed" from="Dialog/MarginContainer/VBoxContainer/Restart" to="." method="OnRestartPressed"]
 [connection signal="pressed" from="Dialog/MarginContainer/VBoxContainer/HBoxContainer/Exit" to="." method="OnExitPressed"]
-[connection signal="pressed" from="Dialog/MarginContainer/VBoxContainer/HBoxContainer/Restart" to="." method="OnRestartPressed"]

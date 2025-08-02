@@ -12,7 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://hkyt58j73xtr" path="res://Assets/UI/PlayBtn.png" id="9_8r6kd"]
 [ext_resource type="PackedScene" uid="uid://byoae28watimk" path="res://Scenes/UI/WinOverlay.tscn" id="9_71axn"]
 [ext_resource type="Texture2D" uid="uid://un4vs8yc3j8l" path="res://Assets/UI/ForwardBtn.png" id="10_x3xnh"]
-[ext_resource type="PackedScene" path="res://Scenes/UI/PauseMenuOverlay.tscn" id="11_3cx6b"]
+[ext_resource type="PackedScene" uid="uid://bdmurjuyic38x" path="res://Scenes/UI/PauseMenuOverlay.tscn" id="11_3cx6b"]
 [ext_resource type="PackedScene" uid="uid://d0s6lvw4rkhrx" path="res://Scenes/UI/CaughtOverlay.tscn" id="11_3so38"]
 [ext_resource type="Texture2D" uid="uid://cwn0m31suw2kd" path="res://Assets/UI/FastForwardBtn.png" id="11_x3xnh"]
 [ext_resource type="Texture2D" uid="uid://b0rnh7cjht5dy" path="res://Assets/PreviewIndicator.png" id="13_3cx6b"]
@@ -213,10 +213,6 @@ visible = false
 
 [node name="PauseMenuOverlay" parent="View" instance=ExtResource("11_3cx6b")]
 visible = false
-offset_left = 596.0
-offset_top = 192.0
-offset_right = 596.0
-offset_bottom = 192.0
 
 [node name="Canvas" type="CanvasLayer" parent="View"]
 

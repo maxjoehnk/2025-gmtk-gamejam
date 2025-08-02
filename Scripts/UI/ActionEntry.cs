@@ -3,81 +3,87 @@ using gmtkgamejam.Core;
 
 public partial class ActionEntry : HBoxContainer
 {
-	[Export]
-	public Action Action { get; set; }
+	[Export] public Action Action { get; set; }
 
 	[Signal]
 	public delegate void ActionChangedEventHandler();
 
+	private Label TitleLabel => this.GetNode<Label>("ActionName");
+	private Button DeleteButton => this.GetNode<Button>("RemoveButton");
+	private Label TicksLabel => this.GetNode<Label>("HBoxContainer/TicksButton");
+
 	public override void _Ready()
 	{
-		Label? titleLabel = this.GetNode<Label>("ActionName");
-		Button? deleteButton = this.GetNode<Button>("RemoveButton");
-		Button? tickButton = this.GetNode<Button>("TicksButton");
+		this.TitleLabel.Text = this.Action.Title;
+		this.DeleteButton.Pressed += this.QueueFree;
+	}
 
-		titleLabel.Text = this.Action.Title;
+	public void OnAddTick()
+	{
+		this.Action.Ticks++;
+		this.UpdateTicks();
+	}
 
-		tickButton.GuiInput += (InputEvent @event) =>
+	public void OnRemoveTick()
+	{
+		if (this.Action.Ticks is 1)
 		{
-			if (@event is InputEventMouseButton mouseEvent && mouseEvent.Pressed)
-			{
-				if (mouseEvent.ButtonIndex == MouseButton.Left)
-					this.Action.Ticks++;
-				else if (mouseEvent.ButtonIndex == MouseButton.Right)
-					this.Action.Ticks = System.Math.Max(0, this.Action.Ticks - 1);
+			return;
+		}
 
-				if (this.Action.Ticks is < 1)
-				{
-					this.Action.Ticks = 1;
-				}
+		this.Action.Ticks--;
+		this.UpdateTicks();
+	}
 
-				tickButton.Text = this.Action.Ticks.ToString();
-				this.EmitSignalActionChanged();
-			}
-		};
-
-		deleteButton.Pressed += this.QueueFree;
+	private void UpdateTicks()
+	{
+		this.UpdateTickDisplay();
+		this.EmitSignalActionChanged();
 	}
 
 	public void UpdateTickDisplay()
 	{
-		GetNode<Button>("TicksButton").Text = Action.Ticks.ToString();
+		this.TicksLabel.Text = this.Action.Ticks.ToString();
 	}
 
 	public override Variant _GetDragData(Vector2 position)
 	{
-		var preview = Duplicate() as Control;
-		if(preview != null)
+		if (this.Duplicate() is not Control preview)
 		{
-			preview.Modulate = new Color(1, 1, 1, 0.5f);
-			SetDragPreview(preview);
+			return this;
 		}
+
+		preview.Modulate = new Color(1, 1, 1, 0.5f);
+		this.SetDragPreview(preview);
 		return this;
 	}
 
 	public override bool _CanDropData(Vector2 atPosition, Variant data)
 	{
 		var entry = data.AsGodotObject() as ActionEntry;
-		return entry != null && entry != this && entry.GetParent() == GetParent();
+		return entry != null && entry != this && entry.GetParent() == this.GetParent();
 	}
 
 	public override void _DropData(Vector2 atPosition, Variant data)
 	{
-		var dragged = data.AsGodotObject() as ActionEntry;
-		if (dragged == null || dragged == this || dragged.GetParent() != GetParent())
+		if (data.AsGodotObject() is not ActionEntry dragged || dragged == this || dragged.GetParent() != this.GetParent())
+		{
 			return;
+		}
 
-		Node container = GetParent();
+		Node container = this.GetParent();
 		Godot.Collections.Array<Node> children = container.GetChildren();
 		int currentIndex = children.IndexOf(this);
 		int draggedIndex = children.IndexOf(dragged);
 
-		float halfHeight = Size.Y / 2.0f;
+		float halfHeight = this.Size.Y / 2.0f;
 		bool dropBelow = atPosition.Y > halfHeight;
 		int newIndex = dropBelow ? currentIndex + 1 : currentIndex;
 
 		if (draggedIndex < newIndex)
+		{
 			newIndex -= 1;
+		}
 
 		container.MoveChild(dragged, newIndex);
 	}

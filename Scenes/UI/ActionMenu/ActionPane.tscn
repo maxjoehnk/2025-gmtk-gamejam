@@ -62,10 +62,10 @@ script = ExtResource("2_bpui6")
 layout_mode = 2
 size_flags_horizontal = 4
 
-[node name="Interact" type="TextureButton" parent="HBoxContainer/MainVBox/HBoxContainer"]
+[node name="Wait" type="TextureButton" parent="HBoxContainer/MainVBox/HBoxContainer"]
 layout_mode = 2
 focus_mode = 0
-texture_normal = ExtResource("7_e5q7p")
+texture_normal = ExtResource("6_mfvu1")
 
 [node name="Left" type="TextureButton" parent="HBoxContainer/MainVBox/HBoxContainer"]
 layout_mode = 2
@@ -87,10 +87,10 @@ layout_mode = 2
 focus_mode = 0
 texture_normal = ExtResource("5_1gjh4")
 
-[node name="Wait" type="TextureButton" parent="HBoxContainer/MainVBox/HBoxContainer"]
+[node name="Interact" type="TextureButton" parent="HBoxContainer/MainVBox/HBoxContainer"]
 layout_mode = 2
 focus_mode = 0
-texture_normal = ExtResource("6_mfvu1")
+texture_normal = ExtResource("7_e5q7p")
 
 [node name="AddActionButton" type="Button" parent="HBoxContainer/MainVBox"]
 visible = false
@@ -110,10 +110,10 @@ toggle_mode = true
 icon = ExtResource("9_vdasp")
 
 [connection signal="pressed" from="HBoxContainer/MainVBox/Headline/Button" to="." method="OnDeleteButton_Click"]
-[connection signal="pressed" from="HBoxContainer/MainVBox/HBoxContainer/Interact" to="." method="OnInteractButton_Click"]
+[connection signal="pressed" from="HBoxContainer/MainVBox/HBoxContainer/Wait" to="." method="OnWaitButton_Click"]
 [connection signal="pressed" from="HBoxContainer/MainVBox/HBoxContainer/Left" to="." method="OnLeftButton_Click"]
 [connection signal="pressed" from="HBoxContainer/MainVBox/HBoxContainer/Up" to="." method="OnUpButton_Click"]
 [connection signal="pressed" from="HBoxContainer/MainVBox/HBoxContainer/Down" to="." method="OnDownButton_Click"]
 [connection signal="pressed" from="HBoxContainer/MainVBox/HBoxContainer/Right" to="." method="OnRightButton_Click"]
-[connection signal="pressed" from="HBoxContainer/MainVBox/HBoxContainer/Wait" to="." method="OnWaitButton_Click"]
+[connection signal="pressed" from="HBoxContainer/MainVBox/HBoxContainer/Interact" to="." method="OnInteractButton_Click"]
 [connection signal="toggled" from="HBoxContainer/CollapseButton" to="." method="OnCollapseButton_Click"]

@@ -23,4 +23,5 @@ horizontal_alignment = 1
 
 [node name="RemoveButton" type="Button" parent="."]
 layout_mode = 2
+focus_mode = 0
 icon = ExtResource("2_j5f3m")

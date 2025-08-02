@@ -64,32 +64,39 @@ size_flags_horizontal = 4
 
 [node name="Interact" type="TextureButton" parent="HBoxContainer/MainVBox/HBoxContainer"]
 layout_mode = 2
+focus_mode = 0
 texture_normal = ExtResource("7_e5q7p")
 
 [node name="Left" type="TextureButton" parent="HBoxContainer/MainVBox/HBoxContainer"]
 layout_mode = 2
+focus_mode = 0
 texture_normal = ExtResource("2_mc8op")
 
 [node name="Up" type="TextureButton" parent="HBoxContainer/MainVBox/HBoxContainer"]
 layout_mode = 2
+focus_mode = 0
 texture_normal = ExtResource("3_bpui6")
 
 [node name="Down" type="TextureButton" parent="HBoxContainer/MainVBox/HBoxContainer"]
 layout_mode = 2
+focus_mode = 0
 texture_normal = ExtResource("4_vdasp")
 
 [node name="Right" type="TextureButton" parent="HBoxContainer/MainVBox/HBoxContainer"]
 layout_mode = 2
+focus_mode = 0
 texture_normal = ExtResource("5_1gjh4")
 
 [node name="Wait" type="TextureButton" parent="HBoxContainer/MainVBox/HBoxContainer"]
 layout_mode = 2
+focus_mode = 0
 texture_normal = ExtResource("6_mfvu1")
 
 [node name="AddActionButton" type="Button" parent="HBoxContainer/MainVBox"]
 visible = false
 layout_mode = 2
 size_flags_vertical = 0
+focus_mode = 0
 text = "Add Action"
 
 [node name="ActionPopupMenu" type="PopupMenu" parent="HBoxContainer/MainVBox"]
@@ -98,6 +105,7 @@ text = "Add Action"
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
+focus_mode = 0
 toggle_mode = true
 icon = ExtResource("9_vdasp")
 

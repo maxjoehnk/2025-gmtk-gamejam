@@ -97,6 +97,7 @@ visible = false
 visible = false
 
 [node name="PauseMenuOverlay" parent="." instance=ExtResource("11_3cx6b")]
+visible = false
 offset_left = 596.0
 offset_top = 192.0
 offset_right = 596.0

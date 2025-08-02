@@ -1,0 +1,37 @@
+[gd_scene load_steps=2 format=3 uid="uid://mmvbe8ep3rft"]
+
+[ext_resource type="Script" uid="uid://lyd2lpd1rsql" path="res://Scripts/UI/PauseMenuOverlay.cs" id="1_dgq6r"]
+
+[node name="PauseMenuOverlay" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_dgq6r")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Resume" type="Button" parent="Panel/VBoxContainer"]
+process_mode = 2
+layout_mode = 2
+text = "Resume"
+
+[node name="MainMenu" type="Button" parent="Panel/VBoxContainer"]
+process_mode = 2
+layout_mode = 2
+text = "MainMenu"
+
+[node name="Exit" type="Button" parent="Panel/VBoxContainer"]
+process_mode = 2
+layout_mode = 2
+text = "Quit to Desktop"
+
+[connection signal="pressed" from="Panel/VBoxContainer/Resume" to="." method="OnResumePressed"]
+[connection signal="pressed" from="Panel/VBoxContainer/MainMenu" to="." method="OnMainMenuPressed"]
+[connection signal="pressed" from="Panel/VBoxContainer/Exit" to="." method="OnDesktopPressed"]

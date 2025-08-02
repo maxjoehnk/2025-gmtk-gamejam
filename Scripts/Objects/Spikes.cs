@@ -7,6 +7,8 @@ public partial class Spikes : Enemy, ISwitchable, IResettable
 {
 	private Area2D Collider => this.GetNode<Area2D>("Spikes");
 	private AnimatedSprite2D Animation => this.GetNode<AnimatedSprite2D>("Spikes/Spikes");
+	
+	private AudioStreamPlayer2D Audio => this.GetNode<AudioStreamPlayer2D>("AudioStreamPlayer2D");
 
 	[Export] public bool IsActive { get; set; } = true;
 	
@@ -21,6 +23,10 @@ public partial class Spikes : Enemy, ISwitchable, IResettable
 		if (this.State != this.CurrentAnimationState)
 		{
 			this.Animation.Play(this.State ? "Up" : "Down");
+			if (this.State)
+			{
+				this.Audio.Play();
+			}
 		}
 	}
 	

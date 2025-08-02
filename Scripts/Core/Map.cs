@@ -1,5 +1,4 @@
 using Godot;
-using System;
 using gmtkgamejam.Scenes.Enemies;
 using gmtkgamejam.Scripts.Core;
 using Godot.Collections;

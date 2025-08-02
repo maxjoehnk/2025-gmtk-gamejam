@@ -1,7 +1,11 @@
-[gd_scene load_steps=19 format=3 uid="uid://bn2at2q8vviht"]
+[gd_scene load_steps=24 format=3 uid="uid://bn2at2q8vviht"]
 
 [ext_resource type="Script" uid="uid://b02630d2phpfu" path="res://Scripts/Objects/Spikes.cs" id="1_6ld86"]
 [ext_resource type="Texture2D" uid="uid://cadkva17wnh0j" path="res://Assets/Objects/Spikes.png" id="1_lepka"]
+[ext_resource type="AudioStream" uid="uid://bexeeilsl7nnj" path="res://Assets/Sounds/Effects/2025-GMTK-GameJam - Spikes1.wav" id="3_v384f"]
+[ext_resource type="AudioStream" uid="uid://dx7ldf0u2hle8" path="res://Assets/Sounds/Effects/2025-GMTK-GameJam - Spikes2.wav" id="4_ixkpt"]
+[ext_resource type="AudioStream" uid="uid://cs6k1p12iak3y" path="res://Assets/Sounds/Effects/2025-GMTK-GameJam - Spikes3.wav" id="5_cb163"]
+[ext_resource type="AudioStream" uid="uid://ca3pf8njws2c1" path="res://Assets/Sounds/Effects/2025-GMTK-GameJam - Spikes4.wav" id="6_425dy"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_425dy"]
 atlas = ExtResource("1_lepka")
@@ -117,6 +121,13 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lepka"]
 size = Vector2(128, 128)
 
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_cy8ym"]
+streams_count = 4
+stream_0/stream = ExtResource("3_v384f")
+stream_1/stream = ExtResource("4_ixkpt")
+stream_2/stream = ExtResource("5_cb163")
+stream_3/stream = ExtResource("6_425dy")
+
 [node name="Spikes" type="Node2D" groups=["Enemies", "Resettable"]]
 script = ExtResource("1_6ld86")
 
@@ -131,5 +142,9 @@ frame_progress = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Spikes"]
 shape = SubResource("RectangleShape2D_lepka")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = SubResource("AudioStreamRandomizer_cy8ym")
+bus = &"Effects"
 
 [connection signal="body_entered" from="Spikes" to="." method="OnHitPlayer"]

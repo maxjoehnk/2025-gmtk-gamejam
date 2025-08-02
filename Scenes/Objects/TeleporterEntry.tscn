@@ -1,0 +1,40 @@
+[gd_scene load_steps=6 format=3 uid="uid://chqid36enis25"]
+
+[ext_resource type="Script" uid="uid://d13rjdovnlikf" path="res://Scripts/Objects/TeleporterEntry.cs" id="1_bdf2k"]
+[ext_resource type="Texture2D" uid="uid://crxqru0b7sum6" path="res://Assets/Objects/Teleporter_Entry_Active.png" id="2_b6opx"]
+[ext_resource type="Texture2D" uid="uid://dqmuptlsjwfjq" path="res://Assets/Objects/Teleporter_Entry_Inactive.png" id="3_5flxk"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_b6opx"]
+size = Vector2(128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_dwd1v"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_b6opx")
+}],
+"loop": true,
+"name": &"Active",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_5flxk")
+}],
+"loop": true,
+"name": &"Inactive",
+"speed": 5.0
+}]
+
+[node name="TeleporterEntry" type="StaticBody2D" groups=["Resettable"]]
+collision_layer = 16
+collision_mask = 16
+script = ExtResource("1_bdf2k")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_b6opx")
+
+[node name="Sprite" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_dwd1v")
+animation = &"Inactive"
+frame_progress = 0.140328

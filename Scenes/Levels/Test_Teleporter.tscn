@@ -1,0 +1,41 @@
+[gd_scene load_steps=9 format=4 uid="uid://bbalc0gl421xi"]
+
+[ext_resource type="Script" uid="uid://4iy48t6sf73e" path="res://Scripts/Core/Map.cs" id="1_5d8qm"]
+[ext_resource type="TileSet" uid="uid://pafbad4mjfhn" path="res://Assets/LevelTiles/LevelTiles.tres" id="2_rnojh"]
+[ext_resource type="PackedScene" uid="uid://duv31n7g217aj" path="res://Scenes/Objects/Spawn.tscn" id="4_d4h02"]
+[ext_resource type="PackedScene" uid="uid://de2n83qnroben" path="res://Scenes/Objects/LevelGoal.tscn" id="5_re1dd"]
+[ext_resource type="PackedScene" uid="uid://chqid36enis25" path="res://Scenes/Objects/TeleporterEntry.tscn" id="6_yghxk"]
+[ext_resource type="PackedScene" uid="uid://buwr0s3xt504s" path="res://Scenes/Objects/TeleporterExit.tscn" id="7_e5uuh"]
+[ext_resource type="PackedScene" uid="uid://b3or5ap3niioe" path="res://Scenes/Objects/Switch.tscn" id="8_siihy"]
+[ext_resource type="PackedScene" uid="uid://dfenwo0b7hx7c" path="res://Scenes/Game.tscn" id="11_al3yd"]
+
+[node name="Test Level" type="Node2D"]
+script = ExtResource("1_5d8qm")
+GoldMedalTicks = 6
+SilverMedalTicks = 10
+BronzeMedalTicks = 15
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+position = Vector2(384, 128)
+tile_map_data = PackedByteArray("AAACAAAAAgAEAAYAAAADAAAAAgAIAAYAAAABAAAAAgAEAAYAAAAAAAAAAgAHAAYAAAAAAAEAAgACAAYAAAABAAEAAgAAAAYAAAACAAEAAgAEABAAAGADAAEAAgABABAAAGADAAIAAgABAAYAAAACAAIAAgABABAAAAABAAIAAgAAAAYAAAAAAAIAAgACAAYAAAACAAMAAgABABAAAAADAAMAAgAFAAYAAAABAAMAAgADAAYAAAAAAAMAAgAGAAYAAAAEAP//AQACAAQAADAEAAQAAQACAAQAAGD//wQAAQACAAQAAAD//wAAAQAAAAQAAAD//wEAAQAAAAQAAAD//wIAAQAAAAQAAAD//wMAAQAAAAQAAAABAP//AQAAAAQAAFACAP//AQAAAAQAAFADAP//AQAAAAQAAFAEAAAAAQAAAAQAADAEAAEAAQAAAAQAADAEAAIAAQAAAAQAADAEAAMAAQAAAAQAADAAAAQAAQAAAAQAAGABAAQAAQAAAAQAAGACAAQAAQAAAAQAAGADAAQAAQAAAAQAAGAAAP//AQAAAAQAAFD/////AQACAAQAAFA=")
+tile_set = ExtResource("2_rnojh")
+
+[node name="Spawn" parent="TileMapLayer" instance=ExtResource("4_d4h02")]
+position = Vector2(64, 64)
+
+[node name="LevelGoal" parent="TileMapLayer" instance=ExtResource("5_re1dd")]
+position = Vector2(448, 448)
+
+[node name="Switch" parent="TileMapLayer" instance=ExtResource("8_siihy")]
+position = Vector2(192, 64)
+Targets = Array[NodePath]([NodePath("../TeleporterEntry")])
+
+[node name="TeleporterEntry" parent="TileMapLayer" instance=ExtResource("6_yghxk")]
+position = Vector2(64, 192)
+IsActive = false
+Target = NodePath("../TeleporterExit")
+
+[node name="TeleporterExit" parent="TileMapLayer" instance=ExtResource("7_e5uuh")]
+position = Vector2(448, 320)
+
+[node name="Game" parent="." instance=ExtResource("11_al3yd")]

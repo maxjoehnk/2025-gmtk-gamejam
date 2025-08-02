@@ -28,9 +28,9 @@ public partial class CountdownSwitch : Node2D, IInteractable, IResettable, ICloc
 		this.CountdownLabel.Visible = this.active;
 	}
 
-	public void Interact()
+	public void Interact(Player player)
 	{
-		ToggleSwitches();
+		this.ToggleSwitches();
 		this.Switch.Play();
 		this.active = true;
 		this.ticksRemaining = this.Countdown;

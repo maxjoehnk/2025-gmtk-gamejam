@@ -8,6 +8,6 @@ public partial class InteractAction : Action
     
     public override void Act(Player player)
     {
-        player.GetInteractableElement()?.Interact();
+        player.GetInteractableElement()?.Interact(player);
     }
 }

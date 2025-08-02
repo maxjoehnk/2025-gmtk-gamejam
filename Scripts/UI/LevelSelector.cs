@@ -12,9 +12,7 @@ public partial class LevelSelector : Control
 	
 	public override void _Ready()
 	{
-		List<AvailableLevel> levels = LevelManager.GetAvailableLevels();
-		
-		foreach (AvailableLevel level in levels)
+		foreach (AvailableLevel level in LevelManager.Instance.Levels)
 		{
 			LevelButton levelButton = this.CreateLevelButton(level);
 
@@ -26,12 +24,18 @@ public partial class LevelSelector : Control
 	{
 		LevelButton levelButton = this.LevelButton.Instantiate<LevelButton>();
 		levelButton.LevelName = level.Name;
-		levelButton.Pressed += () =>
+		levelButton.Disabled = !level.IsUnlocked;
+		if (level.IsUnlocked)
 		{
-			LevelManager.Instance.LoadLevel(level);
-		};
+			levelButton.Pressed += () => { LevelManager.Instance.LoadLevel(level); };
+		}
 		
 		return levelButton;
+	}
+
+	public void OnBackPressed()
+	{
+		LevelManager.Instance.OpenMainMenu();
 	}
 }
 

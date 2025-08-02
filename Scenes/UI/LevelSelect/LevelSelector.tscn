@@ -36,3 +36,14 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 24
 text = "Choose a level: "
 horizontal_alignment = 1
+
+[node name="BackToMenu" type="Button" parent="."]
+custom_minimum_size = Vector2(150, 50)
+layout_mode = 0
+offset_left = 20.0
+offset_top = 1010.0
+offset_right = 170.0
+offset_bottom = 1060.0
+text = "Back to Menu"
+
+[connection signal="pressed" from="BackToMenu" to="MapSelector" method="OnBackPressed"]

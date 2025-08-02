@@ -3,7 +3,6 @@ using System.Linq;
 using gmtkgamejam.Scenes;
 using gmtkgamejam.Scripts.Core;
 using Godot;
-using Microsoft.Win32;
 
 namespace gmtkgamejam.Core;
 
@@ -15,18 +14,19 @@ public partial class LevelManager : Node
 	private int? lastFinishedLevelIndex;
 	private int? currentLevelIndex;
 
-	private List<AvailableLevel> levels = [];
+	public List<AvailableLevel> Levels { get; private set; } = [];
 
 	public override void _Ready()
 	{
 		Instance = this;
 		Viewport root = this.GetTree().Root;
 		this.CurrentScene = root.GetChild(-1);
-		this.levels = GetAvailableLevels();
+		this.Levels = GetAvailableLevels();
 		this.ReloadUserData();
+		this.UnlockLevels();
 	}
 
-	public static List<AvailableLevel> GetAvailableLevels()
+	private static List<AvailableLevel> GetAvailableLevels()
 	{
 		List<AvailableLevel> levels = ResourceLoader.ListDirectory("res://Scenes/Levels")
 			.Where(name => name.EndsWith(".tscn")).Select(file => new AvailableLevel(file)).ToList();
@@ -36,13 +36,13 @@ public partial class LevelManager : Node
 
 	public void LoadLevel(AvailableLevel level)
 	{
-		this.currentLevelIndex = this.levels.IndexOf(level);
+		this.currentLevelIndex = this.Levels.IndexOf(level);
 		this.CallDeferred(nameof(this.LoadScene), $"res://Scenes/Levels/{level.Path}");
 	}
 
 	public bool HasNextLevel()
 	{
-		return this.levels.Count > this.currentLevelIndex + 1;
+		return this.Levels.Count > this.currentLevelIndex + 1;
 	}
 
 	public bool HasCompletedALevel()
@@ -56,7 +56,7 @@ public partial class LevelManager : Node
 	public void LoadCurrentLevel()
 	{
 		AvailableLevel currentLevel =
-			this.currentLevelIndex == null ? this.levels.First() : this.levels[this.currentLevelIndex.Value];
+			this.currentLevelIndex == null ? this.Levels.First() : this.Levels[this.currentLevelIndex.Value];
 		this.LoadLevel(currentLevel);
 	}
 
@@ -70,7 +70,7 @@ public partial class LevelManager : Node
 			GD.PrintErr("No last finished level index set, cannot load next level.");
 			return;
 		}
-		AvailableLevel nextLevel = this.levels[this.lastFinishedLevelIndex.Value + 1];
+		AvailableLevel nextLevel = this.Levels[this.lastFinishedLevelIndex.Value + 1];
 		this.LoadLevel(nextLevel);
 	}
 
@@ -103,6 +103,7 @@ public partial class LevelManager : Node
 		}
 		UserDataManager.StoreFinishedLevel(this.currentLevelIndex.Value);
 		this.lastFinishedLevelIndex = this.currentLevelIndex;
+		this.UnlockLevels();
 	}
 
 	public void ReloadUserData()
@@ -111,6 +112,20 @@ public partial class LevelManager : Node
 		if (this.lastFinishedLevelIndex != null)
 		{
 			this.currentLevelIndex = this.lastFinishedLevelIndex + 1;
+		}
+	}
+
+	private void UnlockLevels()
+	{
+		for (int i = 0; i < this.Levels.Count; i++)
+		{
+			if (i == 0)
+			{
+				this.Levels[0].IsUnlocked = true;
+				continue;
+			}
+
+			this.Levels[i].IsUnlocked = this.lastFinishedLevelIndex != null && i <= this.lastFinishedLevelIndex + 1;
 		}
 	}
 }

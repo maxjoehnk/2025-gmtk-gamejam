@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://chqid36enis25"]
+[gd_scene load_steps=32 format=3 uid="uid://b5j6b65wl2aun"]
 
 [ext_resource type="Script" uid="uid://d13rjdovnlikf" path="res://Scripts/Objects/TeleporterEntry.cs" id="1_bdf2k"]
 [ext_resource type="Texture2D" uid="uid://c8ujymomdbmkt" path="res://Assets/Objects/Teleporter_Entry_Active_Animated.png" id="2_b6opx"]

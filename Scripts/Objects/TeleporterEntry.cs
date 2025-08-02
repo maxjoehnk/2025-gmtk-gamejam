@@ -75,6 +75,7 @@ public partial class TeleporterEntry : Node2D, ISwitchable, IInteractable, IRese
 		this.tween = this.CreateTween();
 		this.tween.TweenProperty(this.Sprite, "speed_scale", 4, 0.1f);
 		this.tween.TweenSubtween(fadeOutTween);
+		this.Exit?.StartAnimation();
 	}
 
 	public void Toggle()

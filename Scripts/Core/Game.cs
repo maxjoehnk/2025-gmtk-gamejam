@@ -5,156 +5,164 @@ using Godot;
 
 public partial class Game : Node2D
 {
-	private ActionPane ActionPane => this.GetNode<ActionPane>("ActionPane");
-	public Player Player => this.GetNode<Player>("Player");
+  private ActionPane ActionPane => this.GetNode<ActionPane>("View/ActionPane");
+  public Player Player => this.GetNode<Player>("Player");
 
-	public WinOverlay WinOverlay => this.GetNode<WinOverlay>("WinOverlay");
-	public CaughtOverlay CaughtOverlay => this.GetNode<CaughtOverlay>("CaughtOverlay");
-    public PauseMenuOverlay PauseMenuOverlay => this.GetNode<PauseMenuOverlay>("PauseMenuOverlay");
+  public WinOverlay WinOverlay => this.GetNode<WinOverlay>("View/WinOverlay");
+  public CaughtOverlay CaughtOverlay => this.GetNode<CaughtOverlay>("View/CaughtOverlay");
+  public PauseMenuOverlay PauseMenuOverlay => this.GetNode<PauseMenuOverlay>("View/PauseMenuOverlay");
 
-    private HSlider SpeedSlider => this.GetNode<HSlider>("VBoxContainer/SpeedSliderToolbar/HSlider");
+  private HSlider SpeedSlider => this.GetNode<HSlider>("View/VBoxContainer/SpeedSliderToolbar/HSlider");
 
-	private CharacterBody2D PreviewIndicator => this.GetNode<CharacterBody2D>("PreviewIndicator");
+  private CharacterBody2D PreviewIndicator => this.GetNode<CharacterBody2D>("PreviewIndicator");
 
-	private double prePreviewSpeed = 1;
+  private double prePreviewSpeed = 1;
 
-	[Export] public Vector2 SpawnPosition { get; set; }
+  public GameStates CurrentGameState = GameStates.Stop;
 
-	public override void _Ready()
-	{
-		this.SpeedSlider.ValueChanged += value => { ActionPlayer.Instance.PlaybackSpeed = value; };
-		this.ActionPane.ActionsChanged += () => { this.PreviewIndicator.Show(); };
-		ActionPlayer.Instance.Finished += this.OnActionsFinished;
-		ActionPlayer.Instance.PlaybackSpeed = this.SpeedSlider.Value;
-		this.PreviewIndicator.Hide();
-		this.WinOverlay.Hide();
-		this.CaughtOverlay.Hide();
-	}
+  [Export] public Vector2 SpawnPosition { get; set; }
 
-	public override void _UnhandledInput(InputEvent @event)
-	{
-        if (Input.IsActionJustPressed("OpenMenu"))
-        {
-            OnPausePressed();
-        }
+  public override void _Ready()
+  {
+    this.SpeedSlider.ValueChanged += value => { ActionPlayer.Instance.PlaybackSpeed = value; };
+    this.ActionPane.ActionsChanged += () => { this.PreviewIndicator.Show(); };
+    ActionPlayer.Instance.Finished += this.OnActionsFinished;
+    ActionPlayer.Instance.PlaybackSpeed = this.SpeedSlider.Value;
+    this.PreviewIndicator.Hide();
+    this.WinOverlay.Hide();
+    this.CaughtOverlay.Hide();
+    CurrentGameState = GameStates.Prepare;
+  }
 
-        if (Input.IsActionJustPressed("Play"))
-		{
-			OnPlayPressed();
-		}
-
-		if (Input.IsActionJustPressed("Reset"))
-		{
-			OnResetPressed();
-		}
-	}
-
-	public override void _Process(double delta)
-	{
-		this.UpdateIndicatorPosition();
-	}
-    public void OnPausePressed()
+  public override void _UnhandledInput(InputEvent @event)
+  {
+    if(Input.IsActionJustPressed("OpenMenu"))
     {
-        this.PauseMenuOverlay.Open();
+      OnPausePressed();
     }
 
-    public void OnPlayPressed()
-	{
-		GD.Print("Play");
-		this.OnResetPressed();
-		this.PreviewIndicator.Hide();
-		ActionPlayer.Instance.Play(this.ActionPane.Actions);
-	}
+    if(Input.IsActionJustPressed("Play"))
+    {
+      OnPlayPressed();
+    }
 
-	public void OnResetPressed()
-	{
-		GD.Print("Reset");
-		this.Respawn();
-		ActionPlayer.Instance.Reset();
-		this.CaughtOverlay.Hide();
-		this.WinOverlay.Hide();
-		ResetGameElements();
-	}
+    if(Input.IsActionJustPressed("Reset"))
+    {
+      OnResetPressed();
+    }
+  }
 
-	public void OnLoopPressed()
-	{
-		GD.Print("Preview started");
-		this.prePreviewSpeed = ActionPlayer.Instance.PlaybackSpeed;
-		ActionPlayer.Instance.PlaybackSpeed = Constants.PreviewPlaybackSpeed;
-		ActionPlayer.Instance.Preview = true;
-		this.OnPlayPressed();
-	}
+  public override void _Process(double delta)
+  {
+    this.UpdateIndicatorPosition();
+  }
+  public void OnPausePressed()
+  {
+    this.PauseMenuOverlay.Open();
+    CurrentGameState = GameStates.Prepare;
+  }
 
-	public void OnLoopReleased()
-	{
-		GD.Print("Preview stopped");
-		this.OnResetPressed();
-		ActionPlayer.Instance.Preview = false;
-		ActionPlayer.Instance.PlaybackSpeed = this.prePreviewSpeed;
-	}
+  public void OnPlayPressed()
+  {
+    GD.Print("Play");
+    this.OnResetPressed();
+    this.PreviewIndicator.Hide();
+    ActionPlayer.Instance.Play(this.ActionPane.Actions);
+    CurrentGameState = GameStates.Playing;
+  }
 
-	private void ResetGameElements()
-	{
-		foreach (Node node in GetTree().GetNodesInGroup(Groups.Resettable))
-		{
-			if (node is IResettable resettable)
-			{
-				resettable.Reset();
-			}
-		}
-	}
+  public void OnResetPressed()
+  {
+    GD.Print("Reset");
+    this.Respawn();
+    ActionPlayer.Instance.Reset();
+    this.CaughtOverlay.Hide();
+    this.WinOverlay.Hide();
+    ResetGameElements();
+    CurrentGameState = GameStates.Prepare;
+  }
 
-	private void UpdateIndicatorPosition()
-	{
-		Vector2 position = this.SpawnPosition;
-		foreach (Action action in this.ActionPane.Actions)
-		{
-			for (int i = 0; i < action.Ticks; i++)
-			{
-				this.PreviewIndicator.GlobalPosition = position;
-				Vector2 nextPosition = action.Preview(position);
-				Vector2 positionDiff = nextPosition - position;
+  public void OnLoopPressed()
+  {
+    GD.Print("Preview started");
+    this.prePreviewSpeed = ActionPlayer.Instance.PlaybackSpeed;
+    ActionPlayer.Instance.PlaybackSpeed = Constants.PreviewPlaybackSpeed;
+    ActionPlayer.Instance.Preview = true;
+    this.OnPlayPressed();
+  }
 
-				KinematicCollision2D? collision2D = this.PreviewIndicator.MoveAndCollide(positionDiff, testOnly: true);
-				if (collision2D == null)
-				{
-					position += positionDiff;
-				}
-			}
-		}
-		this.PreviewIndicator.GlobalPosition = position;
-	}
+  public void OnLoopReleased()
+  {
+    GD.Print("Preview stopped");
+    this.OnResetPressed();
+    ActionPlayer.Instance.Preview = false;
+    ActionPlayer.Instance.PlaybackSpeed = this.prePreviewSpeed;
+  }
 
-	public void OnActionsFinished()
-	{
-		this.PreviewIndicator.Show();
-	}
+  private void ResetGameElements()
+  {
+    foreach(Node node in GetTree().GetNodesInGroup(Groups.Resettable))
+    {
+      if(node is IResettable resettable)
+      {
+        resettable.Reset();
+      }
+    }
+  }
 
-	public void Respawn()
-	{
-		this.Player.Position = this.SpawnPosition;
-		this.Player.RotationDegrees = 0;
-	}
+  private void UpdateIndicatorPosition()
+  {
+    Vector2 position = this.SpawnPosition;
+    foreach(Action action in this.ActionPane.Actions)
+    {
+      for(int i = 0; i < action.Ticks; i++)
+      {
+        this.PreviewIndicator.GlobalPosition = position;
+        Vector2 nextPosition = action.Preview(position);
+        Vector2 positionDiff = nextPosition - position;
 
-	public void OnPlayerWon(string name, int goldMedalTicks, int silverMedalTicks, int bronzeMedalTicks)
-	{
-		// We've lost in the same move were we've reached the goal so we actually lost
-		if (this.CaughtOverlay.IsVisible())
-		{
-			return;
-		}
+        KinematicCollision2D ? collision2D = this.PreviewIndicator.MoveAndCollide(positionDiff, testOnly: true);
+        if(collision2D == null)
+        {
+          position += positionDiff;
+        }
+      }
+    }
+    this.PreviewIndicator.GlobalPosition = position;
+  }
 
-		bool hasGoldMedal = goldMedalTicks >= ActionPlayer.Instance.CurrentTick;
-		bool hasSilverMedal = silverMedalTicks >= ActionPlayer.Instance.CurrentTick;
-		bool hasBronzeMedal = bronzeMedalTicks >= ActionPlayer.Instance.CurrentTick;
-		this.WinOverlay.Open(name, ActionPlayer.Instance.CurrentTick, hasGoldMedal, hasSilverMedal, hasBronzeMedal);
-		this.WinOverlay.Show();
-		ActionPlayer.Instance.Stop();
-	}
+  public void OnActionsFinished()
+  {
+    this.PreviewIndicator.Show();
+  }
 
-	public void OnPlayerLost(string name)
-	{
-		this.CaughtOverlay.Open(name);
-		ActionPlayer.Instance.Stop();
-	}
+  public void Respawn()
+  {
+    this.Player.Position = this.SpawnPosition;
+    this.Player.RotationDegrees = 0;
+  }
+
+  public void OnPlayerWon(string name, int goldMedalTicks, int silverMedalTicks, int bronzeMedalTicks)
+  {
+    // We've lost in the same move were we've reached the goal so we actually lost
+    if(this.CaughtOverlay.IsVisible())
+    {
+      return;
+    }
+
+    bool hasGoldMedal = goldMedalTicks >= ActionPlayer.Instance.CurrentTick;
+    bool hasSilverMedal = silverMedalTicks >= ActionPlayer.Instance.CurrentTick;
+    bool hasBronzeMedal = bronzeMedalTicks >= ActionPlayer.Instance.CurrentTick;
+    this.WinOverlay.Open(name, ActionPlayer.Instance.CurrentTick, hasGoldMedal, hasSilverMedal, hasBronzeMedal);
+    this.WinOverlay.Show();
+    ActionPlayer.Instance.Stop();
+    CurrentGameState = GameStates.Stop;
+  }
+
+  public void OnPlayerLost(string name)
+  {
+    this.CaughtOverlay.Open(name);
+    ActionPlayer.Instance.Stop();
+    CurrentGameState = GameStates.Stop;
+  }
 }

@@ -5,4 +5,5 @@ public enum GameState
   Prepare,
   Playing,
   Stop,
+  Previewing,
 }

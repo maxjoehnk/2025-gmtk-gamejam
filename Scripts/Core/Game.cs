@@ -12,9 +12,11 @@ public partial class Game : Node2D
 	public CaughtOverlay CaughtOverlay => this.GetNode<CaughtOverlay>("View/CaughtOverlay");
 	public PauseMenuOverlay PauseMenuOverlay => this.GetNode<PauseMenuOverlay>("View/PauseMenuOverlay");
 
-	private HSlider SpeedSlider => this.GetNode<HSlider>("View/VBoxContainer/SpeedSliderToolbar/HSlider");
-
 	private PreviewIndicator PreviewIndicator => this.GetNode<PreviewIndicator>("PreviewIndicator");
+	
+	private TextureButton PlayButton => this.GetNode<TextureButton>("View/VBoxContainer/PlaybackToolbar/Play");
+	
+	private PlaybackToolbar PlaybackToolbar => this.GetNode<PlaybackToolbar>("View/VBoxContainer/PlaybackToolbar");
 
 	private double prePreviewSpeed = 1;
 
@@ -24,37 +26,42 @@ public partial class Game : Node2D
 
 	public override void _Ready()
 	{
-		this.SpeedSlider.ValueChanged += value => { ActionPlayer.Instance.PlaybackSpeed = value; };
 		this.ActionPane.ActionsChanged += this.OnActionsChanged;
 		ActionPlayer.Instance.Finished += this.OnActionsFinished;
-		ActionPlayer.Instance.PlaybackSpeed = this.SpeedSlider.Value;
 		this.PreviewIndicator.Hide();
 		this.WinOverlay.Hide();
 		this.CaughtOverlay.Hide();
 		this.CurrentGameState = GameState.Prepare;
 	}
 
+	private void OnSetSpeed(float value)
+	{
+		ActionPlayer.Instance.PlaybackSpeed = value;
+		this.PlaybackToolbar.SetSpeed(value);
+	}
+
 	public override void _UnhandledInput(InputEvent @event)
 	{
 		if (Input.IsActionJustPressed("OpenMenu"))
 		{
-			OnPausePressed();
+			this.OnPausePressed();
 		}
 
 		if (Input.IsActionJustPressed("Play"))
 		{
-			OnPlayPressed();
+			this.OnPlayPressed();
 		}
 
 		if (Input.IsActionJustPressed("Reset"))
 		{
-			OnResetPressed();
+			this.OnResetPressed();
 		}
 	}
 
 	public override void _Process(double delta)
 	{
 		this.UpdateIndicatorPosition();
+		this.PlayButton.SetPressed(this.CurrentGameState == GameState.Playing);
 	}
 
 	private void OnActionsChanged()
@@ -65,7 +72,6 @@ public partial class Game : Node2D
 	public void OnPausePressed()
 	{
 		this.PauseMenuOverlay.Open();
-		this.CurrentGameState = GameState.Stop;
 	}
 
 	public void OnPlayPressed()
@@ -73,8 +79,8 @@ public partial class Game : Node2D
 		GD.Print("Play");
 		this.OnResetPressed();
 		this.PreviewIndicator.Hide();
-		ActionPlayer.Instance.Play(this.ActionPane.Actions);
 		this.CurrentGameState = GameState.Playing;
+		ActionPlayer.Instance.Play(this.ActionPane.Actions);
 	}
 
 	public void OnResetPressed()
@@ -84,7 +90,7 @@ public partial class Game : Node2D
 		ActionPlayer.Instance.Reset();
 		this.CaughtOverlay.Hide();
 		this.WinOverlay.Hide();
-		ResetGameElements();
+		this.ResetGameElements();
 		this.CurrentGameState = GameState.Prepare;
 	}
 
@@ -94,7 +100,10 @@ public partial class Game : Node2D
 		this.prePreviewSpeed = ActionPlayer.Instance.PlaybackSpeed;
 		ActionPlayer.Instance.PlaybackSpeed = Constants.PreviewPlaybackSpeed;
 		ActionPlayer.Instance.Preview = true;
-		this.OnPlayPressed();
+		this.OnResetPressed();
+		this.PreviewIndicator.Hide();
+		this.CurrentGameState = GameState.Previewing;
+		ActionPlayer.Instance.Play(this.ActionPane.Actions);
 	}
 
 	public void OnLoopReleased()
@@ -107,13 +116,7 @@ public partial class Game : Node2D
 
 	private void ResetGameElements()
 	{
-		foreach (Node node in GetTree().GetNodesInGroup(Groups.Resettable))
-		{
-			if (node is IResettable resettable)
-			{
-				resettable.Reset();
-			}
-		}
+		this.GetTree().CallGroup(Groups.Resettable, nameof(IResettable.Reset));
 	}
 
 	private void UpdateIndicatorPosition()
@@ -133,6 +136,7 @@ public partial class Game : Node2D
 
 	public void OnActionsFinished()
 	{
+		GD.Print("Actions finished");
 		this.PreviewIndicator.Show();
 		this.CurrentGameState = GameState.Prepare;
 	}

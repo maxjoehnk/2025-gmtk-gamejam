@@ -244,9 +244,13 @@ collision_mask = 16
 hit_from_inside = true
 collide_with_areas = true
 
+[connection signal="PlayerLost" from="Player" to="." method="OnPlayerLost"]
 [connection signal="pressed" from="View/VBoxContainer/PlaybackToolbar/Reset" to="." method="OnResetPressed"]
 [connection signal="pressed" from="View/VBoxContainer/PlaybackToolbar/Play" to="." method="OnPlayPressed"]
 [connection signal="button_down" from="View/VBoxContainer/PlaybackToolbar/LoopPreview" to="." method="OnLoopPressed"]
 [connection signal="button_up" from="View/VBoxContainer/PlaybackToolbar/LoopPreview" to="." method="OnLoopReleased"]
+[connection signal="pressed" from="View/VBoxContainer/PlaybackToolbar/Speed/SpeedNormal" to="." method="OnSetSpeed" binds= [1.0]]
+[connection signal="pressed" from="View/VBoxContainer/PlaybackToolbar/Speed/SpeedFast" to="." method="OnSetSpeed" binds= [4.0]]
+[connection signal="pressed" from="View/VBoxContainer/PlaybackToolbar/Speed/SpeedFastest" to="." method="OnSetSpeed" binds= [8.0]]
 [connection signal="RestartLevel" from="View/WinOverlay" to="." method="OnResetPressed"]
 [connection signal="RestartLevel" from="View/CaughtOverlay" to="." method="OnResetPressed"]

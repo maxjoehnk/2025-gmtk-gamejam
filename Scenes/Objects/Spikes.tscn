@@ -1,8 +1,118 @@
-[gd_scene load_steps=5 format=3 uid="uid://bn2at2q8vviht"]
+[gd_scene load_steps=19 format=3 uid="uid://bn2at2q8vviht"]
 
 [ext_resource type="Script" uid="uid://b02630d2phpfu" path="res://Scripts/Objects/Spikes.cs" id="1_6ld86"]
 [ext_resource type="Texture2D" uid="uid://cadkva17wnh0j" path="res://Assets/Objects/Spikes.png" id="1_lepka"]
-[ext_resource type="Texture2D" uid="uid://b7skt37mnhoxt" path="res://Assets/Objects/SpikesExpanded.png" id="2_6ld86"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_425dy"]
+atlas = ExtResource("1_lepka")
+region = Rect2(768, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cy8ym"]
+atlas = ExtResource("1_lepka")
+region = Rect2(640, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_47g1d"]
+atlas = ExtResource("1_lepka")
+region = Rect2(512, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3gbw7"]
+atlas = ExtResource("1_lepka")
+region = Rect2(384, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3ri56"]
+atlas = ExtResource("1_lepka")
+region = Rect2(256, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pk7p1"]
+atlas = ExtResource("1_lepka")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qnv87"]
+atlas = ExtResource("1_lepka")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lepka"]
+atlas = ExtResource("1_lepka")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6ld86"]
+atlas = ExtResource("1_lepka")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gkl5p"]
+atlas = ExtResource("1_lepka")
+region = Rect2(256, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wdgqu"]
+atlas = ExtResource("1_lepka")
+region = Rect2(384, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v384f"]
+atlas = ExtResource("1_lepka")
+region = Rect2(512, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ixkpt"]
+atlas = ExtResource("1_lepka")
+region = Rect2(640, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cb163"]
+atlas = ExtResource("1_lepka")
+region = Rect2(768, 0, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_425dy"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_425dy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cy8ym")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_47g1d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3gbw7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3ri56")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pk7p1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qnv87")
+}],
+"loop": false,
+"name": &"Down",
+"speed": 40.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lepka")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6ld86")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gkl5p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wdgqu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v384f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ixkpt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cb163")
+}],
+"loop": false,
+"name": &"Up",
+"speed": 40.0
+}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lepka"]
 size = Vector2(128, 128)
@@ -14,11 +124,12 @@ script = ExtResource("1_6ld86")
 collision_layer = 3
 collision_mask = 3
 
-[node name="Spikes" type="Sprite2D" parent="Spikes"]
-texture = ExtResource("1_lepka")
-
-[node name="SpikesExpanded" type="Sprite2D" parent="Spikes"]
-texture = ExtResource("2_6ld86")
+[node name="Spikes" type="AnimatedSprite2D" parent="Spikes"]
+process_mode = 1
+sprite_frames = SubResource("SpriteFrames_425dy")
+animation = &"Up"
+frame = 6
+frame_progress = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Spikes"]
 shape = SubResource("RectangleShape2D_lepka")

@@ -23,6 +23,7 @@ public partial class CountdownSwitch : Node2D, IInteractable, IResettable, ICloc
 
 	public override void _Process(double delta)
 	{
+		this.Switch.SpeedScale = (float)ActionPlayer.Instance.PlaybackSpeed;
 		this.CountdownLabel.Text = this.ticksRemaining.ToString();
 		this.CountdownLabel.Visible = this.active;
 	}

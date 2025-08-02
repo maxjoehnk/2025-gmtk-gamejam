@@ -4,7 +4,7 @@
 [ext_resource type="TileSet" uid="uid://pafbad4mjfhn" path="res://Assets/LevelTiles/LevelTiles.tres" id="2_jimt5"]
 [ext_resource type="PackedScene" uid="uid://duv31n7g217aj" path="res://Scenes/Objects/Spawn.tscn" id="3_t4yaj"]
 [ext_resource type="PackedScene" uid="uid://de2n83qnroben" path="res://Scenes/Objects/LevelGoal.tscn" id="4_imd2g"]
-[ext_resource type="PackedScene" uid="uid://bshkala5h1lhk" path="res://Scenes/Enemies/CameraSwitcher.tscn" id="5_e6tsf"]
+[ext_resource type="PackedScene" uid="uid://bshkala5h1lhk" path="res://Scenes/Enemies/TickSwitcher.tscn" id="5_e6tsf"]
 [ext_resource type="PackedScene" uid="uid://brugcfum7eimj" path="res://Scenes/Enemies/StaticCamera.tscn" id="6_jimt5"]
 [ext_resource type="PackedScene" uid="uid://dfenwo0b7hx7c" path="res://Scenes/Game.tscn" id="7_heo75"]
 

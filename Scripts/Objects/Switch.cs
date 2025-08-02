@@ -1,5 +1,6 @@
 using Godot;
 using System;
+using gmtkgamejam.Scenes;
 using gmtkgamejam.Scripts.Core;
 using Godot.Collections;
 
@@ -10,6 +11,7 @@ public partial class Switch : Node2D, IInteractable
 	
 	public void Interact()
 	{
+		this.Sprite.SpeedScale = (float)ActionPlayer.Instance.PlaybackSpeed;
 		this.Sprite.Play();
 		foreach (NodePath nodePath in Targets)
 		{

@@ -33,12 +33,12 @@ public partial class Game : Node2D
 
 	public override void _UnhandledInput(InputEvent @event)
 	{
-        if (Input.IsActionJustPressed("OpenMenu"))
-        {
-            OnPausePressed();
-        }
+		if (Input.IsActionJustPressed("OpenMenu"))
+		{
+			OnPausePressed();
+		}
 
-        if (Input.IsActionJustPressed("Play"))
+		if (Input.IsActionJustPressed("Play"))
 		{
 			OnPlayPressed();
 		}

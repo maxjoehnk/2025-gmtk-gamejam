@@ -1,36 +1,43 @@
 using Godot;
 using System;
+using System.Globalization;
+using gmtkgamejam.Scenes;
 using gmtkgamejam.Scripts.Core;
 
 public partial class Spikes : Node2D, ISwitchable, IResettable
 {
 	private StaticBody2D Collider => this.GetNode<StaticBody2D>("Spikes");
-	private Sprite2D Collapsed => this.GetNode<Sprite2D>("Spikes/Spikes");
-	private Sprite2D Expanded => this.GetNode<Sprite2D>("Spikes/SpikesExpanded");
+	private AnimatedSprite2D Animation => this.GetNode<AnimatedSprite2D>("Spikes/Spikes");
 
 	[Export] public bool IsActive { get; set; } = true;
 	
-	private bool state = true;
+	private bool CurrentAnimationState => this.Animation.Animation == "Up";
+
+	public bool State { get; set; } = true;
 
 	public override void _Process(double delta)
 	{
-		this.Collapsed.Visible = !this.state;
-		this.Expanded.Visible = this.state;
-		this.Collider.ProcessMode = this.state ? ProcessModeEnum.Inherit : ProcessModeEnum.Disabled;
+		this.Collider.ProcessMode = this.State ? ProcessModeEnum.Inherit : ProcessModeEnum.Disabled;
+		this.Animation.SpeedScale = (float)ActionPlayer.Instance.PlaybackSpeed;
+		if (this.State != this.CurrentAnimationState)
+		{
+			this.Animation.Play(this.State ? "Up" : "Down");
+		}
 	}
 
 	public override void _Ready()
 	{
-		this.state = IsActive;
+		this.Reset();
 	}
 
 	public void Toggle()
 	{
-		this.state = !this.state;
+		this.State = !this.State;
 	}
 
 	public void Reset()
 	{
-		this.state = IsActive;
+		this.State = this.IsActive;
+		this.Animation.Play(this.State ? "Up" : "Down");
 	}
 }

@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://4iy48t6sf73e" path="res://Scripts/Core/Map.cs" id="1_7774o"]
 [ext_resource type="TileSet" uid="uid://pafbad4mjfhn" path="res://Assets/LevelTiles/LevelTiles.tres" id="2_woom0"]
-[ext_resource type="PackedScene" uid="uid://bshkala5h1lhk" path="res://Scenes/Enemies/CameraSwitcher.tscn" id="3_rnisg"]
+[ext_resource type="PackedScene" uid="uid://bshkala5h1lhk" path="res://Scenes/Enemies/TickSwitcher.tscn" id="3_rnisg"]
 [ext_resource type="PackedScene" uid="uid://brugcfum7eimj" path="res://Scenes/Enemies/StaticCamera.tscn" id="4_yi25u"]
 [ext_resource type="PackedScene" uid="uid://duv31n7g217aj" path="res://Scenes/Objects/Spawn.tscn" id="5_m26kb"]
 [ext_resource type="PackedScene" uid="uid://de2n83qnroben" path="res://Scenes/Objects/LevelGoal.tscn" id="6_ofbeh"]

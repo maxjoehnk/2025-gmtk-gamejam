@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://de2n83qnroben" path="res://Scenes/Objects/LevelGoal.tscn" id="5_ryfck"]
 [ext_resource type="PackedScene" uid="uid://dfenwo0b7hx7c" path="res://Scenes/Game.tscn" id="10_o2nva"]
 
-[node name="Test Level" type="Node2D"]
+[node name="Camera Test" type="Node2D"]
 script = ExtResource("1_xa6hu")
 GoldMedalTicks = 6
 SilverMedalTicks = 10

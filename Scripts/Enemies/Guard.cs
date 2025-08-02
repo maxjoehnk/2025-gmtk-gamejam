@@ -20,8 +20,6 @@ public partial class Guard : PathFollow2D, IClocked
 
 	public override void _Ready()
 	{
-		GD.Print($"Guard {this.Name} subscribed to ticks");
-
 		this.targetPoint = this.StartPosition;
 		this.lastPoint = this.StartPosition;
 		this.currentSubTime = 0;
@@ -30,7 +28,6 @@ public partial class Guard : PathFollow2D, IClocked
 
 	public void OnTick(int tick)
 	{
-		GD.Print($"Guard {this.Name} ticked {tick}");
 		this.targetPoint = this.StartPosition + tick; // replace with waittime
 		if (tick == 0)
 		{

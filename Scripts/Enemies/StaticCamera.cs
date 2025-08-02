@@ -7,7 +7,7 @@ using gmtkgamejam.Scripts.Core;
 public partial class StaticCamera : Enemy, ISwitchable, IResettable
 {
 	private bool isActive = true;
-	private bool state = true;
+	private bool state1;
 
 	[Export]
 	public bool IsActive
@@ -16,24 +16,26 @@ public partial class StaticCamera : Enemy, ISwitchable, IResettable
 		set
 		{
 			this.isActive = value;
-			this.state = value;
+			this.State = value;
 			this.Update();
 		}
 	}
 
-	public Node2D CameraArea => this.GetNode<Node2D>("CameraArea");
+	public bool State { get; set; } = true;
 	
+	public Node2D CameraArea => this.GetNode<Node2D>("CameraArea");
+
 	public Area2D DetectionArea => this.GetNode<Area2D>("Area2D");
 
 	public override void _Ready()
 	{
-		this.state = this.isActive;
+		this.State = this.isActive;
 		this.Update();
 	}
 
 	private void Update()
 	{
-		if (!this.state)
+		if (!this.State)
 		{
 			this.CameraArea.Hide();
 			this.DetectionArea.ProcessMode = ProcessModeEnum.Disabled;
@@ -47,13 +49,13 @@ public partial class StaticCamera : Enemy, ISwitchable, IResettable
 
 	public void Toggle()
 	{
-		this.state = !this.state;
+		this.State = !this.State;
 		this.Update();
 	}
 
 	public void Reset()
 	{
-		this.state = this.IsActive;
+		this.State = this.IsActive;
 		this.Update();
 	}
 }

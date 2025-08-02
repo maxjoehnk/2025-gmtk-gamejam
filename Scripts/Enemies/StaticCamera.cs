@@ -8,6 +8,7 @@ public partial class StaticCamera : Enemy, ISwitchable, IResettable
 {
 	private bool isActive = true;
 	private bool state1;
+	private bool state = true;
 
 	[Export]
 	public bool IsActive
@@ -21,8 +22,16 @@ public partial class StaticCamera : Enemy, ISwitchable, IResettable
 		}
 	}
 
-	public bool State { get; set; } = true;
-	
+	public bool State
+	{
+		get => this.state;
+		set
+		{
+			this.state = value;
+			this.Update();
+		}
+	}
+
 	public Node2D CameraArea => this.GetNode<Node2D>("CameraArea");
 
 	public Area2D DetectionArea => this.GetNode<Area2D>("Area2D");

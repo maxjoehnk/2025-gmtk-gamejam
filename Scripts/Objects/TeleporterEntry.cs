@@ -43,6 +43,8 @@ public partial class TeleporterEntry : Node2D, ISwitchable, IInteractable, IRese
 		{
 			this.Sprite.Play(this.State ? "Active" : "Inactive");
 		}
+
+		this.Particles.Emitting = this.State;
 	}
 
 	public void Interact(Player player)

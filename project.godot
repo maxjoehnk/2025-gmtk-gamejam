@@ -18,7 +18,7 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-LevelLoader="*res://Scripts/Core/LevelLoader.cs"
+LevelLoader="*res://Scripts/Core/LevelManager.cs"
 ActionPlayer="*res://Scripts/Core/ActionPlayer.cs"
 
 [display]

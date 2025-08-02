@@ -50,6 +50,13 @@ size_flags_horizontal = 4
 theme_override_font_sizes/font_size = 20
 text = "Select Level"
 
+[node name="DeleteUserData" type="Button" parent="VBoxContainer"]
+custom_minimum_size = Vector2(300, 48)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 20
+text = "Delete User Data"
+
 [node name="Exit" type="Button" parent="VBoxContainer"]
 custom_minimum_size = Vector2(300, 48)
 layout_mode = 2
@@ -59,4 +66,5 @@ text = "Exit"
 
 [connection signal="pressed" from="VBoxContainer/Start" to="." method="OnStart"]
 [connection signal="pressed" from="VBoxContainer/Select Level" to="." method="OnLevelSelect"]
+[connection signal="pressed" from="VBoxContainer/DeleteUserData" to="." method="OnDeleteUserData"]
 [connection signal="pressed" from="VBoxContainer/Exit" to="." method="OnExit"]

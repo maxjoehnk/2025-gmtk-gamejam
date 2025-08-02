@@ -22,6 +22,6 @@ public partial class CaughtOverlay : Control
 
 	public void OnExitPressed()
 	{
-		LevelLoader.Instance.OpenMainMenu();
+		LevelManager.Instance.OpenMainMenu();
 	}
 }

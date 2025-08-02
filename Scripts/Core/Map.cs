@@ -54,12 +54,12 @@ public partial class Map : Node
 
 	public void OnPlayerWon()
 	{
+		GD.Print("Player won");
 		if (this.Game.CurrentGameState != GameState.Playing)
 		{
 			return;
 		}
 
-		GD.Print("Player won");
 		this.Game.OnPlayerWon(this.Name, this.GoldMedalTicks, this.SilverMedalTicks, this.BronzeMedalTicks);
 	}
 }

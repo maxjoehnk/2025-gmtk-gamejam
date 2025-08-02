@@ -12,7 +12,7 @@ public partial class LevelSelector : Control
 	
 	public override void _Ready()
 	{
-		List<AvailableLevel> levels = LevelLoader.GetAvailableLevels();
+		List<AvailableLevel> levels = LevelManager.GetAvailableLevels();
 		
 		foreach (AvailableLevel level in levels)
 		{
@@ -28,7 +28,7 @@ public partial class LevelSelector : Control
 		levelButton.LevelName = level.Name;
 		levelButton.Pressed += () =>
 		{
-			LevelLoader.Instance.LoadLevel(level);
+			LevelManager.Instance.LoadLevel(level);
 		};
 		
 		return levelButton;

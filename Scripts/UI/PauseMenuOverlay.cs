@@ -33,7 +33,7 @@ public partial class PauseMenuOverlay : Control
     public void OnMainMenuPressed()
     {
         GetTree().Paused = false;
-        LevelLoader.Instance.OpenMainMenu();
+        LevelManager.Instance.OpenMainMenu();
     }
 
     public void OnDesktopPressed()

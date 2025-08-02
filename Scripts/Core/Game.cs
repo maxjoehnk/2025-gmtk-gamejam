@@ -153,13 +153,15 @@ public partial class Game : Node2D
 			return;
 		}
 
-		bool hasGoldMedal = goldMedalTicks >= ActionPlayer.Instance.CurrentTick;
-		bool hasSilverMedal = silverMedalTicks >= ActionPlayer.Instance.CurrentTick;
-		bool hasBronzeMedal = bronzeMedalTicks >= ActionPlayer.Instance.CurrentTick;
-		this.WinOverlay.Open(name, ActionPlayer.Instance.CurrentTick, hasGoldMedal, hasSilverMedal, hasBronzeMedal);
+		int currentTick = ActionPlayer.Instance.CurrentTick;
+		bool hasGoldMedal = goldMedalTicks >= currentTick;
+		bool hasSilverMedal = silverMedalTicks >= currentTick;
+		bool hasBronzeMedal = bronzeMedalTicks >= currentTick;
+		this.WinOverlay.Open(name, currentTick, hasGoldMedal, hasSilverMedal, hasBronzeMedal);
 		this.WinOverlay.Show();
 		ActionPlayer.Instance.Stop();
 		this.CurrentGameState = GameState.Stop;
+		LevelManager.Instance.LevelFinished(currentTick, hasGoldMedal, hasSilverMedal, hasBronzeMedal);
 	}
 
 	public void OnPlayerLost(string name)

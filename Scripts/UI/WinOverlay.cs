@@ -23,7 +23,7 @@ public partial class WinOverlay : Control
 		this.GoldMedalIndicator.Visible = hasGoldMedal;
 		this.SilverMedalIndicator.Visible = hasSilverMedal;
 		this.BronzeMedalIndicator.Visible = hasBronzeMedal;
-		this.NextLevelButton.Visible = LevelLoader.Instance.HasNextLevel();
+		this.NextLevelButton.Visible = LevelManager.Instance.HasNextLevel();
 		this.Show();
 	}
 
@@ -34,11 +34,11 @@ public partial class WinOverlay : Control
 
 	public void OnNextPressed()
 	{
-		LevelLoader.Instance.LoadNextLevel();
+		LevelManager.Instance.LoadNextLevel();
 	}
 
 	public void OnExitPressed()
 	{
-		LevelLoader.Instance.OpenMainMenu();
+		LevelManager.Instance.OpenMainMenu();
 	}
 }

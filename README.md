@@ -7,6 +7,8 @@ Project Repo for the GMTK GameJam 2025
 ### Ideensammlung
 
 Loopscape (Zusammensetzung aus Loop & Escape)
+Untitled Loop Game
+Caught in the Loop
 
 ## Game Loop
 

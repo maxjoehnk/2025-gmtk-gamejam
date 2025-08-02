@@ -36,8 +36,9 @@ position = Vector2(640, 128)
 curve = SubResource("Curve2D_f6pk4")
 
 [node name="Guard2" parent="TileMapLayer/Path2D2" instance=ExtResource("5_dx6ke")]
-position = Vector2(64, 64)
-rotation = 3.14159
+position = Vector2(-62.6652, 192.001)
+rotation = 0.0602253
+progress = 257.382
 StartPosition = 2
 
 [node name="Game" parent="." instance=ExtResource("6_f4q2l")]

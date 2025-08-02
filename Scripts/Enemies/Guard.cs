@@ -28,15 +28,17 @@ public partial class Guard : PathFollow2D, IClocked
 
 	public void OnTick(int tick)
 	{
+        this.lastPoint = Math.Min(this.lastPoint + 1, this.targetPoint);
 		this.targetPoint = this.StartPosition + tick; // replace with waittime
-		if (tick == 0)
+        if (tick == 0)
 		{
 			this.targetPoint = this.StartPosition;
 			this.lastPoint = this.StartPosition;
 			this.currentSubTime = this.StartPosition;
 			this.Progress = this.StartPosition;
-		}
-	}
+        }
+        this.currentSubTime = 0;
+    }
 
 	public void OnHitPlayer(Node2D player)
 	{
@@ -50,14 +52,6 @@ public partial class Guard : PathFollow2D, IClocked
 	public override void _Process(double delta)
 	{
 		this.currentSubTime += delta;
-		if (this.currentSubTime > ActionPlayer.Instance.TickDuration)
-		{
-			this.lastPoint = Math.Min(this.lastPoint + 1, this.targetPoint);
-			this.currentSubTime -= ActionPlayer.Instance.TickDuration;
-		}
-
-		if (this.lastPoint == this.targetPoint)
-			this.currentSubTime = 0;
 		double ratio =
 			Mathf.Sin(-Mathf.Pi * 0.5 + Mathf.Pi * Mathf.Min(1, this.currentSubTime / ActionPlayer.Instance.TickDuration)) * 0.5 +
 			0.5;

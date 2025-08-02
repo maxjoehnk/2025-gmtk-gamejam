@@ -1,0 +1,106 @@
+[gd_scene load_steps=8 format=4 uid="uid://c2kags78n520b"]
+
+[ext_resource type="Script" uid="uid://4iy48t6sf73e" path="res://Scripts/Core/Map.cs" id="1_60yws"]
+[ext_resource type="TileSet" uid="uid://pafbad4mjfhn" path="res://Assets/LevelTiles/LevelTiles.tres" id="2_f5rex"]
+[ext_resource type="PackedScene" uid="uid://duv31n7g217aj" path="res://Scenes/Objects/Spawn.tscn" id="3_1koyy"]
+[ext_resource type="PackedScene" uid="uid://de2n83qnroben" path="res://Scenes/Objects/LevelGoal.tscn" id="4_jow4y"]
+[ext_resource type="PackedScene" uid="uid://chqid36enis25" path="res://Scenes/Objects/TeleporterEntry.tscn" id="5_nta4l"]
+[ext_resource type="PackedScene" uid="uid://buwr0s3xt504s" path="res://Scenes/Objects/TeleporterExit.tscn" id="6_0l2qt"]
+[ext_resource type="PackedScene" uid="uid://dfenwo0b7hx7c" path="res://Scenes/Game.tscn" id="7_tn38w"]
+
+[node name="This Ain\'t Pokemon" type="Node2D"]
+script = ExtResource("1_60yws")
+GoldMedalTicks = 18
+SilverMedalTicks = 30
+BronzeMedalTicks = 40
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+position = Vector2(384, 128)
+rotation = 0.000775114
+tile_map_data = PackedByteArray("AAAFAAIAAgAAAAYAAAD+/wMAAgAAAAEAAAD//wMAAgAAAAEAAAAAAAMAAgAAAAEAAAABAAMAAgAAAAEAAAABAAYAAgAAAAsAAAAAAAYAAgAAAAsAAAD+/wYAAgAAAAsAAAD//wYAAgAAAAsAAAD+/wAAAgAAAAEAAAD//wAAAgAAAAEAAAAAAAAAAgAAAAEAAAABAAAAAgAAAAEAAAABAAEAAgAAAAEAAAABAAIAAgAAAAEAAAAAAAIAAgAAAAEAAAD//wIAAgAAAAEAAAD+/wIAAgAAAAEAAAD+/wEAAgAAAAEAAAD//wEAAgAAAAEAAAAAAAEAAgAAAAEAAAD+/wcAAgAAAAsAAAD+/wgAAgAAAAsAAAD//wgAAgAAAAsAAAAAAAgAAgAAAAsAAAABAAgAAgAAAAsAAAABAAcAAgAAAAsAAAAAAAcAAgAAAAsAAAD//wcAAgAAAAsAAAAEAAAAAgAAAAYAAAAFAAAAAgAAAAYAAAAGAAAAAgAAAAYAAAAGAAEAAgAAAAYAAAAGAAIAAgAAAAYAAAAGAAMAAgAAAAYAAAAFAAMAAgAAAAYAAAAEAAMAAgAAAAYAAAAEAAEAAgAAAAYAAAAFAAEAAgAAAAYAAAAEAAIAAgAAAAYAAAAHAAAAAgAAAAYAAAAHAAEAAgAAAAYAAAAHAAIAAgAAAAYAAAAHAAMAAgAAAAYAAAD+/wkAAgAAAAsAAAD//wkAAgAAAAsAAAAAAAkAAgAAAAsAAAABAAkAAgAAAAsAAAAEAAYAAgAAAAYAAAAFAAYAAgAAAAYAAAAGAAYAAgAAAAYAAAAHAAYAAgAAAAYAAAAHAAcAAgAAAAYAAAAHAAgAAgAAAAYAAAAHAAkAAgAAAAYAAAAGAAkAAgAAAAYAAAAFAAkAAgAAAAYAAAAEAAkAAgAAAAYAAAAEAAgAAgAAAAYAAAAEAAcAAgAAAAYAAAAFAAcAAgAAAAYAAAAGAAcAAgAAAAYAAAAGAAgAAgAAAAYAAAAFAAgAAgAAAAYAAAAKAAAAAgAAAAsAAAALAAAAAgAAAAsAAAAMAAAAAgAAAAsAAAANAAAAAgAAAAsAAAANAAEAAgAAAAsAAAANAAIAAgAAAAsAAAANAAMAAgAAAAsAAAAMAAMAAgAAAAsAAAALAAMAAgAAAAsAAAAKAAMAAgAAAAsAAAAKAAIAAgAAAAsAAAAKAAEAAgAAAAsAAAALAAEAAgAAAAsAAAAMAAEAAgAAAAsAAAAMAAIAAgAAAAsAAAALAAIAAgAAAAsAAAAKAAYAAgAAAAEAAAALAAYAAgAAAAEAAAAMAAYAAgAAAAEAAAANAAYAAgAAAAEAAAANAAcAAgAAAAEAAAANAAgAAgAAAAEAAAANAAkAAgAAAAEAAAAMAAkAAgAAAAEAAAALAAkAAgAAAAEAAAAKAAkAAgAAAAEAAAAKAAgAAgAAAAEAAAAKAAcAAgAAAAEAAAALAAcAAgAAAAEAAAAMAAcAAgAAAAEAAAAMAAgAAgAAAAEAAAALAAgAAgAAAAEAAAADAAAAAgABABAAAAADAAEAAgABABAAAAADAAIAAgABABAAAAADAAMAAgABABAAAAAIAAMAAgABABAAAAAIAAIAAgABABAAAAAIAAEAAgABABAAAAAIAAAAAgABABAAAAADAAYAAgABABAAAAADAAcAAgABABAAAAADAAgAAgABABAAAAADAAkAAgABABAAAAAIAAkAAgABABAAAAAIAAgAAgABABAAAAAIAAcAAgABABAAAAAIAAYAAgABABAAAAAEAAQAAgABABAAAFAFAAQAAgABABAAAFAGAAQAAgABABAAAFAHAAQAAgABABAAAFAHAAUAAgABABAAAFAGAAUAAgABABAAAFAFAAUAAgABABAAAFAEAAUAAgABABAAAFAEAP//AgABABAAAFAFAP//AgABABAAAFAGAP//AgABABAAAFAHAP//AgABABAAAFAHAAoAAgABABAAAFAGAAoAAgABABAAAFAFAAoAAgABABAAAFAEAAoAAgABABAAAFADAAoAAgAEABAAADADAAQAAgAEABAAADADAAUAAgAEABAAAGADAP//AgAEABAAAGAIAP//AgAEABAAAAAIAAUAAgAEABAAAAAIAAQAAgAEABAAAFAIAAoAAgAEABAAAFACAAYAAgABABEAAAACAAcAAgABABEAAAACAAgAAgABABEAAAACAAkAAgABABEAAAD9/wYAAgABABEAAAD9/wcAAgABABEAAAD9/wgAAgABABEAAAD9/wkAAgABABEAAAAJAAAAAgABABEAAAAJAAEAAgABABEAAAAJAAIAAgABABEAAAAJAAMAAgABABEAAAAOAAAAAgABABEAAAAOAAEAAgABABEAAAAOAAIAAgABABEAAAAOAAMAAgABABEAAAAKAP//AgABABEAAFALAP//AgABABEAAFAMAP//AgABABEAAFANAP//AgABABEAAFANAAQAAgABABEAAFAMAAQAAgABABEAAFALAAQAAgABABEAAFAKAAQAAgABABEAAFAAAAUAAgABABEAAFABAAUAAgABABEAAFD//wUAAgABABEAAFD+/wUAAgABABEAAFD+/woAAgABABEAAFD//woAAgABABEAAFAAAAoAAgABABEAAFABAAoAAgABABEAAFACAAUAAgAEABEAAAAOAP//AgAEABEAAAAOAAQAAgAEABEAAFACAAoAAgAEABEAAFAJAAQAAgAEABEAADD9/woAAgAEABEAADAJAP//AgAEABEAAGD9/wUAAgAEABEAAGD9/wMAAgABABIAAAD9/wIAAgABABIAAAD9/wEAAgABABIAAAD9/wAAAgABABIAAAACAAAAAgABABIAAAACAAEAAgABABIAAAACAAIAAgABABIAAAACAAMAAgABABIAAAAJAAYAAgABABIAAAAJAAcAAgABABIAAAAJAAgAAgABABIAAAAJAAkAAgABABIAAAAOAAYAAgABABIAAAAOAAcAAgABABIAAAAOAAgAAgABABIAAAAOAAkAAgABABIAAAALAAUAAgABABIAAFAKAAUAAgABABIAAFAMAAUAAgABABIAAFANAAUAAgABABIAAFANAAoAAgABABIAAFAMAAoAAgABABIAAFALAAoAAgABABIAAFAKAAoAAgABABIAAFD//wQAAgABABIAAFD+/wQAAgABABIAAFAAAAQAAgABABIAAFABAAQAAgABABIAAFABAP//AgABABIAAFAAAP//AgABABIAAFD/////AgABABIAAFD+////AgABABIAAFACAAQAAgAEABIAAFAOAAoAAgAEABIAAFAJAAoAAgAEABIAADD9/wQAAgAEABIAADD9////AgAEABIAAGAJAAUAAgAEABIAAGACAP//AgAEABIAAAAOAAUAAgAEABIAAAA=")
+tile_set = ExtResource("2_f5rex")
+
+[node name="Pair03" parent="TileMapLayer" instance=ExtResource("5_nta4l")]
+position = Vector2(-191.653, 448.149)
+rotation = -0.000775114
+Target = NodePath("../Pair03-2")
+
+[node name="Pair03-2" parent="TileMapLayer" instance=ExtResource("6_0l2qt")]
+position = Vector2(1344.64, 830.958)
+rotation = -0.000775114
+
+[node name="Pair04" parent="TileMapLayer" instance=ExtResource("5_nta4l")]
+position = Vector2(1728.64, 830.66)
+rotation = -0.000775114
+Target = NodePath("../Pair04-2")
+
+[node name="Pair04-2" parent="TileMapLayer" instance=ExtResource("6_0l2qt")]
+position = Vector2(192.645, 831.851)
+rotation = -0.000775114
+
+[node name="Pair05" parent="TileMapLayer" instance=ExtResource("5_nta4l")]
+position = Vector2(-191.355, 832.148)
+rotation = -0.000775114
+Target = NodePath("../Pair05-2")
+
+[node name="Pair05-2" parent="TileMapLayer" instance=ExtResource("6_0l2qt")]
+position = Vector2(192.05, 63.8511)
+rotation = -0.000775114
+
+[node name="Pair06" parent="TileMapLayer" instance=ExtResource("5_nta4l")]
+position = Vector2(192.347, 447.851)
+rotation = -0.000775114
+Target = NodePath("../Pair06-2")
+
+[node name="Pair06-2" parent="TileMapLayer" instance=ExtResource("6_0l2qt")]
+position = Vector2(1344.94, 1214.96)
+rotation = -0.000775114
+
+[node name="Pair07" parent="TileMapLayer" instance=ExtResource("5_nta4l")]
+position = Vector2(1728.05, 62.6606)
+rotation = -0.000775114
+Target = NodePath("../Pair07-2")
+
+[node name="Pair07-2" parent="TileMapLayer" instance=ExtResource("6_0l2qt")]
+position = Vector2(960.049, 63.2559)
+rotation = -0.000775114
+
+[node name="Pair08" parent="TileMapLayer" instance=ExtResource("5_nta4l")]
+position = Vector2(1728.35, 446.661)
+rotation = -0.000775114
+Target = NodePath("../Pair08-2")
+
+[node name="Pair08-2" parent="TileMapLayer" instance=ExtResource("6_0l2qt")]
+position = Vector2(192.942, 1215.85)
+rotation = -0.000775114
+
+[node name="Pair02-2" parent="TileMapLayer" instance=ExtResource("6_0l2qt")]
+position = Vector2(1344.05, 62.9582)
+
+[node name="Pair02" parent="TileMapLayer" instance=ExtResource("5_nta4l")]
+position = Vector2(576.347, 447.553)
+Target = NodePath("../Pair02-2")
+
+[node name="Spawn" parent="TileMapLayer" instance=ExtResource("3_1koyy")]
+position = Vector2(704.248, 319.454)
+
+[node name="LevelGoal" parent="TileMapLayer" instance=ExtResource("4_jow4y")]
+position = Vector2(832.843, 1087.35)
+
+[node name="Gray-To-Gray" parent="TileMapLayer" instance=ExtResource("5_nta4l")]
+position = Vector2(1728.94, 1214.66)
+Target = NodePath("../Gray-To-Gray2")
+
+[node name="Gray-To-Gray2" parent="TileMapLayer" instance=ExtResource("6_0l2qt")]
+position = Vector2(576.942, 1215.55)
+
+[node name="Pair01" parent="TileMapLayer" instance=ExtResource("5_nta4l")]
+position = Vector2(576.049, 63.5535)
+Target = NodePath("../Pair01-2")
+
+[node name="Pair01-2" parent="TileMapLayer" instance=ExtResource("6_0l2qt")]
+position = Vector2(-191.95, 64.1488)
+
+[node name="Game" parent="." instance=ExtResource("7_tn38w")]
+position = Vector2(0, -3.05176e-05)
+rotation = 0.000775114

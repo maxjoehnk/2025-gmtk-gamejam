@@ -86,12 +86,14 @@ public partial class Game : Node2D
 	public void OnResetPressed()
 	{
 		GD.Print("Reset");
+		this.GetTree().Paused = true;
 		this.Respawn();
+		this.ResetGameElements();
 		ActionPlayer.Instance.Reset();
 		this.CaughtOverlay.Hide();
 		this.WinOverlay.Hide();
-		this.ResetGameElements();
 		this.CurrentGameState = GameState.Prepare;
+		this.GetTree().Paused = false;
 	}
 
 	public void OnLoopPressed()

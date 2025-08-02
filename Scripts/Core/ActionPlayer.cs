@@ -53,6 +53,7 @@ public partial class ActionPlayer : Node
 		this.Timer.OneShot = true;
 		this.Timer.WaitTime = 1;
 		this.Timer.Timeout += this.Tick;
+		this.EmitTick();
 	}
 
 	public override void _Process(double delta)

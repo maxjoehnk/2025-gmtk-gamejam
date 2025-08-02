@@ -117,6 +117,15 @@ public partial class LevelManager : Node
 
 	private void UnlockLevels()
 	{
+		if (OS.IsDebugBuild())
+		{
+			foreach (AvailableLevel level in this.Levels)
+			{
+				level.IsUnlocked = true;
+			}
+			return;
+		}
+		
 		for (int i = 0; i < this.Levels.Count; i++)
 		{
 			if (i == 0)

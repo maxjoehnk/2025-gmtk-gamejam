@@ -1,10 +1,6 @@
 using Godot;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using gmtkgamejam.Core;
 using gmtkgamejam.Scenes;
-using Godot.Collections;
 
 public partial class LevelSelector : Control
 {

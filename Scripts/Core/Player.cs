@@ -3,100 +3,107 @@ using gmtkgamejam.Core;
 using gmtkgamejam.Scenes;
 using gmtkgamejam.Scripts.Core;
 using Vector2 = Godot.Vector2;
-using static Godot.TextServer;
 
 public partial class Player : CharacterBody2D
 {
-  [Export] public float RotationSpeed { get; set; } = 360;
+	[Export] public float RotationSpeed { get; set; } = 360;
 
-  private RayCast2D RayCast => GetNode<RayCast2D>("RayCast2D");
+	[Signal]
+	public delegate void PlayerLostEventHandler();
 
-  private Vector2 nextDirection = new(0, 0);
-  private float nextRotation;
-  private float currentRotation;
-  private double executedTime;
-  private double lastExecutedRatio;
+	private RayCast2D RayCast => this.GetNode<RayCast2D>("RayCast2D");
 
-  public void Move(MoveDirection direction)
-  {
-    nextDirection = direction.ToMovementVector();
-    executedTime = 0;
-    nextRotation = GetRotation(direction);
+	private Vector2 nextDirection = new(0, 0);
+	private float nextRotation;
+	private float currentRotation;
+	private double executedTime;
+	private double lastExecutedRatio;
 
-    if(Mathf.Abs(nextRotation - currentRotation) > 180)
-      currentRotation += nextRotation < currentRotation ? -360 : 360;
+	public override void _Process(double delta)
+	{
+		if (this.nextDirection == new Vector2(0, 0))
+		{
+			return;
+		}
 
-    KinematicCollision2D ? collision2D = MoveAndCollide(nextDirection, testOnly: true);
-    if(collision2D != null)
-    {
-      nextDirection = new Vector2(0, 0);
-      return;
-    }
+		this.executedTime += delta;
 
-    lastExecutedRatio = 0;
-  }
+		float maxRotationPerUpdate = this.RotationSpeed * (float)delta / (float)ActionPlayer.Instance.TickDuration;
+		this.currentRotation +=
+			Mathf.Clamp(this.nextRotation - this.currentRotation, -maxRotationPerUpdate, maxRotationPerUpdate);
 
-  public IInteractable? GetInteractableElement()
-  {
-    GodotObject collision = this.RayCast.GetCollider();
-    if (collision is IInteractable interactable)
-    {
-      return interactable;
-    }
+		double baseRatio = Mathf.Min(1, this.executedTime / ActionPlayer.Instance.TickDuration);
 
-    return null;
-  }
+		double lastRatioTranslation = Mathf.Sin(-Mathf.Pi * 0.5 + Mathf.Pi * this.lastExecutedRatio) * 0.5 + 0.5;
+		double ratioTranslation = Mathf.Sin(-Mathf.Pi * 0.5 + Mathf.Pi * baseRatio) * 0.5 + 0.5;
 
-  public override void _Process(double delta)
-  {
-    if(nextDirection == new Vector2(0, 0))
-      return;
+		float ratioDiff = (float)(ratioTranslation - lastRatioTranslation);
+		Vector2 movement = new(this.nextDirection.X * ratioDiff, this.nextDirection.Y * ratioDiff);
+		this.MoveAndCollide(movement);
+		this.RotationDegrees = this.currentRotation;
+		this.lastExecutedRatio = baseRatio;
+	}
 
-    double lastExecutedTime = executedTime;
-    executedTime += delta;
+	public void Move(MoveDirection direction)
+	{
+		this.nextDirection = direction.ToMovementVector();
+		this.executedTime = 0;
+		this.nextRotation = GetRotation(direction);
 
-    float maxRotationPerUpdate = this.RotationSpeed* (float)delta / (float)ActionPlayer.Instance.TickDuration;
-    currentRotation += limit(nextRotation - currentRotation, maxRotationPerUpdate);
+		if (Mathf.Abs(this.nextRotation - this.currentRotation) > 180)
+		{
+			this.currentRotation += this.nextRotation < this.currentRotation ? -360 : 360;
+		}
 
-    double baseRatio = Mathf.Min(1, this.executedTime / ActionPlayer.Instance.TickDuration);
+		KinematicCollision2D? collision2D = this.MoveAndCollide(this.nextDirection, testOnly: true);
+		if (collision2D != null)
+		{
+			// HACK: it would be better to check for an interface here, but the collider is not the actual script file because a guard uses a PathFollow2D
+			if (collision2D.GetCollider() is Node2D { Owner: Guard })
+			{
+				this.EmitSignalPlayerLost();
+			}
 
-    double lastRatioTranslation = Mathf.Sin(-Mathf.Pi * 0.5 + Mathf.Pi* lastExecutedRatio) * 0.5 + 0.5;
-    double ratioTranslation = Mathf.Sin(-Mathf.Pi * 0.5 + Mathf.Pi* baseRatio) * 0.5 + 0.5;
+			this.nextDirection = new Vector2(0, 0);
+			return;
+		}
 
-    float ratioDiff = (float)(ratioTranslation - lastRatioTranslation);
-    Vector2 movement = new Vector2(this.nextDirection.X* ratioDiff, this.nextDirection.Y* ratioDiff);
-    MoveAndCollide(movement);
-    this.RotationDegrees = currentRotation;
-    lastExecutedRatio = baseRatio;
-  }
+		this.lastExecutedRatio = 0;
+	}
 
-  private static float limit(float val, float max)
-  {
-    return val < -max ? -max : val > max ? max : val;
-  }
+	public IInteractable? GetInteractableElement()
+	{
+		GodotObject collision = this.RayCast.GetCollider();
+		if (collision is IInteractable interactable)
+		{
+			return interactable;
+		}
 
-  private static float GetRotation(MoveDirection direction)
-  {
-    if(direction == MoveDirection.Up)
-    {
-      return 0;
-    }
+		return null;
+	}
 
-    if(direction == MoveDirection.Left)
-    {
-      return 270;
-    }
+	private static float GetRotation(MoveDirection direction)
+	{
+		if (direction == MoveDirection.Up)
+		{
+			return 0;
+		}
 
-    if(direction == MoveDirection.Right)
-    {
-      return 90;
-    }
+		if (direction == MoveDirection.Left)
+		{
+			return 270;
+		}
 
-    if(direction == MoveDirection.Down)
-    {
-      return 180;
-    }
+		if (direction == MoveDirection.Right)
+		{
+			return 90;
+		}
 
-    return 0;
-  }
+		if (direction == MoveDirection.Down)
+		{
+			return 180;
+		}
+
+		return 0;
+	}
 }

@@ -134,6 +134,7 @@ collision_mask = 16
 hit_from_inside = true
 collide_with_areas = true
 
+[connection signal="PlayerLost" from="Player" to="." method="OnPlayerLost"]
 [connection signal="pressed" from="View/VBoxContainer/PlaybackToolbar/Reset" to="." method="OnResetPressed"]
 [connection signal="pressed" from="View/VBoxContainer/PlaybackToolbar/Play" to="." method="OnPlayPressed"]
 [connection signal="button_down" from="View/VBoxContainer/PlaybackToolbar/LoopPreview" to="." method="OnLoopPressed"]

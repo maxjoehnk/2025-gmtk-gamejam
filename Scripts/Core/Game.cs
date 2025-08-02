@@ -5,20 +5,22 @@ using Godot;
 
 public partial class Game : Node2D
 {
-	private ActionPane ActionPane => this.GetNode<ActionPane>("ActionPane");
+	private ActionPane ActionPane => this.GetNode<ActionPane>("View/Canvas/ActionPane");
 	public Player Player => this.GetNode<Player>("Player");
 
-	public WinOverlay WinOverlay => this.GetNode<WinOverlay>("WinOverlay");
-	public CaughtOverlay CaughtOverlay => this.GetNode<CaughtOverlay>("CaughtOverlay");
-	public PauseMenuOverlay PauseMenuOverlay => this.GetNode<PauseMenuOverlay>("PauseMenuOverlay");
+	public WinOverlay WinOverlay => this.GetNode<WinOverlay>("View/WinOverlay");
+	public CaughtOverlay CaughtOverlay => this.GetNode<CaughtOverlay>("View/CaughtOverlay");
+	public PauseMenuOverlay PauseMenuOverlay => this.GetNode<PauseMenuOverlay>("View/PauseMenuOverlay");
 
-	private HSlider SpeedSlider => this.GetNode<HSlider>("VBoxContainer/SpeedSliderToolbar/HSlider");
+	private HSlider SpeedSlider => this.GetNode<HSlider>("View/VBoxContainer/SpeedSliderToolbar/HSlider");
 
 	private CharacterBody2D PreviewIndicator => this.GetNode<CharacterBody2D>("PreviewIndicator");
 
 	private double prePreviewSpeed = 1;
 
 	[Export] public Vector2 SpawnPosition { get; set; }
+
+    public GameStates CurrentGameState = GameStates.Stop;
 
 	public override void _Ready()
 	{
@@ -29,7 +31,8 @@ public partial class Game : Node2D
 		this.PreviewIndicator.Hide();
 		this.WinOverlay.Hide();
 		this.CaughtOverlay.Hide();
-	}
+        this.CurrentGameState = GameStates.Prepare;
+    }
 
 	public override void _UnhandledInput(InputEvent @event)
 	{
@@ -57,7 +60,8 @@ public partial class Game : Node2D
 	public void OnPausePressed()
 	{
 		this.PauseMenuOverlay.Open();
-	}
+        this.CurrentGameState = GameStates.Stop;
+    }
 
 	public void OnPlayPressed()
 	{
@@ -65,7 +69,8 @@ public partial class Game : Node2D
 		this.OnResetPressed();
 		this.PreviewIndicator.Hide();
 		ActionPlayer.Instance.Play(this.ActionPane.Actions);
-	}
+        this.CurrentGameState = GameStates.Playing;
+    }
 
 	public void OnResetPressed()
 	{
@@ -75,7 +80,8 @@ public partial class Game : Node2D
 		this.CaughtOverlay.Hide();
 		this.WinOverlay.Hide();
 		ResetGameElements();
-	}
+        this.CurrentGameState = GameStates.Prepare;
+    }
 
 	public void OnLoopPressed()
 	{
@@ -84,7 +90,7 @@ public partial class Game : Node2D
 		ActionPlayer.Instance.PlaybackSpeed = Constants.PreviewPlaybackSpeed;
 		ActionPlayer.Instance.Preview = true;
 		this.OnPlayPressed();
-	}
+    }
 
 	public void OnLoopReleased()
 	{
@@ -92,7 +98,7 @@ public partial class Game : Node2D
 		this.OnResetPressed();
 		ActionPlayer.Instance.Preview = false;
 		ActionPlayer.Instance.PlaybackSpeed = this.prePreviewSpeed;
-	}
+    }
 
 	private void ResetGameElements()
 	{
@@ -152,11 +158,13 @@ public partial class Game : Node2D
 		this.WinOverlay.Open(name, ActionPlayer.Instance.CurrentTick, hasGoldMedal, hasSilverMedal, hasBronzeMedal);
 		this.WinOverlay.Show();
 		ActionPlayer.Instance.Stop();
-	}
+        this.CurrentGameState = GameStates.Stop;
+    }
 
 	public void OnPlayerLost(string name)
 	{
 		this.CaughtOverlay.Open(name);
 		ActionPlayer.Instance.Stop();
-	}
+        this.CurrentGameState = GameStates.Stop;
+    }
 }

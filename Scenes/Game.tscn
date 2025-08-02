@@ -1,17 +1,18 @@
-[gd_scene load_steps=16 format=3 uid="uid://dfenwo0b7hx7c"]
+[gd_scene load_steps=17 format=3 uid="uid://dfenwo0b7hx7c"]
 
 [ext_resource type="Script" uid="uid://bt83g2edvayok" path="res://Scripts/Core/Game.cs" id="1_iukft"]
+[ext_resource type="Script" uid="uid://bwnt1gtf5se81" path="res://Scenes/View.cs" id="3_3so38"]
 [ext_resource type="Texture2D" uid="uid://d1ptu6wmmwd6y" path="res://Assets/UI/Reset.png" id="3_b2bpf"]
 [ext_resource type="Script" uid="uid://5ph7310ke57h" path="res://Scripts/Core/PlaybackToolbar.cs" id="4_2irst"]
 [ext_resource type="Texture2D" uid="uid://y60sgqd2agpy" path="res://Assets/UI/Play.png" id="4_7lihs"]
 [ext_resource type="PackedScene" uid="uid://btwydqx0wjbnl" path="res://Scenes/UI/ActionMenu/ActionPane.tscn" id="4_bf53h"]
-[ext_resource type="PackedScene" uid="uid://le1oloc0doa3" path="res://Scenes/player.tscn" id="6_fgofq"]
+[ext_resource type="PackedScene" uid="uid://em2i5qm0uo2f" path="res://Scenes/player.tscn" id="6_fgofq"]
 [ext_resource type="Script" uid="uid://517q0xvo800u" path="res://Scripts/UI/SpeedSliderToolbar.cs" id="7_bf53h"]
 [ext_resource type="Texture2D" uid="uid://dnvbd84sbx1mi" path="res://Assets/UI/Loop.png" id="7_dahhg"]
 [ext_resource type="Texture2D" uid="uid://7se5awuc20ed" path="res://Assets/PreviewIndicator_Purple.png" id="8_2irst"]
 [ext_resource type="PackedScene" uid="uid://byoae28watimk" path="res://Scenes/UI/WinOverlay.tscn" id="9_71axn"]
-[ext_resource type="PackedScene" path="res://Scenes/UI/PauseMenuOverlay.tscn" id="11_3cx6b"]
-[ext_resource type="PackedScene" path="res://Scenes/UI/CaughtOverlay.tscn" id="11_3so38"]
+[ext_resource type="PackedScene" uid="uid://mmvbe8ep3rft" path="res://Scenes/UI/PauseMenuOverlay.tscn" id="11_3cx6b"]
+[ext_resource type="PackedScene" uid="uid://d0s6lvw4rkhrx" path="res://Scenes/UI/CaughtOverlay.tscn" id="11_3so38"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_fgofq"]
 font_size = 48
@@ -26,17 +27,12 @@ script = ExtResource("1_iukft")
 
 [node name="Player" parent="." instance=ExtResource("6_fgofq")]
 
-[node name="ActionPane" parent="." instance=ExtResource("4_bf53h")]
-z_index = 1
-custom_minimum_size = Vector2(200, 500)
-anchors_preset = 0
-anchor_right = 0.0
-anchor_bottom = 0.0
-offset_right = 200.0
-offset_bottom = 500.0
-grow_vertical = 1
+[node name="View" type="Camera2D" parent="."]
+offset = Vector2(960, 540)
+script = ExtResource("3_3so38")
+manualCameraSpeed = 500.0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
+[node name="VBoxContainer" type="VBoxContainer" parent="View"]
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
@@ -46,38 +42,38 @@ offset_bottom = 182.0
 grow_horizontal = 2
 scale = Vector2(0.5, 0.5)
 
-[node name="PlaybackToolbar" type="HBoxContainer" parent="VBoxContainer" groups=["Clocked"]]
+[node name="PlaybackToolbar" type="HBoxContainer" parent="View/VBoxContainer" groups=["Clocked"]]
 z_index = 1
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 0
 script = ExtResource("4_2irst")
 
-[node name="Reset" type="TextureButton" parent="VBoxContainer/PlaybackToolbar"]
+[node name="Reset" type="TextureButton" parent="View/VBoxContainer/PlaybackToolbar"]
 layout_mode = 2
 focus_mode = 0
 texture_normal = ExtResource("3_b2bpf")
 
-[node name="Play" type="TextureButton" parent="VBoxContainer/PlaybackToolbar"]
+[node name="Play" type="TextureButton" parent="View/VBoxContainer/PlaybackToolbar"]
 layout_mode = 2
 focus_mode = 0
 texture_normal = ExtResource("4_7lihs")
 
-[node name="LoopPreview" type="TextureButton" parent="VBoxContainer/PlaybackToolbar"]
+[node name="LoopPreview" type="TextureButton" parent="View/VBoxContainer/PlaybackToolbar"]
 layout_mode = 2
 focus_mode = 0
 texture_normal = ExtResource("7_dahhg")
 
-[node name="Label" type="Label" parent="VBoxContainer/PlaybackToolbar"]
+[node name="Label" type="Label" parent="View/VBoxContainer/PlaybackToolbar"]
 layout_mode = 2
 text = "Tick: 0"
 label_settings = SubResource("LabelSettings_fgofq")
 
-[node name="SpeedSliderToolbar" type="HBoxContainer" parent="VBoxContainer"]
+[node name="SpeedSliderToolbar" type="HBoxContainer" parent="View/VBoxContainer"]
 layout_mode = 2
 script = ExtResource("7_bf53h")
 
-[node name="HSlider" type="HSlider" parent="VBoxContainer/SpeedSliderToolbar"]
+[node name="HSlider" type="HSlider" parent="View/VBoxContainer/SpeedSliderToolbar"]
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -86,7 +82,7 @@ min_value = 1.0
 max_value = 15.0
 value = 1.0
 
-[node name="Label" type="Label" parent="VBoxContainer/SpeedSliderToolbar"]
+[node name="Label" type="Label" parent="View/VBoxContainer/SpeedSliderToolbar"]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 text = "8x"
@@ -94,18 +90,31 @@ label_settings = SubResource("LabelSettings_bf53h")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="WinOverlay" parent="." instance=ExtResource("9_71axn")]
+[node name="WinOverlay" parent="View" instance=ExtResource("9_71axn")]
 visible = false
 
-[node name="CaughtOverlay" parent="." instance=ExtResource("11_3so38")]
+[node name="CaughtOverlay" parent="View" instance=ExtResource("11_3so38")]
 visible = false
 
-[node name="PauseMenuOverlay" parent="." instance=ExtResource("11_3cx6b")]
+[node name="PauseMenuOverlay" parent="View" instance=ExtResource("11_3cx6b")]
 visible = false
 offset_left = 596.0
 offset_top = 192.0
 offset_right = 596.0
 offset_bottom = 192.0
+
+[node name="Canvas" type="CanvasLayer" parent="View"]
+
+[node name="ActionPane" parent="View/Canvas" instance=ExtResource("4_bf53h")]
+z_index = 1
+clip_contents = true
+custom_minimum_size = Vector2(200, 500)
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_right = 440.0
+offset_bottom = 500.0
+grow_vertical = 1
 
 [node name="PreviewIndicator" type="CharacterBody2D" parent="."]
 collision_layer = 8
@@ -117,10 +126,10 @@ texture = ExtResource("8_2irst")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PreviewIndicator"]
 shape = SubResource("CircleShape2D_71axn")
 
-[connection signal="pressed" from="VBoxContainer/PlaybackToolbar/Reset" to="." method="OnResetPressed"]
-[connection signal="pressed" from="VBoxContainer/PlaybackToolbar/Play" to="." method="OnPlayPressed"]
-[connection signal="button_down" from="VBoxContainer/PlaybackToolbar/LoopPreview" to="." method="OnLoopPressed"]
-[connection signal="button_up" from="VBoxContainer/PlaybackToolbar/LoopPreview" to="." method="OnLoopReleased"]
-[connection signal="value_changed" from="VBoxContainer/SpeedSliderToolbar/HSlider" to="VBoxContainer/SpeedSliderToolbar" method="OnSpeedSliderChanged"]
-[connection signal="RestartLevel" from="WinOverlay" to="." method="OnResetPressed"]
-[connection signal="RestartLevel" from="CaughtOverlay" to="." method="OnResetPressed"]
+[connection signal="pressed" from="View/VBoxContainer/PlaybackToolbar/Reset" to="." method="OnResetPressed"]
+[connection signal="pressed" from="View/VBoxContainer/PlaybackToolbar/Play" to="." method="OnPlayPressed"]
+[connection signal="button_down" from="View/VBoxContainer/PlaybackToolbar/LoopPreview" to="." method="OnLoopPressed"]
+[connection signal="button_up" from="View/VBoxContainer/PlaybackToolbar/LoopPreview" to="." method="OnLoopReleased"]
+[connection signal="value_changed" from="View/VBoxContainer/SpeedSliderToolbar/HSlider" to="View/VBoxContainer/SpeedSliderToolbar" method="OnSpeedSliderChanged"]
+[connection signal="RestartLevel" from="View/WinOverlay" to="." method="OnResetPressed"]
+[connection signal="RestartLevel" from="View/CaughtOverlay" to="." method="OnResetPressed"]

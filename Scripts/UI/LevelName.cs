@@ -4,10 +4,13 @@ using gmtkgamejam.Core;
 
 public partial class LevelName : CenterContainer
 {
-	private Label LevelNameLabel => this.GetNode<Label>("LevelName");
+	private Label LevelNameLabel => this.GetNode<Label>("Panel/LevelName");
 	
 	public override void _Ready()
 	{
+		this.Modulate = this.Modulate with { A = 0 };
+		Tween tween = this.CreateTween();
+		tween.TweenProperty(this, "modulate:a", 1, 0.2f);
 		this.LevelNameLabel.Text = LevelManager.Instance.CurrentLevel?.Name;
 	}
 

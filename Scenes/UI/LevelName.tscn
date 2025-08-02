@@ -1,9 +1,16 @@
-[gd_scene load_steps=3 format=3 uid="uid://ct3p2yk1fckbs"]
+[gd_scene load_steps=5 format=3 uid="uid://ct3p2yk1fckbs"]
 
 [ext_resource type="Script" uid="uid://cmrpx60rf2y3q" path="res://Scripts/UI/LevelName.cs" id="1_q501d"]
 
+[sub_resource type="Theme" id="Theme_q501d"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0to0c"]
+content_margin_left = 50.0
+content_margin_right = 50.0
+bg_color = Color(0, 0, 0, 0.52549)
+
 [sub_resource type="LabelSettings" id="LabelSettings_0m1nm"]
-font_size = 100
+font_size = 80
 outline_size = 4
 outline_color = Color(0, 0, 0, 1)
 shadow_size = 5
@@ -20,16 +27,24 @@ size_flags_vertical = 3
 mouse_filter = 2
 script = ExtResource("1_q501d")
 
-[node name="LevelName" type="Label" parent="."]
+[node name="Panel" type="PanelContainer" parent="."]
+layout_mode = 2
+theme = SubResource("Theme_q501d")
+theme_override_styles/panel = SubResource("StyleBoxFlat_0to0c")
+
+[node name="LevelName" type="Label" parent="Panel"]
+custom_minimum_size = Vector2(700, 0)
 layout_mode = 2
 text = "Level Name"
 label_settings = SubResource("LabelSettings_0m1nm")
 horizontal_alignment = 1
 vertical_alignment = 1
+autowrap_mode = 2
+justification_flags = 171
 
-[node name="Timer" type="Timer" parent="LevelName"]
+[node name="Timer" type="Timer" parent="Panel/LevelName"]
 wait_time = 1.5
 one_shot = true
 autostart = true
 
-[connection signal="timeout" from="LevelName/Timer" to="." method="OnHide"]
+[connection signal="timeout" from="Panel/LevelName/Timer" to="." method="OnHide"]

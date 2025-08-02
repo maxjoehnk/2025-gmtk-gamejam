@@ -69,8 +69,8 @@ public partial class ActionPane : PanelContainer
 
 	public void OnCollapseButton_Click(bool isCollapsed)
 	{
-		Texture2D collapsedTrue = GD.Load<Texture2D>("res://Assets/chevron-left.png");
-		Texture2D collapsedFalse = GD.Load<Texture2D>("res://Assets/chevron-right.png");
+		Texture2D collapsedTrue = GD.Load<Texture2D>("res://Assets/UI/chevron-left.png");
+		Texture2D collapsedFalse = GD.Load<Texture2D>("res://Assets/UI/chevron-right.png");
 
 		MainVBox.Visible = !isCollapsed;
 		if (isCollapsed)

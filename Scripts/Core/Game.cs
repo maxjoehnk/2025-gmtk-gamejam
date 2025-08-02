@@ -26,10 +26,13 @@ public partial class Game : Node2D
 
   public override void _Ready()
   {
-    this.ActionPane.ActionsChanged += OnActionsUpdated;
     this.SpeedSlider.ValueChanged += value =>
     {
       this.ActionPlayer.PlaybackSpeed = value;
+    };
+    this.ActionPane.ActionsChanged += () =>
+    {
+      this.PreviewIndicator.Show();
     };
     this.PreviewIndicator.Hide();
     this.WinOverlay.Hide();
@@ -52,6 +55,11 @@ public partial class Game : Node2D
     {
       OnResetPressed();
     }
+  }
+
+  public override void _Process(double delta)
+  {
+    this.OnActionsUpdated();
   }
 
   public void OnPlayPressed()
@@ -116,8 +124,6 @@ public partial class Game : Node2D
         position = this.PreviewIndicator.GlobalPosition;
       }
     }
-
-    this.PreviewIndicator.Show();
   }
 
   public void OnActionsFinished()

@@ -10,9 +10,9 @@
 
 [node name="Count Down The Level" type="Node2D"]
 script = ExtResource("1_cb4fg")
-GoldMedalTicks = 10
-SilverMedalTicks = 12
-BronzeMedalTicks = 20
+GoldMedalTicks = 21
+SilverMedalTicks = 25
+BronzeMedalTicks = 40
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
 position = Vector2(768, 256)

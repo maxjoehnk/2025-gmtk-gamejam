@@ -10,9 +10,9 @@
 
 [node name="Camera Run" type="Node2D"]
 script = ExtResource("1_rvgv3")
-GoldMedalTicks = 12
-SilverMedalTicks = 16
-BronzeMedalTicks = 20
+GoldMedalTicks = 18
+SilverMedalTicks = 20
+BronzeMedalTicks = 30
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
 position = Vector2(512, 128)

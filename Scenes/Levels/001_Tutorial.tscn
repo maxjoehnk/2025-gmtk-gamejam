@@ -8,9 +8,9 @@
 
 [node name="Tutorial" type="Node2D"]
 script = ExtResource("1_iex28")
-GoldMedalTicks = 10
-SilverMedalTicks = 12
-BronzeMedalTicks = 20
+GoldMedalTicks = 5
+SilverMedalTicks = 6
+BronzeMedalTicks = 7
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
 position = Vector2(384, 128)

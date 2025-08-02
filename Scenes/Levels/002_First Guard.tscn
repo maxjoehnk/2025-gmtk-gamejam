@@ -15,8 +15,8 @@ point_count = 5
 
 [node name="First Guard" type="Node2D"]
 script = ExtResource("1_yafu2")
-GoldMedalTicks = 10
-SilverMedalTicks = 12
+GoldMedalTicks = 12
+SilverMedalTicks = 16
 BronzeMedalTicks = 20
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
@@ -38,6 +38,7 @@ curve = SubResource("Curve2D_f6pk4")
 [node name="Guard2" parent="TileMapLayer/Path2D2" instance=ExtResource("5_dx6ke")]
 position = Vector2(64, 64)
 rotation = 3.14159
+StartPosition = 2
 
 [node name="Game" parent="." instance=ExtResource("6_f4q2l")]
 position = Vector2(0, 2)

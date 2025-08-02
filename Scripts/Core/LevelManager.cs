@@ -31,6 +31,7 @@ public partial class LevelManager : Node
 		List<AvailableLevel> levels = ResourceLoader.ListDirectory("res://Scenes/Levels")
 			.Where(name => name.EndsWith(".tscn"))
 			.Select((file, index) => new AvailableLevel(file, index))
+			.Where(level => !level.IsTestLevel || OS.IsDebugBuild())
 			.OrderBy(level => level.LevelIndex)
 			.ToList();
 

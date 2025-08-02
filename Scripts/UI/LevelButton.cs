@@ -7,4 +7,13 @@ public partial class LevelButton : Button
 	{
 		set => this.Text = value;
 	}
+
+	public bool IsTest
+	{
+		set
+		{
+			this.AddThemeColorOverride("font_color", value ? Colors.Red : Colors.White);
+			this.AddThemeColorOverride("font_hover_color", value ? Colors.Red : Colors.White);
+		}
+	}
 }

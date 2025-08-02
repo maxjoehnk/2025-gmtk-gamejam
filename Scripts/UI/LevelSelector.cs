@@ -21,6 +21,7 @@ public partial class LevelSelector : Control
 		LevelButton levelButton = this.LevelButton.Instantiate<LevelButton>();
 		levelButton.LevelName = level.Name;
 		levelButton.Disabled = !level.IsUnlocked;
+		levelButton.IsTest = level.IsTestLevel;
 		if (level.IsUnlocked)
 		{
 			levelButton.Pressed += () => { LevelManager.Instance.LoadLevel(level); };

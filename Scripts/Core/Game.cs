@@ -67,6 +67,8 @@ public partial class Game : Node2D
     GD.Print("Reset");
     this.Respawn();
     this.ActionPlayer.Reset();
+    this.CaughtOverlay.Hide();
+    this.WinOverlay.Hide();
     ResetGameElements();
 	}
 

@@ -1,15 +1,15 @@
 [gd_scene load_steps=12 format=4 uid="uid://dsondjl36nmbb"]
 
-[ext_resource type="Script" uid="uid://4iy48t6sf73e" path="res://Scripts/Core/Map.cs" id="1_aeiut"]
-[ext_resource type="TileSet" uid="uid://pafbad4mjfhn" path="res://Assets/LevelTiles/LevelTiles.tres" id="2_17i73"]
-[ext_resource type="PackedScene" uid="uid://duv31n7g217aj" path="res://Scenes/Objects/Spawn.tscn" id="3_yonba"]
-[ext_resource type="PackedScene" uid="uid://de2n83qnroben" path="res://Scenes/Objects/LevelGoal.tscn" id="4_e5vy3"]
-[ext_resource type="PackedScene" uid="uid://bshkala5h1lhk" path="res://Scenes/Enemies/TickSwitcher.tscn" id="5_17i73"]
-[ext_resource type="PackedScene" uid="uid://brugcfum7eimj" path="res://Scenes/Enemies/StaticCamera.tscn" id="5_e5vy3"]
-[ext_resource type="PackedScene" uid="uid://dfenwo0b7hx7c" path="res://Scenes/Game.tscn" id="5_t3myu"]
-[ext_resource type="PackedScene" uid="uid://bn2at2q8vviht" path="res://Scenes/Objects/Spikes.tscn" id="6_yonba"]
-[ext_resource type="PackedScene" uid="uid://v4lsnvlfun3a" path="res://Scenes/Enemies/Guard.tscn" id="8_t3myu"]
-[ext_resource type="PackedScene" uid="uid://b3or5ap3niioe" path="res://Scenes/Objects/Switch.tscn" id="9_twf2s"]
+[ext_resource type="Script" uid="uid://4iy48t6sf73e" path="res://Scripts/Core/Map.cs" id="1_3u55n"]
+[ext_resource type="TileSet" uid="uid://pafbad4mjfhn" path="res://Assets/LevelTiles/LevelTiles.tres" id="2_7k5y3"]
+[ext_resource type="PackedScene" uid="uid://duv31n7g217aj" path="res://Scenes/Objects/Spawn.tscn" id="3_oivq8"]
+[ext_resource type="PackedScene" uid="uid://de2n83qnroben" path="res://Scenes/Objects/LevelGoal.tscn" id="4_powu7"]
+[ext_resource type="PackedScene" uid="uid://brugcfum7eimj" path="res://Scenes/Enemies/StaticCamera.tscn" id="5_8i7xu"]
+[ext_resource type="PackedScene" uid="uid://bshkala5h1lhk" path="res://Scenes/Enemies/TickSwitcher.tscn" id="6_l1q47"]
+[ext_resource type="PackedScene" uid="uid://bn2at2q8vviht" path="res://Scenes/Objects/Spikes.tscn" id="7_1u05e"]
+[ext_resource type="PackedScene" uid="uid://v4lsnvlfun3a" path="res://Scenes/Enemies/Guard.tscn" id="8_y45np"]
+[ext_resource type="PackedScene" uid="uid://b3or5ap3niioe" path="res://Scenes/Objects/Switch.tscn" id="9_h5rt3"]
+[ext_resource type="PackedScene" uid="uid://dfenwo0b7hx7c" path="res://Scenes/Game.tscn" id="10_n817u"]
 
 [sub_resource type="Curve2D" id="Curve2D_twf2s"]
 _data = {
@@ -17,8 +17,8 @@ _data = {
 }
 point_count = 5
 
-[node name="Loopscape" type="Node2D"]
-script = ExtResource("1_aeiut")
+[node name="Levelscape" type="Node2D"]
+script = ExtResource("1_3u55n")
 GoldMedalTicks = 19
 SilverMedalTicks = 21
 BronzeMedalTicks = 25
@@ -26,62 +26,62 @@ BronzeMedalTicks = 25
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
 position = Vector2(384, 128)
 tile_map_data = PackedByteArray("AAAAAAAAAgAAABEAAAAAAAEAAgAAABEAAAAAAAIAAgAAABEAAAAAAAMAAgAAABEAAAAAAAQAAgAAABEAAAAAAAUAAgAAABEAAAAAAAYAAgAAABEAAAABAAAAAgAHAAsAAAABAAEAAgAKAAsAAAABAAIAAgAKAAsAAAABAAcAAgAAABEAAGACAAcAAgAAABEAAGADAAcAAgAAABEAAGAEAAcAAgAAABEAAGAFAAcAAgAAABEAAGAGAAcAAgAAABEAAGAHAAcAAgAAABEAAGAIAAcAAgAAABEAAGAJAAcAAgAAABEAAGAKAAcAAgAAABEAAGALAAYAAgAAABEAADALAAUAAgAAABEAADALAAQAAgAAABEAADALAAMAAgAJABEAAAALAAIAAgAAABEAADALAAEAAgAAABEAADALAAAAAgAAABEAADABAP//AgAAABEAAFACAP//AgAAABEAAFADAP//AgAAABEAAFAEAP//AgAAABEAAFAFAP//AgAAABEAAFAGAP//AgAAABEAAFAHAP//AgAAABEAAFAIAP//AgAAABEAAFAJAP//AgAAABEAAFAKAP//AgAAABEAAFAAAAcAAgACABEAAAAAAP//AgACABEAAFALAP//AgACABEAADALAAcAAgACABEAAGACAAEAAgAIABEAAFACAAIAAgABABEAAAACAAMAAgABABEAAAACAAQAAgABABEAAAACAAUAAgAEABEAADADAAUAAgABABEAAFAEAAUAAgABABEAAFAFAAUAAgABABEAAFAGAAUAAgABABEAAFAHAAUAAgABABEAAFAIAAUAAgAKAAsAAAADAAEAAgAKAAsAAAADAAIAAgAKAAsAAAADAAMAAgAKAAsAAAADAAQAAgAGAAsAAAAEAAEAAgAIABEAAFAEAAIAAgABABEAADAEAAMAAgAEABEAADAEAAQAAgAJAAsAAAAFAAEAAgAKAAsAAAAFAAIAAgAGAAsAAAAFAAMAAgABABEAAFAFAAQAAgAJAAsAAAAGAAEAAgABABEAAGAGAAIAAgAJAAsAAAAGAAMAAgABABEAAFAGAAQAAgAJAAsAAAAHAAEAAgABABEAAGAHAAIAAgAJAAsAAAAHAAMAAgAIABEAADAHAAQAAgAJAAsAAAAIAAEAAgABABEAAGAIAAIAAgAEAAsAAAAIAAMAAgAKAAsAAAAIAAQAAgAAAAsAAAAJAAEAAgAIABEAADAJAAIAAgAJAAsAAAAJAAMAAgAIABEAAAAJAAQAAgAJAAsAAAAJAAUAAgAIABEAAGAKAAEAAgAKAAsAAAAKAAIAAgAFAAsAAAAKAAMAAgABABEAAFAKAAQAAgAIAAsAAAAKAAUAAgAKAAsAAAABAAMAAgAKAAsAAAABAAQAAgAKAAsAAAABAAUAAgAKAAsAAAACAAYAAgAJAAsAAAADAAYAAgAJAAsAAAAEAAYAAgAJAAsAAAAFAAYAAgAJAAsAAAAGAAYAAgAJAAsAAAAHAAYAAgAJAAsAAAAIAAYAAgAFAAsAAAAJAAYAAgABABEAAAACAAAAAgAJAAsAAAADAAAAAgAEAAsAAAAEAAAAAgAJAAsAAAAFAAAAAgAEAAsAAAAGAAAAAgAJAAsAAAAHAAAAAgAJAAsAAAAIAAAAAgAJAAsAAAAJAAAAAgAJAAsAAAAKAAYAAgAFAAsAAAABAAYAAgAGAAsAAAAKAAAAAgAIAAsAAAA=")
-tile_set = ExtResource("2_17i73")
+tile_set = ExtResource("2_7k5y3")
 
-[node name="Spawn" parent="TileMapLayer" instance=ExtResource("3_yonba")]
+[node name="Spawn" parent="TileMapLayer" instance=ExtResource("3_oivq8")]
 position = Vector2(192, 64)
 
-[node name="LevelGoal" parent="TileMapLayer" instance=ExtResource("4_e5vy3")]
+[node name="LevelGoal" parent="TileMapLayer" instance=ExtResource("4_powu7")]
 position = Vector2(1344, 832)
 
-[node name="StaticCamera" parent="TileMapLayer" instance=ExtResource("5_e5vy3")]
+[node name="StaticCamera" parent="TileMapLayer" instance=ExtResource("5_8i7xu")]
 position = Vector2(576, 448)
 rotation = 2.38089
 
-[node name="TickSwitcher" parent="TileMapLayer" instance=ExtResource("5_17i73")]
+[node name="TickSwitcher" parent="TileMapLayer" instance=ExtResource("6_l1q47")]
 
-[node name="Spikes" parent="TileMapLayer/TickSwitcher" instance=ExtResource("6_yonba")]
+[node name="Spikes" parent="TileMapLayer/TickSwitcher" instance=ExtResource("7_1u05e")]
 position = Vector2(192, 192)
 
-[node name="Spikes2" parent="TileMapLayer/TickSwitcher" instance=ExtResource("6_yonba")]
+[node name="Spikes2" parent="TileMapLayer/TickSwitcher" instance=ExtResource("7_1u05e")]
 position = Vector2(448, 192)
 
-[node name="Spikes3" parent="TileMapLayer/TickSwitcher" instance=ExtResource("6_yonba")]
+[node name="Spikes3" parent="TileMapLayer/TickSwitcher" instance=ExtResource("7_1u05e")]
 position = Vector2(704, 192)
 
-[node name="Spikes4" parent="TileMapLayer/TickSwitcher" instance=ExtResource("6_yonba")]
+[node name="Spikes4" parent="TileMapLayer/TickSwitcher" instance=ExtResource("7_1u05e")]
 position = Vector2(1216, 64)
 
 [node name="Path2D" type="Path2D" parent="TileMapLayer"]
 curve = SubResource("Curve2D_twf2s")
 
-[node name="Guard" parent="TileMapLayer/Path2D" instance=ExtResource("8_t3myu")]
+[node name="Guard" parent="TileMapLayer/Path2D" instance=ExtResource("8_y45np")]
 position = Vector2(1344, 64)
 rotation = 1.5708
 
-[node name="TickSwitcher2" parent="TileMapLayer" instance=ExtResource("5_17i73")]
+[node name="TickSwitcher2" parent="TileMapLayer" instance=ExtResource("6_l1q47")]
 
-[node name="StaticCamera" parent="TileMapLayer/TickSwitcher2" instance=ExtResource("5_e5vy3")]
+[node name="StaticCamera" parent="TileMapLayer/TickSwitcher2" instance=ExtResource("5_8i7xu")]
 position = Vector2(128, 448)
 
-[node name="StaticCamera2" parent="TileMapLayer/TickSwitcher2" instance=ExtResource("5_e5vy3")]
+[node name="StaticCamera2" parent="TileMapLayer/TickSwitcher2" instance=ExtResource("5_8i7xu")]
 position = Vector2(293, 742)
 rotation = 2.3845
 
-[node name="StaticCamera3" parent="TileMapLayer/TickSwitcher2" instance=ExtResource("5_e5vy3")]
+[node name="StaticCamera3" parent="TileMapLayer/TickSwitcher2" instance=ExtResource("5_8i7xu")]
 position = Vector2(576, 704)
 rotation = 1.52852
 
-[node name="Switch" parent="TileMapLayer" instance=ExtResource("9_twf2s")]
+[node name="Switch" parent="TileMapLayer" instance=ExtResource("9_h5rt3")]
 position = Vector2(320, 64)
 Targets = Array[NodePath]([NodePath("../StaticCamera")])
 
-[node name="Spikes" parent="TileMapLayer" instance=ExtResource("6_yonba")]
+[node name="Spikes" parent="TileMapLayer" instance=ExtResource("7_1u05e")]
 position = Vector2(1088, 448)
 
-[node name="Switch2" parent="TileMapLayer" instance=ExtResource("9_twf2s")]
+[node name="Switch2" parent="TileMapLayer" instance=ExtResource("9_h5rt3")]
 position = Vector2(1344, 320)
 Targets = Array[NodePath]([NodePath("../Spikes")])
 
-[node name="Game" parent="." instance=ExtResource("5_t3myu")]
+[node name="Game" parent="." instance=ExtResource("10_n817u")]
 visible = false

@@ -1,13 +1,13 @@
 [gd_scene load_steps=12 format=4 uid="uid://bs5j4j7dcjghk"]
 
-[ext_resource type="Script" uid="uid://4iy48t6sf73e" path="res://Scripts/Core/Map.cs" id="1_x4bg4"]
-[ext_resource type="TileSet" uid="uid://pafbad4mjfhn" path="res://Assets/LevelTiles/LevelTiles.tres" id="2_gi2ty"]
-[ext_resource type="PackedScene" uid="uid://duv31n7g217aj" path="res://Scenes/Objects/Spawn.tscn" id="3_8rxuv"]
-[ext_resource type="PackedScene" uid="uid://de2n83qnroben" path="res://Scenes/Objects/LevelGoal.tscn" id="4_el2y5"]
-[ext_resource type="PackedScene" uid="uid://brugcfum7eimj" path="res://Scenes/Enemies/StaticCamera.tscn" id="4_x4bg4"]
-[ext_resource type="PackedScene" uid="uid://v4lsnvlfun3a" path="res://Scenes/Enemies/Guard.tscn" id="6_571jx"]
-[ext_resource type="PackedScene" uid="uid://bshkala5h1lhk" path="res://Scenes/Enemies/TickSwitcher.tscn" id="6_x4bg4"]
-[ext_resource type="PackedScene" uid="uid://dfenwo0b7hx7c" path="res://Scenes/Game.tscn" id="8_i0vf8"]
+[ext_resource type="Script" uid="uid://4iy48t6sf73e" path="res://Scripts/Core/Map.cs" id="1_sm46o"]
+[ext_resource type="TileSet" uid="uid://pafbad4mjfhn" path="res://Assets/LevelTiles/LevelTiles.tres" id="2_f78tp"]
+[ext_resource type="PackedScene" uid="uid://bshkala5h1lhk" path="res://Scenes/Enemies/TickSwitcher.tscn" id="3_fmmli"]
+[ext_resource type="PackedScene" uid="uid://brugcfum7eimj" path="res://Scenes/Enemies/StaticCamera.tscn" id="4_5oh6c"]
+[ext_resource type="PackedScene" uid="uid://duv31n7g217aj" path="res://Scenes/Objects/Spawn.tscn" id="5_0q8bh"]
+[ext_resource type="PackedScene" uid="uid://de2n83qnroben" path="res://Scenes/Objects/LevelGoal.tscn" id="6_e3fq6"]
+[ext_resource type="PackedScene" uid="uid://v4lsnvlfun3a" path="res://Scenes/Enemies/Guard.tscn" id="7_262w3"]
+[ext_resource type="PackedScene" uid="uid://dfenwo0b7hx7c" path="res://Scenes/Game.tscn" id="8_fmu0a"]
 
 [sub_resource type="Curve2D" id="Curve2D_x4bg4"]
 _data = {
@@ -28,7 +28,7 @@ _data = {
 point_count = 14
 
 [node name="Level 6" type="Node2D"]
-script = ExtResource("1_x4bg4")
+script = ExtResource("1_sm46o")
 GoldMedalTicks = 18
 SilverMedalTicks = 22
 BronzeMedalTicks = 25
@@ -36,62 +36,62 @@ BronzeMedalTicks = 25
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
 position = Vector2(384, 257)
 tile_map_data = PackedByteArray("AAALAAYAAQACAAUAAGAKAAYAAQAAAAUAAGAJAAYAAQAAAAUAAGAIAAYAAQAAAAUAAGAHAAYAAQAAAAUAAGD+/wYAAQAAAAUAAGD9/wYAAQACAAUAAAALAP7/AQACAAUAADALAP//AQAAAAUAADALAAAAAQAAAAUAADALAAEAAQAAAAUAADALAAIAAQAAAAUAADALAAMAAQAAAAUAADALAAQAAQAAAAUAADALAAUAAQAAAAUAADAGAAYAAQAAAAUAAGAFAAYAAQAAAAUAAGAEAAYAAQAAAAUAAGADAAYAAQAAAAUAAGACAAYAAQAAAAUAAGABAAYAAQAAAAUAAGAAAAYAAQAAAAUAAGD//wYAAQAAAAUAAGAKAP7/AQAAAAUAAFAJAP7/AQAAAAUAAFAIAP7/AQAAAAUAAFAHAP7/AQAAAAUAAFAGAP7/AQAAAAUAAFAFAP7/AQAAAAUAAFAEAP7/AQAAAAUAAFADAP7/AQAAAAUAAFACAP7/AQAAAAUAAFABAP7/AQAAAAUAAFAAAP7/AQAAAAUAAFD///7/AQAAAAUAAFD+//7/AQAAAAUAAFD9//7/AQACAAUAAFD9/wUAAQAAAAUAAAD9/wQAAQAAAAUAAAD9/wMAAQAAAAUAAAD9/wIAAQAAAAUAAAD9/wEAAQAAAAUAAAD9/wAAAQAAAAUAAAD9////AQAAAAUAAAD//wQAAQADAAUAADAAAAQAAQADAAUAAFAAAAMAAQADAAUAAAACAAMAAQADAAUAAGACAAQAAQADAAUAADADAAQAAQADAAUAAFADAAMAAQADAAUAAAAFAAMAAQADAAUAAGAFAAQAAQADAAUAADAGAAQAAQADAAUAAFAGAAMAAQADAAUAAAAIAAMAAQADAAUAAGAIAAQAAQADAAUAADAJAAQAAQADAAUAAFAJAAMAAQADAAUAAAAJAAEAAQADAAUAAFAJAAAAAQADAAUAAAAIAAAAAQADAAUAAGAIAAEAAQADAAUAADAGAAEAAQADAAUAAFAFAAEAAQADAAUAADAFAAAAAQADAAUAAGAGAAAAAQADAAUAAAADAAEAAQADAAUAAFACAAEAAQADAAUAADACAAAAAQADAAUAAGADAAAAAQADAAUAAAAAAAEAAQADAAUAAFD//wEAAQADAAUAADD//wAAAQADAAUAAGAAAAAAAQADAAUAAAD+////AQAEAAMAADD+/wAAAQAHAAMAAAD+/wEAAQAHAAMAAAD+/wIAAQADAAMAABD+/wMAAQAHAAMAAAD+/wQAAQAHAAMAAAD+/wUAAQAEAAMAABD//wUAAQAGAAMAAAAAAAUAAQAGAAMAAAABAAUAAQAJAAMAAAABAAQAAQAHAAMAAAABAAMAAQAHAAMAAAABAAIAAQAAAAMAAAABAAEAAQAHAAMAAAABAAAAAQAHAAMAAAABAP//AQAJAAMAACD/////AQAGAAMAAAAAAP//AQAGAAMAAAACAP//AQAGAAMAAAADAP//AQAGAAMAAAAEAP//AQAJAAMAACAFAP//AQAGAAMAAAAGAP//AQAGAAMAAAAHAP//AQAJAAMAACAIAP//AQAGAAMAAAAJAP//AQAGAAMAAAAKAP//AQAJAAAAAAAKAAAAAQAHAAMAAAAKAAEAAQAHAAMAAAAKAAIAAQADAAMAAAAKAAMAAQAHAAMAAAAKAAQAAQAHAAMAAAAKAAUAAQAEAAMAAAACAAUAAQAGAAMAAAADAAUAAQAGAAMAAAAEAAUAAQAJAAMAAAAFAAUAAQAGAAMAAAAGAAUAAQAGAAMAAAAHAAUAAQAJAAMAAAAIAAUAAQAGAAMAAAAJAAUAAQAGAAMAAAAHAAQAAQAHAAMAAAAHAAMAAQAHAAMAAAAHAAIAAQAAAAMAAAAHAAEAAQAHAAMAAAAHAAAAAQAHAAMAAAD//wIAAQAGAAMAAAAAAAIAAQAGAAMAAAACAAIAAQAGAAMAAAADAAIAAQAGAAMAAAAEAAIAAQAAAAMAAAAFAAIAAQAGAAMAAAAGAAIAAQAGAAMAAAAIAAIAAQAGAAMAAAAJAAIAAQAGAAMAAAAEAAAAAQAHAAMAAAAEAAEAAQAHAAMAAAAEAAMAAQAHAAMAAAAEAAQAAQAHAAMAAAD//wMAAQADAAUAAGA=")
-tile_set = ExtResource("2_gi2ty")
+tile_set = ExtResource("2_f78tp")
 
-[node name="CameraSwitcher" parent="TileMapLayer" instance=ExtResource("6_x4bg4")]
+[node name="CameraSwitcher" parent="TileMapLayer" instance=ExtResource("3_fmmli")]
 position = Vector2(-384, -257)
 Ticks = 3
 
-[node name="1" parent="TileMapLayer/CameraSwitcher" instance=ExtResource("4_x4bg4")]
+[node name="1" parent="TileMapLayer/CameraSwitcher" instance=ExtResource("4_5oh6c")]
 position = Vector2(1280, 128)
 rotation = 0.667699
 
-[node name="2" parent="TileMapLayer/CameraSwitcher" instance=ExtResource("4_x4bg4")]
+[node name="2" parent="TileMapLayer/CameraSwitcher" instance=ExtResource("4_5oh6c")]
 position = Vector2(896, 640)
 rotation = -1.01251
 
-[node name="3" parent="TileMapLayer/CameraSwitcher" instance=ExtResource("4_x4bg4")]
+[node name="3" parent="TileMapLayer/CameraSwitcher" instance=ExtResource("4_5oh6c")]
 position = Vector2(640, 256)
 rotation = -2.5267
 
-[node name="4" parent="TileMapLayer/CameraSwitcher" instance=ExtResource("4_x4bg4")]
+[node name="4" parent="TileMapLayer/CameraSwitcher" instance=ExtResource("4_5oh6c")]
 position = Vector2(256, 512)
 rotation = 2.149
 
-[node name="5" parent="TileMapLayer/CameraSwitcher" instance=ExtResource("4_x4bg4")]
+[node name="5" parent="TileMapLayer/CameraSwitcher" instance=ExtResource("4_5oh6c")]
 position = Vector2(1280, 896)
 rotation = 0.721355
 
-[node name="6" parent="TileMapLayer/CameraSwitcher" instance=ExtResource("4_x4bg4")]
+[node name="6" parent="TileMapLayer/CameraSwitcher" instance=ExtResource("4_5oh6c")]
 position = Vector2(1792, 576)
 rotation = 3.12289
 
-[node name="Spawn" parent="TileMapLayer" instance=ExtResource("3_8rxuv")]
+[node name="Spawn" parent="TileMapLayer" instance=ExtResource("5_0q8bh")]
 position = Vector2(-192, 703)
 
-[node name="LevelGoal" parent="TileMapLayer" instance=ExtResource("4_el2y5")]
+[node name="LevelGoal" parent="TileMapLayer" instance=ExtResource("6_e3fq6")]
 position = Vector2(1344, -65)
 
 [node name="Path2D" type="Path2D" parent="TileMapLayer"]
 position = Vector2(1344, 703)
 curve = SubResource("Curve2D_x4bg4")
 
-[node name="Guard 1" parent="TileMapLayer/Path2D" instance=ExtResource("6_571jx")]
+[node name="Guard 1" parent="TileMapLayer/Path2D" instance=ExtResource("7_262w3")]
 rotation = 3.14159
 
 [node name="Path2D2" type="Path2D" parent="TileMapLayer"]
 position = Vector2(1344, 703)
 curve = SubResource("Curve2D_gi2ty")
 
-[node name="Guard 2" parent="TileMapLayer/Path2D2" instance=ExtResource("6_571jx")]
+[node name="Guard 2" parent="TileMapLayer/Path2D2" instance=ExtResource("7_262w3")]
 position = Vector2(-1536, -768)
 
 [node name="Path2D3" type="Path2D" parent="TileMapLayer"]
 position = Vector2(-384, -257)
 curve = SubResource("Curve2D_8rxuv")
 
-[node name="Guard 3" parent="TileMapLayer/Path2D3" instance=ExtResource("6_571jx")]
+[node name="Guard 3" parent="TileMapLayer/Path2D3" instance=ExtResource("7_262w3")]
 position = Vector2(960, 192)
 rotation = 3.14159
 
-[node name="Game" parent="." instance=ExtResource("8_i0vf8")]
+[node name="Game" parent="." instance=ExtResource("8_fmu0a")]

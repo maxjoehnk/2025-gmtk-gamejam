@@ -1,0 +1,29 @@
+[gd_scene load_steps=6 format=4 uid="uid://dhq1jgscwvbjg"]
+
+[ext_resource type="Script" uid="uid://4iy48t6sf73e" path="res://Scripts/Core/Map.cs" id="1_iex28"]
+[ext_resource type="TileSet" uid="uid://pafbad4mjfhn" path="res://Assets/LevelTiles/LevelTiles.tres" id="2_v86p2"]
+[ext_resource type="PackedScene" uid="uid://duv31n7g217aj" path="res://Scenes/Objects/Spawn.tscn" id="3_tlx6q"]
+[ext_resource type="PackedScene" uid="uid://de2n83qnroben" path="res://Scenes/Objects/LevelGoal.tscn" id="4_i3p7o"]
+[ext_resource type="PackedScene" uid="uid://dfenwo0b7hx7c" path="res://Scenes/Game.tscn" id="5_vx7c8"]
+
+[node name="Tutorial" type="Node2D"]
+script = ExtResource("1_iex28")
+GoldMedalTicks = 10
+SilverMedalTicks = 12
+BronzeMedalTicks = 20
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+position = Vector2(384, 128)
+rotation = 0.000775114
+tile_map_data = PackedByteArray("AAAGAAIAAgALAAYAAAACAAIAAgAJAAYAAAADAAIAAgAJAAYAAAAEAAIAAgAJAAYAAAAFAAIAAgAJAAYAAAABAAEAAgAAABAAAFACAAEAAgAAABAAAFADAAEAAgAAABAAAFAEAAEAAgAAABAAAFAFAAEAAgAAABAAAFAGAAEAAgAAABAAAFAHAAIAAgAAABAAADAGAAMAAgAAABAAAGAFAAMAAgAAABAAAGAEAAMAAgAAABAAAGADAAMAAgAAABAAAGAAAAEAAgACABAAAFAAAAMAAgACABAAAAACAAMAAgAAABAAAGABAAMAAgAAABAAAGABAAIAAgANAAYAAAAAAAIAAgAAABAAAAAHAAMAAgACABAAAGAHAAEAAgACABAAADA=")
+tile_set = ExtResource("2_v86p2")
+
+[node name="Spawn" parent="TileMapLayer" instance=ExtResource("3_tlx6q")]
+position = Vector2(192.248, 319.851)
+
+[node name="LevelGoal" parent="TileMapLayer" instance=ExtResource("4_i3p7o")]
+position = Vector2(833.249, 321.354)
+
+[node name="Game" parent="." instance=ExtResource("5_vx7c8")]
+position = Vector2(0, 2)
+rotation = 0.000775114

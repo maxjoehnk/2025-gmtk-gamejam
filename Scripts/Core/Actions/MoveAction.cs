@@ -15,6 +15,6 @@ public partial class MoveAction : Action
 
     public override Vector2 Preview(Vector2 position)
     {
-        return position + this.Direction.ToMovementVector() * this.Ticks;
+        return position + this.Direction.ToMovementVector();
     }
 }

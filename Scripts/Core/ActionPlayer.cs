@@ -1,5 +1,6 @@
 using System.Linq;
 using gmtkgamejam.Core;
+using gmtkgamejam.Scripts.Core;
 using Godot;
 using Godot.Collections;
 
@@ -7,10 +8,9 @@ namespace gmtkgamejam.Scenes;
 
 public partial class ActionPlayer : Node
 {
-  public static ActionPlayer Get(Node node)
-  {
-    return (ActionPlayer)node.GetTree().GetFirstNodeInGroup("ActionPlayer");
-  }
+  public static ActionPlayer Instance { get; private set; }
+  
+  private double executedWaitTime;
 
   [Signal]
   public delegate void FinishedEventHandler();
@@ -18,24 +18,19 @@ public partial class ActionPlayer : Node
   [Signal]
   public delegate void TickedEventHandler(int tick);
 
-  private Timer ? Timer => this.GetNodeOrNull<Timer>("Timer");
+  private Timer Timer => this.GetChild<Timer>(0);
 
   [Export]
   public double PlaybackSpeed
   {
-    get => 1 / (this.Timer?.WaitTime ?? 1);
+    get => 1 / this.Timer.WaitTime;
     set
     {
-      if(this.Timer == null)
-      {
-        return;
-      }
-
       this.Timer.WaitTime = 1 / value;
       GD.Print($"Set TickDuration to {this.Timer.WaitTime}s");
     }
   }
-  
+
   public bool Preview { get; set; }
 
   private Array<Action> Actions { get; set; }
@@ -46,80 +41,94 @@ public partial class ActionPlayer : Node
 
   private int ActionTicksRemaining { get; set; }
 
-  public double TickDuration => this.Timer?.WaitTime ?? 1;
+  public double TickDuration => this.Timer.WaitTime;
 
-  private Action ? CurrentAction => Actions.ElementAtOrDefault(ActionIndex);
+  private Action ? CurrentAction => this.Actions.ElementAtOrDefault(this.ActionIndex);
 
-  private double executedWaitTime = 0;
+  public override void _Ready()
+  {
+    Instance = this;
+    this.AddChild(new Timer());
+    this.Timer.Autostart = false;
+    this.Timer.OneShot = true;
+    this.Timer.WaitTime = 1;
+    this.Timer.Timeout += this.Tick;
+  }
+
+  public override void _Process(double delta)
+  {
+    this.executedWaitTime += delta;
+  }
 
   public void Play(Array<Action> actions)
   {
-    Actions = actions;
-    ActionTicksRemaining = CurrentAction?.Ticks ?? 0;
+    this.Actions = actions;
+    this.ActionTicksRemaining = this.CurrentAction?.Ticks ?? 0;
 
-    Tick();
+    this.Tick();
   }
 
   public void Stop()
   {
-    this.Timer?.Stop();
+    this.Timer.Stop();
   }
 
   public void Tick()
   {
-    if (Preview)
+    if (this.Preview)
     {
-      CurrentTick += 1;
-      EmitSignalTicked(CurrentTick);
-      this.Timer?.Start();
+      this.CurrentTick += 1;
+      this.EmitTick();
+      this.Timer.Start();
       return;
     }
     
-    if(executedWaitTime < TickDuration)
+    if(this.executedWaitTime < this.TickDuration)
     {
-      this.Timer?.Start();
+      this.Timer.Start();
       return;
     }
-    if(CurrentAction == null)
+    if(this.CurrentAction == null)
     {
       return;
     }
 
-    CurrentTick += 1;
-    EmitSignalTicked(CurrentTick);
-    CurrentAction?.Act(GetParent<Game>().Player);
-    ActionTicksRemaining -= 1;
-    if (ActionTicksRemaining <= 0)
+    this.CurrentTick += 1;
+    this.EmitTick();
+    this.CurrentAction?.Act((Player)this.GetTree().GetFirstNodeInGroup(Groups.Player));
+    this.ActionTicksRemaining -= 1;
+    if (this.ActionTicksRemaining <= 0)
     {
-      NextAction();
+      this.NextAction();
     }
 
-    this.Timer?.Start();
+    this.Timer.Start();
 
-    executedWaitTime = 0;
+    this.executedWaitTime = 0;
   }
 
   private void NextAction()
   {
     this.ActionIndex += 1;
-    this.ActionTicksRemaining = CurrentAction?.Ticks ?? 0;
-    if(ActionIndex >= Actions.Count)
+    this.ActionTicksRemaining = this.CurrentAction?.Ticks ?? 0;
+    if(this.ActionIndex >= this.Actions.Count)
     {
-      EmitSignalFinished();
+      this.EmitSignalFinished();
     }
   }
 
   public void Reset()
   {
     this.Stop();
-    CurrentTick = 0;
-    ActionIndex = 0;
-    ActionTicksRemaining = 0;
-    EmitSignalTicked(CurrentTick);
+    this.CurrentTick = 0;
+    this.ActionIndex = 0;
+    this.ActionTicksRemaining = 0;
+    this.EmitTick();
   }
 
-  public override void _Process(double delta)
+  private void EmitTick()
   {
-    executedWaitTime += delta;
+    this.EmitSignalTicked(this.CurrentTick);
+    this.GetTree().CallGroup(Groups.Clocked, nameof(IClocked.OnTick), this.CurrentTick);
   }
 }

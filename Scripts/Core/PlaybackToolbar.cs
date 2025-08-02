@@ -1,12 +1,12 @@
 using Godot;
-using System;
+using gmtkgamejam.Scripts.Core;
 
-public partial class PlaybackToolbar : HBoxContainer
+public partial class PlaybackToolbar : HBoxContainer, IClocked
 {
 	private Label TickLabel => GetNode<Label>("Label");
 
 	public void OnTick(int tick)
 	{
-		TickLabel.Text = "Tick: " + tick;
+		this.TickLabel.Text = "Tick: " + tick;
 	}
 }

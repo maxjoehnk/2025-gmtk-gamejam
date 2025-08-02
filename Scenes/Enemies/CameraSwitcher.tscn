@@ -2,6 +2,6 @@
 
 [ext_resource type="Script" uid="uid://b4c0dgb4vwobn" path="res://Scripts/Enemies/CameraSwitcher.cs" id="1_vky56"]
 
-[node name="CameraSwitcher" type="Node2D"]
+[node name="CameraSwitcher" type="Node2D" groups=["Clocked"]]
 editor_description = "Automatically switches through the camera children on every tick."
 script = ExtResource("1_vky56")

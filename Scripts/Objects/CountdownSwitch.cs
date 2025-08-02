@@ -4,7 +4,7 @@ using gmtkgamejam.Scenes;
 using gmtkgamejam.Scripts.Core;
 using Godot.Collections;
 
-public partial class CountdownSwitch : Node2D, IInteractable, IResettable
+public partial class CountdownSwitch : Node2D, IInteractable, IResettable, IClocked
 {
 	private Label CountdownLabel => this.GetNode<Label>("Countdown");
 	private AnimatedSprite2D Switch => this.GetNode<AnimatedSprite2D>("Switch");
@@ -18,7 +18,6 @@ public partial class CountdownSwitch : Node2D, IInteractable, IResettable
 
 	public override void _Ready()
 	{
-		ActionPlayer.Get(this).Ticked += OnTick;
 		this.ticksRemaining = this.Countdown;
 	}
 
@@ -45,7 +44,7 @@ public partial class CountdownSwitch : Node2D, IInteractable, IResettable
 		}
 	}
 
-	private void OnTick(int tick)
+	public void OnTick(int tick)
 	{
 		if (!this.active)
 		{

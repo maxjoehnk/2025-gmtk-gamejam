@@ -29,6 +29,9 @@ point_count = 8
 
 [node name="WasSindNamen" type="Node2D"]
 script = ExtResource("1_m7c25")
+GoldMedalTicks = 22
+SilverMedalTicks = 25
+BronzeMedalTicks = 30
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
 position = Vector2(384, 257)

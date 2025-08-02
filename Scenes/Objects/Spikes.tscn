@@ -7,7 +7,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lepka"]
 size = Vector2(128, 128)
 
-[node name="Spikes" type="Node2D"]
+[node name="Spikes" type="Node2D" groups=["Resettable"]]
 script = ExtResource("1_6ld86")
 
 [node name="Spikes" type="StaticBody2D" parent="."]

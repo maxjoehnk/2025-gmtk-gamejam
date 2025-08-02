@@ -2,12 +2,10 @@ using Godot;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using gmtkgamejam.Scenes;
+using gmtkgamejam.Scripts.Core;
 
-public partial class CameraSwitcher : Node2D
+public partial class CameraSwitcher : Node2D, IClocked
 {
-	private ActionPlayer Playback => ActionPlayer.Get(this);
-
 	[Export] public int Ticks { get; set; } = 1;
 
 	private List<StaticCamera> Cameras = [];
@@ -15,12 +13,14 @@ public partial class CameraSwitcher : Node2D
 	public override void _Ready()
 	{
 		this.Cameras = this.GetChildren().OfType<StaticCamera>().ToList();
-		this.Playback.Ticked += OnTick;
+		GD.Print($"CameraSwitcher {this.Name} subscribed to ticks");
+		
 		this.OnTick(0);
 	}
 
-	private void OnTick(int tick)
+	public void OnTick(int tick)
 	{
+		GD.Print($"CameraSwitcher {this.Name} ticked {tick}");
 		int cameraIndex = (tick / this.Ticks) % this.Cameras.Count;
 		this.Cameras[cameraIndex].IsActive = true;
 		foreach (StaticCamera camera in this.Cameras)

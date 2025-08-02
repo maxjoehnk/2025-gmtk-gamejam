@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 [autoload]
 
 LevelLoader="*res://Scripts/Core/LevelLoader.cs"
+ActionPlayer="*res://Scripts/Core/ActionPlayer.cs"
 
 [display]
 
@@ -38,6 +39,8 @@ ActionPlayer=""
 Waypoints=""
 Resettable=""
 LevelExit=""
+Player=""
+Clocked=""
 
 [input]
 

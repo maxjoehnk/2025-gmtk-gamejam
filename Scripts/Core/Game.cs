@@ -1,10 +1,7 @@
-using System.Text.RegularExpressions;
 using gmtkgamejam.Core;
 using gmtkgamejam.Scenes;
 using gmtkgamejam.Scripts.Core;
 using Godot;
-using Godot.Collections;
-using static Godot.Control;
 
 public partial class Game : Node2D
 {
@@ -13,8 +10,6 @@ public partial class Game : Node2D
 
   public WinOverlay WinOverlay => this.GetNode<WinOverlay>("WinOverlay");
   public CaughtOverlay CaughtOverlay => this.GetNode<CaughtOverlay>("CaughtOverlay");
-
-  public ActionPlayer ActionPlayer => this.GetNode<ActionPlayer>("ActionPlayer");
 
   private HSlider SpeedSlider => this.GetNode<HSlider>("VBoxContainer/SpeedSliderToolbar/HSlider");
 
@@ -28,12 +23,14 @@ public partial class Game : Node2D
   {
     this.SpeedSlider.ValueChanged += value =>
     {
-      this.ActionPlayer.PlaybackSpeed = value;
+      ActionPlayer.Instance.PlaybackSpeed = value;
     };
     this.ActionPane.ActionsChanged += () =>
     {
       this.PreviewIndicator.Show();
     };
+    ActionPlayer.Instance.Finished += this.OnActionsFinished;
+    ActionPlayer.Instance.PlaybackSpeed = this.SpeedSlider.Value;
     this.PreviewIndicator.Hide();
     this.WinOverlay.Hide();
     this.CaughtOverlay.Hide();
@@ -67,14 +64,14 @@ public partial class Game : Node2D
     GD.Print("Play");
     this.OnResetPressed();
 		this.PreviewIndicator.Hide();
-		this.ActionPlayer.Play(this.ActionPane.Actions);
+		ActionPlayer.Instance.Play(this.ActionPane.Actions);
 	}
 
   public void OnResetPressed()
   {
     GD.Print("Reset");
     this.Respawn();
-    this.ActionPlayer.Reset();
+    ActionPlayer.Instance.Reset();
     this.CaughtOverlay.Hide();
     this.WinOverlay.Hide();
     ResetGameElements();
@@ -83,9 +80,9 @@ public partial class Game : Node2D
   public void OnLoopPressed()
   {
     GD.Print("Preview started");
-    this.prePreviewSpeed = ActionPlayer.PlaybackSpeed;
-    ActionPlayer.PlaybackSpeed = Constants.PreviewPlaybackSpeed;
-    ActionPlayer.Preview = true;
+    this.prePreviewSpeed = ActionPlayer.Instance.PlaybackSpeed;
+    ActionPlayer.Instance.PlaybackSpeed = Constants.PreviewPlaybackSpeed;
+    ActionPlayer.Instance.Preview = true;
     this.OnPlayPressed();
   }
 
@@ -93,8 +90,8 @@ public partial class Game : Node2D
   {
     GD.Print("Preview stopped");
     this.OnResetPressed();
-    ActionPlayer.Preview = false;
-    ActionPlayer.PlaybackSpeed = this.prePreviewSpeed;
+    ActionPlayer.Instance.Preview = false;
+    ActionPlayer.Instance.PlaybackSpeed = this.prePreviewSpeed;
   }
 
 	private void ResetGameElements()
@@ -139,17 +136,17 @@ public partial class Game : Node2D
 
   public void OnPlayerWon(string name, int goldMedalTicks, int silverMedalTicks, int bronzeMedalTicks)
   {
-    bool hasGoldMedal = goldMedalTicks >= this.ActionPlayer.CurrentTick;
-    bool hasSilverMedal = silverMedalTicks >= this.ActionPlayer.CurrentTick;
-    bool hasBronzeMedal = bronzeMedalTicks >= this.ActionPlayer.CurrentTick;
-    this.WinOverlay.Open(name, this.ActionPlayer.CurrentTick, hasGoldMedal, hasSilverMedal, hasBronzeMedal);
+    bool hasGoldMedal = goldMedalTicks >= ActionPlayer.Instance.CurrentTick;
+    bool hasSilverMedal = silverMedalTicks >= ActionPlayer.Instance.CurrentTick;
+    bool hasBronzeMedal = bronzeMedalTicks >= ActionPlayer.Instance.CurrentTick;
+    this.WinOverlay.Open(name, ActionPlayer.Instance.CurrentTick, hasGoldMedal, hasSilverMedal, hasBronzeMedal);
     this.WinOverlay.Show();
-    this.ActionPlayer.Stop();
+    ActionPlayer.Instance.Stop();
   }
 
   public void OnPlayerLost(string name)
   {
     this.CaughtOverlay.Open(name);
-    this.ActionPlayer.Stop();
+    ActionPlayer.Instance.Stop();
   }
 }

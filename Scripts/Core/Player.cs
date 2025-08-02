@@ -10,8 +10,7 @@ public partial class Player : CharacterBody2D
   [Export] public float RotationSpeed { get; set; } = 360;
 
   private RayCast2D RayCast => GetNode<RayCast2D>("RayCast2D");
-  
-  private ActionPlayer Playback => ActionPlayer.Get(this);
+
   private Vector2 nextDirection = new(0, 0);
   private float nextRotation;
   private float currentRotation;
@@ -53,10 +52,10 @@ public partial class Player : CharacterBody2D
     double lastExecutedTime = executedTime;
     executedTime += delta;
 
-    float maxRotationPerUpdate = this.RotationSpeed* (float)delta / (float)this.Playback.TickDuration;
+    float maxRotationPerUpdate = this.RotationSpeed* (float)delta / (float)ActionPlayer.Instance.TickDuration;
     currentRotation += limit(nextRotation - currentRotation, maxRotationPerUpdate);
 
-    double baseRatio = Mathf.Min(1, this.executedTime / this.Playback.TickDuration);
+    double baseRatio = Mathf.Min(1, this.executedTime / ActionPlayer.Instance.TickDuration);
 
     double lastRatioTranslation = Mathf.Sin(-Mathf.Pi * 0.5 + Mathf.Pi* lastExecutedRatio) * 0.5 + 0.5;
     double ratioTranslation = Mathf.Sin(-Mathf.Pi * 0.5 + Mathf.Pi* baseRatio) * 0.5 + 0.5;

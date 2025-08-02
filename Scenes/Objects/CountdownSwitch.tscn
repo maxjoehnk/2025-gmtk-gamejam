@@ -89,7 +89,7 @@ animations = [{
 "speed": 30.0
 }]
 
-[node name="CountdownSwitch" type="StaticBody2D" groups=["Resettable"]]
+[node name="CountdownSwitch" type="StaticBody2D" groups=["Clocked", "Resettable"]]
 collision_layer = 16
 collision_mask = 16
 script = ExtResource("1_sbce4")

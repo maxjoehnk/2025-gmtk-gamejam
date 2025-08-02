@@ -9,6 +9,7 @@ Project Repo for the GMTK GameJam 2025
 Loopscape (Zusammensetzung aus Loop & Escape)
 Untitled Loop Game
 Caught in the Loop
+Loophole (Find the Hole in the loop)
 
 ## Game Loop
 

@@ -23,6 +23,9 @@ public partial class Player : CharacterBody2D
     executedTime = 0;
     nextRotation = GetRotation(direction);
 
+    if(Mathf.Abs(nextRotation - currentRotation) > 180)
+      currentRotation += nextRotation < currentRotation ? -360 : 360;
+
     KinematicCollision2D ? collision2D = MoveAndCollide(nextDirection, testOnly: true);
     if(collision2D != null)
     {

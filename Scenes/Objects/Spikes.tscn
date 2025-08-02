@@ -2,10 +2,10 @@
 
 [ext_resource type="Script" uid="uid://b02630d2phpfu" path="res://Scripts/Objects/Spikes.cs" id="1_6ld86"]
 [ext_resource type="Texture2D" uid="uid://cadkva17wnh0j" path="res://Assets/Objects/Spikes.png" id="1_lepka"]
-[ext_resource type="AudioStream" uid="uid://bexeeilsl7nnj" path="res://Assets/Sounds/Effects/2025-GMTK-GameJam - Spikes1.wav" id="3_v384f"]
-[ext_resource type="AudioStream" uid="uid://dx7ldf0u2hle8" path="res://Assets/Sounds/Effects/2025-GMTK-GameJam - Spikes2.wav" id="4_ixkpt"]
-[ext_resource type="AudioStream" uid="uid://cs6k1p12iak3y" path="res://Assets/Sounds/Effects/2025-GMTK-GameJam - Spikes3.wav" id="5_cb163"]
-[ext_resource type="AudioStream" uid="uid://ca3pf8njws2c1" path="res://Assets/Sounds/Effects/2025-GMTK-GameJam - Spikes4.wav" id="6_425dy"]
+[ext_resource type="AudioStream" uid="uid://bexeeilsl7nnj" path="res://Assets/Sounds/Effects/Spikes/Spikes1.wav" id="3_v384f"]
+[ext_resource type="AudioStream" uid="uid://dx7ldf0u2hle8" path="res://Assets/Sounds/Effects/Spikes/Spikes2.wav" id="4_ixkpt"]
+[ext_resource type="AudioStream" uid="uid://cs6k1p12iak3y" path="res://Assets/Sounds/Effects/Spikes/Spikes3.wav" id="5_cb163"]
+[ext_resource type="AudioStream" uid="uid://ca3pf8njws2c1" path="res://Assets/Sounds/Effects/Spikes/Spikes4.wav" id="6_425dy"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_425dy"]
 atlas = ExtResource("1_lepka")

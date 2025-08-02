@@ -7,7 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://bcbwjjfhcy634" path="res://Assets/Objects/LevelExitWoodenDoor.png" id="5_g3fa1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pgp0a"]
-size = Vector2(128, 128)
+size = Vector2(8, 8)
 
 [node name="LevelGoal" type="Node2D" groups=["LevelExit"]]
 script = ExtResource("1_pgp0a")

@@ -136,6 +136,11 @@ public partial class Game : Node2D
 
   public void OnPlayerWon(string name, int goldMedalTicks, int silverMedalTicks, int bronzeMedalTicks)
   {
+    // We've lost in the same move were we've reached the goal so we actually lost
+    if (this.CaughtOverlay.IsVisible())
+    {
+      return;
+    }
     bool hasGoldMedal = goldMedalTicks >= ActionPlayer.Instance.CurrentTick;
     bool hasSilverMedal = silverMedalTicks >= ActionPlayer.Instance.CurrentTick;
     bool hasBronzeMedal = bronzeMedalTicks >= ActionPlayer.Instance.CurrentTick;

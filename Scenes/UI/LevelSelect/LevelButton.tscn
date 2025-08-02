@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://ddxyvmb6g08ce" path="res://Scripts/UI/LevelButton.cs" id="1_e27gx"]
 
 [node name="LevelButton" type="Button"]
-custom_minimum_size = Vector2(150, 50)
+custom_minimum_size = Vector2(300, 50)
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0

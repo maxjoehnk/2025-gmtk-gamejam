@@ -13,7 +13,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_1k1ql")
 
-[node name="MapSelector" type="VBoxContainer" parent="."]
+[node name="MapSelector" type="HFlowContainer" parent="."]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -22,12 +22,13 @@ anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -59.5
 offset_top = -90.0
-offset_right = 59.5
+offset_right = 118.5
 offset_bottom = -40.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+alignment = 1
 script = ExtResource("1_1k1ql")
 
 [node name="Label" type="Label" parent="MapSelector"]

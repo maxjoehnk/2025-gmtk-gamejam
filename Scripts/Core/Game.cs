@@ -20,7 +20,7 @@ public partial class Game : Node2D
 
 	[Export] public Vector2 SpawnPosition { get; set; }
 
-    public GameStates CurrentGameState = GameStates.Stop;
+	public GameState CurrentGameState = GameState.Stop;
 
 	public override void _Ready()
 	{
@@ -31,8 +31,8 @@ public partial class Game : Node2D
 		this.PreviewIndicator.Hide();
 		this.WinOverlay.Hide();
 		this.CaughtOverlay.Hide();
-        this.CurrentGameState = GameStates.Prepare;
-    }
+		this.CurrentGameState = GameState.Prepare;
+	}
 
 	public override void _UnhandledInput(InputEvent @event)
 	{
@@ -60,8 +60,8 @@ public partial class Game : Node2D
 	public void OnPausePressed()
 	{
 		this.PauseMenuOverlay.Open();
-        this.CurrentGameState = GameStates.Stop;
-    }
+		this.CurrentGameState = GameState.Stop;
+	}
 
 	public void OnPlayPressed()
 	{
@@ -69,8 +69,8 @@ public partial class Game : Node2D
 		this.OnResetPressed();
 		this.PreviewIndicator.Hide();
 		ActionPlayer.Instance.Play(this.ActionPane.Actions);
-        this.CurrentGameState = GameStates.Playing;
-    }
+		this.CurrentGameState = GameState.Playing;
+	}
 
 	public void OnResetPressed()
 	{
@@ -80,8 +80,8 @@ public partial class Game : Node2D
 		this.CaughtOverlay.Hide();
 		this.WinOverlay.Hide();
 		ResetGameElements();
-        this.CurrentGameState = GameStates.Prepare;
-    }
+		this.CurrentGameState = GameState.Prepare;
+	}
 
 	public void OnLoopPressed()
 	{
@@ -90,7 +90,7 @@ public partial class Game : Node2D
 		ActionPlayer.Instance.PlaybackSpeed = Constants.PreviewPlaybackSpeed;
 		ActionPlayer.Instance.Preview = true;
 		this.OnPlayPressed();
-    }
+	}
 
 	public void OnLoopReleased()
 	{
@@ -98,7 +98,7 @@ public partial class Game : Node2D
 		this.OnResetPressed();
 		ActionPlayer.Instance.Preview = false;
 		ActionPlayer.Instance.PlaybackSpeed = this.prePreviewSpeed;
-    }
+	}
 
 	private void ResetGameElements()
 	{
@@ -136,6 +136,7 @@ public partial class Game : Node2D
 	public void OnActionsFinished()
 	{
 		this.PreviewIndicator.Show();
+		this.CurrentGameState = GameState.Prepare;
 	}
 
 	public void Respawn()
@@ -158,13 +159,13 @@ public partial class Game : Node2D
 		this.WinOverlay.Open(name, ActionPlayer.Instance.CurrentTick, hasGoldMedal, hasSilverMedal, hasBronzeMedal);
 		this.WinOverlay.Show();
 		ActionPlayer.Instance.Stop();
-        this.CurrentGameState = GameStates.Stop;
-    }
+		this.CurrentGameState = GameState.Stop;
+	}
 
 	public void OnPlayerLost(string name)
 	{
 		this.CaughtOverlay.Open(name);
 		ActionPlayer.Instance.Stop();
-        this.CurrentGameState = GameStates.Stop;
-    }
+		this.CurrentGameState = GameState.Stop;
+	}
 }

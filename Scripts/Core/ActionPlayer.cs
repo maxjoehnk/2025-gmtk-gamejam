@@ -8,127 +8,130 @@ namespace gmtkgamejam.Scenes;
 
 public partial class ActionPlayer : Node
 {
-  public static ActionPlayer Instance { get; private set; }
-  
-  private double executedWaitTime;
+	public static ActionPlayer Instance { get; private set; }
 
-  [Signal]
-  public delegate void FinishedEventHandler();
+	private double executedWaitTime;
 
-  [Signal]
-  public delegate void TickedEventHandler(int tick);
+	[Signal]
+	public delegate void FinishedEventHandler();
 
-  private Timer Timer => this.GetChild<Timer>(0);
+	[Signal]
+	public delegate void TickedEventHandler(int tick);
 
-  [Export]
-  public double PlaybackSpeed
-  {
-    get => 1 / this.Timer.WaitTime;
-    set
-    {
-      this.Timer.WaitTime = 1 / value;
-      GD.Print($"Set TickDuration to {this.Timer.WaitTime}s");
-    }
-  }
+	private Timer Timer => this.GetChild<Timer>(0);
 
-  public bool Preview { get; set; }
+	[Export]
+	public double PlaybackSpeed
+	{
+		get => 1 / this.Timer.WaitTime;
+		set
+		{
+			this.Timer.WaitTime = 1 / value;
+			GD.Print($"Set TickDuration to {this.Timer.WaitTime}s");
+		}
+	}
 
-  private Array<Action> Actions { get; set; }
+	public bool Preview { get; set; }
 
-  private int ActionIndex { get; set; }
+	private Array<Action> Actions { get; set; }
 
-  public int CurrentTick { get; private set; }
+	private int ActionIndex { get; set; }
 
-  private int ActionTicksRemaining { get; set; }
+	public int CurrentTick { get; private set; }
 
-  public double TickDuration => this.Timer.WaitTime;
+	private int ActionTicksRemaining { get; set; }
 
-  private Action ? CurrentAction => this.Actions.ElementAtOrDefault(this.ActionIndex);
+	public double TickDuration => this.Timer.WaitTime;
 
-  public override void _Ready()
-  {
-    Instance = this;
-    this.AddChild(new Timer());
-    this.Timer.Autostart = false;
-    this.Timer.OneShot = true;
-    this.Timer.WaitTime = 1;
-    this.Timer.Timeout += this.Tick;
-  }
+	private Action? CurrentAction => this.Actions.ElementAtOrDefault(this.ActionIndex);
 
-  public override void _Process(double delta)
-  {
-    this.executedWaitTime += delta;
-  }
+	public override void _Ready()
+	{
+		Instance = this;
+		this.AddChild(new Timer());
+		this.Timer.Autostart = false;
+		this.Timer.OneShot = true;
+		this.Timer.WaitTime = 1;
+		this.Timer.Timeout += this.Tick;
+	}
 
-  public void Play(Array<Action> actions)
-  {
-    this.Actions = actions;
-    this.ActionTicksRemaining = this.CurrentAction?.Ticks ?? 0;
+	public override void _Process(double delta)
+	{
+		this.executedWaitTime += delta;
+	}
 
-    this.Tick();
-  }
+	public void Play(Array<Action> actions)
+	{
+		this.Actions = actions;
+		this.ActionTicksRemaining = this.CurrentAction?.Ticks ?? 0;
 
-  public void Stop()
-  {
-    this.Timer.Stop();
-  }
+		this.Tick();
+	}
 
-  public void Tick()
-  {
-    if (this.Preview)
-    {
-      this.CurrentTick += 1;
-      this.EmitTick();
-      this.Timer.Start();
-      return;
-    }
-    
-    if(this.executedWaitTime < this.TickDuration)
-    {
-      this.Timer.Start();
-      return;
-    }
-    if(this.CurrentAction == null)
-    {
-      return;
-    }
+	public void Stop()
+	{
+		this.Timer.Stop();
+	}
 
-    this.CurrentTick += 1;
-    this.EmitTick();
-    this.CurrentAction?.Act((Player)this.GetTree().GetFirstNodeInGroup(Groups.Player));
-    this.ActionTicksRemaining -= 1;
-    if (this.ActionTicksRemaining <= 0)
-    {
-      this.NextAction();
-    }
+	public void Tick()
+	{
+		if (this.Preview)
+		{
+			this.CurrentTick += 1;
+			this.EmitTick();
+			this.Timer.Start();
+			return;
+		}
 
-    this.Timer.Start();
+		if (this.executedWaitTime < this.TickDuration)
+		{
+			this.Timer.Start();
+			return;
+		}
 
-    this.executedWaitTime = 0;
-  }
+		if (this.CurrentAction == null)
+		{
+			this.EmitSignalFinished();
+			return;
+		}
 
-  private void NextAction()
-  {
-    this.ActionIndex += 1;
-    this.ActionTicksRemaining = this.CurrentAction?.Ticks ?? 0;
-    if(this.ActionIndex >= this.Actions.Count)
-    {
-      this.EmitSignalFinished();
-    }
-  }
+		this.CurrentTick += 1;
+		this.EmitTick();
+		this.RunCurrentAction();
 
-  public void Reset()
-  {
-    this.Stop();
-    this.CurrentTick = 0;
-    this.ActionIndex = 0;
-    this.ActionTicksRemaining = 0;
-    this.EmitTick();
-  }
+		this.Timer.Start();
 
-  private void EmitTick()
-  {
-    this.EmitSignalTicked(this.CurrentTick);
-    this.GetTree().CallGroup(Groups.Clocked, nameof(IClocked.OnTick), this.CurrentTick);
-  }
+		this.executedWaitTime = 0;
+	}
+
+	private void RunCurrentAction()
+	{
+		this.CurrentAction?.Act((Player)this.GetTree().GetFirstNodeInGroup(Groups.Player));
+		this.ActionTicksRemaining -= 1;
+		if (this.ActionTicksRemaining <= 0)
+		{
+			this.NextAction();
+		}
+	}
+
+	private void NextAction()
+	{
+		this.ActionIndex += 1;
+		this.ActionTicksRemaining = this.CurrentAction?.Ticks ?? 0;
+	}
+
+	public void Reset()
+	{
+		this.Stop();
+		this.CurrentTick = 0;
+		this.ActionIndex = 0;
+		this.ActionTicksRemaining = 0;
+		this.EmitTick();
+	}
+
+	private void EmitTick()
+	{
+		this.EmitSignalTicked(this.CurrentTick);
+		this.GetTree().CallGroup(Groups.Clocked, nameof(IClocked.OnTick), this.CurrentTick);
+	}
 }

@@ -1,6 +1,6 @@
 namespace gmtkgamejam.Core;
 
-public enum GameStates
+public enum GameState
 {
   Prepare,
   Playing,

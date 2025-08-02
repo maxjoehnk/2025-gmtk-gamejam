@@ -1,3 +1,4 @@
+using gmtkgamejam.Core;
 using Godot;
 using gmtkgamejam.Scenes.Enemies;
 using gmtkgamejam.Scripts.Core;
@@ -42,7 +43,7 @@ public partial class Map : Node
 
 	private void OnPlayerCaught()
 	{
-		if (this.Game.CurrentGameState != gmtkgamejam.Core.GameStates.Playing)
+		if (this.Game.CurrentGameState != GameState.Playing)
 		{
 			return;
 		}
@@ -53,7 +54,7 @@ public partial class Map : Node
 
 	public void OnPlayerWon()
 	{
-		if (this.Game.CurrentGameState != gmtkgamejam.Core.GameStates.Playing)
+		if (this.Game.CurrentGameState != GameState.Playing)
 		{
 			return;
 		}

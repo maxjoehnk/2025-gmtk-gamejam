@@ -20,13 +20,13 @@ public partial class View : Camera2D
 
   public override void _Process(double delta)
   {
-    GameStates state = this.GetParent<Game>().CurrentGameState;
+    GameState state = this.GetParent<Game>().CurrentGameState;
     switch(state)
     {
-      case GameStates.Playing:
+      case GameState.Playing:
         handlePlaying();
         break;
-      case GameStates.Prepare:
+      case GameState.Prepare:
         handlePrepare(delta);
         break;
       default:

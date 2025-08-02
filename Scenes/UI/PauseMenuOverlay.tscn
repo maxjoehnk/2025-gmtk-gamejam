@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://lyd2lpd1rsql" path="res://Scripts/UI/PauseMenuOverlay.cs" id="1_dgq6r"]
 
 [node name="PauseMenuOverlay" type="Control"]
+z_index = 100
 layout_mode = 3
 anchors_preset = 0
 script = ExtResource("1_dgq6r")
@@ -19,16 +20,19 @@ offset_bottom = 40.0
 
 [node name="Resume" type="Button" parent="Panel/VBoxContainer"]
 process_mode = 2
+custom_minimum_size = Vector2(150, 50)
 layout_mode = 2
 text = "Resume"
 
 [node name="MainMenu" type="Button" parent="Panel/VBoxContainer"]
 process_mode = 2
+custom_minimum_size = Vector2(150, 50)
 layout_mode = 2
 text = "MainMenu"
 
 [node name="Exit" type="Button" parent="Panel/VBoxContainer"]
 process_mode = 2
+custom_minimum_size = Vector2(150, 50)
 layout_mode = 2
 text = "Quit to Desktop"
 

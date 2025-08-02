@@ -63,11 +63,12 @@ public partial class TeleporterEntry : Node2D, ISwitchable, IInteractable, IRese
 
 	private void AnimateTeleporterEffects()
 	{
+		float amountRatio = this.Particles.AmountRatio;
 		this.Particles.AmountRatio = 1;
 		float speed = this.Sprite.SpeedScale;
 		Tween fadeOutTween = this.CreateTween();
 		fadeOutTween.SetParallel();
-		fadeOutTween.TweenProperty(this.Particles, "amount_ratio", 0.5f, 2f);
+		fadeOutTween.TweenProperty(this.Particles, "amount_ratio", amountRatio, 2f);
 		fadeOutTween.TweenProperty(this.Sprite, "speed_scale", speed, 1f);
 		this.tween = this.CreateTween();
 		this.tween.TweenProperty(this.Sprite, "speed_scale", 4, 0.1f);

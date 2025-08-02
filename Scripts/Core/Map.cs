@@ -6,6 +6,8 @@ using Godot.Collections;
 
 public partial class Map : Node
 {
+	private PackedScene LevelName => GD.Load<PackedScene>("res://Scenes/UI/LevelName.tscn");
+	
 	public Vector2 SpawnPosition => this.GetNode<Node2D>("TileMapLayer/Spawn").GlobalPosition;
 	public Game Game => this.GetNode<Game>("Game");
 
@@ -39,6 +41,14 @@ public partial class Map : Node
 		this.Game.SpawnPosition = this.SpawnPosition;
 		this.Game.Respawn();
 		this.Game.Show();
+
+		this.ShowLevelName();
+	}
+
+	private void ShowLevelName()
+	{
+		LevelName levelName = this.LevelName.Instantiate<LevelName>();
+		this.AddChild(levelName);
 	}
 
 	private void OnPlayerCaught()

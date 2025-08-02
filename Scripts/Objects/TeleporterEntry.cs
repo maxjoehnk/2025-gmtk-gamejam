@@ -13,13 +13,18 @@ public partial class TeleporterEntry : Node2D, ISwitchable, IInteractable, IRese
 	
 	private AnimatedSprite2D Sprite => this.GetNode<AnimatedSprite2D>("Sprite");
 	
+	private GpuParticles2D Particles => this.GetNode<GpuParticles2D>("GPUParticles2D");
+	
 	private bool CurrentAnimationState => this.Sprite.Animation != "Inactive";
 
 	private Label? DebugLabel { get; set; }
 
+	private Tween? tween;
+
 	public override void _Ready()
 	{
-		this.State = this.IsActive;
+		this.Reset();
+		this.Sprite.SpeedScale = 1;
 		if (OS.IsDebugBuild() && Constants.ShowDebugInfo)
 		{
 			this.DebugLabel = new Label();
@@ -30,7 +35,6 @@ public partial class TeleporterEntry : Node2D, ISwitchable, IInteractable, IRese
 
 	public override void _Process(double delta)
 	{
-		this.Sprite.SpeedScale = (float)ActionPlayer.Instance.PlaybackSpeed;
 		if (this.DebugLabel != null)
 		{
 			this.DebugLabel.Text = $"State: {this.State}\nActive: {this.IsActive}\nCurrent Animation State: {this.CurrentAnimationState}\nAnimation: {this.Sprite.Animation}";
@@ -53,7 +57,21 @@ public partial class TeleporterEntry : Node2D, ISwitchable, IInteractable, IRese
 			return;
 		}
 
+		this.AnimateTeleporterEffects();
 		player.GlobalPosition = this.Exit.GlobalPosition;
+	}
+
+	private void AnimateTeleporterEffects()
+	{
+		this.Particles.AmountRatio = 1;
+		float speed = this.Sprite.SpeedScale;
+		Tween fadeOutTween = this.CreateTween();
+		fadeOutTween.SetParallel();
+		fadeOutTween.TweenProperty(this.Particles, "amount_ratio", 0.5f, 2f);
+		fadeOutTween.TweenProperty(this.Sprite, "speed_scale", speed, 1f);
+		this.tween = this.CreateTween();
+		this.tween.TweenProperty(this.Sprite, "speed_scale", 4, 0.1f);
+		this.tween.TweenSubtween(fadeOutTween);
 	}
 
 	public void Toggle()

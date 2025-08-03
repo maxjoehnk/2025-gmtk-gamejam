@@ -22,7 +22,7 @@ public partial class Game : Node2D
 
 	[Export] public Vector2 SpawnPosition { get; set; }
 
-	public GameState CurrentGameState = GameState.Stop;
+	public GameState CurrentGameState = GameState.Prepare;
 
 	public override void _Ready()
 	{

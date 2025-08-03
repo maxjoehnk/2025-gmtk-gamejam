@@ -14,9 +14,9 @@ public partial class Game : Node2D
 
 	private PreviewIndicator PreviewIndicator => this.GetNode<PreviewIndicator>("PreviewIndicator");
 	
-	private TextureButton PlayButton => this.GetNode<TextureButton>("View/VBoxContainer/PlaybackToolbar/Play");
+	private TextureButton PlayButton => this.GetNode<TextureButton>("View/PlaybackToolbarCanvas/VBoxContainer/PlaybackToolbar/Play");
 	
-	private PlaybackToolbar PlaybackToolbar => this.GetNode<PlaybackToolbar>("View/VBoxContainer/PlaybackToolbar");
+	private PlaybackToolbar PlaybackToolbar => this.GetNode<PlaybackToolbar>("View/PlaybackToolbarCanvas/VBoxContainer/PlaybackToolbar");
 
 	private double prePreviewSpeed = 1;
 

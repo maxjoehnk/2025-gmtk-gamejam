@@ -6,9 +6,9 @@ public partial class PlaybackToolbar : HBoxContainer, IClocked
 {
 	private Label TickLabel => this.GetNode<Label>("Label");
 
-	private TextureButton NormalSpeedButton => this.GetNode<TextureButton>("Speed/SpeedNormal");
-	private TextureButton FastSpeedButton => this.GetNode<TextureButton>("Speed/SpeedFast");
-	private TextureButton FastestSpeedButton => this.GetNode<TextureButton>("Speed/SpeedFastest");
+	private TextureButton NormalSpeedButton => this.GetNode<TextureButton>("View/PlaybackToolbarCanvas/VBoxContainer/PlaybackToolbar/SpeedNormal");
+	private TextureButton FastSpeedButton => this.GetNode<TextureButton>("View/PlaybackToolbarCanvas/VBoxContainer/PlaybackToolbar/SpeedFast");
+	private TextureButton FastestSpeedButton => this.GetNode<TextureButton>("View/PlaybackToolbarCanvas/VBoxContainer/PlaybackToolbar/SpeedFastest");
 
 	public void OnTick(int tick)
 	{

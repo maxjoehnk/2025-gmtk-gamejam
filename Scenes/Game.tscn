@@ -1,119 +1,32 @@
-[gd_scene load_steps=43 format=3 uid="uid://dfenwo0b7hx7c"]
+[gd_scene load_steps=25 format=3 uid="uid://dfenwo0b7hx7c"]
 
 [ext_resource type="Script" uid="uid://bt83g2edvayok" path="res://Scripts/Core/Game.cs" id="1_iukft"]
 [ext_resource type="Script" uid="uid://bwnt1gtf5se81" path="res://Scripts/Core/View.cs" id="3_3so38"]
 [ext_resource type="Script" uid="uid://5ph7310ke57h" path="res://Scripts/Core/PlaybackToolbar.cs" id="4_2irst"]
 [ext_resource type="PackedScene" uid="uid://btwydqx0wjbnl" path="res://Scenes/UI/ActionMenu/ActionPane.tscn" id="4_bf53h"]
-[ext_resource type="Texture2D" uid="uid://cdp1gviucue55" path="res://Assets/UI/ResetBtn.png" id="5_x3xnh"]
 [ext_resource type="PackedScene" uid="uid://em2i5qm0uo2f" path="res://Scenes/player.tscn" id="6_fgofq"]
-[ext_resource type="Texture2D" uid="uid://c1av2ffcbykko" path="res://Assets/UI/LoopBtn.png" id="7_4q8tf"]
-[ext_resource type="Texture2D" uid="uid://cn6pabyw0cwl4" path="res://Assets/UI/LoopBtnAtlas.tres" id="7_alh3a"]
 [ext_resource type="FontFile" uid="uid://33kgkoivemgd" path="res://Assets/Fonts/SevenSegment.ttf" id="9_4q8tf"]
-[ext_resource type="Texture2D" uid="uid://hkyt58j73xtr" path="res://Assets/UI/PlayBtn.png" id="9_8r6kd"]
 [ext_resource type="PackedScene" uid="uid://byoae28watimk" path="res://Scenes/UI/WinOverlay.tscn" id="9_71axn"]
-[ext_resource type="Texture2D" uid="uid://un4vs8yc3j8l" path="res://Assets/UI/ForwardBtn.png" id="10_x3xnh"]
+[ext_resource type="Texture2D" uid="uid://w3jwk4xntkhw" path="res://Assets/UI/Buttons/RepeatButton_S.png" id="10_vvhu1"]
 [ext_resource type="PackedScene" uid="uid://bdmurjuyic38x" path="res://Scenes/UI/PauseMenuOverlay.tscn" id="11_3cx6b"]
 [ext_resource type="PackedScene" uid="uid://d0s6lvw4rkhrx" path="res://Scenes/UI/CaughtOverlay.tscn" id="11_3so38"]
-[ext_resource type="Texture2D" uid="uid://cwn0m31suw2kd" path="res://Assets/UI/FastForwardBtn.png" id="11_x3xnh"]
+[ext_resource type="Texture2D" uid="uid://b3k7lqle3kaag" path="res://Assets/UI/Buttons/RepeatButton.png" id="11_lbihj"]
+[ext_resource type="Texture2D" uid="uid://j8pf114hoo5l" path="res://Assets/UI/Buttons/PlayButton_S.png" id="12_raj38"]
 [ext_resource type="Texture2D" uid="uid://b0rnh7cjht5dy" path="res://Assets/PreviewIndicator.png" id="13_3cx6b"]
+[ext_resource type="Texture2D" uid="uid://dmcdronp31gi8" path="res://Assets/UI/Buttons/PlayButton.png" id="13_8e0uq"]
 [ext_resource type="Script" uid="uid://dgea26pil7thm" path="res://Scripts/Core/PreviewIndicator.cs" id="13_wxwew"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_khs3t"]
-atlas = ExtResource("5_x3xnh")
-region = Rect2(0, 0, 128, 128)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_0iyqm"]
-atlas = ExtResource("5_x3xnh")
-region = Rect2(128, 0, 128, 128)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_jn8rg"]
-atlas = ExtResource("5_x3xnh")
-region = Rect2(256, 0, 128, 128)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_umnjm"]
-atlas = ExtResource("5_x3xnh")
-region = Rect2(384, 0, 128, 128)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_4q8tf"]
-atlas = ExtResource("9_8r6kd")
-region = Rect2(0, 0, 128, 128)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_4eqlp"]
-atlas = ExtResource("9_8r6kd")
-region = Rect2(128, 0, 128, 128)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_18uti"]
-atlas = ExtResource("9_8r6kd")
-region = Rect2(256, 0, 128, 128)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_khy6b"]
-atlas = ExtResource("9_8r6kd")
-region = Rect2(384, 0, 128, 128)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_x3xnh"]
-atlas = ExtResource("7_4q8tf")
-region = Rect2(0, 0, 128, 128)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_8r6kd"]
-atlas = ExtResource("7_4q8tf")
-region = Rect2(128, 0, 128, 128)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_tfod6"]
-atlas = ExtResource("7_4q8tf")
-region = Rect2(256, 0, 128, 128)
+[ext_resource type="Texture2D" uid="uid://dby6oqjl2x813" path="res://Assets/UI/Buttons/LoopButton_S.png" id="14_i0vto"]
+[ext_resource type="Texture2D" uid="uid://cb4ibi8emljdb" path="res://Assets/UI/Buttons/LoopButton.png" id="15_3jf1l"]
+[ext_resource type="Texture2D" uid="uid://cbm76jpmpb53p" path="res://Assets/UI/Buttons/Forward1Button_S.png" id="17_356ba"]
+[ext_resource type="Texture2D" uid="uid://b48u0dxft4pwb" path="res://Assets/UI/Buttons/Forward1Button.png" id="18_i4lct"]
+[ext_resource type="Texture2D" uid="uid://ljkaljcvoibr" path="res://Assets/UI/BackgroundOverlay.png" id="18_x3xnh"]
+[ext_resource type="Texture2D" uid="uid://ds0qfad6fs80l" path="res://Assets/UI/Buttons/Forward2Button_S.png" id="19_iyesh"]
+[ext_resource type="Texture2D" uid="uid://cm6qnffh6ulxk" path="res://Assets/UI/Buttons/Forward2Button.png" id="20_i1pr2"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_fgofq"]
 font = ExtResource("9_4q8tf")
 font_size = 48
 font_color = Color(0, 1, 0.18913, 1)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_rajel"]
-atlas = ExtResource("9_8r6kd")
-region = Rect2(0, 0, 128, 128)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_vvhu1"]
-atlas = ExtResource("9_8r6kd")
-region = Rect2(128, 0, 128, 128)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_lbihj"]
-atlas = ExtResource("9_8r6kd")
-region = Rect2(256, 0, 128, 128)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_raj38"]
-atlas = ExtResource("9_8r6kd")
-region = Rect2(384, 0, 128, 128)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_8e0uq"]
-atlas = ExtResource("10_x3xnh")
-region = Rect2(0, 0, 128, 128)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_i0vto"]
-atlas = ExtResource("10_x3xnh")
-region = Rect2(128, 0, 128, 128)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_3jf1l"]
-atlas = ExtResource("10_x3xnh")
-region = Rect2(256, 0, 128, 128)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_356ba"]
-atlas = ExtResource("10_x3xnh")
-region = Rect2(384, 0, 128, 128)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_i4lct"]
-atlas = ExtResource("11_x3xnh")
-region = Rect2(0, 0, 128, 128)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_iyesh"]
-atlas = ExtResource("11_x3xnh")
-region = Rect2(128, 0, 128, 128)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_i1pr2"]
-atlas = ExtResource("11_x3xnh")
-region = Rect2(256, 0, 128, 128)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_4f4ik"]
-atlas = ExtResource("11_x3xnh")
-region = Rect2(384, 0, 128, 128)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_71axn"]
 
@@ -126,85 +39,6 @@ script = ExtResource("1_iukft")
 offset = Vector2(960, 540)
 script = ExtResource("3_3so38")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="View"]
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = 960.0
-offset_right = 1501.0
-offset_bottom = 182.0
-grow_horizontal = 2
-scale = Vector2(0.5, 0.5)
-
-[node name="PlaybackToolbar" type="HBoxContainer" parent="View/VBoxContainer" groups=["Clocked"]]
-z_index = 1
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 0
-script = ExtResource("4_2irst")
-
-[node name="Reset" type="TextureButton" parent="View/VBoxContainer/PlaybackToolbar"]
-layout_mode = 2
-focus_mode = 0
-texture_normal = SubResource("AtlasTexture_khs3t")
-texture_pressed = SubResource("AtlasTexture_0iyqm")
-texture_hover = SubResource("AtlasTexture_jn8rg")
-texture_disabled = SubResource("AtlasTexture_umnjm")
-
-[node name="Play" type="TextureButton" parent="View/VBoxContainer/PlaybackToolbar"]
-layout_mode = 2
-focus_mode = 0
-toggle_mode = true
-texture_normal = SubResource("AtlasTexture_4q8tf")
-texture_pressed = SubResource("AtlasTexture_4eqlp")
-texture_hover = SubResource("AtlasTexture_18uti")
-texture_disabled = SubResource("AtlasTexture_khy6b")
-
-[node name="LoopPreview" type="TextureButton" parent="View/VBoxContainer/PlaybackToolbar"]
-layout_mode = 2
-focus_mode = 0
-texture_normal = SubResource("AtlasTexture_x3xnh")
-texture_pressed = SubResource("AtlasTexture_8r6kd")
-texture_hover = SubResource("AtlasTexture_tfod6")
-texture_disabled = ExtResource("7_alh3a")
-
-[node name="Label" type="Label" parent="View/VBoxContainer/PlaybackToolbar"]
-layout_mode = 2
-text = "0"
-label_settings = SubResource("LabelSettings_fgofq")
-
-[node name="Speed" type="HBoxContainer" parent="View/VBoxContainer/PlaybackToolbar"]
-layout_mode = 2
-theme_override_constants/separation = -20
-
-[node name="SpeedNormal" type="TextureButton" parent="View/VBoxContainer/PlaybackToolbar/Speed"]
-layout_mode = 2
-focus_mode = 0
-toggle_mode = true
-button_pressed = true
-texture_normal = SubResource("AtlasTexture_rajel")
-texture_pressed = SubResource("AtlasTexture_vvhu1")
-texture_hover = SubResource("AtlasTexture_lbihj")
-texture_disabled = SubResource("AtlasTexture_raj38")
-
-[node name="SpeedFast" type="TextureButton" parent="View/VBoxContainer/PlaybackToolbar/Speed"]
-layout_mode = 2
-focus_mode = 0
-toggle_mode = true
-texture_normal = SubResource("AtlasTexture_8e0uq")
-texture_pressed = SubResource("AtlasTexture_i0vto")
-texture_hover = SubResource("AtlasTexture_3jf1l")
-texture_disabled = SubResource("AtlasTexture_356ba")
-
-[node name="SpeedFastest" type="TextureButton" parent="View/VBoxContainer/PlaybackToolbar/Speed"]
-layout_mode = 2
-focus_mode = 0
-toggle_mode = true
-texture_normal = SubResource("AtlasTexture_i4lct")
-texture_pressed = SubResource("AtlasTexture_iyesh")
-texture_hover = SubResource("AtlasTexture_i1pr2")
-texture_disabled = SubResource("AtlasTexture_4f4ik")
-
 [node name="WinOverlay" parent="View" instance=ExtResource("9_71axn")]
 visible = false
 
@@ -214,7 +48,17 @@ visible = false
 [node name="PauseMenuOverlay" parent="View" instance=ExtResource("11_3cx6b")]
 visible = false
 
+[node name="CanvasLayer" type="CanvasLayer" parent="View"]
+
+[node name="TextureRect" type="TextureRect" parent="View/CanvasLayer"]
+offset_left = -12.0
+offset_right = 1968.0
+offset_bottom = 1080.0
+texture = ExtResource("18_x3xnh")
+
 [node name="Canvas" type="CanvasLayer" parent="View"]
+offset = Vector2(-8, 275)
+transform = Transform2D(1, 0, 0, 1, -8, 275)
 
 [node name="ActionPane" parent="View/Canvas" instance=ExtResource("4_bf53h")]
 z_index = 1
@@ -223,9 +67,75 @@ custom_minimum_size = Vector2(200, 500)
 anchors_preset = 0
 anchor_right = 0.0
 anchor_bottom = 0.0
-offset_right = 440.0
+offset_right = 417.0
 offset_bottom = 500.0
 grow_vertical = 1
+
+[node name="PlaybackToolbarCanvas" type="CanvasLayer" parent="View" groups=["Clocked"]]
+offset = Vector2(917.5, 990)
+transform = Transform2D(1, 0, 0, 1, 917.5, 990)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="View/PlaybackToolbarCanvas"]
+offset_right = 398.0
+offset_bottom = 64.0
+
+[node name="PlaybackToolbar" type="HBoxContainer" parent="View/PlaybackToolbarCanvas/VBoxContainer"]
+z_index = 1
+layout_mode = 2
+size_flags_vertical = 3
+script = ExtResource("4_2irst")
+
+[node name="Reset" type="TextureButton" parent="View/PlaybackToolbarCanvas/VBoxContainer/PlaybackToolbar"]
+layout_mode = 2
+focus_mode = 0
+texture_normal = ExtResource("10_vvhu1")
+texture_pressed = ExtResource("11_lbihj")
+
+[node name="Play" type="TextureButton" parent="View/PlaybackToolbarCanvas/VBoxContainer/PlaybackToolbar"]
+layout_mode = 2
+focus_mode = 0
+toggle_mode = true
+texture_normal = ExtResource("12_raj38")
+texture_pressed = ExtResource("13_8e0uq")
+
+[node name="LoopPreview" type="TextureButton" parent="View/PlaybackToolbarCanvas/VBoxContainer/PlaybackToolbar"]
+layout_mode = 2
+focus_mode = 0
+texture_normal = ExtResource("14_i0vto")
+texture_pressed = ExtResource("15_3jf1l")
+
+[node name="Label2" type="Label" parent="View/PlaybackToolbarCanvas/VBoxContainer/PlaybackToolbar"]
+layout_mode = 2
+text = "   "
+
+[node name="Label" type="Label" parent="View/PlaybackToolbarCanvas/VBoxContainer/PlaybackToolbar"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+size_flags_vertical = 8
+text = "00"
+label_settings = SubResource("LabelSettings_fgofq")
+
+[node name="SpeedNormal" type="TextureButton" parent="View/PlaybackToolbarCanvas/VBoxContainer/PlaybackToolbar"]
+layout_mode = 2
+focus_mode = 0
+toggle_mode = true
+button_pressed = true
+texture_normal = ExtResource("12_raj38")
+texture_pressed = ExtResource("13_8e0uq")
+
+[node name="SpeedFast" type="TextureButton" parent="View/PlaybackToolbarCanvas/VBoxContainer/PlaybackToolbar"]
+layout_mode = 2
+focus_mode = 0
+toggle_mode = true
+texture_normal = ExtResource("17_356ba")
+texture_pressed = ExtResource("18_i4lct")
+
+[node name="SpeedFastest" type="TextureButton" parent="View/PlaybackToolbarCanvas/VBoxContainer/PlaybackToolbar"]
+layout_mode = 2
+focus_mode = 0
+toggle_mode = true
+texture_normal = ExtResource("19_iyesh")
+texture_pressed = ExtResource("20_i1pr2")
 
 [node name="PreviewIndicator" type="CharacterBody2D" parent="."]
 collision_layer = 8
@@ -245,12 +155,12 @@ hit_from_inside = true
 collide_with_areas = true
 
 [connection signal="PlayerLost" from="Player" to="." method="OnPlayerLost"]
-[connection signal="pressed" from="View/VBoxContainer/PlaybackToolbar/Reset" to="." method="OnResetPressed"]
-[connection signal="pressed" from="View/VBoxContainer/PlaybackToolbar/Play" to="." method="OnPlayPressed"]
-[connection signal="button_down" from="View/VBoxContainer/PlaybackToolbar/LoopPreview" to="." method="OnLoopPressed"]
-[connection signal="button_up" from="View/VBoxContainer/PlaybackToolbar/LoopPreview" to="." method="OnLoopReleased"]
-[connection signal="pressed" from="View/VBoxContainer/PlaybackToolbar/Speed/SpeedNormal" to="." method="OnSetSpeed" binds= [1.0]]
-[connection signal="pressed" from="View/VBoxContainer/PlaybackToolbar/Speed/SpeedFast" to="." method="OnSetSpeed" binds= [4.0]]
-[connection signal="pressed" from="View/VBoxContainer/PlaybackToolbar/Speed/SpeedFastest" to="." method="OnSetSpeed" binds= [8.0]]
 [connection signal="RestartLevel" from="View/WinOverlay" to="." method="OnResetPressed"]
 [connection signal="RestartLevel" from="View/CaughtOverlay" to="." method="OnResetPressed"]
+[connection signal="pressed" from="View/PlaybackToolbarCanvas/VBoxContainer/PlaybackToolbar/Reset" to="." method="OnResetPressed"]
+[connection signal="pressed" from="View/PlaybackToolbarCanvas/VBoxContainer/PlaybackToolbar/Play" to="." method="OnPlayPressed"]
+[connection signal="button_down" from="View/PlaybackToolbarCanvas/VBoxContainer/PlaybackToolbar/LoopPreview" to="." method="OnLoopPressed"]
+[connection signal="button_up" from="View/PlaybackToolbarCanvas/VBoxContainer/PlaybackToolbar/LoopPreview" to="." method="OnLoopReleased"]
+[connection signal="pressed" from="View/PlaybackToolbarCanvas/VBoxContainer/PlaybackToolbar/SpeedNormal" to="." method="OnSetSpeed" binds= [1.0]]
+[connection signal="pressed" from="View/PlaybackToolbarCanvas/VBoxContainer/PlaybackToolbar/SpeedFast" to="." method="OnSetSpeed" binds= [4.0]]
+[connection signal="pressed" from="View/PlaybackToolbarCanvas/VBoxContainer/PlaybackToolbar/SpeedFastest" to="." method="OnSetSpeed" binds= [8.0]]

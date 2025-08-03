@@ -1,16 +1,17 @@
 using Godot;
 using gmtkgamejam.Core;
 
-public partial class ActionEntry : HBoxContainer
+public partial class ActionEntry : Control
 {
 	[Export] public Action Action { get; set; }
 
 	[Signal]
 	public delegate void ActionChangedEventHandler();
 
-	private Label TitleLabel => this.GetNode<Label>("ActionName");
-	private Button DeleteButton => this.GetNode<Button>("RemoveButton");
-	private Label TicksLabel => this.GetNode<Label>("HBoxContainer/TicksButton");
+	private Label TitleLabel => this.GetNode<Label>("ActionEntryContainer/ActionName");
+	private Button DeleteButton => this.GetNode<Button>("ActionEntryContainer/RemoveButton");
+	private Label TicksLabel => this.GetNode<Label>("ActionEntryContainer/HBoxContainer/TicksButton");
+	private ProgressBar ProgressBar => this.GetNode<ProgressBar>("ProgressBar");
 
 	public override void _Ready()
 	{

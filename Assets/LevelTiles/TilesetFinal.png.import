@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b8lchakb5ifcf"
-path="res://.godot/imported/Tileset3.png-4f1e247587d43c3c9bed443c81db5ca2.ctex"
+uid="uid://bfkgr26xcanhr"
+path="res://.godot/imported/TilesetFinal.png-af76062b7fdfa85492ad79cfc98ca0bc.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/LevelTiles/Tileset3.png"
-dest_files=["res://.godot/imported/Tileset3.png-4f1e247587d43c3c9bed443c81db5ca2.ctex"]
+source_file="res://Assets/LevelTiles/TilesetFinal.png"
+dest_files=["res://.godot/imported/TilesetFinal.png-af76062b7fdfa85492ad79cfc98ca0bc.ctex"]
 
 [params]
 

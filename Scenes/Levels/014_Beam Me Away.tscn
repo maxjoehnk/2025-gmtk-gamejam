@@ -4,8 +4,8 @@
 [ext_resource type="TileSet" uid="uid://pafbad4mjfhn" path="res://Assets/LevelTiles/LevelTiles.tres" id="2_k3hmx"]
 [ext_resource type="PackedScene" uid="uid://duv31n7g217aj" path="res://Scenes/Objects/Spawn.tscn" id="3_yco5b"]
 [ext_resource type="PackedScene" uid="uid://de2n83qnroben" path="res://Scenes/Objects/LevelGoal.tscn" id="4_cg1ku"]
-[ext_resource type="PackedScene" uid="uid://chqid36enis25" path="res://Scenes/Objects/TeleporterEntry.tscn" id="5_bgqw5"]
-[ext_resource type="PackedScene" uid="uid://buwr0s3xt504s" path="res://Scenes/Objects/TeleporterExit.tscn" id="6_nccic"]
+[ext_resource type="PackedScene" uid="uid://b5j6b65wl2aun" path="res://Scenes/Objects/TeleporterEntry.tscn" id="5_bgqw5"]
+[ext_resource type="PackedScene" uid="uid://dkwudiavm1gsu" path="res://Scenes/Objects/TeleporterExit.tscn" id="6_nccic"]
 [ext_resource type="PackedScene" uid="uid://dfenwo0b7hx7c" path="res://Scenes/Game.tscn" id="7_01yg3"]
 
 [node name="Beam Me Away" type="Node2D"]
@@ -17,7 +17,11 @@ BronzeMedalTicks = 5
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
 position = Vector2(384, 128)
 rotation = 0.000775114
-tile_map_data = PackedByteArray("AAABAAIAAgAAAAYAAAACAAIAAgAAAAYAAAAFAAIAAgAAAAYAAAAGAAIAAgAAAAYAAAAAAAIAAgAAABMAAAAEAAIAAgAAABMAAAAHAAIAAgAAABMAADADAAIAAgAAABMAADABAAMAAgAAABMAAGACAAMAAgAAABMAAGAFAAMAAgAAABMAAGAGAAMAAgAAABMAAGAFAAEAAgAAABMAAFAGAAEAAgAAABMAAFACAAEAAgAAABMAAFABAAEAAgAAABMAAFAAAAMAAgACABMAAAAEAAMAAgACABMAAAAAAAEAAgACABMAAFAEAAEAAgACABMAAFADAAEAAgACABMAADAHAAEAAgACABMAADADAAMAAgACABMAAGAHAAMAAgACABMAAGA=")
+tile_map_data = PackedByteArray("AAABAAIAAwAAAAIAAAACAAIAAwAAAAIAAAAFAAIAAwAAAAIAAAAGAAIAAwAAAAIAAAAAAAIAAwAAABMAAAAEAAIAAwAAABMAAAAHAAIAAwAAABMAADADAAIAAwAAABMAADABAAMAAwAAABMAAGACAAMAAwAAABMAAGAFAAMAAwAAABMAAGAGAAMAAwAAABMAAGAFAAEAAwAAABMAAFAGAAEAAwAAABMAAFACAAEAAwAAABMAAFABAAEAAwAAABMAAFAAAAMAAwACABMAAAAEAAMAAwACABMAAAAAAAEAAwACABMAAFAEAAEAAwACABMAAFADAAEAAwACABMAADAHAAEAAwACABMAADADAAMAAwACABMAAGAHAAMAAwACABMAAGA=")
+tile_set = ExtResource("2_k3hmx")
+
+[node name="Shadows" type="TileMapLayer" parent="TileMapLayer"]
+tile_map_data = PackedByteArray("AAACAAIAAwAAAAgAAAABAAIAAwAAAAgAADAFAAIAAwAAAAgAADAGAAIAAwAAAAgAAAA=")
 tile_set = ExtResource("2_k3hmx")
 
 [node name="Spawn" parent="TileMapLayer" instance=ExtResource("3_yco5b")]

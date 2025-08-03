@@ -16,6 +16,11 @@ public partial class Spikes : Enemy, ISwitchable, IResettable
 
 	public bool State { get; set; } = true;
 
+	public override void _Ready()
+	{
+		this.Reset();
+	}
+
 	public override void _Process(double delta)
 	{
 		this.Collider.ProcessMode = this.State ? ProcessModeEnum.Inherit : ProcessModeEnum.Disabled;

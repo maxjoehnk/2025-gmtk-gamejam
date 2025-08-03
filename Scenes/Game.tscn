@@ -38,16 +38,18 @@ script = ExtResource("1_iukft")
 [node name="View" type="Camera2D" parent="."]
 offset = Vector2(960, 540)
 script = ExtResource("3_3so38")
-MinDistanceToViewBorderX = Vector2(520, 192)
-MinDistanceToViewBorderY = Vector2(192, 192)
 
-[node name="WinOverlay" parent="View" instance=ExtResource("9_71axn")]
+[node name="Overlays" type="CanvasLayer" parent="View"]
+offset = Vector2(200, -15)
+transform = Transform2D(1, 0, 0, 1, 200, -15)
+
+[node name="WinOverlay" parent="View/Overlays" instance=ExtResource("9_71axn")]
 visible = false
 
-[node name="CaughtOverlay" parent="View" instance=ExtResource("11_3so38")]
+[node name="CaughtOverlay" parent="View/Overlays" instance=ExtResource("11_3so38")]
 visible = false
 
-[node name="PauseMenuOverlay" parent="View" instance=ExtResource("11_3cx6b")]
+[node name="PauseMenuOverlay" parent="View/Overlays" instance=ExtResource("11_3cx6b")]
 visible = false
 
 [node name="CanvasLayer" type="CanvasLayer" parent="View"]
@@ -158,8 +160,8 @@ hit_from_inside = true
 collide_with_areas = true
 
 [connection signal="PlayerLost" from="Player" to="." method="OnPlayerLost"]
-[connection signal="RestartLevel" from="View/WinOverlay" to="." method="OnResetPressed"]
-[connection signal="RestartLevel" from="View/CaughtOverlay" to="." method="OnResetPressed"]
+[connection signal="RestartLevel" from="View/Overlays/WinOverlay" to="." method="OnResetPressed"]
+[connection signal="RestartLevel" from="View/Overlays/CaughtOverlay" to="." method="OnResetPressed"]
 [connection signal="pressed" from="View/PlaybackToolbarCanvas/VBoxContainer/PlaybackToolbar/Reset" to="." method="OnResetPressed"]
 [connection signal="pressed" from="View/PlaybackToolbarCanvas/VBoxContainer/PlaybackToolbar/Play" to="." method="OnPlayPressed"]
 [connection signal="button_down" from="View/PlaybackToolbarCanvas/VBoxContainer/PlaybackToolbar/LoopPreview" to="." method="OnLoopPressed"]

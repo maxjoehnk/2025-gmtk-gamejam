@@ -64,25 +64,6 @@ public partial class ActionPane : PanelContainer
 			OnWaitButton_Click();
 	}
 
-	//public void OnCollapseButton_Click(bool isCollapsed)
-	//{
-	//	Texture2D collapsedTrue = GD.Load<Texture2D>("res://Assets/UI/chevron-left.png");
-	//	Texture2D collapsedFalse = GD.Load<Texture2D>("res://Assets/UI/chevron-right.png");
-
-	//	MainVBox.Visible = !isCollapsed;
-	//	if (isCollapsed)
-	//	{
-	//		CollapseButton.Icon = collapsedFalse;
-	//		this.SelfModulate = new Color(255, 255, 255, 0);
-	//	}
-	//	else
-	//	{
-	//		CollapseButton.Icon = collapsedTrue;
-	//		this.SelfModulate = new Color("#ffffff");
-	//	}
-	//	GD.Print($"ActionPane: Collapsing: {isCollapsed}");
-	//}
-
 	public void OnLeftButton_Click()
 	{
 		AddMoveAction(MoveDirection.Left);
@@ -161,5 +142,10 @@ public partial class ActionPane : PanelContainer
 	{
 		var action = WaitActionScene.Instantiate<WaitAction>();
 		AddAction(action);
+	}
+
+	public void ResetActionProgress()
+	{
+		this.ActionList.GetChildren().OfType<ActionEntry>().ToList().ForEach(a => a.Reset());
 	}
 }

@@ -17,6 +17,9 @@ public partial class ActionEntry : Control
 	{
 		this.TitleLabel.Text = this.Action.Title;
 		this.DeleteButton.Pressed += this.QueueFree;
+		this.Action.ActionApplied += this.OnProgress;
+		this.UpdateTicks();
+		this.Reset();
 	}
 
 	public void OnAddTick()
@@ -36,6 +39,16 @@ public partial class ActionEntry : Control
 		this.UpdateTicks();
 	}
 
+	public void OnProgress()
+	{
+		this.ProgressBar.Value += 1;
+	}
+
+	public void Reset()
+	{
+		this.ProgressBar.Value = 0;
+	}
+
 	private void UpdateTicks()
 	{
 		this.UpdateTickDisplay();
@@ -45,6 +58,7 @@ public partial class ActionEntry : Control
 	public void UpdateTickDisplay()
 	{
 		this.TicksLabel.Text = this.Action.Ticks.ToString();
+		this.ProgressBar.MaxValue = this.Action.Ticks;
 	}
 
 	public override Variant _GetDragData(Vector2 position)

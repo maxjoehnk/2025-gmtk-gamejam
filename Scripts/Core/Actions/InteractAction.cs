@@ -10,6 +10,7 @@ public partial class InteractAction : Action
 	public override void Act(Player player)
 	{
 		player.GetInteractableElement()?.Interact(player);
+		this.EmitSignalActionApplied();
 	}
 
 	public override Vector2 Preview(Vector2 position, PreviewIndicator indicator)

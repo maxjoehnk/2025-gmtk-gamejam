@@ -96,6 +96,7 @@ public partial class Game : Node2D
 		this.WinOverlay.Hide();
 		this.CurrentGameState = GameState.Prepare;
 		this.GetTree().Paused = false;
+		this.ActionPane.ResetActionProgress();
 	}
 
 	public void OnLoopPressed()

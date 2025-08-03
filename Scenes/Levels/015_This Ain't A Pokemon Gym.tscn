@@ -4,8 +4,8 @@
 [ext_resource type="TileSet" uid="uid://pafbad4mjfhn" path="res://Assets/LevelTiles/LevelTiles.tres" id="2_f5rex"]
 [ext_resource type="PackedScene" uid="uid://duv31n7g217aj" path="res://Scenes/Objects/Spawn.tscn" id="3_1koyy"]
 [ext_resource type="PackedScene" uid="uid://de2n83qnroben" path="res://Scenes/Objects/LevelGoal.tscn" id="4_jow4y"]
-[ext_resource type="PackedScene" uid="uid://chqid36enis25" path="res://Scenes/Objects/TeleporterEntry.tscn" id="5_nta4l"]
-[ext_resource type="PackedScene" uid="uid://buwr0s3xt504s" path="res://Scenes/Objects/TeleporterExit.tscn" id="6_0l2qt"]
+[ext_resource type="PackedScene" uid="uid://b5j6b65wl2aun" path="res://Scenes/Objects/TeleporterEntry.tscn" id="5_nta4l"]
+[ext_resource type="PackedScene" uid="uid://dkwudiavm1gsu" path="res://Scenes/Objects/TeleporterExit.tscn" id="6_0l2qt"]
 [ext_resource type="PackedScene" uid="uid://dfenwo0b7hx7c" path="res://Scenes/Game.tscn" id="7_tn38w"]
 
 [node name="This Ain\'t Pokemon" type="Node2D"]

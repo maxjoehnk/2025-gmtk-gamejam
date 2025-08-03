@@ -10,7 +10,8 @@ config_version=5
 
 [application]
 
-config/name="2025-gmtk-gamejam"
+config/name="Loopscape"
+config/description="We find the hole in your loop"
 run/main_scene="uid://xkkyci2wgnbi"
 config/features=PackedStringArray("4.4", "C#", "Forward Plus")
 boot_splash/bg_color=Color(0, 0, 0, 1)

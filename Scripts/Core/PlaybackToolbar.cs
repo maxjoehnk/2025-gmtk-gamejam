@@ -12,11 +12,7 @@ public partial class PlaybackToolbar : HBoxContainer, IClocked
 
 	public void OnTick(int tick)
 	{
-		this.TickLabel.Text = tick.ToString();
-		if(tick < 10)
-		{
-			this.TickLabel.Text = tick.ToString("00");
-		}
+		this.TickLabel.Text = tick.ToString("00");
 		if (tick > 99)
 		{
 			this.TickLabel.Text = "99";

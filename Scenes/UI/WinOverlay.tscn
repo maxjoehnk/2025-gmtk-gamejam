@@ -90,14 +90,14 @@ label_settings = SubResource("LabelSettings_u0igv")
 
 [node name="Title" type="Label" parent="Dialog/MarginContainer/VBoxContainer/Title Container"]
 layout_mode = 2
-offset_left = 17.0
-offset_top = 54.0
-offset_right = 709.0
-offset_bottom = 164.0
+offset_left = 12.0
+offset_top = 82.0
+offset_right = 683.0
+offset_bottom = 192.0
 theme = ExtResource("6_ela2v")
 text = "Level Name"
 label_settings = SubResource("LabelSettings_2irst")
-vertical_alignment = 1
+autowrap_mode = 2
 
 [node name="Control2" type="Control" parent="Dialog/MarginContainer/VBoxContainer"]
 layout_mode = 2

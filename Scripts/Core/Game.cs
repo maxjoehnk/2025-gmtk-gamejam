@@ -31,6 +31,7 @@ public partial class Game : Node2D
 		this.PlaybackToolbar.SetSpeed((float)ActionPlayer.Instance.PlaybackSpeed);
 		this.PlaybackToolbar.SpeedChanged += this.OnSetSpeed;
 		this.CaughtOverlay.RestartLevel += this.OnResetPressed;
+		this.WinOverlay.RestartLevel += this.OnResetPressed;
 		this.PreviewIndicator.Hide();
 		this.WinOverlay.Hide();
 		this.CaughtOverlay.Hide();

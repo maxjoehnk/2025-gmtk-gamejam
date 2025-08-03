@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=4 uid="uid://cqw4r6f4ricrx"]
+[gd_scene load_steps=9 format=4 uid="uid://cqw4r6f4ricrx"]
 
 [ext_resource type="Script" uid="uid://4iy48t6sf73e" path="res://Scripts/Core/Map.cs" id="1_l1dpi"]
 [ext_resource type="TileSet" uid="uid://pafbad4mjfhn" path="res://Assets/LevelTiles/LevelTiles.tres" id="2_k3hmx"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://b5j6b65wl2aun" path="res://Scenes/Objects/TeleporterEntry.tscn" id="5_bgqw5"]
 [ext_resource type="PackedScene" uid="uid://dkwudiavm1gsu" path="res://Scenes/Objects/TeleporterExit.tscn" id="6_nccic"]
 [ext_resource type="PackedScene" uid="uid://dfenwo0b7hx7c" path="res://Scenes/Game.tscn" id="7_01yg3"]
+[ext_resource type="Texture2D" uid="uid://j4udscbbvvop" path="res://Assets/UI/Tutorials/Teleporter Hint.png" id="8_jyclm"]
 
 [node name="Beam Me Away" type="Node2D"]
 script = ExtResource("1_l1dpi")
@@ -40,3 +41,9 @@ position = Vector2(704.248, 319.454)
 [node name="Game" parent="." instance=ExtResource("7_01yg3")]
 position = Vector2(0, -3.05176e-05)
 rotation = 0.000775114
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer"]
+position = Vector2(960, 540)
+texture = ExtResource("8_jyclm")

@@ -3,7 +3,7 @@ using Godot;
 
 public partial class View : Camera2D
 {
-	[Export] public Vector2 MinDistanceToViewBorderX { get; set; } = new Vector2(448, 256);
+	[Export] public Vector2 MinDistanceToViewBorderX { get; set; } = new Vector2(520, 256);
 	[Export] public Vector2 MinDistanceToViewBorderY { get; set; } = new Vector2(256, 256);
 	[Export] public float LowpassFactor { get; set; } = 0.9f;
 	[Export] public float ManualCameraSpeed { get; set; } = 1000;
@@ -13,6 +13,8 @@ public partial class View : Camera2D
 
 	private Vector2 nextPosition;
 
+	private bool controlledCameraOnce = false;
+
 	public override void _Ready()
 	{
 		this.nextPosition = this.Position;
@@ -20,7 +22,10 @@ public partial class View : Camera2D
 
 	public override void _Process(double delta)
 	{
+		handleControlledCameraCheck();
 		GameState state = this.GetParent<Game>().CurrentGameState;
+		if (!controlledCameraOnce)
+			state = GameState.Playing;
 		switch (state)
 		{
 			case GameState.Playing:
@@ -77,5 +82,13 @@ public partial class View : Camera2D
 		{
 			this.nextPosition += new Vector2(this.ManualCameraSpeed * (float)delta, 0);
 		}
+	}
+
+	private void handleControlledCameraCheck()
+	{
+		controlledCameraOnce |= Input.IsActionPressed("Camera_Up") ||
+								Input.IsActionPressed("Camera_Down") ||
+								Input.IsActionPressed("Camera_Left") ||
+								Input.IsActionPressed("Camera_Right");
 	}
 }

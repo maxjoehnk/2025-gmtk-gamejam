@@ -21,6 +21,12 @@ public partial class Player : CharacterBody2D
 
 	public override void _Process(double delta)
 	{
+		if(this.GetParent<Game>().CurrentGameState != GameState.Playing)
+		{
+			this.executedTime = 0;
+			this.lastExecutedRatio = 0;
+			return;
+		}
 		if (this.nextDirection == new Vector2(0, 0))
 		{
 			return;

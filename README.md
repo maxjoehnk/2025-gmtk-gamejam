@@ -1,67 +1,17 @@
-# GMTK GameJam 2025
-
 Project Repo for the GMTK GameJam 2025
 
-## Name
+# Loopscape
 
-### Ideensammlung
+Loopscape
 
-Loopscape (Zusammensetzung aus Loop & Escape)
-Untitled Loop Game
-Caught in the Loop
-Loophole (Find the Hole in the loop)
+We find the hole in your loop.
 
-## Game Loop
+Loopscape is a top-down stealth puzzle game where planning beats reflexes. You play as a prisoner trying to escape a heavily guarded facility but instead of moving in real time, you program your path in advance.
 
-Spieler gibt die Aktonen des Loop vor um ans Ende der Karte zu navigieren, dabei muss er Hindernisse überwinden.
+Once you’ve entered your sequence of moves, you press play and watch your character execute the path. If you get caught, the loop resets and everyone returns to their original positions. But you keep what you’ve learned.
 
-## UI
+Adjust your inputs, tweak your timing and refine your strategy. The guards follow predictable patrol routes. The cameras rotate on cycles. Can you spot the pattern?
 
-Links Loop, Rechts Karte, oben mitte Ticks (ähnlich Playbutton?)
+Optimize your moves and carve out the one perfect path to freedom.
 
-## Game Design
-
-Ticks
-- Zeiteinheiten im Spiel quasi Züge
-
-Aktionen: Vom Spieler ausgewählte Aktionen die dem Loop hinzugefügt werden, eine Aktion dauert Ticks
-- Warten (Dauer)
-- Laufen (Richtung, Schrittzahl)
-- Objekt betätigen
-
-Loop:
-- Reihenfolge in der Aktionen ausgeführt werden
-
-Hindernisse:
-- Wachen, haben Sichtweite, Geschwindigkeiten, feste Bewegungsabläufe
-- Schalter -> öffnet Türen, deaktiviert Kameras, Licht etc.
-- Licht
-- Kameras
-
-Sonstiges:
-- Bronze, Silber, Gold je nachdem wie viele Ticks genutzt wurden
-- Collectable pro Level
-
-## Ideensammlung
-
-### Stealth Game
-  * Übersicht
-	* Wächter, Kameras etc in festen Bewegungsabläufen
-	* Kameras durchschalten (markierung), bewegte Kameras, Line of Sight bei Licht?
-	* Schalter für Türen, Licht, etc
-	* Kameraschalter
-  * Aufdecken der Karte (?)
-	* Eher als extra Modus, vermutlich eher nervig
-  * Keine Echtzeit, Liste an Befehlen (Laufen, Interagieren, Dodge Roll)
-	* Laufe nach Links, Rechts, Oben, Unten für 
-### Rogue-Like
-  * Klassiker wie Binding of Issac
-  * Nach jeder Ebene wird der Loot wieder entfernt
-  * Ziel ist die Räume zu beobachten, um in einem Durchlauf die Räume in der richtigen Reihenfolge zu betreten
-  * Die Räume sind trotzdem alle zufällig, nur der versteckte Pfad ist fest und kann visuell (irgendwie) erahnt werden
-### Simples Handy-Game mit nur 1-2 Knöpfen mit Jump&Run
-  * Gameplay ähnlich wie https://store.steampowered.com/app/3448750/Frog_Jump/
-  * Level baut sich nach und nach generisch auf und Pfad ist auf einem Kreis
-  * Altes Level wird also nach und nach überschrieben
-  * Ziel ist einfach so viele Runden zu schaffen wie möglich
-  * Wenn man runterfällt ist der Run vorbei
+Can you master the loop... and escape it?

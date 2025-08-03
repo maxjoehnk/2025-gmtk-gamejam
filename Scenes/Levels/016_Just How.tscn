@@ -77,10 +77,9 @@ StartPosition = 9
 curve = SubResource("Curve2D_bknct")
 
 [node name="Guard" parent="TileMapLayer/Path2D2" instance=ExtResource("5_gbyhg")]
-position = Vector2(1339.24, -65.038)
+position = Vector2(1215.95, -64.9425)
 rotation = -0.000775009
 progress = 123.29
-StartPosition = 1
 
 [node name="Guard2" parent="TileMapLayer/Path2D2" instance=ExtResource("5_gbyhg")]
 position = Vector2(1340.77, 190.961)
@@ -92,10 +91,10 @@ StartPosition = 5
 curve = SubResource("Curve2D_ulphu")
 
 [node name="Guard2" parent="TileMapLayer/Path2D3" instance=ExtResource("5_gbyhg")]
-position = Vector2(1088.14, 182.348)
+position = Vector2(1088.24, 300.262)
 rotation = -1.57158
-progress = 1672.81
-StartPosition = 12
+progress = 1554.84
+StartPosition = 11
 
 [node name="Guard3" parent="TileMapLayer/Path2D3" instance=ExtResource("5_gbyhg")]
 position = Vector2(1475.32, 318.857)
@@ -106,7 +105,7 @@ StartPosition = 8
 [node name="Guard4" parent="TileMapLayer/Path2D3" instance=ExtResource("5_gbyhg")]
 position = Vector2(1216.46, -192.943)
 rotation = -0.000775397
-progress = 128.614
+progress = 128.615
 StartPosition = 1
 
 [node name="Guard5" parent="TileMapLayer/Path2D3" instance=ExtResource("5_gbyhg")]

@@ -54,6 +54,7 @@ visible = false
 offset_left = -12.0
 offset_right = 1968.0
 offset_bottom = 1080.0
+mouse_filter = 2
 texture = ExtResource("18_x3xnh")
 
 [node name="Canvas" type="CanvasLayer" parent="View"]
@@ -104,7 +105,7 @@ focus_mode = 0
 texture_normal = ExtResource("14_i0vto")
 texture_pressed = ExtResource("15_3jf1l")
 
-[node name="Label2" type="Label" parent="View/PlaybackToolbarCanvas/VBoxContainer/PlaybackToolbar"]
+[node name="PlaceholderSpace" type="Label" parent="View/PlaybackToolbarCanvas/VBoxContainer/PlaybackToolbar"]
 layout_mode = 2
 text = "   "
 

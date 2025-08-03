@@ -8,5 +8,6 @@ public partial class WaitAction : Action
     public override void Act(Player player)
     {
         GD.Print("Wait");
+        this.EmitSignalActionApplied();
     }
 }

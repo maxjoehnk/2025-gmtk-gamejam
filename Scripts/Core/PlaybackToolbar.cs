@@ -6,13 +6,21 @@ public partial class PlaybackToolbar : HBoxContainer, IClocked
 {
 	private Label TickLabel => this.GetNode<Label>("Label");
 
-	private TextureButton NormalSpeedButton => this.GetNode<TextureButton>("Speed/SpeedNormal");
-	private TextureButton FastSpeedButton => this.GetNode<TextureButton>("Speed/SpeedFast");
-	private TextureButton FastestSpeedButton => this.GetNode<TextureButton>("Speed/SpeedFastest");
+	private TextureButton NormalSpeedButton => this.GetNode<TextureButton>("SpeedNormal");
+	private TextureButton FastSpeedButton => this.GetNode<TextureButton>("SpeedFast");
+	private TextureButton FastestSpeedButton => this.GetNode<TextureButton>("SpeedFastest");
 
 	public void OnTick(int tick)
 	{
 		this.TickLabel.Text = tick.ToString();
+		if(tick < 10)
+		{
+			this.TickLabel.Text = tick.ToString("00");
+		}
+		if (tick > 99)
+		{
+			this.TickLabel.Text = "99";
+		}
 	}
 
 	public void SetSpeed(float speed)

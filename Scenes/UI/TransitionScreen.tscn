@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://dkg7ohlfe0syi"]
+[gd_scene load_steps=6 format=3 uid="uid://c5v0xmr5o00hf"]
 
 [ext_resource type="Texture2D" uid="uid://drtd4obsxknbw" path="res://Assets/UI/TransitionScreen.png" id="1_kmw7r"]
 [ext_resource type="Script" uid="uid://3ihkt1i230eq" path="res://Scripts/UI/TransitionScreen.cs" id="2_pa87x"]
@@ -41,7 +41,10 @@ _data = {
 &"Exit": SubResource("Animation_kmw7r")
 }
 
-[node name="TransitionScreen" type="TextureRect"]
+[node name="CanvasLayer" type="CanvasLayer"]
+
+[node name="TransitionScreen" type="TextureRect" parent="."]
+top_level = true
 z_index = 1000
 anchors_preset = 15
 anchor_right = 1.0
@@ -53,9 +56,9 @@ grow_vertical = 2
 texture = ExtResource("1_kmw7r")
 script = ExtResource("2_pa87x")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="TransitionScreen"]
 libraries = {
 &"": SubResource("AnimationLibrary_8u4lx")
 }
 
-[connection signal="animation_finished" from="AnimationPlayer" to="." method="OnAnimationFinished"]
+[connection signal="animation_finished" from="TransitionScreen/AnimationPlayer" to="TransitionScreen" method="OnAnimationFinished"]

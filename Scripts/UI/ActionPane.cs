@@ -10,19 +10,16 @@ public partial class ActionPane : PanelContainer
 	private PackedScene WaitActionScene => GD.Load<PackedScene>("res://Scenes/UI/Actions/WaitAction.tscn");
 	private PackedScene ActionEntryScene => GD.Load<PackedScene>("res://Scenes/UI/ActionMenu/ActionEntry.tscn");
 	
-	private VBoxContainer ActionList => GetNode<VBoxContainer>("HBoxContainer/MainVBox/ScrollContainer/ActionList");
-	private Button AddActionButton => GetNode<Button>("HBoxContainer/MainVBox/AddActionButton");
-	private PopupMenu ActionPopupMenu => GetNode<PopupMenu>("HBoxContainer/MainVBox/ActionPopupMenu");
+	private VBoxContainer ActionList => GetNode<VBoxContainer>("UI_VBOX/MarginContainer/HBoxContainer/MainVBox/ScrollContainer/ActionList");
 
 	// ActionPaneUI Buttons
-	private TextureButton AddLeftButton => GetNode<TextureButton>("HBoxContainer/MainVBox/HBoxContainer/Left");
-	private TextureButton AddUpButton => GetNode<TextureButton>("HBoxContainer/MainVBox/HBoxContainer/Up");
-	private TextureButton AddDownButton => GetNode<TextureButton>("HBoxContainer/MainVBox/HBoxContainer/Down");
-	private TextureButton AddRightButton => GetNode<TextureButton>("HBoxContainer/MainVBox/HBoxContainer/Right");
-	private TextureButton AddInteractButton => GetNode<TextureButton>("HBoxContainer/MainVBox/HBoxContainer/Interact");
-	private TextureButton AddWaitButton => GetNode<TextureButton>("HBoxContainer/MainVBox/HBoxContainer/Wait");
-	private Button CollapseButton => GetNode<Button>("HBoxContainer/CollapseButton");
-	private VBoxContainer MainVBox => GetNode<VBoxContainer>("HBoxContainer/MainVBox");
+	private TextureButton AddLeftButton => GetNode<TextureButton>("UI_VBOX/MarginContainer/HBoxContainer/MainVBox/HBoxContainer/Left");
+	private TextureButton AddUpButton => GetNode<TextureButton>("UI_VBOX/MarginContainer/HBoxContainer/MainVBox/HBoxContainer/Up");
+	private TextureButton AddDownButton => GetNode<TextureButton>("UI_VBOX/MarginContainer/HBoxContainer/MainVBox/HBoxContainer/Down");
+	private TextureButton AddRightButton => GetNode<TextureButton>("UI_VBOX/MarginContainer/HBoxContainer/MainVBox/HBoxContainer/Right");
+	private TextureButton AddInteractButton => GetNode<TextureButton>("UI_VBOX/MarginContainer/HBoxContainer/MainVBox/HBoxContainer/Interact");
+	private TextureButton AddWaitButton => GetNode<TextureButton>("UI_VBOX/MarginContainer/HBoxContainer/MainVBox/HBoxContainer/Wait");
+	private VBoxContainer MainVBox => GetNode<VBoxContainer>("UI_VBOX/MarginContainer/HBoxContainer/MainVBox");
 
 
 	public Array<Action> Actions => new(ActionList.GetChildren().Cast<ActionEntry>().Select(a => a.Action));
@@ -65,25 +62,6 @@ public partial class ActionPane : PanelContainer
 
 		if (Input.IsActionJustPressed("Add_Wait"))
 			OnWaitButton_Click();
-	}
-
-	public void OnCollapseButton_Click(bool isCollapsed)
-	{
-		Texture2D collapsedTrue = GD.Load<Texture2D>("res://Assets/UI/chevron-left.png");
-		Texture2D collapsedFalse = GD.Load<Texture2D>("res://Assets/UI/chevron-right.png");
-
-		MainVBox.Visible = !isCollapsed;
-		if (isCollapsed)
-		{
-			CollapseButton.Icon = collapsedFalse;
-			this.SelfModulate = new Color(255, 255, 255, 0);
-		}
-		else
-		{
-			CollapseButton.Icon = collapsedTrue;
-			this.SelfModulate = new Color("#ffffff");
-		}
-		GD.Print($"ActionPane: Collapsing: {isCollapsed}");
 	}
 
 	public void OnLeftButton_Click()
@@ -164,5 +142,10 @@ public partial class ActionPane : PanelContainer
 	{
 		var action = WaitActionScene.Instantiate<WaitAction>();
 		AddAction(action);
+	}
+
+	public void ResetActionProgress()
+	{
+		this.ActionList.GetChildren().OfType<ActionEntry>().ToList().ForEach(a => a.Reset());
 	}
 }

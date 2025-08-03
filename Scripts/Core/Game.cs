@@ -8,21 +8,21 @@ public partial class Game : Node2D
 	private ActionPane ActionPane => this.GetNode<ActionPane>("View/Canvas/ActionPane");
 	public Player Player => this.GetNode<Player>("Player");
 
-	public WinOverlay WinOverlay => this.GetNode<WinOverlay>("View/WinOverlay");
-	public CaughtOverlay CaughtOverlay => this.GetNode<CaughtOverlay>("View/CaughtOverlay");
-	public PauseMenuOverlay PauseMenuOverlay => this.GetNode<PauseMenuOverlay>("View/PauseMenuOverlay");
+	public WinOverlay WinOverlay => this.GetNode<WinOverlay>("View/Overlays/WinOverlay");
+	public CaughtOverlay CaughtOverlay => this.GetNode<CaughtOverlay>("View/Overlays/CaughtOverlay");
+	public PauseMenuOverlay PauseMenuOverlay => this.GetNode<PauseMenuOverlay>("View/Overlays/PauseMenuOverlay");
 
 	private PreviewIndicator PreviewIndicator => this.GetNode<PreviewIndicator>("PreviewIndicator");
 	
-	private TextureButton PlayButton => this.GetNode<TextureButton>("View/VBoxContainer/PlaybackToolbar/Play");
+	private TextureButton PlayButton => this.GetNode<TextureButton>("View/PlaybackToolbarCanvas/VBoxContainer/PlaybackToolbar/Play");
 	
-	private PlaybackToolbar PlaybackToolbar => this.GetNode<PlaybackToolbar>("View/VBoxContainer/PlaybackToolbar");
+	private PlaybackToolbar PlaybackToolbar => this.GetNode<PlaybackToolbar>("View/PlaybackToolbarCanvas/VBoxContainer/PlaybackToolbar");
 
 	private double prePreviewSpeed = 1;
 
 	[Export] public Vector2 SpawnPosition { get; set; }
 
-	public GameState CurrentGameState = GameState.Stop;
+	public GameState CurrentGameState = GameState.Prepare;
 
 	public override void _Ready()
 	{
@@ -96,6 +96,7 @@ public partial class Game : Node2D
 		this.WinOverlay.Hide();
 		this.CurrentGameState = GameState.Prepare;
 		this.GetTree().Paused = false;
+		this.ActionPane.ResetActionProgress();
 	}
 
 	public void OnLoopPressed()

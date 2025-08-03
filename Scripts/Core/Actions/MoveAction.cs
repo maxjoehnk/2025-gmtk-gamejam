@@ -10,6 +10,7 @@ public partial class MoveAction : Action
 	public override void Act(Player player)
 	{
 		player.Move(this.Direction);
+		this.EmitSignalActionApplied();
 	}
 
 	public override Vector2 Preview(Vector2 position, PreviewIndicator indicator)

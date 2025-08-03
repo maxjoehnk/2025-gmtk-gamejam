@@ -90,5 +90,5 @@ icon = ExtResource("2_j5f3m")
 flat = true
 icon_alignment = 1
 
-[connection signal="pressed" from="ActionEntryContainer/HBoxContainer/MinusButton" to="ActionEntryContainer" method="OnRemoveTick"]
-[connection signal="pressed" from="ActionEntryContainer/HBoxContainer/PlusButton" to="ActionEntryContainer" method="OnAddTick"]
+[connection signal="pressed" from="ActionEntryContainer/HBoxContainer/MinusButton" to="." method="OnRemoveTick"]
+[connection signal="pressed" from="ActionEntryContainer/HBoxContainer/PlusButton" to="." method="OnAddTick"]

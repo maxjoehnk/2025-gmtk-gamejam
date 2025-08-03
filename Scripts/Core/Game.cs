@@ -28,6 +28,7 @@ public partial class Game : Node2D
 	{
 		this.ActionPane.ActionsChanged += this.OnActionsChanged;
 		ActionPlayer.Instance.Finished += this.OnActionsFinished;
+		this.PlaybackToolbar.SetSpeed((float)ActionPlayer.Instance.PlaybackSpeed);
 		this.PreviewIndicator.Hide();
 		this.WinOverlay.Hide();
 		this.CaughtOverlay.Hide();

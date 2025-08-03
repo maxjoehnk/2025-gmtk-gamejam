@@ -30,15 +30,12 @@ tile_map_data = PackedByteArray("AAABAAMAAwAAAAgAAFAGAAIAAwAAAAgAAAABAAIAAwAAAAc
 tile_set = ExtResource("2_w4omw")
 
 [node name="Spawn" parent="TileMapLayer" instance=ExtResource("3_fk313")]
-visible = false
 position = Vector2(192, 448)
 
 [node name="LevelGoal" parent="TileMapLayer" instance=ExtResource("4_lyxgj")]
-visible = false
 position = Vector2(833.249, 321.354)
 
 [node name="Path2D2" type="Path2D" parent="TileMapLayer"]
-visible = false
 position = Vector2(640, 128)
 curve = SubResource("Curve2D_f6pk4")
 

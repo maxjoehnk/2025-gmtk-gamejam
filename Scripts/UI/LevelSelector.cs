@@ -14,6 +14,7 @@ public partial class LevelSelector : Control
 
 			this.AddChild(levelButton);
 		}
+		Music.Instance.TransitionToMenuMusic();
 	}
 
 	private LevelButton CreateLevelButton(AvailableLevel level)

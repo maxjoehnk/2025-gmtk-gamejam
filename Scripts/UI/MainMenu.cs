@@ -10,6 +10,7 @@ public partial class MainMenu : Panel
 	public override void _Ready()
 	{
 		this.UpdateLabels();
+		Music.Instance.TransitionToMenuMusic();
 	}
 
 	public void OnExit()

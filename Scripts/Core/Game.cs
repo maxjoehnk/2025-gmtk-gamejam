@@ -32,16 +32,7 @@ public partial class Game : Node2D
 		this.WinOverlay.Hide();
 		this.CaughtOverlay.Hide();
 		this.CurrentGameState = GameState.Prepare;
-	}
-
-	public override void _EnterTree()
-	{
 		Music.Instance.TransitionToGameMusic();
-	}
-
-	public override void _ExitTree()
-	{
-		Music.Instance.TransitionToMenuMusic();
 	}
 
 	private void OnSetSpeed(float value)

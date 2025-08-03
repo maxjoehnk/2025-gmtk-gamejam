@@ -10,9 +10,9 @@
 
 [node name="Big Brother Is Watching You" type="Node2D"]
 script = ExtResource("1_xfjfo")
-GoldMedalTicks = 16
-SilverMedalTicks = 25
-BronzeMedalTicks = 35
+GoldMedalTicks = 15
+SilverMedalTicks = 16
+BronzeMedalTicks = 20
 metadata/_edit_lock_ = true
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]

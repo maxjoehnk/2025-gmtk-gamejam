@@ -1,9 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://0e6k36reyf0v"]
+[gd_scene load_steps=5 format=3 uid="uid://0e6k36reyf0v"]
 
 [ext_resource type="Script" uid="uid://ckpg5asmm6amg" path="res://Scripts/UI/LevelSelector.cs" id="1_1k1ql"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1k1ql"]
-bg_color = Color(0, 0.380392, 0.568627, 1)
+[ext_resource type="StyleBox" uid="uid://b1jt0gbx4hchb" path="res://Themes/MenuBackground.tres" id="1_8t80d"]
+[ext_resource type="LabelSettings" uid="uid://ccaw61l4efbe1" path="res://Themes/TitleLabel.tres" id="2_0fvge"]
+[ext_resource type="PackedScene" uid="uid://d1762b3f83wg4" path="res://Scenes/UI/Screws.tscn" id="4_0fvge"]
 
 [node name="Panel" type="Panel"]
 anchors_preset = 15
@@ -11,7 +11,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_1k1ql")
+theme_override_styles/panel = ExtResource("1_8t80d")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
@@ -31,7 +31,8 @@ size_flags_stretch_ratio = 0.2
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 theme_override_font_sizes/font_size = 36
-text = "Choose a level: "
+text = "Choose a level"
+label_settings = ExtResource("2_0fvge")
 horizontal_alignment = 1
 
 [node name="MapSelector" type="VFlowContainer" parent="VBoxContainer"]
@@ -50,10 +51,12 @@ size_flags_stretch_ratio = 0.2
 [node name="BackToMenu" type="Button" parent="."]
 custom_minimum_size = Vector2(150, 50)
 layout_mode = 0
-offset_left = 20.0
-offset_top = 1010.0
-offset_right = 170.0
-offset_bottom = 1060.0
+offset_left = 80.0
+offset_top = 80.0
+offset_right = 230.0
+offset_bottom = 130.0
 text = "Back to Menu"
+
+[node name="Control" parent="." instance=ExtResource("4_0fvge")]
 
 [connection signal="pressed" from="BackToMenu" to="VBoxContainer/MapSelector" method="OnBackPressed"]

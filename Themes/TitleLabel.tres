@@ -1,0 +1,8 @@
+[gd_resource type="LabelSettings" load_steps=2 format=3 uid="uid://ccaw61l4efbe1"]
+
+[ext_resource type="FontFile" uid="uid://b7rxn83laf0py" path="res://Assets/Fonts/Moms.ttf" id="1_g364f"]
+
+[resource]
+font = ExtResource("1_g364f")
+font_size = 80
+font_color = Color(0.231373, 0.207843, 0.141176, 1)

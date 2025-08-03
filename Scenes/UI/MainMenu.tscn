@@ -1,9 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://xkkyci2wgnbi"]
+[gd_scene load_steps=6 format=3 uid="uid://xkkyci2wgnbi"]
 
 [ext_resource type="Script" uid="uid://ben4lxalgohib" path="res://Scripts/UI/MainMenu.cs" id="1_g18y6"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_370kx"]
-bg_color = Color(0, 0.380392, 0.568627, 1)
+[ext_resource type="StyleBox" uid="uid://b1jt0gbx4hchb" path="res://Themes/MenuBackground.tres" id="1_t6w0q"]
+[ext_resource type="FontFile" uid="uid://b7rxn83laf0py" path="res://Assets/Fonts/Moms.ttf" id="3_k8um8"]
+[ext_resource type="LabelSettings" uid="uid://ccaw61l4efbe1" path="res://Themes/TitleLabel.tres" id="4_k8um8"]
+[ext_resource type="PackedScene" uid="uid://d1762b3f83wg4" path="res://Scenes/UI/Screws.tscn" id="5_k8um8"]
 
 [node name="MainMenu" type="Panel"]
 anchors_preset = 15
@@ -11,7 +12,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_370kx")
+theme_override_styles/panel = ExtResource("1_t6w0q")
 script = ExtResource("1_g18y6")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
@@ -26,10 +27,21 @@ grow_vertical = 2
 custom_minimum_size = Vector2(0, 200)
 layout_mode = 2
 
-[node name="Label" type="Label" parent="VBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 80
-text = "Untitled Loop Game"
+
+[node name="Label" type="Label" parent="VBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Loopscape Security"
+label_settings = ExtResource("4_k8um8")
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="VBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.231373, 0.207843, 0.141176, 1)
+theme_override_fonts/font = ExtResource("3_k8um8")
+theme_override_font_sizes/font_size = 30
+text = "we find the hole in your loop"
 horizontal_alignment = 1
 
 [node name="Control" type="Control" parent="VBoxContainer"]
@@ -63,6 +75,8 @@ layout_mode = 2
 size_flags_horizontal = 4
 theme_override_font_sizes/font_size = 20
 text = "Exit"
+
+[node name="Control" parent="." instance=ExtResource("5_k8um8")]
 
 [connection signal="pressed" from="VBoxContainer/Start" to="." method="OnStart"]
 [connection signal="pressed" from="VBoxContainer/Select Level" to="." method="OnLevelSelect"]

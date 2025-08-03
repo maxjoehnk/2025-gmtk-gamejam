@@ -1,0 +1,41 @@
+[gd_scene load_steps=2 format=3 uid="uid://d1762b3f83wg4"]
+
+[ext_resource type="Texture2D" uid="uid://b5518f1rcto74" path="res://Assets/UI/Screw.png" id="1_32wow"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 16.0
+offset_right = 72.0
+offset_bottom = 72.0
+texture = ExtResource("1_32wow")
+
+[node name="TextureRect2" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 1848.0
+offset_top = 16.0
+offset_right = 1904.0
+offset_bottom = 72.0
+texture = ExtResource("1_32wow")
+
+[node name="TextureRect3" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 1008.0
+offset_right = 72.0
+offset_bottom = 1064.0
+texture = ExtResource("1_32wow")
+
+[node name="TextureRect4" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 1848.0
+offset_top = 1008.0
+offset_right = 1904.0
+offset_bottom = 1064.0
+texture = ExtResource("1_32wow")

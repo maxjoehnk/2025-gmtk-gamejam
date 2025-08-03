@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://ct3p2yk1fckbs"]
+[gd_scene load_steps=6 format=3 uid="uid://ct3p2yk1fckbs"]
 
 [ext_resource type="Script" uid="uid://cmrpx60rf2y3q" path="res://Scripts/UI/LevelName.cs" id="1_q501d"]
+[ext_resource type="FontFile" uid="uid://b7rxn83laf0py" path="res://Assets/Fonts/Moms.ttf" id="2_0to0c"]
 
 [sub_resource type="Theme" id="Theme_q501d"]
 
@@ -9,9 +10,9 @@ content_margin_left = 50.0
 content_margin_right = 50.0
 bg_color = Color(0, 0, 0, 0.52549)
 
-[sub_resource type="LabelSettings" id="LabelSettings_0m1nm"]
+[sub_resource type="LabelSettings" id="LabelSettings_ip4wt"]
+font = ExtResource("2_0to0c")
 font_size = 80
-outline_size = 4
 outline_color = Color(0, 0, 0, 1)
 shadow_size = 5
 shadow_offset = Vector2(5, 5)
@@ -35,8 +36,9 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_0to0c")
 [node name="LevelName" type="Label" parent="Panel"]
 custom_minimum_size = Vector2(700, 0)
 layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "Level Name"
-label_settings = SubResource("LabelSettings_0m1nm")
+label_settings = SubResource("LabelSettings_ip4wt")
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2

@@ -48,4 +48,4 @@ rotation = -1.5708
 StartPosition = 8
 
 [node name="Game" parent="." instance=ExtResource("6_a2wq5")]
-position = Vector2(64, 64)
+metadata/_edit_lock_ = true

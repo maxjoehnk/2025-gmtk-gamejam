@@ -84,7 +84,7 @@ transform = Transform2D(1, 0, 0, 1, 917.5, 990)
 offset_right = 398.0
 offset_bottom = 64.0
 
-[node name="PlaybackToolbar" type="HBoxContainer" parent="View/PlaybackToolbarCanvas/VBoxContainer"]
+[node name="PlaybackToolbar" type="HBoxContainer" parent="View/PlaybackToolbarCanvas/VBoxContainer" groups=["Clocked"]]
 z_index = 1
 layout_mode = 2
 size_flags_vertical = 3

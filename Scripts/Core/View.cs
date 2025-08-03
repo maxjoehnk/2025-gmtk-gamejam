@@ -3,7 +3,8 @@ using Godot;
 
 public partial class View : Camera2D
 {
-	[Export] public double MinDistanceToViewBorder { get; set; } = 192;
+	[Export] public Vector2 MinDistanceToViewBorderX { get; set; } = new Vector2(448, 256);
+	[Export] public Vector2 MinDistanceToViewBorderY { get; set; } = new Vector2(256, 256);
 	[Export] public float LowpassFactor { get; set; } = 0.9f;
 	[Export] public float ManualCameraSpeed { get; set; } = 1000;
 
@@ -47,10 +48,10 @@ public partial class View : Camera2D
 		Player player = this.GetParent().GetNode<Player>("Player");
 		Vector2 playerPos = player.Position;
 		Vector2 cameraPos = this.Offset + this.Position;
-		double upperEdge = cameraPos.Y - this.maxHeight / 2 + this.MinDistanceToViewBorder;
-		double lowerEdge = cameraPos.Y + this.maxHeight / 2 - this.MinDistanceToViewBorder;
-		double leftEdge = cameraPos.X - this.maxWidth / 2 + this.MinDistanceToViewBorder;
-		double rightEdge = cameraPos.X + this.maxWidth / 2 - this.MinDistanceToViewBorder;
+		double upperEdge = cameraPos.Y - this.maxHeight / 2 + this.MinDistanceToViewBorderY.Y;
+		double lowerEdge = cameraPos.Y + this.maxHeight / 2 - this.MinDistanceToViewBorderY.X;
+		double leftEdge = cameraPos.X - this.maxWidth / 2 + this.MinDistanceToViewBorderX.X;
+		double rightEdge = cameraPos.X + this.maxWidth / 2 - this.MinDistanceToViewBorderX.Y;
 		this.nextPosition = this.Position + new Vector2(this.DistanceToRange(playerPos.X, leftEdge, rightEdge),
 			this.DistanceToRange(playerPos.Y, upperEdge, lowerEdge));
 	}

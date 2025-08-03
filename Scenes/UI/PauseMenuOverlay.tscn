@@ -5,6 +5,7 @@
 [ext_resource type="Theme" uid="uid://cra2uu7yv1c0h" path="res://Themes/ButtonTheme.tres" id="3_bwdd1"]
 
 [node name="PauseMenuOverlay" type="Control"]
+process_mode = 2
 layout_mode = 3
 anchors_preset = 0
 script = ExtResource("1_dgq6r")
@@ -64,21 +65,18 @@ size_flags_vertical = 3
 size_flags_stretch_ratio = 0.2
 
 [node name="Resume" type="Button" parent="Panel/VBoxContainer"]
-process_mode = 2
 custom_minimum_size = Vector2(200, 50)
 layout_mode = 2
 theme = ExtResource("3_bwdd1")
 text = "Resume"
 
 [node name="MainMenu" type="Button" parent="Panel/VBoxContainer"]
-process_mode = 2
 custom_minimum_size = Vector2(200, 50)
 layout_mode = 2
 theme = ExtResource("3_bwdd1")
 text = "Main Menu"
 
 [node name="Exit" type="Button" parent="Panel/VBoxContainer"]
-process_mode = 2
 custom_minimum_size = Vector2(200, 50)
 layout_mode = 2
 theme = ExtResource("3_bwdd1")

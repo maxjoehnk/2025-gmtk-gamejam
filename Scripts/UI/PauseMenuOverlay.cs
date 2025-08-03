@@ -9,6 +9,15 @@ public partial class PauseMenuOverlay : Control
 		this.Visible = false;
 	}
 
+	public override void _Input(InputEvent @event)
+	{
+		if (@event.IsActionPressed("OpenMenu"))
+		{
+			this.OnResumePressed();
+			this.GetTree().Root.SetInputAsHandled();
+		}
+	}
+
 	public void Open()
 	{
 		GD.Print("Game paused");
@@ -16,12 +25,6 @@ public partial class PauseMenuOverlay : Control
 		this.GetTree().Paused = true;
 		this.Show();
 		Music.Instance.TransitionToMenuMusic();
-	}
-
-	private void TogglePause()
-	{
-		GD.Print($"Toggle Pause");
-		this.GetTree().Paused = true;
 	}
 
 	public void OnResumePressed()
@@ -36,6 +39,12 @@ public partial class PauseMenuOverlay : Control
 	{
 		this.GetTree().Paused = false;
 		LevelManager.Instance.OpenMainMenu();
+	}
+
+	public void OnSettingsPressed()
+	{
+		this.GetTree().Paused = false;
+		LevelManager.Instance.OpenSettings();
 	}
 
 	public void OnDesktopPressed()

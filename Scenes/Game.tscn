@@ -187,11 +187,7 @@ collide_with_areas = true
 
 [connection signal="PlayerLost" from="Player" to="." method="OnPlayerLost"]
 [connection signal="RestartLevel" from="View/Overlays/WinOverlay" to="." method="OnResetPressed"]
-[connection signal="RestartLevel" from="View/Overlays/CaughtOverlay" to="." method="OnResetPressed"]
 [connection signal="pressed" from="View/PlaybackToolbarCanvas/VBoxContainer/PlaybackToolbar/Reset" to="." method="OnResetPressed"]
 [connection signal="pressed" from="View/PlaybackToolbarCanvas/VBoxContainer/PlaybackToolbar/Play" to="." method="OnPlayPressed"]
 [connection signal="button_down" from="View/PlaybackToolbarCanvas/VBoxContainer/PlaybackToolbar/LoopPreview" to="." method="OnLoopPressed"]
 [connection signal="button_up" from="View/PlaybackToolbarCanvas/VBoxContainer/PlaybackToolbar/LoopPreview" to="." method="OnLoopReleased"]
-[connection signal="pressed" from="View/PlaybackToolbarCanvas/VBoxContainer/PlaybackToolbar/SpeedNormal" to="." method="OnSetSpeed" binds= [1.0]]
-[connection signal="pressed" from="View/PlaybackToolbarCanvas/VBoxContainer/PlaybackToolbar/SpeedFast" to="." method="OnSetSpeed" binds= [4.0]]
-[connection signal="pressed" from="View/PlaybackToolbarCanvas/VBoxContainer/PlaybackToolbar/SpeedFastest" to="." method="OnSetSpeed" binds= [8.0]]

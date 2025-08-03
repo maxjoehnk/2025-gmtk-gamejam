@@ -10,6 +10,16 @@ public partial class PlaybackToolbar : HBoxContainer, IClocked
 	private TextureButton FastSpeedButton => this.GetNode<TextureButton>("SpeedFast");
 	private TextureButton FastestSpeedButton => this.GetNode<TextureButton>("SpeedFastest");
 
+	[Signal]
+	public delegate void SpeedChangedEventHandler(float speed);
+	
+	public override void _Ready()
+	{
+		this.NormalSpeedButton.Pressed += this.OnNormalSpeedPressed;
+		this.FastSpeedButton.Pressed += this.OnFastSpeedPressed;
+		this.FastestSpeedButton.Pressed += this.OnFastestSpeedPressed;
+	}
+	
 	public void OnTick(int tick)
 	{
 		this.TickLabel.Text = tick.ToString("00");
@@ -17,6 +27,21 @@ public partial class PlaybackToolbar : HBoxContainer, IClocked
 		{
 			this.TickLabel.Text = "99";
 		}
+	}
+	
+	public void OnNormalSpeedPressed()
+	{
+		this.EmitSignalSpeedChanged(1);
+	}
+	
+	public void OnFastSpeedPressed()
+	{
+		this.EmitSignalSpeedChanged(4);
+	}
+	
+	public void OnFastestSpeedPressed()
+	{
+		this.EmitSignalSpeedChanged(8);
 	}
 
 	public void SetSpeed(float speed)

@@ -1,49 +1,96 @@
-[gd_scene load_steps=3 format=3 uid="uid://djji4kxi0bt15"]
+[gd_scene load_steps=7 format=3 uid="uid://djji4kxi0bt15"]
 
 [ext_resource type="Script" uid="uid://dbxiayad6njfo" path="res://Scripts/UI/ActionEntry.cs" id="1_ghiat"]
+[ext_resource type="FontFile" uid="uid://dqlqfqllepub" path="res://Assets/Fonts/UnscreenMK.ttf" id="2_ifbfc"]
 [ext_resource type="Texture2D" uid="uid://cn2hcrgykcktb" path="res://Assets/UI/trash-can-outline.png" id="2_j5f3m"]
 
-[node name="ActionEntryContainer" type="HBoxContainer"]
-offset_right = 40.0
-offset_bottom = 40.0
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_j5f3m"]
+bg_color = Color(0.6, 0.6, 0.0352941, 0.505882)
+
+[sub_resource type="LabelSettings" id="LabelSettings_5l71y"]
+font = ExtResource("2_ifbfc")
+font_size = 20
+font_color = Color(1, 1, 0.196078, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_nksy6"]
+font = ExtResource("2_ifbfc")
+font_size = 18
+font_color = Color(1, 1, 0.196078, 1)
+
+[node name="Control" type="Control"]
+custom_minimum_size = Vector2(150, 40)
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 size_flags_horizontal = 3
+size_flags_vertical = 3
 script = ExtResource("1_ghiat")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="."]
+[node name="ProgressBar" type="ProgressBar" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 13.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/fill = SubResource("StyleBoxFlat_j5f3m")
+max_value = 10.0
+step = 1.0
+value = 5.0
+show_percentage = false
+
+[node name="ActionEntryContainer" type="HBoxContainer" parent="."]
+z_index = 2
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 35.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ActionEntryContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 0.5
 
-[node name="MinusButton" type="Button" parent="HBoxContainer"]
+[node name="MinusButton" type="Button" parent="ActionEntryContainer/HBoxContainer"]
 layout_mode = 2
-size_flags_horizontal = 3
-size_flags_stretch_ratio = 0.5
 focus_mode = 0
 text = "-"
 
-[node name="TicksButton" type="Label" parent="HBoxContainer"]
+[node name="TicksButton" type="Label" parent="ActionEntryContainer/HBoxContainer"]
 layout_mode = 2
-size_flags_horizontal = 3
+size_flags_horizontal = 6
 text = "1"
+label_settings = SubResource("LabelSettings_5l71y")
 horizontal_alignment = 1
 
-[node name="PlusButton" type="Button" parent="HBoxContainer"]
+[node name="PlusButton" type="Button" parent="ActionEntryContainer/HBoxContainer"]
 layout_mode = 2
-size_flags_horizontal = 3
 size_flags_stretch_ratio = 0.5
 focus_mode = 0
 text = "+"
 
-[node name="ActionName" type="Label" parent="."]
+[node name="ActionName" type="Label" parent="ActionEntryContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Move left"
+label_settings = SubResource("LabelSettings_nksy6")
 horizontal_alignment = 1
 
-[node name="RemoveButton" type="Button" parent="."]
+[node name="RemoveButton" type="Button" parent="ActionEntryContainer"]
 layout_mode = 2
+size_flags_horizontal = 3
 focus_mode = 0
 icon = ExtResource("2_j5f3m")
+flat = true
+icon_alignment = 1
 
-[connection signal="pressed" from="HBoxContainer/MinusButton" to="." method="OnRemoveTick"]
-[connection signal="pressed" from="HBoxContainer/PlusButton" to="." method="OnAddTick"]
+[connection signal="pressed" from="ActionEntryContainer/HBoxContainer/MinusButton" to="ActionEntryContainer" method="OnRemoveTick"]
+[connection signal="pressed" from="ActionEntryContainer/HBoxContainer/PlusButton" to="ActionEntryContainer" method="OnAddTick"]

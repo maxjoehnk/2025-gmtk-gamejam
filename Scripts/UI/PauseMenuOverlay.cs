@@ -4,40 +4,42 @@ using System;
 
 public partial class PauseMenuOverlay : Control
 {
-    public override void _Ready()
-    {
-        this.Visible = false;
-    }
+	public override void _Ready()
+	{
+		this.Visible = false;
+	}
 
-    public void Open()
-    {
-        GD.Print("Game paused");
-        this.Visible = true;
-        GetTree().Paused = true;
-        this.Show();
-    }
+	public void Open()
+	{
+		GD.Print("Game paused");
+		this.Visible = true;
+		this.GetTree().Paused = true;
+		this.Show();
+		Music.Instance.TransitionToMenuMusic();
+	}
 
-    private void TogglePause()
-    {
-        GD.Print($"Toggle Pause");
-        GetTree().Paused = true;
-    }
+	private void TogglePause()
+	{
+		GD.Print($"Toggle Pause");
+		this.GetTree().Paused = true;
+	}
 
-    public void OnResumePressed()
-    {
-        GD.Print($"Toggle unpaused");
-        GetTree().Paused = false;
-        this.Hide();
-    }
+	public void OnResumePressed()
+	{
+		GD.Print($"Toggle unpaused");
+		this.GetTree().Paused = false;
+		this.Hide();
+		Music.Instance.TransitionToGameMusic();
+	}
 
-    public void OnMainMenuPressed()
-    {
-        GetTree().Paused = false;
-        LevelManager.Instance.OpenMainMenu();
-    }
+	public void OnMainMenuPressed()
+	{
+		this.GetTree().Paused = false;
+		LevelManager.Instance.OpenMainMenu();
+	}
 
-    public void OnDesktopPressed()
-    {
-        GetTree().Quit();
-    }
+	public void OnDesktopPressed()
+	{
+		this.GetTree().Quit();
+	}
 }

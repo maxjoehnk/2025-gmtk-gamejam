@@ -20,6 +20,7 @@ config/icon="res://icon.svg"
 
 LevelLoader="*res://Scripts/Core/LevelManager.cs"
 ActionPlayer="*res://Scripts/Core/ActionPlayer.cs"
+Music="*res://Scenes/Music.tscn"
 
 [display]
 

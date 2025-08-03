@@ -1,0 +1,20 @@
+[gd_scene load_steps=5 format=3 uid="uid://b2jsico58p6n2"]
+
+[ext_resource type="Script" uid="uid://ds8b2uqjvbxkj" path="res://Scripts/Music.cs" id="1_fghhr"]
+[ext_resource type="AudioStream" uid="uid://cy6qu7ddpclgs" path="res://Assets/Sounds/Music/MenuMusic.wav" id="1_p1bea"]
+[ext_resource type="AudioStream" uid="uid://5fp2hwgl58k1" path="res://Assets/Sounds/Music/InGame.wav" id="2_p1bea"]
+
+[sub_resource type="AudioStreamSynchronized" id="AudioStreamSynchronized_54ncq"]
+stream_count = 2
+stream_0/stream = ExtResource("1_p1bea")
+stream_0/volume = 0.0
+stream_1/stream = ExtResource("2_p1bea")
+stream_1/volume = -60.0
+
+[node name="Music" type="AudioStreamPlayer"]
+process_mode = 3
+stream = SubResource("AudioStreamSynchronized_54ncq")
+volume_db = -80.0
+autoplay = true
+bus = &"Music"
+script = ExtResource("1_fghhr")

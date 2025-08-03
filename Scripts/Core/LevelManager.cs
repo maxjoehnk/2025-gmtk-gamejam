@@ -136,6 +136,11 @@ public partial class LevelManager : Node
 		{
 			this.currentLevelIndex = this.lastFinishedLevelIndex + 1;
 		}
+		else
+		{
+			this.currentLevelIndex = null;
+		}
+		this.UnlockLevels();
 	}
 
 	private void UnlockLevels()

@@ -28,11 +28,9 @@ public partial class MainMenu : Panel
 		LevelManager.Instance.LoadCurrentLevel();
 	}
 
-	public void OnDeleteUserData()
+	public void OnOpenSettings()
 	{
-		UserDataManager.ClearUserData();
-		LevelManager.Instance.ReloadUserData();
-		this.UpdateLabels();
+		LevelManager.Instance.OpenSettings();
 	}
 
 	private void UpdateLabels()

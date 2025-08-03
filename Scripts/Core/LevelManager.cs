@@ -93,6 +93,11 @@ public partial class LevelManager : Node
 		this.TransitionToScene("res://Scenes/UI/MainMenu.tscn");
 	}
 
+	public void OpenSettings()
+	{
+		this.TransitionToScene("res://Scenes/UI/Settings.tscn");
+	}
+
 	public void TransitionToScene(string scenePath)
 	{
 		TransitionScreen.Instance.EnterTransition(() =>

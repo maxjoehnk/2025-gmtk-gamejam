@@ -23,6 +23,7 @@ LevelLoader="*res://Scripts/Core/LevelManager.cs"
 ActionPlayer="*res://Scripts/Core/ActionPlayer.cs"
 Music="*res://Scenes/Music.tscn"
 TransitionScreen="*res://Scenes/UI/TransitionScreen.tscn"
+SettingsManager="*res://Scripts/Core/SettingsManager.cs"
 
 [display]
 

@@ -1,0 +1,163 @@
+[gd_scene load_steps=6 format=3 uid="uid://ca0j8ig3p781e"]
+
+[ext_resource type="StyleBox" uid="uid://b1jt0gbx4hchb" path="res://Themes/MenuBackground.tres" id="1_2rt6e"]
+[ext_resource type="Script" uid="uid://vnpgda284m6d" path="res://Scripts/UI/Settings.cs" id="2_hfiyb"]
+[ext_resource type="LabelSettings" uid="uid://ccaw61l4efbe1" path="res://Themes/TitleLabel.tres" id="2_vxotv"]
+[ext_resource type="Theme" uid="uid://cra2uu7yv1c0h" path="res://Themes/ButtonTheme.tres" id="4_o5gox"]
+[ext_resource type="PackedScene" uid="uid://d1762b3f83wg4" path="res://Scenes/UI/Screws.tscn" id="5_5fulg"]
+
+[node name="Panel" type="Panel"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = ExtResource("1_2rt6e")
+script = ExtResource("2_hfiyb")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="Control2" type="Control" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.2
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+size_flags_vertical = 6
+size_flags_stretch_ratio = 0.2
+theme_override_font_sizes/font_size = 36
+text = "Settings"
+label_settings = ExtResource("2_vxotv")
+horizontal_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer"]
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 3
+alignment = 1
+
+[node name="Label2" type="Label" parent="VBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("4_o5gox")
+theme_override_colors/font_color = Color(0.231373, 0.207843, 0.141176, 1)
+theme_override_font_sizes/font_size = 40
+text = "Audio"
+
+[node name="Control" type="Control" parent="VBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.1
+
+[node name="MainVolume" type="HBoxContainer" parent="VBoxContainer/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="VBoxContainer/VBoxContainer/MainVolume"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.5
+text = "Main"
+
+[node name="HSlider" type="HSlider" parent="VBoxContainer/VBoxContainer/MainVolume"]
+layout_mode = 2
+size_flags_horizontal = 3
+max_value = 1.0
+step = 0.01
+
+[node name="MusicVolume" type="HBoxContainer" parent="VBoxContainer/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="VBoxContainer/VBoxContainer/MusicVolume"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.5
+text = "Music"
+
+[node name="HSlider" type="HSlider" parent="VBoxContainer/VBoxContainer/MusicVolume"]
+layout_mode = 2
+size_flags_horizontal = 3
+max_value = 1.0
+step = 0.01
+
+[node name="EffectsVolume" type="HBoxContainer" parent="VBoxContainer/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="VBoxContainer/VBoxContainer/EffectsVolume"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.5
+text = "Effects"
+
+[node name="HSlider" type="HSlider" parent="VBoxContainer/VBoxContainer/EffectsVolume"]
+layout_mode = 2
+size_flags_horizontal = 3
+max_value = 1.0
+step = 0.01
+
+[node name="Control2" type="Control" parent="VBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.1
+
+[node name="Label3" type="Label" parent="VBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("4_o5gox")
+theme_override_colors/font_color = Color(0.231373, 0.207843, 0.141176, 1)
+theme_override_font_sizes/font_size = 40
+text = "Saves"
+
+[node name="Control3" type="Control" parent="VBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.1
+
+[node name="DeleteUserData" type="Button" parent="VBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(300, 48)
+layout_mode = 2
+theme = ExtResource("4_o5gox")
+theme_override_font_sizes/font_size = 20
+text = "Delete User Data"
+
+[node name="Control4" type="Control" parent="VBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Back" type="Button" parent="VBoxContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(150, 50)
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("4_o5gox")
+text = "Cancel"
+
+[node name="Save" type="Button" parent="VBoxContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("4_o5gox")
+theme_override_font_sizes/font_size = 20
+text = "Save"
+
+[node name="Control" type="Control" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.2
+
+[node name="Control" parent="." instance=ExtResource("5_5fulg")]
+
+[connection signal="pressed" from="VBoxContainer/VBoxContainer/DeleteUserData" to="." method="OnDeleteUserData"]
+[connection signal="pressed" from="VBoxContainer/VBoxContainer/HBoxContainer/Back" to="." method="OnBackPressed"]
+[connection signal="pressed" from="VBoxContainer/VBoxContainer/HBoxContainer/Save" to="." method="OnSaveSettings"]

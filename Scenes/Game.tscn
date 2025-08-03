@@ -38,6 +38,8 @@ script = ExtResource("1_iukft")
 [node name="View" type="Camera2D" parent="."]
 offset = Vector2(960, 540)
 script = ExtResource("3_3so38")
+MinDistanceToViewBorderX = Vector2(520, 192)
+MinDistanceToViewBorderY = Vector2(192, 192)
 
 [node name="WinOverlay" parent="View" instance=ExtResource("9_71axn")]
 visible = false

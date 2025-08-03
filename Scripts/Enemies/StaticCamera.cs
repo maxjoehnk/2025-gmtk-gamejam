@@ -1,26 +1,13 @@
 using Godot;
-using System;
-using gmtkgamejam.Scenes;
 using gmtkgamejam.Scenes.Enemies;
 using gmtkgamejam.Scripts.Core;
 
 public partial class StaticCamera : Enemy, ISwitchable, IResettable
 {
-	private bool isActive = true;
-	private bool state1;
 	private bool state = true;
 
 	[Export]
-	public bool IsActive
-	{
-		get => this.isActive;
-		set
-		{
-			this.isActive = value;
-			this.State = value;
-			this.Update();
-		}
-	}
+	public bool IsActive { get; set; } = true;
 
 	public bool State
 	{
@@ -38,8 +25,7 @@ public partial class StaticCamera : Enemy, ISwitchable, IResettable
 
 	public override void _Ready()
 	{
-		this.State = this.isActive;
-		this.Update();
+		this.Reset();
 	}
 
 	private void Update()

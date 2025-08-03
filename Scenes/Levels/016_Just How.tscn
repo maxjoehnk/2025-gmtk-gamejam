@@ -12,9 +12,9 @@
 
 [node name="Just How" type="Node2D"]
 script = ExtResource("1_cdjgm")
-GoldMedalTicks = 38
-SilverMedalTicks = 60
-BronzeMedalTicks = 80
+GoldMedalTicks = 17
+SilverMedalTicks = 20
+BronzeMedalTicks = 25
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
 position = Vector2(512, 320)

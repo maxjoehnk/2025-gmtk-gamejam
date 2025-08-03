@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://xkkyci2wgnbi"]
+[gd_scene load_steps=7 format=3 uid="uid://xkkyci2wgnbi"]
 
 [ext_resource type="Script" uid="uid://ben4lxalgohib" path="res://Scripts/UI/MainMenu.cs" id="1_g18y6"]
 [ext_resource type="StyleBox" uid="uid://b1jt0gbx4hchb" path="res://Themes/MenuBackground.tres" id="1_t6w0q"]
 [ext_resource type="FontFile" uid="uid://b7rxn83laf0py" path="res://Assets/Fonts/Moms.ttf" id="3_k8um8"]
 [ext_resource type="LabelSettings" uid="uid://ccaw61l4efbe1" path="res://Themes/TitleLabel.tres" id="4_k8um8"]
+[ext_resource type="Theme" uid="uid://cra2uu7yv1c0h" path="res://Themes/ButtonTheme.tres" id="5_jex3y"]
 [ext_resource type="PackedScene" uid="uid://d1762b3f83wg4" path="res://Scenes/UI/Screws.tscn" id="5_k8um8"]
 
 [node name="MainMenu" type="Panel"]
@@ -52,6 +53,7 @@ layout_mode = 2
 custom_minimum_size = Vector2(300, 48)
 layout_mode = 2
 size_flags_horizontal = 4
+theme = ExtResource("5_jex3y")
 theme_override_font_sizes/font_size = 20
 text = "Start"
 
@@ -59,6 +61,7 @@ text = "Start"
 custom_minimum_size = Vector2(300, 48)
 layout_mode = 2
 size_flags_horizontal = 4
+theme = ExtResource("5_jex3y")
 theme_override_font_sizes/font_size = 20
 text = "Select Level"
 
@@ -66,6 +69,7 @@ text = "Select Level"
 custom_minimum_size = Vector2(300, 48)
 layout_mode = 2
 size_flags_horizontal = 4
+theme = ExtResource("5_jex3y")
 theme_override_font_sizes/font_size = 20
 text = "Delete User Data"
 
@@ -73,6 +77,7 @@ text = "Delete User Data"
 custom_minimum_size = Vector2(300, 48)
 layout_mode = 2
 size_flags_horizontal = 4
+theme = ExtResource("5_jex3y")
 theme_override_font_sizes/font_size = 20
 text = "Exit"
 

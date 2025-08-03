@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://cm76nd4ljii60"]
+[gd_scene load_steps=3 format=3 uid="uid://cm76nd4ljii60"]
 
 [ext_resource type="Script" uid="uid://ddxyvmb6g08ce" path="res://Scripts/UI/LevelButton.cs" id="1_e27gx"]
+[ext_resource type="Theme" uid="uid://cra2uu7yv1c0h" path="res://Themes/ButtonTheme.tres" id="1_ebocn"]
 
 [node name="LevelButton" type="Button"]
 custom_minimum_size = Vector2(300, 50)
@@ -9,5 +10,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("1_ebocn")
 text = "Name"
 script = ExtResource("1_e27gx")

@@ -8,8 +8,8 @@ namespace gmtkgamejam.Core;
 
 public partial class LevelManager : Node
 {
-	public static LevelManager Instance;
-	public Node CurrentScene { get; set; }
+	public static LevelManager Instance = null!;
+	private Node CurrentScene { get; set; } = null!;
 
 	private int? lastFinishedLevelIndex;
 	private int? currentLevelIndex;
@@ -46,7 +46,7 @@ public partial class LevelManager : Node
 	public void LoadLevel(AvailableLevel level)
 	{
 		this.currentLevelIndex = this.Levels.IndexOf(level);
-		this.CallDeferred(nameof(this.LoadScene), $"res://Scenes/Levels/{level.Path}");
+		this.TransitionToScene($"res://Scenes/Levels/{level.Path}");
 	}
 
 	public bool HasNextLevel()
@@ -85,12 +85,20 @@ public partial class LevelManager : Node
 
 	public void OpenLevelSelector()
 	{
-		this.CallDeferred(nameof(this.LoadScene), "res://Scenes/UI/LevelSelect/LevelSelector.tscn");
+		this.TransitionToScene("res://Scenes/UI/LevelSelect/LevelSelector.tscn");
 	}
 
 	public void OpenMainMenu()
 	{
-		this.CallDeferred(nameof(this.LoadScene), "res://Scenes/UI/MainMenu.tscn");
+		this.TransitionToScene("res://Scenes/UI/MainMenu.tscn");
+	}
+
+	public void TransitionToScene(string scenePath)
+	{
+		TransitionScreen.Instance.EnterTransition(() =>
+		{
+			this.CallDeferred(nameof(this.LoadScene), scenePath);
+		});
 	}
 
 	public void LoadScene(string path)
@@ -101,6 +109,7 @@ public partial class LevelManager : Node
 
 		this.GetTree().Root.AddChild(this.CurrentScene);
 		this.GetTree().CurrentScene = this.CurrentScene;
+		TransitionScreen.Instance.ExitTransition();
 	}
 
 	public void LevelFinished(int currentTick, bool hasGoldMedal, bool hasSilverMedal, bool hasBronzeMedal)

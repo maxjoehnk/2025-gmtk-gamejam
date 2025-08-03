@@ -17,6 +17,7 @@ config/features=PackedStringArray("4.4", "C#", "Forward Plus")
 boot_splash/bg_color=Color(0, 0, 0, 1)
 boot_splash/image="uid://drtd4obsxknbw"
 config/icon="uid://cs8rj2i2kt3fi"
+boot_splash/minimum_display_time=1000
 
 [autoload]
 

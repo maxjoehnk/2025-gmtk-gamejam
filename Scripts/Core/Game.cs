@@ -36,6 +36,12 @@ public partial class Game : Node2D
 		Music.Instance.TransitionToGameMusic();
 	}
 
+	public override void _ExitTree()
+	{
+		this.ActionPane.ActionsChanged -= this.OnActionsChanged;
+		ActionPlayer.Instance.Finished -= this.OnActionsFinished;
+	}
+
 	private void OnSetSpeed(float value)
 	{
 		ActionPlayer.Instance.PlaybackSpeed = value;

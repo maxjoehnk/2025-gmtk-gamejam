@@ -42,7 +42,7 @@ public partial class Game : Node2D
 		ActionPlayer.Instance.Finished -= this.OnActionsFinished;
 	}
 
-	private void OnSetSpeed(float value)
+	public void OnSetSpeed(float value)
 	{
 		ActionPlayer.Instance.PlaybackSpeed = value;
 		this.PlaybackToolbar.SetSpeed(value);

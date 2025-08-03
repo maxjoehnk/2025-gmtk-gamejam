@@ -8,9 +8,9 @@ public partial class Game : Node2D
 	private ActionPane ActionPane => this.GetNode<ActionPane>("View/Canvas/ActionPane");
 	public Player Player => this.GetNode<Player>("Player");
 
-	public WinOverlay WinOverlay => this.GetNode<WinOverlay>("View/WinOverlay");
-	public CaughtOverlay CaughtOverlay => this.GetNode<CaughtOverlay>("View/CaughtOverlay");
-	public PauseMenuOverlay PauseMenuOverlay => this.GetNode<PauseMenuOverlay>("View/PauseMenuOverlay");
+	public WinOverlay WinOverlay => this.GetNode<WinOverlay>("View/Overlays/WinOverlay");
+	public CaughtOverlay CaughtOverlay => this.GetNode<CaughtOverlay>("View/Overlays/CaughtOverlay");
+	public PauseMenuOverlay PauseMenuOverlay => this.GetNode<PauseMenuOverlay>("View/Overlays/PauseMenuOverlay");
 
 	private PreviewIndicator PreviewIndicator => this.GetNode<PreviewIndicator>("PreviewIndicator");
 	

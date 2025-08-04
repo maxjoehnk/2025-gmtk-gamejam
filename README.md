@@ -18,6 +18,6 @@ Part of the [GMTK Game Jam 2025](https://itch.io/jam/gmtk-2025)
 
 ## Screenshots
 
-![Tutorial Level](./images/screenshots/Tutorial%20Level.jpg)
+![Tutorial Level](./images/screenshots/Tutorial%20Level.png)
 ![Indoor Level](./images/screenshots/Indoor%20Level.jpeg)
 ![Outdoor Level](./images/screenshots/Outdoor%20Level.jpeg)

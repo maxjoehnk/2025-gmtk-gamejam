@@ -5,3 +5,4 @@
 *.afphoto~lock~
 
 *.DotSettings.user
+.DS_Store

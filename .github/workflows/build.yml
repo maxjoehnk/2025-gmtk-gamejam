@@ -3,8 +3,6 @@
 name: "Godot Export"
 on:
   push:
-    branches:
-      - main
 
 env:
   GODOT_VERSION: 4.4.1
@@ -86,14 +84,30 @@ jobs:
           EXPORT_DIR="$(readlink -f build)"
           cd $PROJECT_PATH
           godot --headless --verbose --export-release "macOS" "$EXPORT_DIR/mac/$EXPORT_NAME.zip"
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: unsigned-mac
+          path: build/mac
+  
+  sign-mac:
+    name: Sign & Notarize MacOS App
+    runs-on: macos-latest
+    needs: export-mac
+    steps:
+      - name: Install build dependencies
+        run: brew install create-dmg
+      - uses: actions/download-artifact@v4
+        with:
+          artifact-ids: unsigned-mac
+      - name: Extract artifacts
+        run: |
+          mkdir build
+          mv unsigned-mac/Loopscape.zip ./build
+          cd build
+          unzip Loopscape.zip
       - name: Sign Mac App
         run: |
-          ls 
-          ls *
-          ls build/mac
-          cd build/mac
-          unzip $EXPORT_NAME.zip
-          cd ../..
           .scripts/sign-macos-app.sh
           .scripts/notarize-macos-app.sh
           .scripts/package-dmg.sh
@@ -119,10 +133,12 @@ jobs:
       image: barichello/godot-ci:mono-4.4.1
     needs:
       - export-linux
-      - export-mac
       - export-windows
+      - sign-mac
     steps:
       - uses: actions/download-artifact@v4
+        with:
+          artifact-ids: linux, windows, mac
       - run: butler push ./linux $ITCHIO_USERNAME/$ITCHIO_GAME:linux
         env:
           ITCHIO_USERNAME: ${{ vars.ITCHIO_USERNAME }}

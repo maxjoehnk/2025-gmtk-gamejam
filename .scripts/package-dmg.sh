@@ -3,7 +3,7 @@ set -e
 
 echo "Packaging as .dmg..."
 create-dmg --volname Loopback \
-	--volicon "export/mac/Loopback.app/Contents/Resources/icon.icns" \
+	--volicon "build/Loopback.app/Contents/Resources/icon.icns" \
 	--window-pos 200 120 \
 	--window-size 800 400 \
 	--icon-size 100 \
@@ -12,4 +12,4 @@ create-dmg --volname Loopback \
 	--app-drop-link 600 185 \
 	--codesign "$MACOS_CERTIFICATE_NAME" \
 	Loopback.dmg \
-	export/mac
+	build

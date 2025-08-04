@@ -15,3 +15,5 @@ Adjust your inputs, tweak your timing and refine your strategy. The guards follo
 Optimize your moves and carve out the one perfect path to freedom.
 
 Can you master the loop... and escape it?
+
+[Download on itch.io](https://maxjoehnk.itch.io/loopscape)

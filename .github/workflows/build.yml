@@ -88,7 +88,12 @@ jobs:
           godot --headless --verbose --export-release "macOS" "$EXPORT_DIR/mac/$EXPORT_NAME.zip"
       - name: Sign Mac App
         run: |
-          ls export/mac
+          ls 
+          ls *
+          ls build/mac
+          cd build/mac
+          unzip $EXPORT_NAME.zip
+          cd ../..
           .scripts/sign-macos-app.sh
           .scripts/notarize-macos-app.sh
           .scripts/package-dmg.sh

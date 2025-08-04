@@ -110,8 +110,6 @@ jobs:
           unzip Loopscape.zip
       - name: Sign Mac App
         run: |
-          ls 
-          ls build
           .scripts/sign-macos-app.sh
           .scripts/notarize-macos-app.sh
           .scripts/package-dmg.sh

@@ -97,6 +97,8 @@ jobs:
     steps:
       - name: Install build dependencies
         run: brew install create-dmg
+      - name: Checkout
+        uses: actions/checkout@v4
       - uses: actions/download-artifact@v4
         with:
           name: unsigned-mac

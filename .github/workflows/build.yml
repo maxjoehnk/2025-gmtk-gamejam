@@ -102,9 +102,8 @@ jobs:
           name: unsigned-mac
       - name: Extract artifacts
         run: |
-          ls *
           mkdir build
-          mv unsigned-mac/Loopscape.zip ./build
+          mv Loopscape.zip ./build
           cd build
           unzip Loopscape.zip
       - name: Sign Mac App
@@ -140,12 +139,15 @@ jobs:
       - uses: actions/download-artifact@v4
         with:
           name: linux
+          path: linux
       - uses: actions/download-artifact@v4
         with:
           name: windows
+          path: windows
       - uses: actions/download-artifact@v4
         with:
           name: mac
+          path: mac
       - run: butler push ./linux $ITCHIO_USERNAME/$ITCHIO_GAME:linux
         env:
           ITCHIO_USERNAME: ${{ vars.ITCHIO_USERNAME }}
@@ -156,8 +158,8 @@ jobs:
           ITCHIO_USERNAME: ${{ vars.ITCHIO_USERNAME }}
           ITCHIO_GAME: ${{ vars.ITCHIO_GAME }}
           BUTLER_API_KEY: ${{ secrets.BUTLER_API_KEY }}
-      # - run: butler push ./mac $ITCHIO_USERNAME/$ITCHIO_GAME:mac
-      #   env:
-      #     ITCHIO_USERNAME: ${{ vars.ITCHIO_USERNAME }}
-      #     ITCHIO_GAME: ${{ vars.ITCHIO_GAME }}
-      #     BUTLER_API_KEY: ${{ secrets.BUTLER_API_KEY }}
+      - run: butler push ./mac $ITCHIO_USERNAME/$ITCHIO_GAME:mac
+        env:
+          ITCHIO_USERNAME: ${{ vars.ITCHIO_USERNAME }}
+          ITCHIO_GAME: ${{ vars.ITCHIO_GAME }}
+          BUTLER_API_KEY: ${{ secrets.BUTLER_API_KEY }}

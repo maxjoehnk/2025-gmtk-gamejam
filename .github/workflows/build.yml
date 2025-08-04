@@ -7,7 +7,7 @@ on:
       - main
 
 env:
-  GODOT_VERSION: 4.4
+  GODOT_VERSION: 4.4.1
   EXPORT_NAME: Loopscape
   PROJECT_PATH: "."
 
@@ -16,7 +16,7 @@ jobs:
     name: Windows Export
     runs-on: ubuntu-22.04
     container:
-      image: barichello/godot-ci:mono-4.4
+      image: barichello/godot-ci:mono-4.4.1
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -44,7 +44,7 @@ jobs:
     name: Linux Export
     runs-on: ubuntu-22.04
     container:
-      image: barichello/godot-ci:mono-4.4
+      image: barichello/godot-ci:mono-4.4.1
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -70,7 +70,7 @@ jobs:
     name: Mac Export
     runs-on: ubuntu-22.04
     container:
-      image: barichello/godot-ci:mono-4.4
+      image: barichello/godot-ci:mono-4.4.1
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -97,7 +97,7 @@ jobs:
     if: false
     runs-on: ubuntu-22.04
     container:
-      image: barichello/godot-ci:mono-4.4
+      image: barichello/godot-ci:mono-4.4.1
     needs:
       - export-linux
       - export-mac

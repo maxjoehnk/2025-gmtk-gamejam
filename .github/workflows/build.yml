@@ -99,7 +99,7 @@ jobs:
         run: brew install create-dmg
       - uses: actions/download-artifact@v4
         with:
-          artifact-ids: unsigned-mac
+          name: unsigned-mac
       - name: Extract artifacts
         run: |
           mkdir build
@@ -138,7 +138,13 @@ jobs:
     steps:
       - uses: actions/download-artifact@v4
         with:
-          artifact-ids: linux, windows, mac
+          name: linux
+      - uses: actions/download-artifact@v4
+        with:
+          name: windows
+      - uses: actions/download-artifact@v4
+        with:
+          name: mac
       - run: butler push ./linux $ITCHIO_USERNAME/$ITCHIO_GAME:linux
         env:
           ITCHIO_USERNAME: ${{ vars.ITCHIO_USERNAME }}

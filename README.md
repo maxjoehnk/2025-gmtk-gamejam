@@ -1,8 +1,4 @@
-Project Repo for the GMTK GameJam 2025
-
 # Loopscape
-
-Loopscape
 
 We find the hole in your loop.
 
@@ -17,3 +13,11 @@ Optimize your moves and carve out the one perfect path to freedom.
 Can you master the loop... and escape it?
 
 [Download on itch.io](https://maxjoehnk.itch.io/loopscape)
+
+Part of the [GMTK Game Jam 2025](https://itch.io/jam/gmtk-2025)
+
+## Screenshots
+
+![Tutorial Level](./images/screenshots/Tutorial%20Level.jpg)
+![Indoor Level](./images/screenshots/Indoor%20Level.jpeg)
+![Outdoor Level](./images/screenshots/Outdoor%20Level.jpeg)

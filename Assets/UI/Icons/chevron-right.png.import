@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ds0qfad6fs80l"
-path="res://.godot/imported/Forward2Button_S.png-2b8052df6a49514ac65f73b6e844adea.ctex"
+uid="uid://n2ebmi70amox"
+path="res://.godot/imported/chevron-right.png-ac4261e83ccb29821b9439b85ce5f229.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/UI/Buttons/Forward2Button_S.png"
-dest_files=["res://.godot/imported/Forward2Button_S.png-2b8052df6a49514ac65f73b6e844adea.ctex"]
+source_file="res://Assets/UI/Icons/chevron-right.png"
+dest_files=["res://.godot/imported/chevron-right.png-ac4261e83ccb29821b9439b85ce5f229.ctex"]
 
 [params]
 

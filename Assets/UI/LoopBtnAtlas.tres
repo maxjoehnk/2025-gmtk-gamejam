@@ -1,7 +1,0 @@
-[gd_resource type="AtlasTexture" load_steps=2 format=3 uid="uid://cn6pabyw0cwl4"]
-
-[ext_resource type="Texture2D" uid="uid://c1av2ffcbykko" path="res://Assets/UI/LoopBtn.png" id="1_38yaa"]
-
-[resource]
-atlas = ExtResource("1_38yaa")
-region = Rect2(384, 0, 128, 128)

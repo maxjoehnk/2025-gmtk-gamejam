@@ -102,6 +102,7 @@ jobs:
           name: unsigned-mac
       - name: Extract artifacts
         run: |
+          ls *
           mkdir build
           mv unsigned-mac/Loopscape.zip ./build
           cd build
